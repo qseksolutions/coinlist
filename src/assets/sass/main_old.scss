@@ -1,0 +1,32 @@
+// Bootstrap overrides
+//
+// Copy variables from `_variables.scss` to this file to override default values
+// without modifying source files.
+@import'header';
+@import'fonts';
+@import'btn';
+@import'index';
+@import'variables';
+@import'single-page';
+@import'exchange';
+@import'address-amount';
+
+
+body {
+  font-family: 'montserrat' !important; 
+  color: $primary-color;
+  background-color: $body-bg-color !important;
+  line-height: normal !important;
+  font-size: 13px !important;
+}
+
+a{
+    text-decoration: none !important;
+}
+
+
+/*header*/
+
+
+
+

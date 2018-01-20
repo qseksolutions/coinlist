@@ -1,0 +1,404 @@
+@import'variables';
+
+.table-title{
+    color: $bg-white;
+    padding: 20px;
+    text-align: center;
+    border-top: solid 1px $border-color;
+
+    .main-chart-btn{
+        ul{
+            margin-bottom: 0;
+            li{
+                display: inline-block;
+                padding:  0 5px;
+
+                &.active{
+                    a{
+                        background-color: $dark-blue;
+                    }
+                }
+            }
+        }
+    }
+}
+
+.coin-heading{
+    color: $dark-gray;
+    font-weight: 600;
+}
+
+.main-table{
+    margin-bottom: 40px;
+    background-color: $bg-white;
+    padding: 20px;
+    border-radius: 5px;
+    border:solid 1px $border-color;
+}
+.currency-symbol{
+    display: table;
+    img{
+        display: table-cell;
+        vertical-align: middle;
+        margin-right: 5px;
+    }
+    .currency-di-text{
+        display: table-cell;
+        vertical-align: middle; 
+        font-size: 16px;
+    }
+}
+.table-cate-title{
+    margin-bottom: 15px;
+}
+.alignment{
+    display: table;
+    height: 100%;
+    width: 100%;
+    text-align: left;
+}
+.coin-table-list:nth-of-type(2n+2) {
+    background: $body-bg-color;
+}
+
+.coin-table-list{
+    padding: 10px 0;
+    color: $primary-color;
+    text-align: center;
+        
+        .coin-coint{
+            display: table;
+            width: 100%;
+            table-layout: fixed;
+
+            .coin-count-icon{
+                display: table-cell;
+                vertical-align: middle;
+                width: 70px;
+
+                .count-text{
+                    color: $dark-gray;
+                    display: inline-block;
+                    vertical-align: middle;
+                    font-size: 11px;
+                    font-weight: 700;
+                    width: 30px;
+                    padding: 15px 0;
+                }
+            }
+
+            .main-coin-title{
+                display: table-cell;
+                vertical-align: middle;
+                font-size: 14px;
+                letter-spacing: 0.1em;
+                line-height: 1.4;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                text-align: left;
+
+            }
+        }
+        .main-coin-price  {
+            @extend .volume-price;
+
+            .currency-sign{
+                color: $dark-blue;
+                font-size: 14px;
+                letter-spacing: 0.1em;
+                font-weight: 600;
+                opacity: 0.7;
+            }
+
+            .currency-value{
+                letter-spacing: 0.02em;  
+                color: $dark-blue;
+                font-weight: 600;
+            }
+        }
+        .volume-price{
+            
+            width: 100%;
+            height: 100%;
+            display: table;
+        }
+        .coin-market-cap{
+            @extend .volume-price; 
+        }
+
+        .coin-align{
+            display: table-cell;
+            vertical-align: middle;
+            text-align: left;
+        }
+        .update-price{
+            display: table-cell;
+            vertical-align: middle;
+            
+            .price-updown{
+                font-size: 12px;
+                font-weight: 700;
+                text-align: right;
+                white-space: nowrap;
+                    .up-down-arrow{
+                        width: 7px;
+                        margin-top: -7px;
+                    }
+            }
+
+            svg{
+                overflow: visible;
+                padding-top: 7px;
+                // width: 40%;
+                display: block;
+                // margin: 0 auto;
+            }
+            
+        }
+
+    .currency-sign{
+        color: $sign-color;
+        font-size: 14px;
+        letter-spacing: 0.1em;
+    }
+
+    .currency-value{
+        letter-spacing: 0.02em;  
+    }
+    
+    .follow-plus{
+        width: 8px;
+        vertical-align: unset;
+    }
+
+    .follow-minus{
+        @extend .follow-plus;
+    }
+}
+.price_positive{
+    color: $bg-green;
+}
+.price_nagative{
+    color: $color-nagative;
+}
+/*pagination*/
+.coin-page-pagination{
+    padding: 20px 0 0;
+    border-top: solid 1px $border-color;
+    .pager-text{
+        padding: 10px 0 ;
+        font-size: 12px;
+        color: $light-gray;
+
+        .page-coint-start , .page-coint-end{
+            font-size: 14px;
+            font-weight: 600;
+            color: $dark-gray;
+            padding:  0 5px;
+        }
+    }
+    .pager-btn{
+        text-align: right;
+        .pager-left-btn {
+            width: 40px;
+            height: 30px;
+            display: inline-block;
+            background:$dark-gray;
+            border-radius: 30px;
+            text-align: center;
+            padding: 6px;
+            @include transition(all ease 0.5s);
+            cursor: pointer;
+            &:hover{
+                background-color: $hover-orange;
+            }
+            img{
+                width: 8px;
+            }
+        }
+        .pager-right-btn{
+            @extend .pager-left-btn;
+           
+        }
+        
+    }
+}
+
+/*coin-information*/
+.main-coin-information{
+    background: $bg-color;
+    padding: 30px 0;
+    .price-sign-coin{
+    color: $sign-color;
+    }
+    .price-number-coin{
+        color: $text-white;
+    }
+}
+.coin-info-item2{
+    text-align: center;
+    width: 60%;
+    margin: auto;
+    background-color: rgba(0,0,0,0.2);
+    border:solid 1px rgba(251, 251, 251, 0.3);
+    border-top: none;
+    display: flex;
+
+    .coin-item-trade{
+        padding: 20px;
+        width: 60%;
+        border-right: solid 1px rgba(251, 251, 251, 0.3);
+    }
+    .coin-item-number{
+        padding: 20px;
+        width: 40%;
+    }
+}   
+
+.coin-info-item{
+    padding: 20px;
+    text-align: center;
+    width: 60%;
+    margin: auto;
+    background-color: rgba(0,0,0,0.2);
+    border:solid 1px rgba(251, 251, 251, 0.3);
+}
+
+.coin-lable{
+    font-size: 12px;
+    color:$light-gray;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    font-weight: 700;
+    margin-bottom: 10px;
+    display: block;
+}
+
+
+// modal
+.login-model {
+    .modal.show .modal-dialog {
+        -webkit-transform: translate(0, 20%); 
+        -o-transform: translate(0, 20%);
+        transform: translate(0, 20%);
+    }
+    .modal-dialog{
+        width: 375px;
+    }
+    .modal-body{
+        padding: 0;
+    }
+    .modal-content{
+        border:none;
+        border-radius: 5px;
+    }
+    .modal-header{
+        border-bottom: none;
+        position: relative;
+        border-bottom: solid 2px $border-color;
+        
+        .modal-title{
+            font-weight: 400;
+            width: 100%;
+            font-size: 24px;
+            color: $dark-blue;
+        }
+        button.close{
+            background: $dark-blue;
+            opacity: 1;
+            text-shadow: none;
+            color: $text-white;
+            padding: 4px;
+            border-radius: 50%;
+            width: 30px;
+            font-size: 22px;
+            height: 30px;
+        }
+    }
+    button.close{
+        outline: none;
+    }
+    .model-username{
+        border-bottom: solid 1px $border-color;
+        margin: 15px 20px;
+    }
+    .model-label{
+        color: $primary-color;
+        font-size: 13px;
+        display: block;
+    }
+
+    .model-input{
+        border: none;  
+        width: 100%;
+        padding:10px;
+        outline: none;
+    }
+    .model-btn{
+        margin: 30px 15px 15px;
+        text-align: center;
+    }
+    .model-link{
+        text-align: center;
+        display: block;
+
+        a{
+            font-size: 12px;
+            color: $dark-gray;
+        }
+    }
+    .model-social{
+        padding: 15px;
+        border-top: solid 2px $border-color;
+        .social-title{
+            margin-bottom: 15px;
+            display: block;
+            font-size: 15px;
+            font-weight: 500;
+            color: $dark-blue;
+        }
+        ul{
+            margin-bottom: 0;
+            text-align: center;
+
+            li{
+                display: inline-block;
+                padding:  0 5px;
+            }
+        }
+    }
+    .modal-bottom{
+        padding: 15px;
+        background-color: $dark-blue;
+        border-radius: 0 0 5px 5px;
+    }
+}
+
+input::-webkit-input-placeholder {
+    color:$light-gray !important;
+    font-family: 'montserrat' !important;
+    font-size: 16px;
+    font-weight: 400;
+}
+input:-moz-placeholder {
+    color:$light-gray !important;
+    font-family: 'montserrat' !important;
+    font-size: 16px;
+    font-weight: 400;
+}
+input::-moz-placeholder {
+    color:$light-gray !important;
+    font-family: 'montserrat' !important;
+    font-size: 16px;
+    font-weight: 400;
+}
+input:-ms-input-placeholder {
+    color:$light-gray !important;
+    font-family: 'montserrat' !important;
+    font-size: 16px;
+    font-weight: 400;
+}
+
+.coin-market-cap .btn-buy{
+    display: none;
+}

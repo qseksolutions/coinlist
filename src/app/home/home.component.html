@@ -1,0 +1,240 @@
+<section class="table-title">
+  <div class="container">
+    <div class="main-chart-btn">
+      <ul class="list-unstyled text-right">
+        <li [ngClass]="selectedIndex == 1 ? 'active':''">
+          <a href="javascript:void(0)" (click)="toggleClass('hour',1)" class="btn btn-chart">1 Hour </a>
+        </li>
+        <li [ngClass]="selectedIndex == 2 ? 'active':''">
+          <a href="javascript:void(0)" (click)="toggleClass('day',2)" class="btn btn-chart">1 Day </a>
+        </li>
+        <li [ngClass]="selectedIndex == 3 ? 'active':''">
+          <a href="javascript:void(0)" (click)="toggleClass('week',3)" class="btn btn-chart">1 Week </a>
+        </li>
+        <li [ngClass]="selectedIndex == 4 ? 'active':''">
+          <a href="javascript:void(0)" (click)="toggleClass('month',4)" class="btn btn-chart">1 Month </a>
+        </li>
+        <li [ngClass]="selectedIndex == 5 ? 'active':''">
+          <a href="javascript:void(0)" (click)="toggleClass('year',5)" class="btn btn-chart">1 Year </a>
+        </li>
+        <li [ngClass]="selectedIndex == 6 ? 'active':''">
+          <a href="javascript:void(0)" (click)="toggleClass('',6)" class="btn btn-chart">All time </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <div class="main-table">
+      <div class="table-cate-title">
+        <div class="row">
+          <div class="col-lg-3 col-md-3 col-sm-3 col-5">
+            <div class="alignment">
+              <span>
+                <a href="#" class="coin-heading"> CRYPTOCURRENCY </a>
+              </span>
+            </div>
+          </div>
+      
+          <div class="col-lg-2 col-md-2 col-md-2 col-sm-2 col-4">
+            <div class="alignment">
+              <span>
+                <a href="#" class="coin-heading"> PRICE </a>
+              </span>
+            </div>
+          </div>
+      
+          <div class="col-lg-2 col-md-2 col-sm-2 col-2 hidden-xs-down">
+            <div class="alignment">
+              <span>
+                <a href="#" class="coin-heading"> VOLUME (24h) </a>
+              </span>
+            </div>
+          </div>
+      
+          <div class="col-lg-3 col-md-3 col-sm-3 col-3 hidden-xs-down">
+            <div class="alignment">
+              <span>
+                <a href="#" class="coin-heading"> MARKET CAP </a>
+              </span>
+            </div>
+          </div>
+      
+          <div class="col-lg-2 col-md-2 col-sm-2 col-2 hidden-xs-down">
+            <div class="alignment">
+              <span>
+                <a href="#" class="coin-heading"> Change </a>
+              </span>
+            </div>
+          </div>
+      
+          <!-- <div class="col-lg-2 col-md-2 col-sm-2 col-2 hidden-xs-down">
+            <div class="alignment text-center">
+              <span>
+                <a href="#" class="coin-heading"> Track </a>
+              </span>
+            </div>
+          </div> -->
+        </div>
+      </div>
+      <div class="coin-table-list" *ngFor="let coin of coins">
+        <div class="main-coin-detail">
+          <div class="row">
+            <div class="col-lg-3 col-md-3 col-sm-2 col-5">
+              <div class="coin-coint">
+                <div class="coin-count-icon">
+                  <span class="count-text">{{coin.rank}}&ensp;&ensp;&ensp;</span>
+                  <span class="coin-symbol">
+                    <a href="{{urlString}}coin/{{coin.id}}">
+                      <!-- <img src="{{coin.imgpath}}" onError="this.src='assets/currency-25/default.png'" width="25" height="25"> -->
+                      <img src="{{coin.imgpath}}" width="25" height="25">
+                    </a>
+                  </span>
+                </div>
+                <div class="main-coin-title">
+                  <a href="{{urlString}}coin/{{coin.id}}">
+                    <span class="coin-name">{{coin.name}}</span>
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-lg-2 col-md-2 col-md-2 col-sm-2 col-4">
+              <div class="main-coin-price">
+                <div class="coin-align">
+                  <span class="currency-sign">$</span>
+                  <span class="currency-value">{{coin.price_usd | number}}</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-lg-2 col-md-2 col-sm-2 col-2 hidden-xs-down">
+              <div class="coin-market-cap">
+                <div class="coin-align">
+                  <span class="currency-sign">$</span>
+                  <span class="currency-value">{{coin['24h_volume_usd'] | number}}</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-lg-3 col-md-3 col-sm-3 col-3 hidden-xs-down">
+              <div class="volume-price">
+                <div class="coin-align">
+                  <span class="currency-sign">$</span>
+                  <span class="currency-value">{{coin.market_cap_usd | number}}</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-lg-1 col-md-1 col-sm-1 col-1" [ngClass]="selectedIndex == 1 ? '':'hidden'">
+              <div class="alignment">
+                <div class="update-price">
+                  <span class="price-updown" [ngClass]="coin.percent_change_1h >= 0 ? 'price_positive' : 'price_nagative'">{{coin.percent_change_1h | number}}%
+                    <img class="up-down-arrow" [src]="coin.percent_change_1h >= 0 ? 'assets/currency-svg/arrow-up-green.svg' : 'assets/currency-svg/arrow-down-red.svg'">
+                  </span>
+                  <svg viewBox="0 0 500 100" class="chart">
+                    <polyline fill="none" [attr.stroke]="coin.percent_change_1h >= 0 ? '#3cd483' : '#ff6060'" stroke-width="10" [attr.points]="graph" />
+                  </svg>
+
+                </div>
+              </div>
+            </div>
+
+            <div class="col-lg-1 col-md-1 col-sm-1 col-1" [ngClass]="selectedIndex == 2 ? '':'hidden'">
+              <div class="alignment">
+                <div class="update-price">
+                  <span class="price-updown" [ngClass]="coin.percent_change_24h >= 0 ? 'price_positive' : 'price_nagative'">{{coin.percent_change_24h | number}}%
+                    <img class="up-down-arrow" [src]="coin.percent_change_24h >= 0 ? 'assets/currency-svg/arrow-up-green.svg' : 'assets/currency-svg/arrow-down-red.svg'">
+                  </span>
+                  <svg viewBox="0 0 500 100" class="chart">
+                    <polyline fill="none" [attr.stroke]="coin.percent_change_24h >= 0 ? '#3cd483' : '#ff6060'" stroke-width="10" [attr.points]="graph"
+                    />
+                  </svg>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-lg-1 col-md-1 col-sm-1 col-1" [ngClass]="selectedIndex == 3 ? '':'hidden'">
+              <div class="alignment">
+                <div class="update-price">
+                  <span class="price-updown" [ngClass]="coin.percent_change_7d >= 0 ? 'price_positive' : 'price_nagative'">{{coin.percent_change_7d | number}}%
+                    <img class="up-down-arrow" [src]="coin.percent_change_7d >= 0 ? 'assets/currency-svg/arrow-up-green.svg' : 'assets/currency-svg/arrow-down-red.svg'">
+                  </span>
+                  <svg viewBox="0 0 500 100" class="chart">
+                    <polyline fill="none" [attr.stroke]="coin.percent_change_7d >= 0 ? '#3cd483' : '#ff6060'" stroke-width="10" [attr.points]="graph" />
+                  </svg>
+                </div>
+              </div>
+            </div>
+
+            <!-- <div class="col-lg-2 col-md-2 col-sm-2 col-2 hidden-xs-down">
+              <div class="coin-market-cap">
+                <div class="coin-align text-center">
+                  <button class="btn btn-follow ">
+                    <img src="assets/currency-svg/minus.svg" class="follow-plus" /> Unfollow </button>
+                  <button class="btn btn-follow btn-buy">Buy/Sell</button>
+                </div>
+              </div>
+            </div> -->
+          </div>
+        </div>
+      </div>
+
+      <div class="coin-page-pagination">
+        <div class="row">
+          <div class="col-md-6 col-sm-6 col-6">
+            <div class="pager-text">
+              <span class="page-coint-start">{{page}}</span> Of
+              <span class="page-coint-end">{{coincount}}</span>
+            </div>
+          </div>
+          <div class="col-md-6 col-sm-6 col-6">
+            <div class="pager-btn">
+              <a href="{{urlString}}?page={{prepage}}" [ngClass]="prepage > 0 ? '' : 'hidden-xl-down'">
+                <span class="pager-left-btn">
+                  <img src="assets/currency-svg/left-blue.svg" class="img-fluid">
+                </span>
+              </a>
+              <a href="{{urlString}}?page={{nxtpage}}" [ngClass]="this.coins.length > 19 ? '' : 'hidden-xl-down'">
+                <span class="pager-right-btn">
+                  <img src="assets/currency-svg/right-white.svg" class="img-fluid">
+                </span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+
+<section class="main-coin-information">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12 col-sm-12 col-12">
+        <div class="coin-info-item">
+          <label class="coin-lable">MARKET CAP</label>
+          <span class="price-sign-coin">$</span>
+          <span class="price-number-coin">{{totalmarket | number}}</span>
+        </div>
+
+        <div class="coin-info-item2">
+          <div class="coin-item-trade">
+            <label class="coin-lable">24H TRADE VOLUME</label>
+            <span class="price-sign-coin">$</span>
+            <span class="price-number-coin">{{totaltrade | number}}</span>
+          </div>
+          <div class="coin-item-number">
+            <label class="coin-lable">NUMBER OF COINS</label>
+            <span class="price-number-coin">{{totalcoin }}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

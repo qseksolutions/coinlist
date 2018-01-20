@@ -1,0 +1,103 @@
+@media screen and (min-width: 768px) and (max-width: 991px) {
+  .coin-page-graph {
+    padding: 40px 0; }
+
+  .best-coin-value .price-sign-coin, .best-coin-value .price-number-coin {
+    font-size: 14px;
+    margin-right: 3px; }
+
+  .coin-rank .web-descripation p {
+    font-size: 12px; }
+
+  div.sidenav .select_contry li {
+    width: 83px; } }
+@media screen and (max-width: 767px) {
+  div.coin-page__header .contant_coin-page .exchange-logo {
+    width: 20%;
+    padding: 8px 15px; }
+
+  div.coin-page__header .contant_coin-page .exchange-logo .logo-text {
+    display: none; }
+
+  div.coin-page__header .contant_coin-page .right-header {
+    width: 80%; }
+
+  div.coin-page__header .contant_coin-page .right-header .login-detail {
+    padding: 13px 15px; }
+
+  .search_right .search-icon-item .icon-search {
+    padding-top: 3px;
+    margin-bottom: 0; }
+
+  div.coin-page__header .contant_coin-page .right-header .login-detail ul li {
+    position: relative; }
+
+  .searchbar.clicked {
+    position: absolute;
+    left: -215px;
+    top: 0; }
+
+  .searchbar .btn-extended {
+    padding: 10px 30px; }
+
+  .exchange_button a.btn.btn-green {
+    background-position: 35px 17px;
+    padding: 15px 25px 15px 15px; }
+
+  div.sidenav .select_contry li {
+    width: calc(33.33% - 10px); }
+
+  .currency-symbol .currency-di-text {
+    display: none !important; }
+
+  section.main-coin-information .coin-info-item, section.main-coin-information .coin-info-item2 {
+    width: 100%; }
+
+  .coin-table-list .currency-sign {
+    margin-right: 0 !important; }
+
+  .detaile-coin-page {
+    display: block; }
+
+  .coin-page-graph {
+    padding: 30px 0; }
+
+  .best-coin-value .price-sign-coin, .best-coin-value .price-number-coin {
+    font-size: 14px;
+    margin-right: 3px; }
+
+  .main-coin-information .price-sign-coin {
+    font-size: 16px; }
+  .main-coin-information .price-number-coin {
+    font-size: 16px; }
+
+  .coin-rank .ranking-count {
+    padding: 10px; }
+  .coin-rank .web-descripation p {
+    font-size: 12px; }
+
+  .currancy-form .pr-30 {
+    padding-right: 15px; }
+  .currancy-form .pl-30 {
+    padding-left: 15px; }
+  .currancy-form .currancy-form-label {
+    margin-bottom: 10px; }
+  .currancy-form .currancy-form-input .currency_icon {
+    padding: 14px 8px;
+    width: 100px; }
+
+  .currency-next-btn .btn.btn-next {
+    width: 100%;
+    margin: 0; }
+
+  .exchage_container {
+    padding: 40px 0; }
+
+  .mt-sm-20 {
+    margin-top: 40px; }
+
+  .currancy-updown {
+    bottom: 165px;
+    transform: rotate(0); } }
+
+/*# sourceMappingURL=responsive.css.map */

@@ -1,0 +1,233 @@
+@import'variables';
+.protfolio-table{
+    margin-bottom: 50px;
+}
+.protfolio-table-title{
+    background-color: $bg-footer;
+    border:solid 1px $border-color;
+    border-bottom: none;
+    padding: 10px 20px;
+    border-radius: 5px 5px 0 0;
+    color: #fff; 
+    .alignment{
+        text-align: left;
+    }
+}
+
+.protfolia-table-detaile{
+    background-color: #fff;
+    border-radius: 5px;
+    padding: 10px 20px;
+    margin-bottom: 10px;
+    .alignment{
+        text-align: left;
+    }
+    .coin-count{
+        display: table;
+        width: 100%;
+        height: 100%;
+    }
+
+    .coin-align{
+        @extend .coin-count;
+    }
+    .coin-count-icon{
+        display: table-cell;
+        vertical-align: middle;
+            width: 50px;
+    }
+    .main-coin-title{
+        display: table-cell;
+        vertical-align: middle;
+        
+    }
+    
+    .coin-name{
+        font-size: 16px;
+        font-weight: 500;
+        color: $dark-blue; 
+        display: block;
+    }
+    .coin-amount{
+        font-weight: 500;
+        font-size: 12px;
+        padding: 5px 0 0;
+        display: block;
+    }
+    .coin-symbol{
+        color: $light-gray;
+        font-weight: 600;
+    }
+    .rate-count{
+        @extend .main-coin-title;
+    }
+    .remove-btn{
+        @extend .main-coin-title;
+    }
+    .cost-count{
+        @extend .main-coin-title;
+        font-size: 15px;
+        font-weight: 400;
+        .currency-sign{
+            color: $light-gray;
+        }
+    }
+    .rate-count{
+        @extend .main-coin-title;
+        font-size: 15px;
+        font-weight: 400;
+    }
+    .date-table{
+        @extend .main-coin-title;
+        font-size: 15px;
+        font-weight: 400;
+    }
+    .main-coin-title{
+        display: table-cell;
+        vertical-align: middle;
+    }
+    .btn-remove{
+        padding: 6px 10px;
+        font-size: 10px;
+        background-color: $dark-blue;
+        color:$text-white;
+        line-height: normal;
+        cursor: pointer;
+    }
+}
+
+//model
+
+.portfolio-model {
+    .modal-dialog{
+    max-width: 100%;
+    margin: 0;
+    border-radius: 0;
+    width: 100%;
+    max-height: 100%;
+    height: 100%;
+
+    }
+    .modal-content{
+        border-radius: 0;
+        border:none;
+        background-color: $body-bg-color;
+        height: 100%;
+    }
+    .modal-body{
+        height: 100%;
+    }
+    .modal-header{
+        position: fixed;
+        width: 100%;
+        top: 0;
+        z-index: 1;
+        background-color: $body-bg-color;
+        .modal-title{
+            width: 100%;
+            display: block;
+            font-size: 18px;
+            color: $dark-gray;
+        }
+        button.close{
+            position: absolute;
+            left: 25px;
+            top: calc(50% - 15px);
+            width: 30px;
+            opacity: 1;
+            background-color:rgba($bg-white,  0.0);
+            outline: none;
+            border-radius: 50%;
+            height: 30px;
+            text-align: center;
+            padding: 0 4px;
+            @include transition(all ease 0.5s);
+           &:hover{
+                background-color:rgba($bg-white,  1);
+                img{
+                    @include filter(brightness(1%))
+                }
+            }
+        }
+        
+
+        .model-back{
+            width: 20px;
+            display: block;
+            margin: auto;
+            img{
+                @include transition(all ease 0.5s);
+            }
+        }
+    }
+    .currancy-form-input{
+        display: flex;
+        position: relative;
+        background-color: #fff;
+        border-radius: 5px;
+        border:solid 1px $border-color;
+        margin-bottom: 30px;
+
+        .dropdown-menu{
+            min-width: 100%;
+            border-radius:5px;
+            border: 0;
+            margin-top: 0;
+            -webkit-box-shadow: 0 6px 10px 0 rgba(202,215,223,.4);
+            box-shadow: 0 6px 10px 0 rgba(202,215,223,.4);
+            top: 110%;
+        }
+    }
+    .currency-select{
+        font-size: 16px;
+        padding: 15px 20px;
+        outline: none;
+        color: $light-gray;
+        width: 100%;
+        min-width: 20px;
+        border: none;
+        border-right: 1px solid #d3dae7;
+        margin: 0px;
+        flex: 10;
+        border-radius: 5px 0 0 5px;
+        font-family: 'montserrat' !important;
+        line-height: 16px
+    }
+    .currency_icon{
+        color: $light-gray;
+        text-align: center;
+        padding: 10px 15px;
+        line-height: 22px;
+    }
+    .input-currency-icon{
+        width: 22px;
+    }
+
+    .currency-list{
+        margin-bottom: 0;
+        li{
+            display: flex;
+            position: relative;
+            border-bottom: solid 1px $border-color;
+            cursor: pointer;
+            margin: 0 10px;
+            &:last-child{
+                border-bottom: 0;
+            }
+        }
+
+        .dropdown-currency-name{
+            flex: 10;
+            padding: 15px 10px;
+        }
+        .dropdown-currency-icon{
+            text-align: center;
+            padding: 10px;
+            padding-right: 5px;
+        }
+    }
+    
+    #addQuote{
+        @extend .currency-list;
+    }
+}

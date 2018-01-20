@@ -1,0 +1,302 @@
+/*header*/
+@import'variables';
+
+.coin-page__header{
+    background-color: $bg-white;
+    align-items: center;
+    position: relative;
+    @include transition(0.5s);
+
+    .contant_coin-page{
+        width: 100%;
+        
+        .exchange-logo{
+            width: 30%;
+            float: left;
+            padding: 25px 15px;
+            .logo-text{
+                display: inline-block;
+                margin-top: -2px;
+                font-size: 25px;
+                color:$dark-gray;
+                vertical-align: middle;
+                letter-spacing: 0.9px;
+                font-weight: 400;
+            }
+        }
+        .right-header {
+            float: right;
+            width: 60%;
+            .search_right {
+                padding: 12px;
+                float: right;
+                label{
+                    margin-bottom: 0;
+                }
+            }
+            .exchange_button{
+                float: right;
+            }
+        }
+    }
+        
+}
+.login-detail{
+    text-align: right;
+    padding: 33px 15px;
+    float: right;
+    ul{
+        margin-bottom: 0;
+        li{
+            display: inline-block;
+            a{
+                color: $dark-gray;
+                font-weight: 600;
+                outline: none;
+            } 
+        }
+    }
+}
+::-webkit-scrollbar {
+display: none;
+}
+.sidenav{ 
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 99999;
+    top: 0;
+    right: 0;
+    background:$bg-color;
+    overflow-x: hidden;
+    @include transition(0.5s);
+    padding: 10px 0;
+    
+    .menu-dropdown-content{
+        padding: 10px;
+        .closebtn{
+            position: absolute;
+            right: 20px;
+            top: 20px;
+            cursor: pointer;
+        }
+        .dropdown_btn{
+            padding-bottom: 20px;
+            margin-bottom: 20px;
+            border-bottom: solid 1px $dark-gray;
+            text-align: left;
+        }
+        .currency_label{
+            display: block;
+            text-align: left;
+            color: $dark-gray;
+            font-weight: 600;
+        }
+    }
+    
+    .select_contry{
+        display: flex;
+        flex-wrap: wrap;
+        padding: 0;
+        list-style: none;
+        text-align: center;
+
+        li{
+            width: 98px;
+            border-radius: 5px;
+            padding: 5px;
+            border:solid 2px $bg-white;
+            margin: 5px;
+            @include transition(all ease 0.5s);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            &:hover{
+                border-color: $hover-orange;
+                img{
+                    @include filter(contrast(11%) sepia(145%) hue-rotate(1deg) brightness(1) saturate(29));
+                }
+                .currency-shortname{
+                    color: $hover-orange;
+                    text-decoration: none;
+                }
+                .currency-name{
+                    color: $hover-orange;
+                    text-decoration: none;
+                }
+            }
+
+            a{
+                img{
+                    width: 25px;
+                    height: 25px;
+                    display: block;
+                    margin: auto;
+                    @include transition(all ease 0.5s);
+                    @include filter(brightness(0) invert(1));
+                    }
+                
+                .currency-shortname{
+                    font-weight: 600;
+                    color: $light-gray;
+                    display: block;
+                    margin-top: 5px;
+                    @include transition(all ease 0.5s);
+                }
+                
+                .currency-name{
+                    font-size: 10px;
+                    color: $dark-gray;
+                    @include transition(all ease 0.5s);
+                }
+            }  
+        }
+    }
+}
+/*single-page*/
+.detaile-coin-page{
+    display: none;
+}
+.left-arrow-header{
+    flex: 2;
+    .back-arrow{
+        padding: 5px;
+        display: inline-block;
+    }
+}
+.price-sign-coin{
+    vertical-align: middle;
+    font-size: 20px;
+    color: $light-gray;
+    letter-spacing: 0.02em;
+}
+.price-number-coin{
+    @extend .price-sign-coin;
+    color: $dark-gray;
+}
+.searchbar{
+  float: left;
+  padding: 27px 0;  
+  .btn-extended{
+    width: 300px;
+    padding: 1px 30px;
+    outline: none;
+    border: none;
+    font-weight: 500;
+    font-size: 20px;
+    display: block;
+    @include transition(0.5s);
+  }
+  
+  .btn-search{
+    border-radius: 40px;
+    cursor: pointer;
+    transition: all 0.4s ease-in-out;
+    text-align: center;
+    padding: 0 9px;
+    position: relative;
+    img{
+        width: 20px;
+    }
+    button.search-btn {
+        background: no-repeat;
+        border: none;
+        outline: none;
+        cursor: pointer;
+        position: absolute;
+        left: 0;
+        top: 2px;
+    }
+  }
+}
+
+.credit{
+  position: absolute;
+  bottom: 0;
+  background-color: $bg-white;
+  padding: 5px 20px;
+}
+
+/*footer*/
+
+
+.footer{
+    padding: 20px 0;
+    background: $bg-footer;
+    border-top: solid 1px $border-color;
+    .footer-menu{
+        text-align: center;
+        
+        ul{
+            margin-bottom: 0;
+            
+            li{
+                display: inline-block;
+                padding: 0 10px;
+                
+                a{
+                    color: $dark-gray;
+                }
+                a:hover{
+                    color: $dark-gray;
+                }
+            }
+        }
+    }
+}
+
+.searchbar-small-device{
+    @extend .searchbar;
+    display: none;
+    padding: 10px 0;
+    width: 100%;
+    .btn-search{
+    }
+     .btn-extended{
+         width: 100%;
+     }
+}
+
+//dropdown
+.login-detail {
+    &.nav{
+        a{
+            color: $dark-gray;
+            font-weight: 600; 
+        }
+        .dropdown-menu{
+            padding:0 10px;
+            li{
+                display: block;
+                padding: 15px 5px ;
+                border-bottom: solid 1px $border-color;
+                font-size: 13px;
+                font-weight: 500;
+                &:last-child{
+                    border:none;   
+                }
+                a{
+                    @include transition(all ease 0.5s);
+                    i{
+                        margin-right: 10px;
+                    }
+                    &:hover{
+                        color: $dark-blue;
+                    }
+                }
+            }
+        }
+    }
+    .dropdown-menu{
+        top: 45px;
+        border: 1px solid $border-color;
+        border-radius: 0 0 5px 5px;
+        border-top: 0;
+    }
+    .dropdown-toggle::after{
+        vertical-align: unset;
+        border-top: 5px solid;
+        border-right: 5px solid transparent;
+        border-left: 5px solid transparent;
+    }
+}

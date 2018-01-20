@@ -1,0 +1,134 @@
+<title>{{coin.name}} - Cryptocurrency prices</title>
+<section class="single-page-detaile">
+  <div class="container">
+    <div class="single-coin-detaile">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="center-header">
+            <div class="info_coin-page">
+              <div class="currency_icon">
+                <span class="currency-coin-icon">
+                  <img class="img-responsive" src="{{coin.imgpath}}" alt="{{coin.name}}">
+                </span>
+                <div class="currency_icon">
+                  <div class="currency_name">{{coin.name}}
+                    <span class="currency_symbol">({{coin.symbol}})</span>
+                  </div>
+                </div>
+              </div>
+              <div class="coin-price">
+                <span class="price-sign-coin">$</span>
+                <span class="price-number-coin">{{coin.price_usd | number}}</span>
+              </div>
+            </div>
+            <div class="">
+              <a href="#" class="btn btn-visit-site"> Visit Site </a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-6 col-sm-6 col-md-3 col-lg-3">
+          <div class="best-coin-value">
+            <label class="coin-lable">MARKET CAP</label>
+            <span class="price-sign-coin">$</span>
+            <span class="price-number-coin">{{coin.market_cap_usd | number}}</span>
+          </div>
+        </div>
+        <div class="col-6 col-sm-6 col-md-3 col-lg-3">
+          <div class="best-coin-value">
+            <label class="coin-lable">24H VOLUME</label>
+            <span class="price-sign-coin">$</span>
+            <span class="price-number-coin">{{coin['24h_volume_usd'] | number}}</span>
+          </div>
+        </div>
+        <div class="col-6 col-sm-6 col-md-3 col-lg-3">
+          <div class="best-coin-value">
+            <label class="coin-lable">CIRCULATING SUPPLY</label>
+            <span class="price-number-coin">{{coin.available_supply | number}}</span>
+            <span class="currency_symbol">BTC</span>
+          </div>
+        </div>
+        <div class="col-6 col-sm-6 col-md-3 col-lg-3">
+          <div class="best-coin-value">
+            <label class="coin-lable">TOTAL SUPPLY</label>
+            <span class="price-number-coin">{{coin.total_supply | number}}</span>
+            <span class="currency_symbol">BTC</span>
+          </div>
+        </div>
+        <div class="clearfix"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="coin-page-graph">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="chart-header">
+          <div class="chart-title">
+            <span>{{coin.name}} Price</span>
+          </div>
+          <div class="chart-btn text-center">
+            <ul class="list-unstyled">
+              <li [ngClass]="selectedIndex == 1 ? 'active':''">
+                <a href="javascript:void(0)" (click)="toggleClass('hour',1)" class="btn btn-chart" [ngClass]="selectedIndex == 1 ? 'active':''">1 Hour</a>
+              </li>
+              <li [ngClass]="selectedIndex == 2 ? 'active':''">
+                <a href="javascript:void(0)" (click)="toggleClass('day',2)" class="btn btn-chart" [ngClass]="selectedIndex == 2 ? 'active':''">1 Day</a>
+              </li>
+              <li [ngClass]="selectedIndex == 3 ? 'active':''">
+                <a href="javascript:void(0)" (click)="toggleClass('week',3)" class="btn btn-chart" [ngClass]="selectedIndex == 3 ? 'active':''">1 Week</a>
+              </li>
+              <li [ngClass]="selectedIndex == 4 ? 'active':''">
+                <a href="javascript:void(0)" (click)="toggleClass('month',4)" class="btn btn-chart" [ngClass]="selectedIndex == 4 ? 'active':''">1 Month</a>
+              </li>
+              <li [ngClass]="selectedIndex == 5 ? 'active':''">
+                <a href="javascript:void(0)" (click)="toggleClass('year',5)" class="btn btn-chart" [ngClass]="selectedIndex == 5 ? 'active':''">1 Years</a>
+              </li>
+              <li [ngClass]="selectedIndex == 6 ? 'active':''">
+                <a href="javascript:void(0)" (click)="toggleClass('',6)" class="btn btn-chart" [ngClass]="selectedIndex == 6 ? 'active':''">All time</a>
+              </li>
+            </ul>
+          </div>
+          <div class="chart-value text-right">
+            <span [ngClass]="coin.percent_change_24h >= 0 ? 'green' : 'red'"> {{coin.percent_change_24h}}% </span>
+          </div>
+        </div>
+        <!-- <div id="container" style="min-width: 310px; height: 400px; margin: 0 auto"></div> -->
+        <div [chart]="chart"></div>
+      </div>
+    </div>
+  </div>  
+</section>
+
+<section class="coin-descripation">
+  <div class="container">
+    <div class="row">
+      <div class="col-12 col-sm-12 col-md-8 col-lg-12">
+        <div class="coin-web">
+          <div class="web-text">
+            <label class="coin-lable">WHAT IS CARDANO?</label>
+            <p>
+              Cardano is a blockchain platform that is built in the secure Haskell programming language. The platform features decentralized
+              applications and contracts that operate at low cost in a secure and scalable way.
+            </p>
+          </div>
+        </div>
+      </div>
+      <!-- <div class="col-12 col-sm-12 col-md-4 col-lg-4">
+        <div class="coin-web">
+          <div class="web-descripation">
+            <label class="coin-lable">EXCHANGE BITCOIN</label>
+            <a class="btn btn-sm btn-web btn-exchange" target="_blank" href="">Buy BTC</a>
+
+            <a class="btn btn-sm btn-buy btn-exchange float-right" target="_blank" href="">Sell BTC</a>
+
+            <div class="clearfix"></div>
+          </div>
+        </div>
+      </div> -->
+    </div>
+  </div>
+</section>

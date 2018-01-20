@@ -1,0 +1,32 @@
+$primary-color:#444956;
+$bg-color: linear-gradient(135deg, #170b32 0%, #3d3379 100%);
+$btn-bg-color:#ff8033;
+$dark-blue:#3d3379;
+$bg-white:#fff;
+$bg-green:#3ad483;
+$text-white:#fff;
+$dark-gray:#8a96a3;
+$sign-color:#acb1bf;
+$color-nagative:#ff6060;
+$light-gray:#9ca5be;
+$bg-footer:#f6f7fc;
+$text-green:#3cd483;
+$bg-blue-opcity:rgba(66, 132, 243,0.5);
+$hover-green:#22bb6b;
+$hover-orange:#f17428;
+$hover-dark-blue:#292157;
+$body-bg-color:#f8f9fb;
+$border-color:#ebeef3;
+$text-black:#000;
+@mixin transition($transition) {
+  -webkit-transition: $transition;
+     -moz-transition: $transition;
+      -ms-transition: $transition;
+          transition: $transition;
+} 
+@mixin filter($filter) {
+  -webkit-filter: $filter;
+     -moz-filter: $filter;
+      -ms-filter: $filter;
+          filter: $filter;
+} 
