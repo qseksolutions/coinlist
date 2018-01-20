@@ -1394,12 +1394,15 @@ footer {
   position: fixed;
   height: 100%;
   width: 100%;
-  background: #262626;
+  background: #eeeeee;
   padding-top: 30vh;
   text-align: center;
   transition: opacity 1.8s ease-out; }
 
 .loading_image {
   width: 300px; }
+
+.alert p {
+  margin-bottom: 0; }
 
 /*# sourceMappingURL=main.css.map */
