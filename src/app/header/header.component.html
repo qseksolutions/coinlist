@@ -319,7 +319,7 @@
                   <form #form="ngForm" (ngSubmit)="onSubmitLogin(form.value)">
                     <div class="model-username">
                       <label class="model-label">Username</label>
-                      <input type="text" placeholder="Username" class="model-input" name="username" ngModel>
+                      <input type="text" placeholder="Useremail" class="model-input" name="email" ngModel>
                     </div>
 
                     <div class="model-username">
@@ -376,25 +376,30 @@
               </div>
               <div class="modal-body">
                 <div class="model-signin">
-                  <form>
+                  <form (ngSubmit)="onSubmitRegister(form.value)">
                     <div class="model-username">
                       <label class="model-label">Username</label>
-                      <input type="text" placeholder="Username" class="model-input">
+                      <input type="text" placeholder="Username" class="model-input" name="username" ngModel>
                     </div>
 
                     <div class="model-username">
                       <label class="model-label">Email</label>
-                      <input type="Email" placeholder="Email" class="model-input">
+                      <input type="Email" placeholder="Email" class="model-input" name="email" ngModel>
                     </div>
 
                     <div class="model-username">
                       <label class="model-label">Password</label>
-                      <input type="Password" placeholder="Password" class="model-input">
+                      <input type="Password" placeholder="Password" class="model-input" name="password" ngModel>
                     </div>
 
                     <div class="model-btn">
                       <button type="submit" class="btn btn-sign"> Registration </button>
                     </div>
+
+                    <div style=" padding: 10px;">
+                      <flash-messages></flash-messages>
+                    </div>
+
                     <div class="model-social">
                       <span class="social-title">Use your social accounts</span>
                       <ul class="list-unstyled">

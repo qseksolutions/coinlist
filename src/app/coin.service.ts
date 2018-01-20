@@ -9,6 +9,7 @@ export class CoinService {
 
   api_url: any = myGlobals.api_url;
   loginAPI: any = myGlobals.loginAPI;
+  registerAPI: any = myGlobals.registerAPI;
 
   constructor(private http: Http) { }
 
@@ -61,10 +62,24 @@ export class CoinService {
     const options = new RequestOptions({ headers: headers });
 
     const form = new URLSearchParams();
-    form.append('username', login.username);
+    form.append('email', login.email);
     form.append('password', login.password);
 
-    return this.http.post(this.api_url + this.loginAPI, JSON.stringify(login), options)
+    return this.http.post(this.api_url + this.loginAPI, form, options)
+      .map((response: Response) => response.json());
+  }
+
+  newuserregister(register) {
+    const headers = new Headers({ 'Content-Type': 'application/x-www-form-urlencoded'});
+    const options = new RequestOptions({ headers: headers });
+
+    const form = new URLSearchParams();
+    form.append('name', register.username);
+    form.append('email', register.email);
+    form.append('password', register.password);
+    form.append('usertype', '0');
+
+    return this.http.post(this.api_url + this.registerAPI, form, options)
       .map((response: Response) => response.json());
   }
 
