@@ -6,7 +6,7 @@ import { HttpModule } from '@angular/http';
 import { APP_BASE_HREF } from '@angular/common';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ChartModule, HIGHCHARTS_MODULES } from 'angular-highcharts';
-import { FlashMessagesModule } from 'angular2-flash-messages';
+import { ToasterModule } from 'angular2-toaster';
 
 import highstock from 'highcharts/modules/stock.src';
 import exporting from 'highcharts/modules/exporting.src';
@@ -20,6 +20,7 @@ import { HeaderComponent } from './header/header.component';
 import { HomeComponent } from './home/home.component';
 import { PortfolioComponent } from './portfolio/portfolio.component';
 import { WatchlistComponent } from './watchlist/watchlist.component';
+
 
 export function highchartsModules() {
     // apply Highstock Modules to this array
@@ -70,7 +71,7 @@ export function highchartsModules() {
     HttpModule,
     BrowserAnimationsModule,
     ChartModule,
-    FlashMessagesModule.forRoot(),
+    ToasterModule,
   ],
   declarations: [
     AppComponent,

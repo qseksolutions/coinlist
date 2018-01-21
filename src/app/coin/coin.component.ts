@@ -173,7 +173,7 @@ export class CoinComponent implements OnInit {
             if (test == true) {
               resData[0].imgpath = 'assets/currency-svg/' + resData[0]['symbol'].toLowerCase() + '.svg';
             } else {
-              resData[0].imgpath = 'assets/currency-25/' + resData[0]['symbol'].toLowerCase() + '.png';
+              resData[0].imgpath = 'assets/currency-50/' + resData[0]['symbol'].toLowerCase() + '.png';
             }
           });
           setTimeout(() => {

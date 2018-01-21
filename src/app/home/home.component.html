@@ -2,22 +2,22 @@
   <div class="container">
     <div class="main-chart-btn">
       <ul class="list-unstyled text-right">
-        <li [ngClass]="selectedIndex == 1 ? 'active':''">
+        <li [ngClass]="selectedIndex == 1 ? 'active':''" [style.pointer-events]="selectedIndex == 1 ? 'none':'initial'">
           <a href="javascript:void(0)" (click)="toggleClass('hour',1)" class="btn btn-chart">1 Hour </a>
         </li>
-        <li [ngClass]="selectedIndex == 2 ? 'active':''">
+        <li [ngClass]="selectedIndex == 2 ? 'active':''" [style.pointer-events]="selectedIndex == 2 ? 'none':'initial'">
           <a href="javascript:void(0)" (click)="toggleClass('day',2)" class="btn btn-chart">1 Day </a>
         </li>
-        <li [ngClass]="selectedIndex == 3 ? 'active':''">
+        <li [ngClass]="selectedIndex == 3 ? 'active':''" [style.pointer-events]="selectedIndex == 3 ? 'none':'initial'">
           <a href="javascript:void(0)" (click)="toggleClass('week',3)" class="btn btn-chart">1 Week </a>
         </li>
-        <li [ngClass]="selectedIndex == 4 ? 'active':''">
+        <li [ngClass]="selectedIndex == 4 ? 'active':''" [style.pointer-events]="selectedIndex == 4 ? 'none':'initial'">
           <a href="javascript:void(0)" (click)="toggleClass('month',4)" class="btn btn-chart">1 Month </a>
         </li>
-        <li [ngClass]="selectedIndex == 5 ? 'active':''">
+        <li [ngClass]="selectedIndex == 5 ? 'active':''" [style.pointer-events]="selectedIndex == 5 ? 'none':'initial'">
           <a href="javascript:void(0)" (click)="toggleClass('year',5)" class="btn btn-chart">1 Year </a>
         </li>
-        <li [ngClass]="selectedIndex == 6 ? 'active':''">
+        <li [ngClass]="selectedIndex == 6 ? 'active':''" [style.pointer-events]="selectedIndex == 6 ? 'none':'initial'">
           <a href="javascript:void(0)" (click)="toggleClass('',6)" class="btn btn-chart">All time </a>
         </li>
       </ul>

@@ -1,8 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewContainerRef } from '@angular/core';
 import { Router } from '@angular/router';
 import { CoinService } from '../coin.service';
 import * as myGlobals from './../global';
-import { FlashMessagesService } from 'angular2-flash-messages';
+import { ToasterContainerComponent, ToasterService, ToasterConfig } from 'angular2-toaster';
 
 @Component({
   selector: 'app-header',
@@ -12,11 +12,31 @@ import { FlashMessagesService } from 'angular2-flash-messages';
 })
 export class HeaderComponent implements OnInit {
 
+  private toasterService: ToasterService;
+
+  public toasterconfig: ToasterConfig =
+    new ToasterConfig({
+      showCloseButton: true,
+      tapToDismiss: false,
+      timeout: 2000
+    });
+
   public urlString: any = myGlobals.base_url;
   public login_ses: any = 0;
   regex: any;
+  login = {
+    email: '',
+    password: ''
+  };
+  register = {
+    username: '',
+    useremail: '',
+    userpass: ''
+  };
 
-  constructor(private coinservice: CoinService, private router: Router, private flashMessagesService: FlashMessagesService) {
+  // tslint:disable-next-line:max-line-length
+  constructor(private coinservice: CoinService, private router: Router, toasterService: ToasterService) {
+    this.toasterService = toasterService;
     this.regex = /^([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/;
     const loginData = localStorage.getItem('login_ses');
     const loginDataid = localStorage.getItem('id');
@@ -29,25 +49,29 @@ export class HeaderComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.coinservice.getList()
+      .subscribe(resData => {
+        console.log(resData);
+      });
   }
 
-  onSubmitLogin(login) {
+  onSubmitLogin() {
     // tslint:disable-next-line:triple-equals
-    if (login.email == '') {
-      this.flashMessagesService.show('Please enter email', { cssClass: 'alert-danger', timeout: 2000 });
+    if (this.login.email == '') {
+      this.toasterService.pop('error', 'Required', 'Please enter email');
       // tslint:disable-next-line:triple-equals
-    } else if (login.email.length == 0 || !this.regex.test(login.email)) {
-      this.flashMessagesService.show('Please enter valid email', { cssClass: 'alert-danger', timeout: 2000 });
+    } else if (this.login.email.length == 0 || !this.regex.test(this.login.email)) {
+      this.toasterService.pop('error', 'Required', 'Please enter valid email');
       // tslint:disable-next-line:triple-equals
-    } else if (login.password == '') {
-      this.flashMessagesService.show('Please enter password', { cssClass: 'alert-danger', timeout: 2000 });
+    } else if (this.login.password == '') {
+      this.toasterService.pop('error', 'Required', 'Please enter password');
     } else {
-      this.coinservice.loginuserdata(login)
+      this.coinservice.loginuserdata(this.login)
         .subscribe(resData => {
+          console.log(resData);
           // tslint:disable-next-line:triple-equals
           if (resData.status == true) {
-            // console.log(resData);
-            this.flashMessagesService.show(resData.message, { cssClass: 'alert-success', timeout: 2000 });
+            this.toasterService.pop('success', 'Success', resData.message);
             localStorage.setItem('login_ses', resData.status);
             localStorage.setItem('email', resData.data.email);
             localStorage.setItem('name', resData.data.name);
@@ -57,36 +81,36 @@ export class HeaderComponent implements OnInit {
               location.reload();
             }, 2000);
           } else {
-            this.flashMessagesService.show(resData.message, { cssClass: 'alert-danger', timeout: 2000 });
+            this.toasterService.pop('error', 'Error', resData.message);
           }
         });
     }
   }
 
-  onSubmitRegister(register) {
+  onSubmitRegister() {
     // tslint:disable-next-line:triple-equals
-    if (register.username == '') {
-      this.flashMessagesService.show('Please enter name', { cssClass: 'alert-danger', timeout: 2000 });
+    if (this.register.username == '') {
+      this.toasterService.pop('error', 'Required', 'Please enter name');
       // tslint:disable-next-line:triple-equals
-    } else if (register.email == '') {
-      this.flashMessagesService.show('Please enter email', { cssClass: 'alert-danger', timeout: 2000 });
+    } else if (this.register.useremail == '') {
+      this.toasterService.pop('error', 'Required', 'Please enter email');
       // tslint:disable-next-line:triple-equals
-    } else if (register.email.length == 0 || !this.regex.test(register.email)) {
-      this.flashMessagesService.show('Please enter valid email', { cssClass: 'alert-danger', timeout: 2000 });
+    } else if (this.register.useremail.length == 0 || !this.regex.test(this.register.useremail)) {
+      this.toasterService.pop('error', 'Required', 'Please enter valid email');
       // tslint:disable-next-line:triple-equals
-    } else if (register.password == '') {
-      this.flashMessagesService.show('Please enter password', { cssClass: 'alert-danger', timeout: 2000 });
+    } else if (this.register.userpass == '') {
+      this.toasterService.pop('error', 'Required', 'Please enter password');
     } else {
-      this.coinservice.newuserregister(register)
+      this.coinservice.newuserregister(this.register)
         .subscribe(resData => {
           // tslint:disable-next-line:triple-equals
           if (resData.status == true) {
-            this.flashMessagesService.show(resData.message, { cssClass: 'alert-success', timeout: 2000 });
+            this.toasterService.pop('success', 'Success', resData.message);
             setTimeout(() => {
               location.reload();
             }, 2000);
           } else {
-            this.flashMessagesService.show(resData.message, { cssClass: 'alert-danger', timeout: 2000 });
+            this.toasterService.pop('error', 'Error', resData.message);
           }
         });
     }

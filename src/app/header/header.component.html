@@ -316,25 +316,21 @@
               </div>
               <div class="modal-body">
                 <div class="model-signin">
-                  <form #form="ngForm" (ngSubmit)="onSubmitLogin(form.value)">
+                  <form>
                     <div class="model-username">
                       <label class="model-label">Username</label>
-                      <input type="text" placeholder="Useremail" class="model-input" name="email" ngModel>
+                      <input type="text" placeholder="Useremail" class="model-input" name="email" [(ngModel)]="login.email">
                     </div>
 
                     <div class="model-username">
                       <label class="model-label">Password</label>
-                      <input type="Password" placeholder="Password" class="model-input" name="password" ngModel>
+                      <input type="Password" placeholder="Password" class="model-input" name="password" [(ngModel)]="login.password">
                     </div>
 
                     <div class="model-btn">
-                      <button type="submit" class="btn btn-sign"> SIGN IN </button>
+                      <button type="button" class="btn btn-sign" (click)="onSubmitLogin()"> SIGN IN </button>
                     </div>
                     
-                    <div style=" padding: 10px;">
-                      <flash-messages></flash-messages>
-                    </div>
-
                     <div class="model-social">
                       <span class="social-title">Use your social accounts</span>
                       <ul class="list-unstyled">
@@ -376,28 +372,24 @@
               </div>
               <div class="modal-body">
                 <div class="model-signin">
-                  <form (ngSubmit)="onSubmitRegister(form.value)">
+                  <form>
                     <div class="model-username">
-                      <label class="model-label">Username</label>
-                      <input type="text" placeholder="Username" class="model-input" name="username" ngModel>
+                      <label class="model-label">Name</label>
+                      <input type="text" placeholder="Name" class="model-input" name="username" [(ngModel)]="register.username">
                     </div>
 
                     <div class="model-username">
                       <label class="model-label">Email</label>
-                      <input type="Email" placeholder="Email" class="model-input" name="email" ngModel>
+                      <input type="Email" placeholder="Email" class="model-input" name="useremail" [(ngModel)]="register.useremail">
                     </div>
 
                     <div class="model-username">
                       <label class="model-label">Password</label>
-                      <input type="Password" placeholder="Password" class="model-input" name="password" ngModel>
+                      <input type="Password" placeholder="Password" class="model-input" name="userpass" [(ngModel)]="register.userpass">
                     </div>
 
                     <div class="model-btn">
-                      <button type="submit" class="btn btn-sign"> Registration </button>
-                    </div>
-
-                    <div style=" padding: 10px;">
-                      <flash-messages></flash-messages>
+                      <button type="button" class="btn btn-sign" (click)="onSubmitRegister()"> Registration </button>
                     </div>
 
                     <div class="model-social">

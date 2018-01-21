@@ -10,6 +10,7 @@ export class CoinService {
   api_url: any = myGlobals.api_url;
   loginAPI: any = myGlobals.loginAPI;
   registerAPI: any = myGlobals.registerAPI;
+  coinlistAPI: any = myGlobals.coinlistAPI;
 
   constructor(private http: Http) { }
 
@@ -24,6 +25,17 @@ export class CoinService {
     const limitdata = limit;
     const url = 'https://api.coinmarketcap.com/v1/ticker/?start=' + startdata + '&limit=' + limitdata;
     return this.http.get(url)
+    .map((response: Response) => response.json());
+  }
+  getList() {
+    const headers = new Headers({ 'Content-Type': 'application/x-www-form-urlencoded' });
+    const options = new RequestOptions({ headers: headers });
+
+    /* const form = new URLSearchParams();
+    form.append('email', login.email);
+    form.append('password', login.password); */
+
+    return this.http.get(this.api_url + this.coinlistAPI, options)
       .map((response: Response) => response.json());
   }
 
@@ -75,8 +87,8 @@ export class CoinService {
 
     const form = new URLSearchParams();
     form.append('name', register.username);
-    form.append('email', register.email);
-    form.append('password', register.password);
+    form.append('email', register.useremail);
+    form.append('password', register.userpass);
     form.append('usertype', '0');
 
     return this.http.post(this.api_url + this.registerAPI, form, options)
