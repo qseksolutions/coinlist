@@ -78,7 +78,7 @@ export class HomeComponent implements OnInit {
           this.nxtpage = parseInt(this.page[1], 0) + 1;
           this.prepage = parseInt(this.page[1], 0) - 1;
           // tslint:disable-next-line:triple-equals
-          this.start = (parseInt(this.page[1], 0) - 1) * 20;
+          this.start = (parseInt(this.page[1], 0) - 1) * 50;
           this.page = this.page[1];
         } else {
           this.start = 0;
@@ -94,7 +94,7 @@ export class HomeComponent implements OnInit {
       this.page = 1;
     }
 
-    this.limit = 20;
+    this.limit = 50;
     console.log(this.start);
 
     // tslint:disable-next-line:max-line-length
