@@ -46,14 +46,14 @@
           <div class="best-coin-value">
             <label class="coin-lable">CIRCULATING SUPPLY</label>
             <span class="price-number-coin">{{coin.available_supply | number}}</span>
-            <span class="currency_symbol">BTC</span>
+            <span class="currency_symbol">{{coin.symbol}}</span>
           </div>
         </div>
         <div class="col-6 col-sm-6 col-md-3 col-lg-3">
           <div class="best-coin-value">
             <label class="coin-lable">TOTAL SUPPLY</label>
             <span class="price-number-coin">{{coin.total_supply | number}}</span>
-            <span class="currency_symbol">BTC</span>
+            <span class="currency_symbol">{{coin.symbol}}</span>
           </div>
         </div>
         <div class="clearfix"></div>
@@ -72,23 +72,23 @@
           </div>
           <div class="chart-btn text-center">
             <ul class="list-unstyled">
-              <li [ngClass]="selectedIndex == 1 ? 'active':''">
-                <a href="javascript:void(0)" (click)="toggleClass('hour',1)" class="btn btn-chart" [ngClass]="selectedIndex == 1 ? 'active':''">1 Hour</a>
+              <li [ngClass]="selectedIndex == 1 ? 'active':''" [style.pointer-events]="selectedIndex == 1 ? 'none':'initial'">
+                <a href="#" (click)="toggleClass('hour',1)" class="btn btn-chart" [ngClass]="selectedIndex == 1 ? 'active':''">1 Hour</a>
               </li>
-              <li [ngClass]="selectedIndex == 2 ? 'active':''">
-                <a href="javascript:void(0)" (click)="toggleClass('day',2)" class="btn btn-chart" [ngClass]="selectedIndex == 2 ? 'active':''">1 Day</a>
+              <li [ngClass]="selectedIndex == 2 ? 'active':''" [style.pointer-events]="selectedIndex == 2 ? 'none':'initial'">
+                <a href="#" (click)="toggleClass('day',2)" class="btn btn-chart" [ngClass]="selectedIndex == 2 ? 'active':''">1 Day</a>
               </li>
-              <li [ngClass]="selectedIndex == 3 ? 'active':''">
-                <a href="javascript:void(0)" (click)="toggleClass('week',3)" class="btn btn-chart" [ngClass]="selectedIndex == 3 ? 'active':''">1 Week</a>
+              <li [ngClass]="selectedIndex == 3 ? 'active':''" [style.pointer-events]="selectedIndex == 3 ? 'none':'initial'">
+                <a href="#" (click)="toggleClass('week',3)" class="btn btn-chart" [ngClass]="selectedIndex == 3 ? 'active':''">1 Week</a>
               </li>
-              <li [ngClass]="selectedIndex == 4 ? 'active':''">
-                <a href="javascript:void(0)" (click)="toggleClass('month',4)" class="btn btn-chart" [ngClass]="selectedIndex == 4 ? 'active':''">1 Month</a>
+              <li [ngClass]="selectedIndex == 4 ? 'active':''" [style.pointer-events]="selectedIndex == 4 ? 'none':'initial'">
+                <a href="#" (click)="toggleClass('month',4)" class="btn btn-chart" [ngClass]="selectedIndex == 4 ? 'active':''">1 Month</a>
               </li>
-              <li [ngClass]="selectedIndex == 5 ? 'active':''">
-                <a href="javascript:void(0)" (click)="toggleClass('year',5)" class="btn btn-chart" [ngClass]="selectedIndex == 5 ? 'active':''">1 Years</a>
+              <li [ngClass]="selectedIndex == 5 ? 'active':''" [style.pointer-events]="selectedIndex == 5 ? 'none':'initial'">
+                <a href="#" (click)="toggleClass('year',5)" class="btn btn-chart" [ngClass]="selectedIndex == 5 ? 'active':''">1 Years</a>
               </li>
-              <li [ngClass]="selectedIndex == 6 ? 'active':''">
-                <a href="javascript:void(0)" (click)="toggleClass('',6)" class="btn btn-chart" [ngClass]="selectedIndex == 6 ? 'active':''">All time</a>
+              <li [ngClass]="selectedIndex == 6 ? 'active':''" [style.pointer-events]="selectedIndex == 6 ? 'none':'initial'">
+                <a href="#" (click)="toggleClass('',6)" class="btn btn-chart" [ngClass]="selectedIndex == 6 ? 'active':''">All time</a>
               </li>
             </ul>
           </div>
@@ -97,7 +97,7 @@
           </div>
         </div>
         <!-- <div id="container" style="min-width: 310px; height: 400px; margin: 0 auto"></div> -->
-        <div [chart]="chart"></div>
+        <div [chart]="chart" style="height:400px;"></div>
       </div>
     </div>
   </div>  
@@ -109,10 +109,9 @@
       <div class="col-12 col-sm-12 col-md-8 col-lg-12">
         <div class="coin-web">
           <div class="web-text">
-            <label class="coin-lable">WHAT IS CARDANO?</label>
+            <label class="coin-lable">WHAT IS {{coin.name}}?</label>
             <p>
-              Cardano is a blockchain platform that is built in the secure Haskell programming language. The platform features decentralized
-              applications and contracts that operate at low cost in a secure and scalable way.
+               There’s no description of {{coin.name}} yet.
             </p>
           </div>
         </div>

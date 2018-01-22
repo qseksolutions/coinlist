@@ -1,3 +1,7 @@
+$('a[href="#"]').click(function(e) {
+    e.preventDefault();
+});
+
 $(function(){
   
   $(".select_contry li a").click(function(){
