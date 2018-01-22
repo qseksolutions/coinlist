@@ -112,7 +112,7 @@ export class HomeComponent implements OnInit {
             this.totaltrade += parseFloat(responceData[i]['24h_volume_usd']);
           }
         }
-        const total = responceData.length / 20;
+        const total = responceData.length / 50;
         this.coincount = Math.ceil(total);
         this.totalcoin = responceData.length;
       }

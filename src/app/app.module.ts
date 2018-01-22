@@ -20,6 +20,8 @@ import { HeaderComponent } from './header/header.component';
 import { HomeComponent } from './home/home.component';
 import { PortfolioComponent } from './portfolio/portfolio.component';
 import { WatchlistComponent } from './watchlist/watchlist.component';
+import { SupportComponent } from './support/support.component';
+import { AdvertiseComponent } from './advertise/advertise.component';
 
 
 export function highchartsModules() {
@@ -65,6 +67,16 @@ export function highchartsModules() {
         component: WatchlistComponent,
         pathMatch: 'full'
       },
+      {
+        path: 'support',
+        component: SupportComponent,
+        pathMatch: 'full'
+      },
+      {
+        path: 'advertise',
+        component: AdvertiseComponent,
+        pathMatch: 'full'
+      },
     ]),
     BrowserModule,
     FormsModule,
@@ -82,7 +94,9 @@ export function highchartsModules() {
     HeaderComponent,
     HomeComponent,
     PortfolioComponent,
-    WatchlistComponent
+    WatchlistComponent,
+    SupportComponent,
+    AdvertiseComponent
   ],
   providers: [
     { provide: HIGHCHARTS_MODULES, useFactory: highchartsModules }
