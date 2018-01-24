@@ -71,9 +71,6 @@ export class CoinService {
       form.append('period', period);
     }
 
-    /* const url = 'https://graphs.coinmarketcap.com/currencies/' + coinid + '/';
-    return this.http.get(url)
-      .map((response: Response) => response); */
     return this.http.post('http://localhost/api.qsek.com/api/v1/getcoindata', form, options)
     .map((response: Response) => response.json());
   }

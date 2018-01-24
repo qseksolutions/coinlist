@@ -1,4 +1,4 @@
-export const header = '94ef-bc07-bf47-4ebe-9645-3f89-c464-681d';
+export const header = '';
 export const base_url = 'http://localhost:4200/';
 export const api_url = 'https://coinlisting.io/api/v1/';
 export const loginAPI = 'login';

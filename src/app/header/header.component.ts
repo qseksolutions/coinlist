@@ -55,13 +55,13 @@ export class HeaderComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.coinservice.getallcurrencylist()
+    /* this.coinservice.getallcurrencylist()
       .subscribe(resData => {
         if (resData.status === true) {
           console.log(resData);
           this.currencylist = resData.data;
         }
-      });
+      }); */
     this.authService.authState.subscribe((user) => {
       this.user = user;
       console.log(this.user);
