@@ -2,11 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import * as myGlobals from './../global';
 
 @Component({
-  selector: 'app-watchlist',
-  templateUrl: './watchlist.component.html',
-  styleUrls: ['./watchlist.component.css']
+  selector: 'app-followlist',
+  templateUrl: './followlist.component.html',
+  styleUrls: ['./followlist.component.css']
 })
-export class WatchlistComponent implements OnInit {
+export class FollowlistComponent implements OnInit {
 
   public urlString: any = myGlobals.base_url;
 

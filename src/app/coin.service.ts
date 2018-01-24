@@ -11,6 +11,7 @@ export class CoinService {
   loginAPI: any = myGlobals.loginAPI;
   registerAPI: any = myGlobals.registerAPI;
   coinlistAPI: any = myGlobals.coinlistAPI;
+  currencylistAPI: any = myGlobals.currencylistAPI;
 
   constructor(private http: Http) { }
 
@@ -36,6 +37,14 @@ export class CoinService {
     form.append('password', login.password); */
 
     return this.http.get(this.api_url + this.coinlistAPI, options)
+      .map((response: Response) => response.json());
+  }
+
+  getallcurrencylist() {
+    const headers = new Headers({ 'Content-Type': 'application/x-www-form-urlencoded' });
+    const options = new RequestOptions({ headers: headers });
+
+    return this.http.get(this.api_url + this.currencylistAPI, options)
       .map((response: Response) => response.json());
   }
 

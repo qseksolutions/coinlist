@@ -4,7 +4,7 @@ $('a[href="#"]').click(function(e) {
 
 $(function(){
   
-  $(".select_contry li a").click(function(){
+  $(document).on('click',".select_contry li a",function(){
     
 	var cur_name = $(this).find(".currency-shortname").text().replace(/\s/g,'');
     var cur_name = cur_name.toLowerCase();
@@ -41,7 +41,7 @@ function scrollFunction() {
 // When the user clicks on the button, scroll to the top of the document
 setTimeout(function(){ 
     $('.loading').fadeOut();
-}, 3000);
+}, 2000);
 
 function topFunction() {
     $('html, body').animate({scrollTop:0}, 'slow');

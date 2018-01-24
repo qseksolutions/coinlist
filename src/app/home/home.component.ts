@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
+import { Http, Response, Headers, RequestOptions } from '@angular/http';
 import { Router } from '@angular/router';
 import { CoinService } from '../coin.service';
 import * as myGlobals from './../global';
 import { defer } from 'q';
+import { Observable } from 'rxjs/Observable';
 
 @Component({
   selector: 'app-home',
@@ -25,11 +27,16 @@ export class HomeComponent implements OnInit {
   nxtpage: any;
   public graph: any;
   public urlString: any = myGlobals.base_url;
+  public loginData: any = myGlobals.login_ses;
+  public userid: any = myGlobals.userid;
   interval: any;
   selectedIndex: any;
   perioddata: any;
+  login_ses: any =  0;
+  follow: any = 0;
 
-  constructor(private coinservice: CoinService, private router: Router) {
+  constructor(private coinservice: CoinService, private router: Router, private http: Http) {
+
     this.perioddata = localStorage.getItem('period');
     if (this.perioddata === 'hour') {
       this.selectedIndex = 1;
@@ -56,7 +63,7 @@ export class HomeComponent implements OnInit {
       this.selectedIndex = -1;
     } else {
       this.selectedIndex = index;
-      this.realtimetabledata(period);
+      localStorage.setItem('period', period);
     }
   }
 
@@ -120,7 +127,7 @@ export class HomeComponent implements OnInit {
     this.coinservice.getCoinList(this.start, this.limit)
       .subscribe(resData => {
         if (resData.length > 0) {
-          for (let i = 0; i < resData.length; i++) {
+          /* for (let i = 0; i < resData.length; i++) {
             // tslint:disable-next-line:triple-equals
             const imgurl = 'assets/currency-svg/' + resData[i]['symbol'].toLowerCase() + '.svg';
             this.isImage(imgurl).then(function (test) {
@@ -133,9 +140,9 @@ export class HomeComponent implements OnInit {
             });
           }
           setTimeout(() => {
-            this.coins = [];
+            this.coins = []; */
             this.coins = resData;
-          }, 500);
+          // }, 500);
         }
       });
   }
@@ -151,6 +158,28 @@ export class HomeComponent implements OnInit {
     };
     image.src = src;
     return deferred.promise;
+  }
+
+  errorHandler(event, name) {
+    const imgurl = 'assets/currency-25/' + name.toLowerCase() + '.png';
+    this.isImage(imgurl).then(function (test) {
+      // tslint:disable-next-line:triple-equals
+      if (test == true) {
+        return event.target.src = imgurl;
+      } else {
+        return event.target.src = 'assets/currency-25/not-found-25.png';
+      }
+    });
+  }
+
+  followcoin(rank, userid) {
+    alert(rank);
+    alert(userid);
+    if (this.follow === rank) {
+      this.follow = 0;
+    } else {
+      this.follow = rank;
+    }
   }
 
 }

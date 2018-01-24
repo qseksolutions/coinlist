@@ -38,8 +38,8 @@
             </a>
             <ul class="dropdown-menu">
               <li>
-                <a href="{{urlString}}watchList">
-                  <i class="fa fa-book" aria-hidden="true"></i> watch List</a>
+                <a href="{{urlString}}followlist">
+                  <i class="fa fa-book" aria-hidden="true"></i> Follow List</a>
               </li>
               <li>
                 <a href="{{urlString}}portfolio">
@@ -66,236 +66,12 @@
           </div>
           <label class="currency_label" for="base_currency">Base currency</label>
 
-          <ul name="base_currency" id="base_currency" class="select_contry" onclick="closeNav()">
-            <li value="USD" selected="selected">
+          <ul name="base_currency" id="base_currency" class="select_contry">
+            <li *ngFor="let currency of currencylist" onclick="closeNav()">
               <a href="javascript:void(0);">
-                <img src="assets/currency-svg/usd.svg">
-                <span class="currency-shortname"> USD </span>
-                <span class="currency-name"> US dollar </span>
-              </a>
-            </li>
-            <li value="EUR">
-              <a href="javascript:void(0);">
-                <img src="assets/currency-svg/eur.svg">
-                <span class="currency-shortname">EUR </span>
-                <span class="currency-name"> Euro </span>
-              </a>
-            </li>
-            <li value="JPY">
-              <a href="javascript:void(0);">
-                <img src="assets/currency-svg/jpy.svg">
-                <span class="currency-shortname"> JPY </span>
-                <span class="currency-name"> Japanese yen </span>
-              </a>
-            </li>
-            <li value="BGN">
-              <a href="javascript:void(0);">
-                <img src="assets/currency-svg/bgn.svg">
-                <span class="currency-shortname"> BGN </span>
-                <span class="currency-name"> Bulgarian lev </span>
-              </a>
-            </li>
-            <li value="CZK">
-              <a href="javascript:void(0);">
-                <img src="assets/currency-svg/czk.svg">
-                <span class="currency-shortname"> CZK </span>
-                <span class="currency-name"> Czech koruna </span>
-              </a>
-            </li>
-            <li value="DKK">
-              <a href="javascript:void(0);">
-                <img src="assets/currency-svg/dkk.svg">
-                <span class="currency-shortname"> DKK </span>
-                <span class="currency-name"> Danish krone </span>
-              </a>
-            </li>
-            <li value="GBP">
-              <a href="javascript:void(0);">
-                <img src="assets/currency-svg/gbp.svg">
-                <span class="currency-shortname"> GBP </span>
-                <span class="currency-name"> Pound sterling </span>
-              </a>
-            </li>
-            <li value="HUF">
-              <a href="javascript:void(0);">
-                <img src="assets/currency-svg/huf.svg">
-                <span class="currency-shortname"> HUF </span>
-                <span class="currency-name"> Hungarian forint </span>
-              </a>
-            </li>
-            <li value="PLN">
-              <a href="javascript:void(0);">
-                <img src="assets/currency-svg/pln.svg">
-                <span class="currency-shortname"> PLN </span>
-                <span class="currency-name"> Polish zloty </span>
-              </a>
-            </li>
-            <li value="RON">
-              <a href="javascript:void(0);">
-                <img src="assets/currency-svg/ron.svg">
-                <span class="currency-shortname"> RON </span>
-                <span class="currency-name"> Romanian leu </span>
-              </a>
-            </li>
-            <li value="SEK">
-              <a href="javascript:void(0);">
-                <img src="assets/currency-svg/sek.svg">
-                <span class="currency-shortname"> SEK </span>
-                <span class="currency-name"> Swedish krona </span>
-              </a>
-            </li>
-            <li value="CHF">
-              <a href="javascript:void(0);">
-                <img src="assets/currency-svg/chf.svg">
-                <span class="currency-shortname"> CHF </span>
-                <span class="currency-name"> Swiss franc </span>
-              </a>
-            </li>
-            <li value="NOK">
-              <a href="javascript:void(0);">
-                <img src="assets/currency-svg/nok.svg">
-                <span class="currency-shortname"> NOK </span>
-                <span class="currency-name"> Norwegian krone </span>
-              </a>
-            </li>
-            <li value="HRK">
-              <a href="javascript:void(0);">
-                <img src="assets/currency-svg/hrk.svg">
-                <span class="currency-shortname"> HRK </span>
-                <span class="currency-name"> Croatian kuna </span>
-              </a>
-            </li>
-            <li value="RUB">
-              <a href="javascript:void(0);">
-                <img src="assets/currency-svg/rub.svg">
-                <span class="currency-shortname"> RUB </span>
-                <span class="currency-name"> Russian rouble </span>
-              </a>
-            </li>
-            <li value="TRY">
-              <a href="javascript:void(0);">
-                <img src="assets/currency-svg/try.svg">
-                <span class="currency-shortname"> TRY </span>
-                <span class="currency-name"> Turkish lira </span>
-              </a>
-            </li>
-            <li value="AUD">
-              <a href="javascript:void(0);">
-                <img src="assets/currency-svg/aud.svg">
-                <span class="currency-shortname"> AUD </span>
-                <span class="currency-name"> Australian dollar </span>
-              </a>
-            </li>
-            <li value="BRL">
-              <a href="javascript:void(0);">
-                <img src="assets/currency-svg/brl.svg">
-                <span class="currency-shortname"> BRL </span>
-                <span class="currency-name"> Brazilian real </span>
-              </a>
-            </li>
-            <li value="CAD">
-              <a href="javascript:void(0);">
-                <img src="assets/currency-svg/cad.svg">
-                <span class="currency-shortname"> CAD </span>
-                <span class="currency-name"> Canadian dollar </span>
-              </a>
-            </li>
-            <li value="CNY">
-              <a href="javascript:void(0);">
-                <img src="assets/currency-svg/cny.svg">
-                <span class="currency-shortname"> CNY </span>
-                <span class="currency-name"> Chinese yuan renminbi </span>
-              </a>
-            </li>
-            <li value="HKD">
-              <a href="javascript:void(0);">
-                <img src="assets/currency-svg/hkd.svg">
-                <span class="currency-shortname"> HKD </span>
-                <span class="currency-name"> Hong Kong dollar </span>
-              </a>
-            </li>
-            <li value="IDR">
-              <a href="javascript:void(0);">
-                <img src="assets/currency-svg/idr.svg">
-                <span class="currency-shortname"> IDR </span>
-                <span class="currency-name"> Indonesian rupiah </span>
-              </a>
-            </li>
-            <li value="ILS">
-              <a href="javascript:void(0);">
-                <img src="assets/currency-svg/ils.svg">
-                <span class="currency-shortname"> ILS </span>
-                <span class="currency-name"> Israeli shekel </span>
-              </a>
-            </li>
-            <li value="INR">
-              <a href="javascript:void(0);">
-                <img src="assets/currency-svg/inr.svg">
-                <span class="currency-shortname"> INR </span>
-                <span class="currency-name"> Indian rupee </span>
-              </a>
-            </li>
-            <li value="KRW">
-              <a href="javascript:void(0);">
-                <img src="assets/currency-svg/krw.svg">
-                <span class="currency-shortname"> KRW </span>
-                <span class="currency-name"> South Korean won </span>
-              </a>
-            </li>
-            <li value="MXN">
-              <a href="javascript:void(0);">
-                <img src="assets/currency-svg/mxn.svg">
-                <span class="currency-shortname"> MXN </span>
-                <span class="currency-name"> Mexican peso </span>
-              </a>
-            </li>
-            <li value="MYR">
-              <a href="javascript:void(0);">
-                <img src="assets/currency-svg/myr.svg">
-                <span class="currency-shortname"> MYR </span>
-                <span class="currency-name"> Malaysian ringgit </span>
-              </a>
-            </li>
-            <li value="NZD">
-              <a href="javascript:void(0);">
-                <img src="assets/currency-svg/nzd.svg">
-                <span class="currency-shortname"> NZD </span>
-                <span class="currency-name"> New Zealand dollar </span>
-              </a>
-            </li>
-            <li value="PHP">
-              <a href="javascript:void(0);">
-                <img src="assets/currency-svg/php.svg">
-                <span class="currency-shortname"> PHP </span>
-                <span class="currency-name"> Philippine peso </span>
-              </a>
-            </li>
-            <li value="SGD">
-              <a href="javascript:void(0);">
-                <img src="assets/currency-svg/sgd.svg">
-                <span class="currency-shortname"> SGD </span>
-                <span class="currency-name"> Singapore dollar </span>
-              </a>
-            </li>
-            <li value="THB">
-              <a href="javascript:void(0);">
-                <img src="assets/currency-svg/thb.svg">
-                <span class="currency-shortname"> THB </span>
-                <span class="currency-name"> Thai baht </span>
-              </a>
-            </li>
-            <li value="ZAR">
-              <a href="javascript:void(0);">
-                <img src="assets/currency-svg/zar.svg">
-                <span class="currency-shortname"> ZAR </span>
-                <span class="currency-name"> South African rand </span>
-              </a>
-            </li>
-            <li value="BTC">
-              <a href="javascript:void(0);">
-                <img src="assets/currency-svg/btc-mono.svg">
-                <span class="currency-shortname"> BTC </span>
-                <span class="currency-name"> Bitcoin </span>
+                <img src="assets/currency-svg/{{currency.currency_symbol | lowercase}}.svg">
+                <span class="currency-shortname"> {{currency.currency_symbol}} </span>
+                <span class="currency-name"> {{currency.currency_name}} </span>
               </a>
             </li>
           </ul>
@@ -335,11 +111,11 @@
                       <span class="social-title">Use your social accounts</span>
                       <ul class="list-unstyled">
                         <li>
-                          <a href="#" class="btn btn-social google-color">
+                          <a href="#" class="btn btn-social google-color" (click)="signInWithGoogle()">
                             <img src="assets/currency-svg/google-plus.svg" /> Google Plus</a>
                         </li>
                         <li>
-                          <a href="#" class="btn btn-social fb-color">
+                          <a href="#" class="btn btn-social fb-color" (click)="signInWithFB()">
                             <img src="assets/currency-svg/facebook.svg" /> Facebook</a>
                         </li>
                       </ul>

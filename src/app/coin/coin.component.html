@@ -8,7 +8,7 @@
             <div class="info_coin-page">
               <div class="currency_icon">
                 <span class="currency-coin-icon">
-                  <img class="img-responsive" src="{{coin.imgpath}}" alt="{{coin.name}}">
+                  <img class="img-responsive" src="{{coin.imgpath}}" onError="this.src='assets/currency-50/not-found-50.png'" alt="{{coin.name}}">
                 </span>
                 <div class="currency_icon">
                   <div class="currency_name">{{coin.name}}
@@ -29,23 +29,38 @@
       </div>
       <div class="row">
         <div class="col-6 col-sm-6 col-md-3 col-lg-3">
-          <div class="best-coin-value">
+          <div class="best-coin-value" [style.display]="coin.market_cap_usd != null ? 'block':'none'">
             <label class="coin-lable">MARKET CAP</label>
             <span class="price-sign-coin">$</span>
             <span class="price-number-coin">{{coin.market_cap_usd | number}}</span>
           </div>
+          <div class="best-coin-value" [style.display]="coin.market_cap_usd == null ? 'block':'none'">
+            <label class="coin-lable">MARKET CAP</label>
+            <span class="price-sign-coin"></span>
+            <span class="price-number-coin">-</span>
+          </div>
         </div>
         <div class="col-6 col-sm-6 col-md-3 col-lg-3">
-          <div class="best-coin-value">
+          <div class="best-coin-value" [style.display]="coin['24h_volume_usd'] != null ? 'block':'none'">
             <label class="coin-lable">24H VOLUME</label>
             <span class="price-sign-coin">$</span>
             <span class="price-number-coin">{{coin['24h_volume_usd'] | number}}</span>
           </div>
+          <div class="best-coin-value" [style.display]="coin['24h_volume_usd'] == null ? 'block':'none'">
+            <label class="coin-lable">24H VOLUME</label>
+            <span class="price-sign-coin"></span>
+            <span class="price-number-coin">-</span>
+          </div>
         </div>
         <div class="col-6 col-sm-6 col-md-3 col-lg-3">
-          <div class="best-coin-value">
+          <div class="best-coin-value" [style.display]="coin.available_supply != null ? 'block':'none'">
             <label class="coin-lable">CIRCULATING SUPPLY</label>
             <span class="price-number-coin">{{coin.available_supply | number}}</span>
+            <span class="currency_symbol">{{coin.symbol}}</span>
+          </div>
+          <div class="best-coin-value" [style.display]="coin.available_supply == null ? 'block':'none'">
+            <label class="coin-lable">CIRCULATING SUPPLY</label>
+            <span class="price-number-coin">-</span>
             <span class="currency_symbol">{{coin.symbol}}</span>
           </div>
         </div>

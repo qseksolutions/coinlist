@@ -9,10 +9,10 @@ import * as myGlobals from './../global';
 export class PortfolioComponent implements OnInit {
 
   public urlString: any = myGlobals.base_url;
+  public loginData: any = myGlobals.login_ses;
 
   constructor() {
-    const loginData = localStorage.getItem('login_ses');
-    if (loginData == null) {
+    if (this.loginData == null) {
       window.location.href = this.urlString;
     }
   }

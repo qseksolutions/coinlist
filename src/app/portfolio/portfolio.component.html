@@ -1,364 +1,368 @@
-<section class="watchlist-chart">
-  <div class="watchlist-netwroth">
+<main>
+  <section class="watchlist-chart">
+    <div class="watchlist-netwroth">
+      <div class="container">
+        <div class="row">
+          <div class="col-12 col-sm-12 col-md-12 col-lg-12">
+            <div class="watchlist-coin-detaile">
+              <span class="coin-lable"> NET WORTH </span>
+              <span class="watchlist-main-price">
+                <span class="dollar_sign">$</span>2,558.62</span>
+              <h4 class="main-coin-value"> 7.47%
+                <img class="up-down-arrow" src="assets/currency-svg/arrow-up-green.svg"> </h4>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <canvas id="canvas"></canvas>
+  </section>
+
+  <section>
     <div class="container">
       <div class="row">
         <div class="col-12 col-sm-12 col-md-12 col-lg-12">
-          <div class="watchlist-coin-detaile">
-            <span class="coin-lable"> NET WORTH </span>
-            <span class="watchlist-main-price">
-              <span class="dollar_sign">$</span>2,558.62</span>
-            <h4 class="main-coin-value"> 7.47%
-              <img class="up-down-arrow" src="assets/images/arrow-up-green.svg"> </h4>
+          <div class="breadcrumb">
+            <span class="bread-c-big-text">Portfolio</span>
+            <div class="add-newbtn float-right">
+              <a href="#" class="btn btn-add" data-toggle="modal" data-target="#newtransaction">New Transaction</a>
+            </div>
+          </div>
+
+
+        </div>
+      </div>
+
+      <div class="protfolio-table">
+        <div class="protfolio-table-title">
+          <div class="row">
+            <div class="col-lg-3 col-md-6 col-sm-6 col-6">
+              <div class="alignment">
+                <span>
+                  <a href="#" class="coin-heading"> Coin </a>
+                </span>
+              </div>
+            </div>
+
+            <div class="col-lg-3 col-md-2 col-sm-2 col-2">
+              <div class="alignment">
+                <span>
+                  <a href="#" class="coin-heading"> Rate </a>
+                </span>
+              </div>
+            </div>
+
+            <div class="col-lg-3 col-md-2 col-sm-2 col-2">
+              <div class="alignment">
+                <span>
+                  <a href="#" class="coin-heading"> Total Cost </a>
+                </span>
+              </div>
+            </div>
+
+            <div class="col-lg-3 col-md-2 col-sm-2 col-2">
+              <div class="alignment">
+                <span>
+                  <a href="#" class="coin-heading"> Date </a>
+                </span>
+              </div>
+            </div>
           </div>
         </div>
+
+        <div class="protfolia-table-detaile">
+          <div class="row">
+            <div class="col-lg-3 col-md-6 col-sm-6 col-6">
+              <div class="coin-count">
+                <div class="coin-count-icon">
+                  <span class="coin-symbol">
+                    <img src="assets/currency-svg/btc.svg" width="40" height="40">
+                  </span>
+                </div>
+                <div class="main-coin-title">
+                  <span class="coin-name">Bitcoin</span>
+                  <span class="coin-amount">1
+                    <span class="coin-symbol"> USD</span>
+                  </span>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-lg-3 col-md-2 col-sm-2 col-2">
+              <div class="coin-align">
+                <div class="rate-count">
+                  <span class=""> 25,000.00</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-lg-3 col-md-2 col-sm-2 col-2">
+              <div class="coin-align">
+                <div class="cost-count">
+                  <span class="currency-sign">$</span>
+                  <span class="currency-value">14,526.42</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-lg-2 col-md-2 col-sm-2 col-2">
+              <div class="coin-align">
+                <div class="date-table">
+                  <span class=""> 10-Jan-2018 </span>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-lg-1 col-md-2 col-sm-2 col-2">
+              <div class="coin-align">
+                <div class="remove-btn">
+                  <a href="#" class="btn btn-remove"> Remove </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="protfolia-table-detaile">
+          <div class="row">
+            <div class="col-lg-3 col-md-6 col-sm-6 col-6">
+              <div class="coin-count">
+                <div class="coin-count-icon">
+                  <span class="coin-symbol">
+                    <img src="assets/currency-svg/eth.svg" width="40" height="40">
+                  </span>
+                </div>
+                <div class="main-coin-title">
+                  <span class="coin-name">Ethereum</span>
+                  <span class="coin-amount">1
+                    <span class="coin-symbol"> ETH</span>
+                  </span>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-lg-3 col-md-2 col-sm-2 col-2">
+              <div class="coin-align">
+                <div class="rate-count">
+                  <span class=""> 25,000.00</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-lg-3 col-md-2 col-sm-2 col-2">
+              <div class="coin-align">
+                <div class="cost-count">
+                  <span class="currency-sign">$</span>
+                  <span class="currency-value">14,526.42</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-lg-2 col-md-2 col-sm-2 col-2">
+              <div class="coin-align">
+                <div class="date-table">
+                  <span class=""> 10-Jan-2018 </span>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-lg-1 col-md-2 col-sm-2 col-2">
+              <div class="coin-align">
+                <div class="remove-btn">
+                  <a href="#" class="btn btn-remove"> Remove </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="protfolia-table-detaile">
+          <div class="row">
+            <div class="col-lg-3 col-md-6 col-sm-6 col-6">
+              <div class="coin-count">
+                <div class="coin-count-icon">
+                  <span class="coin-symbol">
+                    <img src="assets/currency-svg/xrp.svg" width="40" height="40">
+                  </span>
+                </div>
+                <div class="main-coin-title">
+                  <span class="coin-name">Ripple</span>
+                  <span class="coin-amount">1
+                    <span class="coin-symbol"> XRP</span>
+                  </span>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-lg-3 col-md-2 col-sm-2 col-2">
+              <div class="coin-align">
+                <div class="rate-count">
+                  <span class=""> 25,000.00</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-lg-3 col-md-2 col-sm-2 col-2">
+              <div class="coin-align">
+                <div class="cost-count">
+                  <span class="currency-sign">$</span>
+                  <span class="currency-value">14,526.42</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-lg-2 col-md-2 col-sm-2 col-2">
+              <div class="coin-align">
+                <div class="date-table">
+                  <span class=""> 10-Jan-2018 </span>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-lg-1 col-md-2 col-sm-2 col-2">
+              <div class="coin-align">
+                <div class="remove-btn">
+                  <a href="#" class="btn btn-remove"> Remove </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Button trigger modal-->
+
+  <!-- Modal: modalPoll -->
+
+  <div class="portfolio-model">
+    <div class="modal fade" id="newtransaction" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <form class="h-100">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title text-center" id="exampleModalLongTitle">Add New Transaction</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true" class="model-back">
+                  <img src="assets/currency-svg/left-arrow.svg" class="img-fluid" />
+                </span>
+              </button>
+            </div>
+
+            <div class="modal-body">
+              <div class="container d-flex h-100">
+                <div class="row justify-content-center align-self-center">
+                  <div class="col-md-4 col-sm-12 col-12 ">
+                    <div class="currancy-form-input">
+                      <input class="currency-select" placeholder="Buy">
+                      <div class="currency_icon">
+                        <img src="assets/currency-svg/buy.svg" class="input-currency-icon">
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="col-md-8 col-sm-12 col-12 ">
+                    <div class="currancy-form-input">
+                      <input class="currency-select form-control date" placeholder="Date" id='datepicker'>
+                      <div class="currency_icon date" for="datepicker">
+                        <img src="assets/currency-svg/calendar.svg" class="input-currency-icon">
+                      </div>
+                    </div>
+                  </div>
+
+
+                  <div class="col-md-6 col-sm-12 col-12 ">
+                    <div class="currancy-form-input">
+                      <input value="" pattern="" id="dropdownMenuButton" class="currency-select currency-name" placeholder="Bitcoin (BTC)">
+                      <div id="icon-currency" class="currency_icon">
+                        <img src="assets/currency-svg/btc.svg" class="input-currency-icon">
+                      </div>
+                      <div id="crypto-currency-menu" class="dropdown-menu">
+                        <ul class="list-unstyled currency-list">
+                          <li>
+                            <div value="btc" pattern="" class="dropdown-currency-name currency-name">Bitcoin (BTC)</div>
+                            <div class="dropdown-currency-icon">
+                              <img src="assets/currency-svg/btc.svg" class="input-currency-icon">
+                            </div>
+                          </li>
+                          <li>
+                            <div value="eth" pattern="" class="dropdown-currency-name">Ethereum (ETH)</div>
+                            <div class="dropdown-currency-icon">
+                              <img src="assets/currency-svg/ETH.svg" class="input-currency-icon">
+                            </div>
+                          </li>
+                          <li>
+                            <div value="xrp" pattern="" class="dropdown-currency-name">Ripple (XRP)</div>
+                            <div class="dropdown-currency-icon">
+                              <img src="assets/currency-svg/xrp.svg" class="input-currency-icon">
+                            </div>
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="col-md-6 col-sm-12 col-12 ">
+                    <div class="currancy-form-input">
+                      <input value="" pattern="" id="currency-dropdownMenuButton" class="currency-select addQuote-name" placeholder="USD">
+                      <div id="addQuote-icon" class="currency_icon">
+                        <img src="assets/currency-svg/usd-gray.svg" class="input-currency-icon">
+                      </div>
+                      <div class="dropdown-menu" id="currency-menu">
+                        <ul class="list-unstyled" id="addQuote">
+                          <li>
+                            <div value="usd-gray" pattern="" class="dropdown-currency-name">USD</div>
+                            <div class="dropdown-currency-icon">
+                              <img src="assets/currency-svg/usd-gray.svg" class="input-currency-icon">
+                            </div>
+                          </li>
+
+                          <li>
+                            <div value="eur-gray" pattern="" class="dropdown-currency-name">ERP</div>
+                            <div class="dropdown-currency-icon">
+                              <img src="assets/currency-svg/eur-gray.svg" class="input-currency-icon">
+                            </div>
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+
+
+                  <div class="col-md-6 col-sm-12 col-12 ">
+                    <div class="currancy-form-input">
+                      <input class="currency-select" placeholder="Amount">
+                      <div class="currency_icon">
+                        <img src="assets/currency-svg/hashtag.svg" class="input-currency-icon">
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="col-md-6 col-sm-12 col-12 ">
+                    <div class="currancy-form-input">
+                      <input class="currency-select" placeholder="Rate">
+                      <div class="currency_icon">
+                        <img src="assets/currency-svg/rate.svg" class="input-currency-icon">
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="col-md-12 col-sm-12 col-12">
+                    <div class="text-center">
+                      <a href="#" class="btn btn-save">save</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </form>
       </div>
     </div>
   </div>
-  <canvas id="canvas"></canvas>
-</section>
+  <!-- Modal: modalPoll -->
 
-<section>
-  <div class="container">
-    <div class="row">
-      <div class="col-12 col-sm-12 col-md-12 col-lg-12">
-        <div class="breadcrumb">
-          <span class="bread-c-big-text">Portfolio</span>
-          <div class="add-newbtn float-right">
-            <a href="#" class="btn btn-add" data-toggle="modal" data-target="#newtransaction">New Transaction</a>
-          </div>
-        </div>
-
-
-      </div>
-    </div>
-
-    <div class="protfolio-table">
-      <div class="protfolio-table-title">
-        <div class="row">
-          <div class="col-lg-3 col-md-6 col-sm-6 col-6">
-            <div class="alignment">
-              <span>
-                <a href="#" class="coin-heading"> Coin </a>
-              </span>
-            </div>
-          </div>
-
-          <div class="col-lg-3 col-md-2 col-sm-2 col-2">
-            <div class="alignment">
-              <span>
-                <a href="#" class="coin-heading"> Rate </a>
-              </span>
-            </div>
-          </div>
-
-          <div class="col-lg-3 col-md-2 col-sm-2 col-2">
-            <div class="alignment">
-              <span>
-                <a href="#" class="coin-heading"> Total Cost </a>
-              </span>
-            </div>
-          </div>
-
-          <div class="col-lg-3 col-md-2 col-sm-2 col-2">
-            <div class="alignment">
-              <span>
-                <a href="#" class="coin-heading"> Date </a>
-              </span>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="protfolia-table-detaile">
-        <div class="row">
-          <div class="col-lg-3 col-md-6 col-sm-6 col-6">
-            <div class="coin-count">
-              <div class="coin-count-icon">
-                <span class="coin-symbol">
-                  <img src="assets/images/btc.svg" width="40" height="40">
-                </span>
-              </div>
-              <div class="main-coin-title">
-                <span class="coin-name">Bitcoin</span>
-                <span class="coin-amount">1
-                  <span class="coin-symbol"> USD</span>
-                </span>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-lg-3 col-md-2 col-sm-2 col-2">
-            <div class="coin-align">
-              <div class="rate-count">
-                <span class=""> 25,000.00</span>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-lg-3 col-md-2 col-sm-2 col-2">
-            <div class="coin-align">
-              <div class="cost-count">
-                <span class="currency-sign">$</span>
-                <span class="currency-value">14,526.42</span>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-lg-2 col-md-2 col-sm-2 col-2">
-            <div class="coin-align">
-              <div class="date-table">
-                <span class=""> 10-Jan-2018 </span>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-lg-1 col-md-2 col-sm-2 col-2">
-            <div class="coin-align">
-              <div class="remove-btn">
-                <a href="#" class="btn btn-remove"> Remove </a>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="protfolia-table-detaile">
-        <div class="row">
-          <div class="col-lg-3 col-md-6 col-sm-6 col-6">
-            <div class="coin-count">
-              <div class="coin-count-icon">
-                <span class="coin-symbol">
-                  <img src="assets/images/eth.svg" width="40" height="40">
-                </span>
-              </div>
-              <div class="main-coin-title">
-                <span class="coin-name">Ethereum</span>
-                <span class="coin-amount">1
-                  <span class="coin-symbol"> ETH</span>
-                </span>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-lg-3 col-md-2 col-sm-2 col-2">
-            <div class="coin-align">
-              <div class="rate-count">
-                <span class=""> 25,000.00</span>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-lg-3 col-md-2 col-sm-2 col-2">
-            <div class="coin-align">
-              <div class="cost-count">
-                <span class="currency-sign">$</span>
-                <span class="currency-value">14,526.42</span>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-lg-2 col-md-2 col-sm-2 col-2">
-            <div class="coin-align">
-              <div class="date-table">
-                <span class=""> 10-Jan-2018 </span>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-lg-1 col-md-2 col-sm-2 col-2">
-            <div class="coin-align">
-              <div class="remove-btn">
-                <a href="#" class="btn btn-remove"> Remove </a>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="protfolia-table-detaile">
-        <div class="row">
-          <div class="col-lg-3 col-md-6 col-sm-6 col-6">
-            <div class="coin-count">
-              <div class="coin-count-icon">
-                <span class="coin-symbol">
-                  <img src="assets/images/xrp.svg" width="40" height="40">
-                </span>
-              </div>
-              <div class="main-coin-title">
-                <span class="coin-name">Ripple</span>
-                <span class="coin-amount">1
-                  <span class="coin-symbol"> XRP</span>
-                </span>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-lg-3 col-md-2 col-sm-2 col-2">
-            <div class="coin-align">
-              <div class="rate-count">
-                <span class=""> 25,000.00</span>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-lg-3 col-md-2 col-sm-2 col-2">
-            <div class="coin-align">
-              <div class="cost-count">
-                <span class="currency-sign">$</span>
-                <span class="currency-value">14,526.42</span>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-lg-2 col-md-2 col-sm-2 col-2">
-            <div class="coin-align">
-              <div class="date-table">
-                <span class=""> 10-Jan-2018 </span>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-lg-1 col-md-2 col-sm-2 col-2">
-            <div class="coin-align">
-              <div class="remove-btn">
-                <a href="#" class="btn btn-remove"> Remove </a>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-
-    </div>
-  </div>
-</section>
-
-<!-- Button trigger modal-->
-
-<!-- Modal: modalPoll -->
-
-<div class="portfolio-model">
-  <div class="modal fade" id="newtransaction" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-      <form class="h-100">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title text-center" id="exampleModalLongTitle">Add New Transaction</h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true" class="model-back">
-                <img src="assets/images/left-arrow.svg" class="img-fluid" />
-              </span>
-            </button>
-          </div>
-
-          <div class="modal-body">
-            <div class="container d-flex h-100">
-              <div class="row justify-content-center align-self-center">
-                <div class="col-md-4 col-sm-12 col-12 ">
-                  <div class="currancy-form-input">
-                    <input class="currency-select" placeholder="Buy">
-                    <div class="currency_icon">
-                      <img src="assets/images/buy.svg" class="input-currency-icon">
-                    </div>
-                  </div>
-                </div>
-
-                <div class="col-md-8 col-sm-12 col-12 ">
-                  <div class="currancy-form-input">
-                    <input class="currency-select form-control date" placeholder="Date" id='datepicker'>
-                    <div class="currency_icon date" for="datepicker">
-                      <img src="assets/images/calendar.svg" class="input-currency-icon">
-                    </div>
-                  </div>
-                </div>
-
-
-                <div class="col-md-6 col-sm-12 col-12 ">
-                  <div class="currancy-form-input">
-                    <input value="" pattern="" id="dropdownMenuButton" class="currency-select currency-name" placeholder="Bitcoin (BTC)">
-                    <div id="icon-currency" class="currency_icon">
-                      <img src="assets/images/btc.svg" class="input-currency-icon">
-                    </div>
-                    <div id="crypto-currency-menu" class="dropdown-menu">
-                      <ul class="list-unstyled currency-list">
-                        <li>
-                          <div value="btc" pattern="" class="dropdown-currency-name currency-name">Bitcoin (BTC)</div>
-                          <div class="dropdown-currency-icon">
-                            <img src="assets/images/btc.svg" class="input-currency-icon">
-                          </div>
-                        </li>
-                        <li>
-                          <div value="eth" pattern="" class="dropdown-currency-name">Ethereum (ETH)</div>
-                          <div class="dropdown-currency-icon">
-                            <img src="assets/images/eth.svg" class="input-currency-icon">
-                          </div>
-                        </li>
-                        <li>
-                          <div value="xrp" pattern="" class="dropdown-currency-name">Ripple (XRP)</div>
-                          <div class="dropdown-currency-icon">
-                            <img src="assets/images/xrp.svg" class="input-currency-icon">
-                          </div>
-                        </li>
-                      </ul>
-                    </div>
-                  </div>
-                </div>
-
-                <div class="col-md-6 col-sm-12 col-12 ">
-                  <div class="currancy-form-input">
-                    <input value="" pattern="" id="currency-dropdownMenuButton" class="currency-select addQuote-name" placeholder="USD">
-                    <div id="addQuote-icon" class="currency_icon">
-                      <img src="assets/images/usd-gray.svg" class="input-currency-icon">
-                    </div>
-                    <div class="dropdown-menu" id="currency-menu">
-                      <ul class="list-unstyled" id="addQuote">
-                        <li>
-                          <div value="usd-gray" pattern="" class="dropdown-currency-name">USD</div>
-                          <div class="dropdown-currency-icon">
-                            <img src="assets/images/usd-gray.svg" class="input-currency-icon">
-                          </div>
-                        </li>
-
-                        <li>
-                          <div value="eur-gray" pattern="" class="dropdown-currency-name">ERP</div>
-                          <div class="dropdown-currency-icon">
-                            <img src="assets/images/eur-gray.svg" class="input-currency-icon">
-                          </div>
-                        </li>
-                      </ul>
-                    </div>
-                  </div>
-                </div>
-
-
-                <div class="col-md-6 col-sm-12 col-12 ">
-                  <div class="currancy-form-input">
-                    <input class="currency-select" placeholder="Amount">
-                    <div class="currency_icon">
-                      <img src="assets/images/hashtag.svg" class="input-currency-icon">
-                    </div>
-                  </div>
-                </div>
-
-                <div class="col-md-6 col-sm-12 col-12 ">
-                  <div class="currancy-form-input">
-                    <input class="currency-select" placeholder="Rate">
-                    <div class="currency_icon">
-                      <img src="assets/images/rate.svg" class="input-currency-icon">
-                    </div>
-                  </div>
-                </div>
-
-                <div class="col-md-12 col-sm-12 col-12">
-                  <div class="text-center">
-                    <a href="#" class="btn btn-save">save</a>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </form>
-    </div>
-  </div>
-</div>
+</main>

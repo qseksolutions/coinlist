@@ -7,6 +7,19 @@ import { APP_BASE_HREF } from '@angular/common';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ChartModule, HIGHCHARTS_MODULES } from 'angular-highcharts';
 import { ToasterModule } from 'angular2-toaster';
+import { SocialLoginModule, AuthServiceConfig } from 'angular4-social-login';
+import { GoogleLoginProvider, FacebookLoginProvider } from 'angular4-social-login';
+
+const config = new AuthServiceConfig([
+  {
+    id: GoogleLoginProvider.PROVIDER_ID,
+    provider: new GoogleLoginProvider('657460625068-68ekbm870e00v3lio74ueumc718dgir6.apps.googleusercontent.com')
+  },
+  {
+    id: FacebookLoginProvider.PROVIDER_ID,
+    provider: new FacebookLoginProvider('805993129602780')
+  }
+]);
 
 import highstock from 'highcharts/modules/stock.src';
 import exporting from 'highcharts/modules/exporting.src';
@@ -19,9 +32,9 @@ import { FooterComponent } from './footer/footer.component';
 import { HeaderComponent } from './header/header.component';
 import { HomeComponent } from './home/home.component';
 import { PortfolioComponent } from './portfolio/portfolio.component';
-import { WatchlistComponent } from './watchlist/watchlist.component';
 import { SupportComponent } from './support/support.component';
 import { AdvertiseComponent } from './advertise/advertise.component';
+import { FollowlistComponent } from './followlist/followlist.component';
 
 
 export function highchartsModules() {
@@ -63,8 +76,8 @@ export function highchartsModules() {
         pathMatch: 'full'
       },
       {
-        path: 'watchlist',
-        component: WatchlistComponent,
+        path: 'followlist',
+        component: FollowlistComponent,
         pathMatch: 'full'
       },
       {
@@ -84,6 +97,7 @@ export function highchartsModules() {
     BrowserAnimationsModule,
     ChartModule,
     ToasterModule,
+    SocialLoginModule.initialize(config)
   ],
   declarations: [
     AppComponent,
@@ -94,9 +108,9 @@ export function highchartsModules() {
     HeaderComponent,
     HomeComponent,
     PortfolioComponent,
-    WatchlistComponent,
     SupportComponent,
-    AdvertiseComponent
+    AdvertiseComponent,
+    FollowlistComponent
   ],
   providers: [
     { provide: HIGHCHARTS_MODULES, useFactory: highchartsModules }

@@ -3,6 +3,9 @@ import { Router } from '@angular/router';
 import { CoinService } from '../coin.service';
 import * as myGlobals from './../global';
 import { ToasterContainerComponent, ToasterService, ToasterConfig } from 'angular2-toaster';
+import { AuthService } from 'angular4-social-login';
+import { SocialUser } from 'angular4-social-login';
+import { FacebookLoginProvider, GoogleLoginProvider } from 'angular4-social-login';
 
 @Component({
   selector: 'app-header',
@@ -22,8 +25,13 @@ export class HeaderComponent implements OnInit {
     });
 
   public urlString: any = myGlobals.base_url;
+  public loginData: any = myGlobals.login_ses;
   public login_ses: any = 0;
+  currencylist: any ;
+  private user: SocialUser;
+  private loggedIn: boolean;
   regex: any;
+
   login = {
     email: '',
     password: ''
@@ -35,13 +43,11 @@ export class HeaderComponent implements OnInit {
   };
 
   // tslint:disable-next-line:max-line-length
-  constructor(private coinservice: CoinService, private router: Router, toasterService: ToasterService) {
+  constructor(private coinservice: CoinService, private router: Router, toasterService: ToasterService, private authService: AuthService) {
     this.toasterService = toasterService;
     this.regex = /^([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/;
-    const loginData = localStorage.getItem('login_ses');
-    const loginDataid = localStorage.getItem('id');
     // tslint:disable-next-line:triple-equals
-    if (loginData == null) {
+    if (this.loginData == null) {
       this.login_ses = 1;
     } else {
       this.login_ses = 0;
@@ -49,10 +55,26 @@ export class HeaderComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.coinservice.getList()
+    this.coinservice.getallcurrencylist()
       .subscribe(resData => {
-        console.log(resData);
+        if (resData.status === true) {
+          console.log(resData);
+          this.currencylist = resData.data;
+        }
       });
+    this.authService.authState.subscribe((user) => {
+      this.user = user;
+      console.log(this.user);
+      this.loggedIn = (user != null);
+    });
+  }
+
+  signInWithGoogle(): void {
+    this.authService.signIn(GoogleLoginProvider.PROVIDER_ID);
+  }
+
+  signInWithFB(): void {
+    this.authService.signIn(FacebookLoginProvider.PROVIDER_ID);
   }
 
   onSubmitLogin() {
@@ -68,18 +90,19 @@ export class HeaderComponent implements OnInit {
     } else {
       this.coinservice.loginuserdata(this.login)
         .subscribe(resData => {
-          console.log(resData);
+          // console.log(resData);
           // tslint:disable-next-line:triple-equals
           if (resData.status == true) {
             this.toasterService.pop('success', 'Success', resData.message);
             localStorage.setItem('login_ses', resData.status);
+            localStorage.setItem('id', resData.data.id);
             localStorage.setItem('email', resData.data.email);
             localStorage.setItem('name', resData.data.name);
             localStorage.setItem('usertype', resData.data.usertype);
             localStorage.setItem('status', resData.data.status);
             setTimeout(() => {
               location.reload();
-            }, 2000);
+            }, 1000);
           } else {
             this.toasterService.pop('error', 'Error', resData.message);
           }
@@ -117,6 +140,7 @@ export class HeaderComponent implements OnInit {
   }
 
   destroyUser() {
+    this.authService.signOut();
     localStorage.clear();
     window.location.href = this.urlString;
   }
