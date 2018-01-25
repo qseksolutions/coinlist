@@ -79,13 +79,13 @@
           </div>
         </div>
       </div>
-      <div class="coin-table-list" *ngFor="let coin of coins">
+      <div class="coin-table-list" *ngFor="let coin of coins; let i = index">
         <div class="main-coin-detail">
           <div class="row">
             <div class="col-lg-3 col-md-3 col-sm-2 col-5">
               <div class="coin-coint">
                 <div class="coin-count-icon">
-                  <span class="count-text">{{coin.rank}}&ensp;&ensp;&ensp;</span>
+                  <span class="count-text">{{i+1+start}}&ensp;&ensp;&ensp;</span>
                   <span class="coin-symbol">
                     <a href="{{urlString}}coin/{{coin.id}}">
                       <!-- <img src="{{coin.imgpath}}" onError="this.src='assets/currency-25/default.png'" width="25" height="25"> -->
@@ -95,7 +95,7 @@
                   </span>
                 </div>
                 <div class="main-coin-title">
-                  <a href="{{urlString}}coin/{{coin.id}}">
+                  <a href="{{urlString}}coin/{{coin.coin_id}}">
                     <span class="coin-name">{{coin.name}}</span>
                   </a>
                 </div>
@@ -152,12 +152,12 @@
 
             <div class="col-lg-1 col-md-1 col-sm-1 col-1" [ngClass]="selectedIndex == 2 ? '':'hidden'">
               <div class="alignment">
-                <div class="update-price" [style.display]="coin.percent_change_1h != null ? 'table-cell':'none'">
+                <div class="update-price" [style.display]="coin.percent_change_24h != null ? 'table-cell':'none'">
                   <span class="price-updown" [ngClass]="coin.percent_change_24h >= 0 ? 'price_positive' : 'price_nagative'">{{coin.percent_change_24h | number}}%
                     <img class="up-down-arrow" [src]="coin.percent_change_24h >= 0 ? 'assets/currency-svg/arrow-up-green.svg' : 'assets/currency-svg/arrow-down-red.svg'">
                   </span>
                 </div>
-                <div class="update-price" [style.display]="coin.percent_change_1h == null ? 'table-cell':'none'">
+                <div class="update-price" [style.display]="coin.percent_change_24h == null ? 'table-cell':'none'">
                   <span class="price-updown">-</span>
                 </div>
               </div>
@@ -165,12 +165,51 @@
 
             <div class="col-lg-1 col-md-1 col-sm-1 col-1" [ngClass]="selectedIndex == 3 ? '':'hidden'">
               <div class="alignment">
-                <div class="update-price" [style.display]="coin.percent_change_1h != null ? 'table-cell':'none'">
+                <div class="update-price" [style.display]="coin.percent_change_7d != null ? 'table-cell':'none'">
                   <span class="price-updown" [ngClass]="coin.percent_change_7d >= 0 ? 'price_positive' : 'price_nagative'">{{coin.percent_change_7d | number}}%
                     <img class="up-down-arrow" [src]="coin.percent_change_7d >= 0 ? 'assets/currency-svg/arrow-up-green.svg' : 'assets/currency-svg/arrow-down-red.svg'">
                   </span>
                 </div>
-                <div class="update-price" [style.display]="coin.percent_change_1h == null ? 'table-cell':'none'">
+                <div class="update-price" [style.display]="coin.percent_change_7d == null ? 'table-cell':'none'">
+                  <span class="price-updown">-</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-lg-1 col-md-1 col-sm-1 col-1" [ngClass]="selectedIndex == 4 ? '':'hidden'">
+              <div class="alignment">
+                <div class="update-price" [style.display]="coin.percent_change_1m != null ? 'table-cell':'none'">
+                  <span class="price-updown" [ngClass]="coin.percent_change_1m >= 0 ? 'price_positive' : 'price_nagative'">{{coin.percent_change_1m | number}}%
+                    <img class="up-down-arrow" [src]="coin.percent_change_1m >= 0 ? 'assets/currency-svg/arrow-up-green.svg' : 'assets/currency-svg/arrow-down-red.svg'">
+                  </span>
+                </div>
+                <div class="update-price" [style.display]="coin.percent_change_1m == null ? 'table-cell':'none'">
+                  <span class="price-updown">-</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-lg-1 col-md-1 col-sm-1 col-1" [ngClass]="selectedIndex == 5 ? '':'hidden'">
+              <div class="alignment">
+                <div class="update-price" [style.display]="coin.percent_change_1y != null ? 'table-cell':'none'">
+                  <span class="price-updown" [ngClass]="coin.percent_change_1y >= 0 ? 'price_positive' : 'price_nagative'">{{coin.percent_change_1y | number}}%
+                    <img class="up-down-arrow" [src]="coin.percent_change_1y >= 0 ? 'assets/currency-svg/arrow-up-green.svg' : 'assets/currency-svg/arrow-down-red.svg'">
+                  </span>
+                </div>
+                <div class="update-price" [style.display]="coin.percent_change_1y == null ? 'table-cell':'none'">
+                  <span class="price-updown">-</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-lg-1 col-md-1 col-sm-1 col-1" [ngClass]="selectedIndex == 6 ? '':'hidden'">
+              <div class="alignment">
+                <div class="update-price" [style.display]="coin.percent_change_all != null ? 'table-cell':'none'">
+                  <span class="price-updown" [ngClass]="coin.percent_change_all >= 0 ? 'price_positive' : 'price_nagative'">{{coin.percent_change_all | number}}%
+                    <img class="up-down-arrow" [src]="coin.percent_change_all >= 0 ? 'assets/currency-svg/arrow-up-green.svg' : 'assets/currency-svg/arrow-down-red.svg'">
+                  </span>
+                </div>
+                <div class="update-price" [style.display]="coin.percent_change_all == null ? 'table-cell':'none'">
                   <span class="price-updown">-</span>
                 </div>
               </div>
@@ -179,8 +218,11 @@
             <div class="col-lg-2 col-md-2 col-sm-2 col-2 hidden-xs-down">
               <div class="coin-market-cap">
                 <div class="coin-align text-center">
-                  <button class="btn btn-follow" (click)="followcoin(coin.rank,userid);" [style.display]="loginData != null ? 'initial':'none'">
-                    <img [src]="follow == coin.rank ? 'assets/currency-svg/minus.svg':'assets/currency-svg/plus.svg'" class="follow-plus" /> {{follow == coin.rank ? 'unfollow' : 'follow'}} 
+                  <button *ngIf="coin.followstatus == 0" class="btn btn-follow" (click)="followcoin(coin);" [style.display]="loginData != null ? 'initial':'none'">
+                    <img src="assets/currency-svg/plus.svg" class="follow-plus" /> follow
+                  </button>
+                  <button *ngIf="coin.followstatus == 1" class="btn btn-follow" (click)="followcoin(coin);" [style.display]="loginData != null ? 'initial':'none'">
+                    <img src="assets/currency-svg/minus.svg" class="follow-plus" /> unfollow
                   </button>
                   <button class="btn btn-follow" data-toggle="modal" data-target="#sign-in" [style.display]="loginData == null ? 'initial':'none'">
                     <img src="assets/currency-svg/plus.svg" class="follow-plus" /> follow

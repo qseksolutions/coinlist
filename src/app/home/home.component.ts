@@ -5,6 +5,7 @@ import { CoinService } from '../coin.service';
 import * as myGlobals from './../global';
 import { defer } from 'q';
 import { Observable } from 'rxjs/Observable';
+import { ToasterContainerComponent, ToasterService, ToasterConfig } from 'angular2-toaster';
 
 @Component({
   selector: 'app-home',
@@ -13,6 +14,14 @@ import { Observable } from 'rxjs/Observable';
   providers: [CoinService],
 })
 export class HomeComponent implements OnInit {
+
+  private toasterService: ToasterService;
+  public toasterconfig: ToasterConfig =
+  new ToasterConfig({
+    showCloseButton: true,
+    tapToDismiss: false,
+    timeout: 2000
+  });
 
   coins: any = Array();
   public start: any;
@@ -33,9 +42,9 @@ export class HomeComponent implements OnInit {
   selectedIndex: any;
   perioddata: any;
   login_ses: any =  0;
-  follow: any = 0;
 
-  constructor(private coinservice: CoinService, private router: Router, private http: Http) {
+  constructor(private coinservice: CoinService, private router: Router, private http: Http, toasterService: ToasterService) {
+    this.toasterService = toasterService;
 
     this.perioddata = localStorage.getItem('period');
     if (this.perioddata === 'hour') {
@@ -95,55 +104,31 @@ export class HomeComponent implements OnInit {
         this.start = 0;
         this.page = 1;
       }
-      // tslint:disable-next-line:triple-equals
     } else {
       this.start = 0;
       this.page = 1;
     }
 
     this.limit = 50;
-    console.log(this.start);
 
-    // tslint:disable-next-line:max-line-length
-    this.coinservice.getCoinCount()
-    .subscribe(responceData => {
-      if (responceData.length > 0) {
-        for (let i = 0; i < responceData.length; i++) {
-          // tslint:disable-next-line:triple-equals
-          if (responceData[i]['market_cap_usd'] != null && responceData[i]['market_cap_usd'] != undefined) {
-            this.totalmarket += parseFloat(responceData[i]['market_cap_usd']);
-          }
-          // tslint:disable-next-line:triple-equals
-          if (responceData[i]['24h_volume_usd'] != null && responceData[i]['24h_volume_usd'] != undefined) {
-            this.totaltrade += parseFloat(responceData[i]['24h_volume_usd']);
-          }
-        }
-        const total = responceData.length / 50;
-        this.coincount = Math.ceil(total);
-        this.totalcoin = responceData.length;
+    this.coinservice.getCoinList(this.start, this.limit).subscribe(resData => {
+    if (resData.data.length > 0) {
+        this.coins = resData.data;
       }
     });
-    this.coinservice.getCoinList(this.start, this.limit)
-      .subscribe(resData => {
-        if (resData.length > 0) {
-          /* for (let i = 0; i < resData.length; i++) {
-            // tslint:disable-next-line:triple-equals
-            const imgurl = 'assets/currency-svg/' + resData[i]['symbol'].toLowerCase() + '.svg';
-            this.isImage(imgurl).then(function (test) {
-              // tslint:disable-next-line:triple-equals
-              if (test == true) {
-                resData[i].imgpath = 'assets/currency-svg/' + resData[i]['symbol'].toLowerCase() + '.svg';
-              } else {
-                resData[i].imgpath = 'assets/currency-25/' + resData[i]['symbol'].toLowerCase() + '.png';
-              }
-            });
-          }
-          setTimeout(() => {
-            this.coins = []; */
-            this.coins = resData;
-          // }, 500);
-        }
-      });
+    this.coinservice.getCoinCount().subscribe(responceData => {
+      if (responceData.status === true) {
+        this.totalmarket = responceData.data.totalmarketcap;
+        this.totaltrade = responceData.data.totalvolume;
+        const total = responceData.data.totalcoins / 50;
+        this.coincount = Math.ceil(total);
+        this.totalcoin = responceData.data.totalcoins;
+      } else {
+        this.totalmarket = 0;
+        this.totaltrade = 0;
+        this.totalcoin = 0;
+      }
+    });
   }
 
   isImage(src) {
@@ -171,14 +156,18 @@ export class HomeComponent implements OnInit {
     });
   }
 
-  followcoin(rank, userid) {
-    alert(rank);
-    alert(userid);
-    if (this.follow === rank) {
-      this.follow = 0;
-    } else {
-      this.follow = rank;
-    }
+  followcoin(coin) {
+    this.coinservice.cointrackbyuser(coin.followstatus, coin.coin_id, coin.name).subscribe(resData => {
+      if (resData.status === true) {
+        if (coin.followstatus === 1) {
+          coin.followstatus = 0;
+        } else {
+          coin.followstatus = 1;
+        }
+        this.toasterService.pop('success', 'Success', resData.message);
+      } else {
+        this.toasterService.pop('error', 'Error', 'Something went wrong please try after sometime !');
+      }
+    });
   }
-
 }
