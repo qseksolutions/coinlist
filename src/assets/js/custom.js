@@ -2,6 +2,9 @@ $('a[href="#"]').click(function(e) {
     e.preventDefault();
 });
 
+var curl = window.location.href;
+var curl = curl.split("/");
+
 $(function(){
   
   $(document).on('click',".select_contry li a",function(){
@@ -72,13 +75,13 @@ $('ul.nav li.dropdown').hover(function() {
 
 
 //chart
-
+if(curl[3] == 'followlist') {
 var canvas = document.getElementById('canvas'),
 		context = canvas.getContext('2d'),
 		width = canvas.width = 800,
 		height = canvas.height = 400;
 
-var stats = [40, 65, 72, 120, 250, 87, 100, 42];
+var stats = [15, 110, 115, 15, 110, 115, 135, 140, 145, 135, 140, 155, 160, 165, 170, 175, 180, 185, 180, 175, 170, 165, 160, 165, 170, 145, 140, 135, 130, 125, 140, 145, 160, 170, 180, 190, 1100, 1150, 1100, 150, 140, 145, 150, 160, 140, 120, 115, 110, 15, 10];
 
 context.translate(0, height);
 context.scale(1, -1);
@@ -117,6 +120,7 @@ for(stat in stats) {
 	prev_stat = the_stat;
 	left += move_left_by;
 }
+}
 
  
 $(function(){
@@ -152,5 +156,7 @@ $(document).on('click','#currency-dropdownMenuButton',function(){
 
 });
 
-$('#datepicker').datepicker();
+if(curl[3] == 'portfolio') {
+    $('#datepicker').datepicker();
+}
 

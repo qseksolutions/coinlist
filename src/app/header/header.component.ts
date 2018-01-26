@@ -174,5 +174,4 @@ export class HeaderComponent implements OnInit {
     localStorage.clear();
     window.location.href = this.urlString;
   }
-
 }

@@ -1405,4 +1405,7 @@ footer {
 .alert p {
   margin-bottom: 0; }
 
+#toast-container > div {
+    opacity: 1 !important;
+}
 /*# sourceMappingURL=main.css.map */

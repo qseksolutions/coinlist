@@ -1,10 +1,11 @@
-import { Component, OnInit, OnDestroy  } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { Http, Response, Headers, RequestOptions } from '@angular/http';
 import { Router } from '@angular/router';
 import { CoinService } from '../coin.service';
 import * as myGlobals from './../global';
+import { ToasterContainerComponent, ToasterService, ToasterConfig } from 'angular2-toaster';
 import { StockChart } from 'angular-highcharts';
 import { Title } from '@angular/platform-browser';
-
 import { defer } from 'q';
 
 @Component({
@@ -14,15 +15,30 @@ import { defer } from 'q';
   providers: [CoinService],
 })
 export class CoinComponent implements OnInit {
+
+  private toasterService: ToasterService;
+
+  public toasterconfig: ToasterConfig =
+    new ToasterConfig({
+      showCloseButton: true,
+      tapToDismiss: false,
+      timeout: 2000
+    });
+
   chart: StockChart;
-  interval: any;
   coin: any;
   market_cap: any;
   price_usd: any;
   selectedIndex: any = 6;
   perioddata: any;
+  public follow: any;
+  public loginData: any = myGlobals.login_ses;
+  public userid: any = myGlobals.userid;
 
-  constructor(private coinservice: CoinService, private router: Router, private titleService: Title) {
+  // tslint:disable-next-line:max-line-length
+  constructor(private coinservice: CoinService, private router: Router, toasterService: ToasterService, private http: Http, private titleService: Title) {
+    this.toasterService = toasterService;
+
     this.perioddata = localStorage.getItem('period');
     if (this.perioddata === 'hour') {
       this.selectedIndex = 1;
@@ -49,6 +65,23 @@ export class CoinComponent implements OnInit {
       this.selectedIndex = index;
       this.realTimeGraph(period);
     }
+  }
+
+  followcoin(coin) {
+    this.coinservice.cointrackbyuser(coin.followstatus, coin.coin_id, coin.name).subscribe(resData => {
+      if (resData.status === true) {
+        if (this.follow === 1) {
+          this.follow = 0;
+          coin.followstatus = 0;
+        } else {
+          this.follow = 1;
+          coin.followstatus = 1;
+        }
+        // this.toasterService.pop('success', 'Success', resData.message);
+      } else {
+        // this.toasterService.pop('error', 'Error', 'Something went wrong please try after sometime !');
+      }
+    });
   }
 
   ngOnInit() {
@@ -157,7 +190,6 @@ export class CoinComponent implements OnInit {
           }
         });
     });
-
   }
 
   realTimeData() {
@@ -165,19 +197,21 @@ export class CoinComponent implements OnInit {
     const coinid = url.split('/');
     this.coinservice.getSingleCoin(coinid[4])
     .subscribe(resData => {
-      if (resData.length > 0) {
-        this.titleService.setTitle(resData[0]['name'] + ' (' + resData[0]['symbol'] + ') Price - Coinlisting');
-        const imgurl = 'assets/currency-svg/' + resData[0]['symbol'].toLowerCase() + '.svg';
+      console.log(resData);
+      if (resData.status === true) {
+        this.titleService.setTitle(resData.data.name + ' (' + resData.data.symbol + ') Price - Coinlisting');
+        const imgurl = 'assets/currency-svg/' + resData.data.symbol.toLowerCase() + '.svg';
           this.isImage(imgurl).then(function (test) {
             // tslint:disable-next-line:triple-equals
             if (test == true) {
-              resData[0].imgpath = 'assets/currency-svg/' + resData[0]['symbol'].toLowerCase() + '.svg';
+              resData.data.imgpath = imgurl;
             } else {
-              resData[0].imgpath = 'assets/currency-50/' + resData[0]['symbol'].toLowerCase() + '.png';
+              resData.data.imgpath = 'assets/currency-50/' + resData.data.symbol.toLowerCase() + '.png';
             }
           });
           setTimeout(() => {
-            this.coin = resData[0];
+            this.follow = resData.data.followstatus;
+            this.coin = resData.data;
           }, 100);
         }
       });

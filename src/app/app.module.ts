@@ -21,6 +21,7 @@ const config = new AuthServiceConfig([
   }
 ]);
 
+
 import highstock from 'highcharts/modules/stock.src';
 import exporting from 'highcharts/modules/exporting.src';
 

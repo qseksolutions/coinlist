@@ -16,6 +16,8 @@ export class CoinService {
   totalcoinAPI: any = myGlobals.totalcoinAPI;
   currencylistAPI: any = myGlobals.currencylistAPI;
   cointrackbyuserAPI: any = myGlobals.cointrackbyuserAPI;
+  singlecoinAPI: any = myGlobals.singlecoinAPI;
+  followlistAPI: any = myGlobals.followlistAPI;
 
   constructor(private http: Http) { }
 
@@ -62,9 +64,20 @@ export class CoinService {
 
   getSingleCoin(coin) {
     const coinid = coin;
-    const url = 'https://api.coinmarketcap.com/v1/ticker/' + coinid + '/';
+    /* const url = 'https://api.coinmarketcap.com/v1/ticker/' + coinid + '/';
     return this.http.get(url)
-      .map((response: Response) => response.json());
+      .map((response: Response) => response.json()); */
+
+    const headers = new Headers({ 'Content-Type': 'application/x-www-form-urlencoded' });
+    const options = new RequestOptions({ headers: headers });
+
+    if (this.userid != null) {
+      return this.http.get(this.api_url + this.singlecoinAPI + '/' + coinid + '/?userid=' + this.userid, options)
+        .map((response: Response) => response.json());
+    } else {
+      return this.http.get(this.api_url + this.singlecoinAPI + '/' + coinid, options)
+        .map((response: Response) => response.json());
+    }
   }
 
   getGraphData(period, coin) {
@@ -85,6 +98,17 @@ export class CoinService {
 
     return this.http.post('http://localhost/api.qsek.com/api/v1/getcoindata', form, options)
     .map((response: Response) => response.json());
+  }
+
+  followlist() {
+    const headers = new Headers({ 'Content-Type': 'application/x-www-form-urlencoded'});
+    const options = new RequestOptions({ headers: headers });
+
+    const form = new URLSearchParams();
+    form.append('userid', this.userid);
+
+    return this.http.post(this.api_url + this.followlistAPI, form, options)
+      .map((response: Response) => response.json());
   }
 
   loginuserdata(login) {

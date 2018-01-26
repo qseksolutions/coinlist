@@ -58,8 +58,8 @@ export class HomeComponent implements OnInit {
     } else if (this.perioddata === 'year') {
       this.selectedIndex = 5;
     } else {
-      this.selectedIndex = 1;
-      this.perioddata = 'hour';
+      this.selectedIndex = 6;
+      this.perioddata = '';
     }
     this.prepage = 0;
     this.nxtpage = 2;
@@ -72,8 +72,8 @@ export class HomeComponent implements OnInit {
       this.selectedIndex = -1;
     } else {
       this.selectedIndex = index;
-      localStorage.setItem('period', period);
     }
+    localStorage.setItem('period', period);
   }
 
   ngOnInit() {
@@ -82,7 +82,6 @@ export class HomeComponent implements OnInit {
 
   realtimetabledata(period) {
     localStorage.setItem('period', period);
-    this.perioddata = localStorage.getItem('period');
     const url = window.location.href;
     if (url.indexOf('=') > 0) {
       const x = url.split('?');
