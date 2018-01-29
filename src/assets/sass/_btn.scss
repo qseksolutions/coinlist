@@ -1,7 +1,7 @@
 @import'variables';
 
 .btn{
-    font-family: 'montserrat' !important; 
+    font-family: 'montserrat' !important;   
     .btn-green-sm{
         display: none;
         background-color: $bg-green;
@@ -26,14 +26,14 @@
             background-position: 105px 30px;
             background-repeat: no-repeat;
             background-size: 13px 13px;
-            padding: 30px 50px 30px 40px;
+            padding: 32px 50px 32px 40px;
             border-radius: 0;
         }
     }
 }
 .btn {
     &.btn-exchange {
-        padding: 7px 20px;
+        padding: 8px 20px;
         border-radius: 25px;
         color: $bg-white;
         font-size: 13px;
@@ -43,7 +43,7 @@
         background: -moz-$btn-bg-color;
         background: -webkit-$btn-bg-color;
         background: $btn-bg-color;
-        line-height: 1.25;
+        line-height: 13px;
 
     &:hover {
         @include transition(0.5s);
@@ -73,7 +73,7 @@
         text-align: center;
         padding: 7px 20px;
         border-radius: 25px;
-        line-height: 1.25;
+        line-height: 13px;
         color: #fff;
         border:0px;
         cursor: pointer; 
@@ -175,7 +175,7 @@
         position: relative;
         background-image: url(../images/arrow-right.svg);
         background-repeat: no-repeat;
-        background-position: 94% 10px;
+        background-position: 92% 10px;
         background-size: 16px;
 
         &:after{
@@ -244,6 +244,7 @@
         color: #fff;
         font-weight: 600;
         text-transform: uppercase;
+        line-height: 13px;
         &:hover{
             background-color:$hover-orange;
         }
@@ -256,9 +257,21 @@
         font-weight: 600;
         min-width: 200px;
         text-transform: uppercase;
-        line-height: 1.25;
+        line-height: 13px;
         &:hover{
             background-color:$hover-dark-blue;
+        }
+    }
+    &.contact-btn{
+        background-color:$btn-bg-color;
+        border-radius: 50px;
+        font-size: 13px;
+        color: #fff;
+        font-weight: 600;
+        text-transform: uppercase;
+        line-height: 13px;
+        &:hover{
+            background-color:$hover-orange;
         }
     }
 }
