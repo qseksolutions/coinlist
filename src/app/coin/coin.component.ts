@@ -100,9 +100,10 @@ export class CoinComponent implements OnInit {
       this.price_usd = response.price_usd;
         this.chart = new StockChart({
           chart: {
-            type: 'area',
+            type: 'spline',
             zoomType: 'x',
-            backgroundColor: null
+            backgroundColor: null,
+            renderTo: 'container'
           },
           rangeSelector: {
             enabled: false,
@@ -111,48 +112,66 @@ export class CoinComponent implements OnInit {
             enabled: false
           },
           tooltip: {
-            shared: true,
+            formatter: function () {
+              return this.x + '<br/><b> $ ' + this.y + '</b>';
+            },
             crosshairs: {
-              color: '#2d2073',
+              color: 'rgba(61, 51, 121, 1)',
               zIndex: 22,
-              dashStyle: 'solid'
+              dashStyle: 'solid',
+              width: 2
             },
             style: {
-              color: '#2d2073',
+              color: 'rgba(61, 51, 121, 1)',
+              fontSize: '13px',
+              align : 'center'
             },
             backgroundColor: '#FFF',
-            borderColor: '#2d2073',
+            borderColor: 'rgba(61, 51, 121, 1)',
             borderRadius: 5,
-            borderWidth: 1
+            borderWidth: 2
           },
           xAxis: {
+            type: 'datetime',
             inside: true,
+            labels: {
+              style: {
+                color: '#9ca5be',
+                fontWeight: '700'
+              }
+            },
           },
           yAxis: [
             {
-              gridLineWidth: 0,
+              gridLineWidth: 2,
               title: {
                 text: 'Price in USD',
                 style: {
-                  color: 'rgba(247, 106, 1, 1)',
+                  color: '#9ca5be',
+                  fontSize: '14px',
+                  fontWeight: '700'
                 }
               },
               labels: {
+                align: 'left',
                 format: '${value}',
+                style: {
+                  color: '#9ca5be',
+                  fontWeight: '700'
+                }
               },
-              opposite: false,
-              showEmpty: false
+              opposite: true
             },
           ],
           plotOptions: {
             area: {
-              lineWidth: 1,
+              lineWidth: 2,
               marker: {
                 enabled: false
               },
               states: {
                 hover: {
-                  lineWidth: 1
+                  lineWidth: 2
                 }
               },
               series: {
@@ -166,15 +185,17 @@ export class CoinComponent implements OnInit {
           },
           series: [
             {
-              color: 'rgba(247, 106, 1, 1)',
+              color: '#5f53a7',
               name: 'Price in USD',
               data: this.price_usd,
+              type: 'area',
               yAxis: 0,
               fillColor: {
-                linearGradient: { x1: 0, y1: 0, x2: 0, y2: 1 },
+                linearGradient: { x1: 0.5, y1: 0, x2: 0.5, y2: 1 },
                 stops: [
-                  [0, 'rgba(247, 106, 1, 1)'],
-                  [1, 'rgba(255,255,255,.25)']
+                  [0, 'rgba(61, 51, 121, 1)'],
+                  [0.40, 'rgba(61, 51, 121, 1)'],
+                  [1, 'rgba(255,128,51, .5)']
                 ]
               },
               // fillOpacity: 0.1

@@ -83,7 +83,7 @@ export class CoinService {
   getGraphData(period, coin) {
     const coinid = coin;
 
-    const headers = new Headers({ 'Content-Type': undefined, 'X-API-KEY': 'HUFIY748F34HF4F984FY438' });
+    const headers = new Headers({ 'Content-Type': undefined, 'X-API-KEY': '94ef-bc07-bf47-4ebe-9645-3f89-c464-681d' });
     const options = new RequestOptions({ headers: headers });
 
     const form = new URLSearchParams();
@@ -96,7 +96,7 @@ export class CoinService {
       form.append('period', period);
     }
 
-    return this.http.post('http://localhost/api.qsek.com/api/v1/getcoindata', form, options)
+    return this.http.post('https://qseksolutions.com/api.qsek.com/api/V1/getcoindata', form, options)
     .map((response: Response) => response.json());
   }
 
