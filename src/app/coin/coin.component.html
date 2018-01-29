@@ -5,7 +5,7 @@
       <div class="row">
         <div class="col-md-12">
           <div class="center-header">
-            <div class="info_coin-page">
+            <div class="info_coin-page" *ngIf="coin.price_usd != null">
               <div class="currency_icon">
                 <span class="currency-coin-icon">
                   <img class="img-responsive" src="{{coin.imgpath}}" onError="this.src='assets/currency-50/not-found-50.png'" alt="{{coin.name}}">
@@ -22,50 +22,60 @@
               </div>
             </div>
             <div class="">
-              <a href="#" class="btn btn-visit-site"> Visit Site </a>
+              <a href="javascript:;" class="btn btn-visit-site pull-right" (click)="followcoin(coin);" [style.display]="loginData != null ? 'initial':'none'">
+                <img [src]="follow != 0 ? 'assets/currency-svg/minus.svg' : 'assets/currency-svg/plus.svg'" class="follow-plus" style="width:8px;vertical-align:unset;"/> {{follow != 0 ? 'Unfollow' : 'Follow'}}
+              </a>
+              <a href="javascript:;" class="btn btn-visit-site pull-right" data-toggle="modal" data-target="#sign-in" [style.display]="loginData == null ? 'initial':'none'">
+                <img src="assets/currency-svg/plus.svg" class="follow-plus" style="width:8px;vertical-align:unset;" /> Follow
+              </a>
             </div>
           </div>
         </div>
       </div>
       <div class="row">
         <div class="col-6 col-sm-6 col-md-3 col-lg-3">
-          <div class="best-coin-value" [style.display]="coin.market_cap_usd != null ? 'block':'none'">
+          <div class="best-coin-value" *ngIf="coin.market_cap_usd != null">
             <label class="coin-lable">MARKET CAP</label>
             <span class="price-sign-coin">$</span>
             <span class="price-number-coin">{{coin.market_cap_usd | number}}</span>
           </div>
-          <div class="best-coin-value" [style.display]="coin.market_cap_usd == null ? 'block':'none'">
+          <div class="best-coin-value" *ngIf="coin.market_cap_usd == null">
             <label class="coin-lable">MARKET CAP</label>
             <span class="price-sign-coin"></span>
             <span class="price-number-coin">-</span>
           </div>
         </div>
         <div class="col-6 col-sm-6 col-md-3 col-lg-3">
-          <div class="best-coin-value" [style.display]="coin['24h_volume_usd'] != null ? 'block':'none'">
+          <div class="best-coin-value" *ngIf="coin['24h_volume_usd'] != null">
             <label class="coin-lable">24H VOLUME</label>
             <span class="price-sign-coin">$</span>
             <span class="price-number-coin">{{coin['24h_volume_usd'] | number}}</span>
           </div>
-          <div class="best-coin-value" [style.display]="coin['24h_volume_usd'] == null ? 'block':'none'">
+          <div class="best-coin-value" *ngIf="coin['24h_volume_usd'] == null">
             <label class="coin-lable">24H VOLUME</label>
             <span class="price-sign-coin"></span>
             <span class="price-number-coin">-</span>
           </div>
         </div>
         <div class="col-6 col-sm-6 col-md-3 col-lg-3">
-          <div class="best-coin-value" [style.display]="coin.available_supply != null ? 'block':'none'">
+          <div class="best-coin-value" *ngIf="coin.available_supply != null">
             <label class="coin-lable">CIRCULATING SUPPLY</label>
             <span class="price-number-coin">{{coin.available_supply | number}}</span>
             <span class="currency_symbol">{{coin.symbol}}</span>
           </div>
-          <div class="best-coin-value" [style.display]="coin.available_supply == null ? 'block':'none'">
+          <div class="best-coin-value" *ngIf="coin.available_supply == null">
             <label class="coin-lable">CIRCULATING SUPPLY</label>
-            <span class="price-number-coin">-</span>
-            <span class="currency_symbol">{{coin.symbol}}</span>
+            <span class="price-number-coin"></span>
+            <span class="currency_symbol">-</span>
           </div>
         </div>
         <div class="col-6 col-sm-6 col-md-3 col-lg-3">
-          <div class="best-coin-value">
+          <div class="best-coin-value" *ngIf="coin.total_supply != null">
+            <label class="coin-lable">TOTAL SUPPLY</label>
+            <span class="price-number-coin">{{coin.total_supply | number}}</span>
+            <span class="currency_symbol">{{coin.symbol}}</span>
+          </div>
+          <div class="best-coin-value" *ngIf="coin.total_supply == null">
             <label class="coin-lable">TOTAL SUPPLY</label>
             <span class="price-number-coin">{{coin.total_supply | number}}</span>
             <span class="currency_symbol">{{coin.symbol}}</span>
@@ -108,10 +118,9 @@
             </ul>
           </div>
           <div class="chart-value text-right">
-            <span [ngClass]="coin.percent_change_24h >= 0 ? 'green' : 'red'"> {{coin.percent_change_24h}}% </span>
+            <span [ngClass]="coin.percent_change_24h >= 0 ? 'green' : 'red'"> {{coin.percent_change_24h | number : '1.2-2'}}% </span>
           </div>
         </div>
-        <!-- <div id="container" style="min-width: 310px; height: 400px; margin: 0 auto"></div> -->
         <div [chart]="chart" style="height:400px;"></div>
       </div>
     </div>
@@ -124,8 +133,13 @@
       <div class="col-12 col-sm-12 col-md-8 col-lg-12">
         <div class="coin-web">
           <div class="web-text">
-            <label class="coin-lable">WHAT IS {{coin.name}}?</label>
-            <p>
+            <div class="">
+              <label class="coin-lable">WHAT IS {{coin.name}}? <a href="{{coin.website}}" target="_blank" class="btn btn-visit-site pull-right"> Visit Site </a></label>
+            </div>
+            <p [style.display]="coin.defination != null ? 'initial':'none'">
+               {{coin.defination}}
+            </p>
+            <p [style.display]="coin.defination == null ? 'initial':'none'">
                There’s no description of {{coin.name}} yet.
             </p>
           </div>

@@ -17,9 +17,10 @@ const config = new AuthServiceConfig([
   },
   {
     id: FacebookLoginProvider.PROVIDER_ID,
-    provider: new FacebookLoginProvider('805993129602780')
+    provider: new FacebookLoginProvider('1592228807481172')
   }
 ]);
+
 
 import highstock from 'highcharts/modules/stock.src';
 import exporting from 'highcharts/modules/exporting.src';

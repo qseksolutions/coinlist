@@ -1,10 +1,11 @@
-import { Component, OnInit, OnDestroy  } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { Http, Response, Headers, RequestOptions } from '@angular/http';
 import { Router } from '@angular/router';
 import { CoinService } from '../coin.service';
 import * as myGlobals from './../global';
+import { ToasterContainerComponent, ToasterService, ToasterConfig } from 'angular2-toaster';
 import { StockChart } from 'angular-highcharts';
 import { Title } from '@angular/platform-browser';
-
 import { defer } from 'q';
 
 @Component({
@@ -14,15 +15,30 @@ import { defer } from 'q';
   providers: [CoinService],
 })
 export class CoinComponent implements OnInit {
+
+  private toasterService: ToasterService;
+
+  public toasterconfig: ToasterConfig =
+    new ToasterConfig({
+      showCloseButton: true,
+      tapToDismiss: false,
+      timeout: 2000
+    });
+
   chart: StockChart;
-  interval: any;
   coin: any;
   market_cap: any;
   price_usd: any;
   selectedIndex: any = 6;
   perioddata: any;
+  public follow: any;
+  public loginData: any = myGlobals.login_ses;
+  public userid: any = myGlobals.userid;
 
-  constructor(private coinservice: CoinService, private router: Router, private titleService: Title) {
+  // tslint:disable-next-line:max-line-length
+  constructor(private coinservice: CoinService, private router: Router, toasterService: ToasterService, private http: Http, private titleService: Title) {
+    this.toasterService = toasterService;
+
     this.perioddata = localStorage.getItem('period');
     if (this.perioddata === 'hour') {
       this.selectedIndex = 1;
@@ -51,6 +67,23 @@ export class CoinComponent implements OnInit {
     }
   }
 
+  followcoin(coin) {
+    this.coinservice.cointrackbyuser(coin.followstatus, coin.coin_id, coin.name).subscribe(resData => {
+      if (resData.status === true) {
+        if (this.follow === 1) {
+          this.follow = 0;
+          coin.followstatus = 0;
+        } else {
+          this.follow = 1;
+          coin.followstatus = 1;
+        }
+        // this.toasterService.pop('success', 'Success', resData.message);
+      } else {
+        // this.toasterService.pop('error', 'Error', 'Something went wrong please try after sometime !');
+      }
+    });
+  }
+
   ngOnInit() {
     this.realTimeData();
     this.realTimeGraph(this.perioddata);
@@ -67,9 +100,10 @@ export class CoinComponent implements OnInit {
       this.price_usd = response.price_usd;
         this.chart = new StockChart({
           chart: {
-            type: 'area',
+            type: 'spline',
             zoomType: 'x',
-            backgroundColor: null
+            backgroundColor: null,
+            renderTo: 'container'
           },
           rangeSelector: {
             enabled: false,
@@ -78,48 +112,66 @@ export class CoinComponent implements OnInit {
             enabled: false
           },
           tooltip: {
-            shared: true,
+            formatter: function () {
+              return this.x + '<br/><b> $ ' + this.y + '</b>';
+            },
             crosshairs: {
-              color: '#2d2073',
+              color: 'rgba(61, 51, 121, 1)',
               zIndex: 22,
-              dashStyle: 'solid'
+              dashStyle: 'solid',
+              width: 2
             },
             style: {
-              color: '#2d2073',
+              color: 'rgba(61, 51, 121, 1)',
+              fontSize: '13px',
+              align : 'center'
             },
             backgroundColor: '#FFF',
-            borderColor: '#2d2073',
+            borderColor: 'rgba(61, 51, 121, 1)',
             borderRadius: 5,
-            borderWidth: 1
+            borderWidth: 2
           },
           xAxis: {
+            type: 'datetime',
             inside: true,
+            labels: {
+              style: {
+                color: '#9ca5be',
+                fontWeight: '700'
+              }
+            },
           },
           yAxis: [
             {
-              gridLineWidth: 0,
+              gridLineWidth: 2,
               title: {
                 text: 'Price in USD',
                 style: {
-                  color: 'rgba(247, 106, 1, 1)',
+                  color: '#9ca5be',
+                  fontSize: '14px',
+                  fontWeight: '700'
                 }
               },
               labels: {
+                align: 'left',
                 format: '${value}',
+                style: {
+                  color: '#9ca5be',
+                  fontWeight: '700'
+                }
               },
-              opposite: false,
-              showEmpty: false
+              opposite: true
             },
           ],
           plotOptions: {
             area: {
-              lineWidth: 1,
+              lineWidth: 2,
               marker: {
                 enabled: false
               },
               states: {
                 hover: {
-                  lineWidth: 1
+                  lineWidth: 2
                 }
               },
               series: {
@@ -133,15 +185,17 @@ export class CoinComponent implements OnInit {
           },
           series: [
             {
-              color: 'rgba(247, 106, 1, 1)',
+              color: '#5f53a7',
               name: 'Price in USD',
               data: this.price_usd,
+              type: 'area',
               yAxis: 0,
               fillColor: {
-                linearGradient: { x1: 0, y1: 0, x2: 0, y2: 1 },
+                linearGradient: { x1: 0.5, y1: 0, x2: 0.5, y2: 1 },
                 stops: [
-                  [0, 'rgba(247, 106, 1, 1)'],
-                  [1, 'rgba(255,255,255,.25)']
+                  [0, 'rgba(61, 51, 121, 1)'],
+                  [0.40, 'rgba(61, 51, 121, 1)'],
+                  [1, 'rgba(255,128,51, .5)']
                 ]
               },
               // fillOpacity: 0.1
@@ -157,7 +211,6 @@ export class CoinComponent implements OnInit {
           }
         });
     });
-
   }
 
   realTimeData() {
@@ -165,19 +218,21 @@ export class CoinComponent implements OnInit {
     const coinid = url.split('/');
     this.coinservice.getSingleCoin(coinid[4])
     .subscribe(resData => {
-      if (resData.length > 0) {
-        this.titleService.setTitle(resData[0]['name'] + ' (' + resData[0]['symbol'] + ') Price - Coinlisting');
-        const imgurl = 'assets/currency-svg/' + resData[0]['symbol'].toLowerCase() + '.svg';
+      console.log(resData);
+      if (resData.status === true) {
+        this.titleService.setTitle(resData.data.name + ' (' + resData.data.symbol + ') Price - Coinlisting');
+        const imgurl = 'assets/currency-svg/' + resData.data.symbol.toLowerCase() + '.svg';
           this.isImage(imgurl).then(function (test) {
             // tslint:disable-next-line:triple-equals
             if (test == true) {
-              resData[0].imgpath = 'assets/currency-svg/' + resData[0]['symbol'].toLowerCase() + '.svg';
+              resData.data.imgpath = imgurl;
             } else {
-              resData[0].imgpath = 'assets/currency-50/' + resData[0]['symbol'].toLowerCase() + '.png';
+              resData.data.imgpath = 'assets/currency-50/' + resData.data.symbol.toLowerCase() + '.png';
             }
           });
           setTimeout(() => {
-            this.coin = resData[0];
+            this.follow = resData.data.followstatus;
+            this.coin = resData.data;
           }, 100);
         }
       });

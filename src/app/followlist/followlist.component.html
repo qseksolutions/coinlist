@@ -26,31 +26,33 @@
           <div class="breadcrumb">
             <span class="bread-c-big-text">Watchlist</span>
           </div>
-          <div class="watch-list">
+          <div class="watch-list" *ngFor="let follow of followlist">
             <div class="watchlist-coin-img">
-              <img src="assets/currency-svg/btc.svg" class="img-fluid" />
+              <img src="assets/currency-svg/{{follow.symbol | lowercase}}.svg" (error)="errorHandler($event,follow.symbol)" class="img-fluid">
             </div>
 
-            <span class="close-btn" onclick="this.parentElement.style.display='none'">
-              <img src="assets/currency-svg/close-gray.svg" class="img-fluid">
+            <span class="close-btn" (click)="followcoin(follow);">
+              <img src="assets/currency-svg/close.svg" class="img-fluid">
             </span>
 
             <div class="row">
               <div class="col-8 offset-2 col-sm-2 offset-sm-2 col-md-4 offset-md-2 col-lg-4 offset-lg-2">
                 <div class="watch-list-detaile">
                   <div class="coin-title">
-                    <h3>Bitcoin
-                      <span class="currency_symbol"> BTC </span>
-                    </h3>
+                    <a href="{{urlString}}coin/{{follow.coin_id}}">
+                      <h3>{{follow.name}}
+                        <span class="currency_symbol">{{follow.symbol}} </span>
+                      </h3>
+                    </a>
                   </div>
 
                   <div class="coin-value-detaile">
                     <div class="coin-price">
                       <span class="title-first">Last Price </span>
                       <span class="secound-value">
-                        <span class="currency-sign">$</span> 0.00014 </span>
+                        <span class="currency-sign">$</span> {{follow.price_usd}} </span>
 
-                      <p class="small-text"> 14000000
+                      <p class="small-text"> {{follow.price_btc}}
                         <span class="currency_symbol">BTC</span>
                       </p>
                     </div>
@@ -62,35 +64,11 @@
                 <div class="watch-price-chart">
                   <div class="update-price">
                     <span class="title-first">1 Hours </span>
-                    <span class="price-updown price_positive">1.06%
-                      <img class="up-down-arrow" src="assets/currency-svg/arrow-up-green.svg">
+                    <span class="price-updown" [ngClass]="follow.percent_change_1h >= 0 ? 'price_positive' : 'price_nagative'">{{follow.percent_change_1h | number : '1.2-2'}}%
+                      <img class="up-down-arrow" [src]="follow.percent_change_1h >= 0 ? 'assets/currency-svg/arrow-up-green.svg' : 'assets/currency-svg/arrow-down-red.svg'">
                     </span>
                     <svg viewBox="0 0 500 100" class="chart">
-                      <polyline fill="none" stroke="#3cd483" stroke-width="10" points="
-												00,120
-												20,60
-												40,80
-												60,20
-												80,80
-												100,80
-												120,60
-												140,100
-												160,90
-												180,80
-												200, 110
-												220, 10
-												240, 70
-												260, 100
-												280, 100
-												300, 40
-												320, 0
-												340, 100
-												360, 100
-												380, 120
-												400, 60
-												420, 70
-												440, 80
-												"></polyline>
+                      <polyline fill="none" [attr.stroke]="follow.percent_change_1h >= 0 ? '#3cd483' : '#ff6060'" stroke-width="10" [attr.points]="graph"></polyline>
 
                     </svg>
 
@@ -102,35 +80,11 @@
                 <div class="watch-price-chart">
                   <div class="update-price">
                     <span class="title-first"> 24 Hours </span>
-                    <span class="price-updown price_positive">3.06%
-                      <img class="up-down-arrow" src="assets/currency-svg/arrow-up-green.svg">
+                    <span class="price-updown" [ngClass]="follow.percent_change_24h >= 0 ? 'price_positive' : 'price_nagative'">{{follow.percent_change_24h | number : '1.2-2'}}%
+                      <img class="up-down-arrow" [src]="follow.percent_change_24h >= 0 ? 'assets/currency-svg/arrow-up-green.svg' : 'assets/currency-svg/arrow-down-red.svg'">
                     </span>
                     <svg viewBox="0 0 500 100" class="chart">
-                      <polyline fill="none" stroke="#3cd483" stroke-width="10" points="
-												00,120
-												20,60
-												40,80
-												60,20
-												80,80
-												100,80
-												120,60
-												140,100
-												160,90
-												180,80
-												200, 110
-												220, 10
-												240, 70
-												260, 100
-												280, 100
-												300, 40
-												320, 0
-												340, 100
-												360, 100
-												380, 120
-												400, 60
-												420, 70
-												440, 80
-												"></polyline>
+                      <polyline fill="none" [attr.stroke]="follow.percent_change_24h >= 0 ? '#3cd483' : '#ff6060'" stroke-width="10" [attr.points]="graph"></polyline>
 
                     </svg>
 
@@ -141,340 +95,12 @@
               <div class="col-sm-2 col-md-2 col-lg-2">
                 <div class="watch-price-chart">
                   <div class="update-price">
-                    <span class="title-first"> Change For Trade </span>
-                    <span class="price-updown price_positive">3.06%
-                      <img class="up-down-arrow" src="assets/currency-svg/arrow-up-green.svg">
+                    <span class="title-first"> 1 Week </span>
+                    <span class="price-updown" [ngClass]="follow.percent_change_7d >= 0 ? 'price_positive' : 'price_nagative'">{{follow.percent_change_7d | number : '1.2-2'}}%
+                      <img class="up-down-arrow" [src]="follow.percent_change_7d >= 0 ? 'assets/currency-svg/arrow-up-green.svg' : 'assets/currency-svg/arrow-down-red.svg'">
                     </span>
                     <svg viewBox="0 0 500 100" class="chart">
-                      <polyline fill="none" stroke="#3cd483" stroke-width="10" points="
-												00,120
-												20,60
-												40,80
-												60,20
-												80,80
-												100,80
-												120,60
-												140,100
-												160,90
-												180,80
-												200, 110
-												220, 10
-												240, 70
-												260, 100
-												280, 100
-												300, 40
-												320, 0
-												340, 100
-												360, 100
-												380, 120
-												400, 60
-												420, 70
-												440, 80
-												"></polyline>
-
-                    </svg>
-
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="watch-list">
-            <div class="watchlist-coin-img">
-              <img src="assets/currency-svg/eth.svg" class="img-fluid" />
-            </div>
-            <span class="close-btn" onclick="this.parentElement.style.display='none'">
-              <img src="assets/currency-svg/close.svg" class="img-fluid"> </span>
-
-            <div class="row">
-              <div class="col-8 offset-2 col-sm-4 offset-sm-2 col-md-4 offset-md-2 col-lg-4 offset-lg-2">
-                <div class="watch-list-detaile">
-                  <div class="coin-title">
-                    <h3>Ethereum
-                      <span class="currency_symbol"> ETH </span>
-                    </h3>
-                  </div>
-
-                  <div class="coin-value-detaile">
-                    <div class="coin-price">
-                      <span class="title-first">Last Price </span>
-                      <span class="secound-value">
-                        <span class="currency-sign">$</span> 0.00014 </span>
-                      <p class="small-text"> 14000000
-                        <span class="currency_symbol">BTC</span>
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <div class="col-sm-2 col-md-2  col-lg-2">
-                <div class="watch-price-chart">
-                  <div class="update-price">
-                    <span class="title-first">1 Hours </span>
-                    <span class="price-updown price_positive">1.06%
-                      <img class="up-down-arrow" src="assets/currency-svg/arrow-up-green.svg">
-                    </span>
-                    <svg viewBox="0 0 500 100" class="chart">
-                      <polyline fill="none" stroke="#3cd483" stroke-width="10" points="
-												00,120
-												20,60
-												40,80
-												60,20
-												80,80
-												100,80
-												120,60
-												140,100
-												160,90
-												180,80
-												200, 110
-												220, 10
-												240, 70
-												260, 100
-												280, 100
-												300, 40
-												320, 0
-												340, 100
-												360, 100
-												380, 120
-												400, 60
-												420, 70
-												440, 80
-												"></polyline>
-
-                    </svg>
-
-                  </div>
-                </div>
-              </div>
-
-              <div class="col-sm-2 col-md-2 col-lg-2">
-                <div class="watch-price-chart">
-                  <div class="update-price">
-                    <span class="title-first"> 24 Hours </span>
-                    <span class="price-updown price_positive">3.06%
-                      <img class="up-down-arrow" src="assets/currency-svg/arrow-up-green.svg">
-                    </span>
-                    <svg viewBox="0 0 500 100" class="chart">
-                      <polyline fill="none" stroke="#3cd483" stroke-width="10" points="
-												00,120
-												20,60
-												40,80
-												60,20
-												80,80
-												100,80
-												120,60
-												140,100
-												160,90
-												180,80
-												200, 110
-												220, 10
-												240, 70
-												260, 100
-												280, 100
-												300, 40
-												320, 0
-												340, 100
-												360, 100
-												380, 120
-												400, 60
-												420, 70
-												440, 80
-												"></polyline>
-
-                    </svg>
-
-                  </div>
-                </div>
-              </div>
-
-              <div class="col-sm-2 col-md-2 col-lg-2">
-                <div class="watch-price-chart">
-                  <div class="update-price">
-                    <span class="title-first"> Change For Trade </span>
-                    <span class="price-updown price_positive">3.06%
-                      <img class="up-down-arrow" src="assets/currency-svg/arrow-up-green.svg">
-                    </span>
-                    <svg viewBox="0 0 500 100" class="chart">
-                      <polyline fill="none" stroke="#3cd483" stroke-width="10" points="
-												00,120
-												20,60
-												40,80
-												60,20
-												80,80
-												100,80
-												120,60
-												140,100
-												160,90
-												180,80
-												200, 110
-												220, 10
-												240, 70
-												260, 100
-												280, 100
-												300, 40
-												320, 0
-												340, 100
-												360, 100
-												380, 120
-												400, 60
-												420, 70
-												440, 80
-												"></polyline>
-
-                    </svg>
-
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-
-          <div class="watch-list">
-            <div class="watchlist-coin-img">
-              <img src="assets/currency-svg/xrp.svg" class="img-fluid" />
-            </div>
-            <span class="close-btn" onclick="this.parentElement.style.display='none'">
-              <img src="assets/currency-svg/close.svg" class="img-fluid">
-            </span>
-
-            <div class="row">
-              <div class="col-8 offset-2 col-sm-4 offset-sm-2 col-md-4 offset-md-2 col-lg-4 offset-lg-2">
-                <div class="watch-list-detaile">
-                  <div class="coin-title">
-                    <h3>Ripple
-                      <span class="currency_symbol"> XRP </span>
-                    </h3>
-                  </div>
-
-                  <div class="coin-value-detaile">
-                    <div class="coin-price">
-                      <span class="title-first">Last Price </span>
-                      <span class="secound-value">
-                        <span class="currency-sign">$</span> 0.00014 </span>
-                      <p class="small-text"> 14000000
-                        <span class="currency_symbol">BTC</span>
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <div class="col-sm-2 col-md-2  col-lg-2">
-                <div class="watch-price-chart">
-                  <div class="update-price">
-                    <span class="title-first">1 Hours </span>
-                    <span class="price-updown price_positive">1.06%
-                      <img class="up-down-arrow" src="assets/currency-svg/arrow-up-green.svg">
-                    </span>
-                    <svg viewBox="0 0 500 100" class="chart">
-                      <polyline fill="none" stroke="#3cd483" stroke-width="10" points="
-												00,120
-												20,60
-												40,80
-												60,20
-												80,80
-												100,80
-												120,60
-												140,100
-												160,90
-												180,80
-												200, 110
-												220, 10
-												240, 70
-												260, 100
-												280, 100
-												300, 40
-												320, 0
-												340, 100
-												360, 100
-												380, 120
-												400, 60
-												420, 70
-												440, 80
-												"></polyline>
-
-                    </svg>
-
-                  </div>
-                </div>
-              </div>
-
-              <div class="col-sm-2 col-md-2 col-lg-2">
-                <div class="watch-price-chart">
-                  <div class="update-price">
-                    <span class="title-first"> 24 Hours </span>
-                    <span class="price-updown price_positive">3.06%
-                      <img class="up-down-arrow" src="assets/currency-svg/arrow-up-green.svg">
-                    </span>
-                    <svg viewBox="0 0 500 100" class="chart">
-                      <polyline fill="none" stroke="#3cd483" stroke-width="10" points="
-												00,120
-												20,60
-												40,80
-												60,20
-												80,80
-												100,80
-												120,60
-												140,100
-												160,90
-												180,80
-												200, 110
-												220, 10
-												240, 70
-												260, 100
-												280, 100
-												300, 40
-												320, 0
-												340, 100
-												360, 100
-												380, 120
-												400, 60
-												420, 70
-												440, 80
-												"></polyline>
-
-                    </svg>
-
-                  </div>
-                </div>
-              </div>
-
-              <div class="col-sm-2 col-md-2 col-lg-2">
-                <div class="watch-price-chart">
-                  <div class="update-price">
-                    <span class="title-first"> Change For Trade </span>
-                    <span class="price-updown price_positive">3.06%
-                      <img class="up-down-arrow" src="assets/currency-svg/arrow-up-green.svg">
-                    </span>
-                    <svg viewBox="0 0 500 100" class="chart">
-                      <polyline fill="none" stroke="#3cd483" stroke-width="10" points="
-												00,120
-												20,60
-												40,80
-												60,20
-												80,80
-												100,80
-												120,60
-												140,100
-												160,90
-												180,80
-												200, 110
-												220, 10
-												240, 70
-												260, 100
-												280, 100
-												300, 40
-												320, 0
-												340, 100
-												360, 100
-												380, 120
-												400, 60
-												420, 70
-												440, 80
-												"></polyline>
+                      <polyline fill="none" [attr.stroke]="follow.percent_change_7d >= 0 ? '#3cd483' : '#ff6060'" stroke-width="10" [attr.points]="graph"></polyline>
 
                     </svg>
 

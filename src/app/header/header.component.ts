@@ -55,44 +55,23 @@ export class HeaderComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.coinservice.getallcurrencylist()
-      .subscribe(resData => {
-        if (resData.status === true) {
-          console.log(resData);
-          this.currencylist = resData.data;
-        }
-      });
-    this.authService.authState.subscribe((user) => {
-      this.user = user;
-      console.log(this.user);
-      this.loggedIn = (user != null);
+    this.coinservice.getallcurrencylist().subscribe(resData => {
+      if (resData.status === true) {
+        this.currencylist = resData.data;
+      }
     });
   }
 
   signInWithGoogle(): void {
     this.authService.signIn(GoogleLoginProvider.PROVIDER_ID);
-  }
-
-  signInWithFB(): void {
-    this.authService.signIn(FacebookLoginProvider.PROVIDER_ID);
-  }
-
-  onSubmitLogin() {
-    // tslint:disable-next-line:triple-equals
-    if (this.login.email == '') {
-      this.toasterService.pop('error', 'Required', 'Please enter email');
-      // tslint:disable-next-line:triple-equals
-    } else if (this.login.email.length == 0 || !this.regex.test(this.login.email)) {
-      this.toasterService.pop('error', 'Required', 'Please enter valid email');
-      // tslint:disable-next-line:triple-equals
-    } else if (this.login.password == '') {
-      this.toasterService.pop('error', 'Required', 'Please enter password');
-    } else {
-      this.coinservice.loginuserdata(this.login)
-        .subscribe(resData => {
-          // console.log(resData);
-          // tslint:disable-next-line:triple-equals
-          if (resData.status == true) {
+    this.authService.authState.subscribe((user) => {
+      this.user = user;
+      console.log(this.user);
+      this.loggedIn = (user != null);
+      if (this.user != null) {
+        this.coinservice.sociallogin(this.user).subscribe(resData => {
+          if (resData.status === true) {
+            console.log(resData);
             this.toasterService.pop('success', 'Success', resData.message);
             localStorage.setItem('login_ses', resData.status);
             localStorage.setItem('id', resData.data.id);
@@ -104,38 +83,89 @@ export class HeaderComponent implements OnInit {
               location.reload();
             }, 1000);
           } else {
-            this.toasterService.pop('error', 'Error', resData.message);
+            this.toasterService.pop('error', 'Error', 'Something went wrong please try after sometime !');
           }
         });
+      }
+    });
+  }
+
+  signInWithFB(): void {
+    this.authService.signIn(FacebookLoginProvider.PROVIDER_ID);
+    this.authService.authState.subscribe((user) => {
+      this.user = user;
+      console.log(this.user);
+      this.loggedIn = (user != null);
+      if (this.user != null) {
+        this.coinservice.sociallogin(this.user).subscribe(resData => {
+          if (resData.status === true) {
+            console.log(resData);
+            this.toasterService.pop('success', 'Success', resData.message);
+            localStorage.setItem('login_ses', resData.status);
+            localStorage.setItem('id', resData.data.id);
+            localStorage.setItem('email', resData.data.email);
+            localStorage.setItem('name', resData.data.name);
+            localStorage.setItem('usertype', resData.data.usertype);
+            localStorage.setItem('status', resData.data.status);
+            setTimeout(() => {
+              location.reload();
+            }, 1000);
+          } else {
+            this.toasterService.pop('error', 'Error', 'Something went wrong please try after sometime !');
+          }
+        });
+      }
+    });
+  }
+
+  onSubmitLogin() {
+    if (this.login.email === '') {
+      this.toasterService.pop('error', 'Required', 'Please enter email');
+    } else if (this.login.email.length === 0 || !this.regex.test(this.login.email)) {
+      this.toasterService.pop('error', 'Required', 'Please enter valid email');
+    } else if (this.login.password === '') {
+      this.toasterService.pop('error', 'Required', 'Please enter password');
+    } else {
+      this.coinservice.loginuserdata(this.login).subscribe(resData => {
+        if (resData.status === true) {
+          this.toasterService.pop('success', 'Success', resData.message);
+          localStorage.setItem('login_ses', resData.status);
+          localStorage.setItem('id', resData.data.id);
+          localStorage.setItem('email', resData.data.email);
+          localStorage.setItem('name', resData.data.name);
+          localStorage.setItem('usertype', resData.data.usertype);
+          localStorage.setItem('status', resData.data.status);
+          setTimeout(() => {
+            location.reload();
+          }, 1000);
+        } else {
+          this.toasterService.pop('error', 'Error', resData.message);
+        }
+      });
     }
   }
 
   onSubmitRegister() {
-    // tslint:disable-next-line:triple-equals
-    if (this.register.username == '') {
+    if (this.register.username === '') {
       this.toasterService.pop('error', 'Required', 'Please enter name');
-      // tslint:disable-next-line:triple-equals
-    } else if (this.register.useremail == '') {
+    } else if (this.register.useremail === '') {
       this.toasterService.pop('error', 'Required', 'Please enter email');
-      // tslint:disable-next-line:triple-equals
-    } else if (this.register.useremail.length == 0 || !this.regex.test(this.register.useremail)) {
+    } else if (this.register.useremail.length === 0 || !this.regex.test(this.register.useremail)) {
       this.toasterService.pop('error', 'Required', 'Please enter valid email');
-      // tslint:disable-next-line:triple-equals
-    } else if (this.register.userpass == '') {
+    } else if (this.register.userpass === '') {
       this.toasterService.pop('error', 'Required', 'Please enter password');
     } else {
-      this.coinservice.newuserregister(this.register)
-        .subscribe(resData => {
-          // tslint:disable-next-line:triple-equals
-          if (resData.status == true) {
-            this.toasterService.pop('success', 'Success', resData.message);
-            setTimeout(() => {
-              location.reload();
-            }, 2000);
-          } else {
-            this.toasterService.pop('error', 'Error', resData.message);
-          }
-        });
+      this.coinservice.newuserregister(this.register).subscribe(resData => {
+        // tslint:disable-next-line:triple-equals
+        if (resData.status == true) {
+          this.toasterService.pop('success', 'Success', resData.message);
+          setTimeout(() => {
+            location.reload();
+          }, 2000);
+        } else {
+          this.toasterService.pop('error', 'Error', resData.message);
+        }
+      });
     }
   }
 
@@ -144,5 +174,4 @@ export class HeaderComponent implements OnInit {
     localStorage.clear();
     window.location.href = this.urlString;
   }
-
 }
