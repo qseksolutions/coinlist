@@ -153,9 +153,13 @@
 
 .price-sign-coin, .price-number-coin {
   vertical-align: middle;
-  font-size: 20px;
+  font-size: 18px;
   color: #9ca5be;
-  letter-spacing: 0.02em; }
+  letter-spacing: 0.02em;
+  display: table-cell; }
+  .price-sign-coin img, .price-number-coin img {
+    height: 16px;
+    margin-right: 0; }
 
 .price-number-coin {
   color: #8a96a3; }
@@ -630,16 +634,6 @@
     letter-spacing: 0.1em;
     display: table-cell;
     vertical-align: middle; }
-  .coin-table-list .currentImage {
-    height: 14px;
-    display: table-cell;
-    vertical-align: middle;
-    -webkit-filter: brightness(60%) invert(60%);
-    -moz-filter: brightness(60%) invert(60%);
-    -ms-filter: brightness(60%) invert(60%);
-    filter: brightness(60%) invert(60%);
-    margin-right: 4px;
-    opacity: 0.7; }
   .coin-table-list .currency-value {
     letter-spacing: 0.02em;
     display: table-cell;
@@ -653,6 +647,17 @@
 
 .price_nagative {
   color: #ff6060; }
+
+.currentImage {
+  height: 14px;
+  display: table-cell;
+  vertical-align: middle;
+  -webkit-filter: brightness(60%) invert(60%);
+  -moz-filter: brightness(60%) invert(60%);
+  -ms-filter: brightness(60%) invert(60%);
+  filter: brightness(60%) invert(60%);
+  margin-right: 4px;
+  opacity: 0.7; }
 
 /*pagination*/
 .coin-page-pagination {
@@ -692,9 +697,11 @@
   background: linear-gradient(135deg, #170b32 0%, #3d3379 100%);
   padding: 30px 0; }
   .main-coin-information .price-sign-coin, .main-coin-information .price-number-coin {
-    color: #acb1bf; }
+    color: #acb1bf;
+    display: inline-block; }
   .main-coin-information .price-number-coin {
-    color: #fff; }
+    color: #fff;
+    display: inline-block; }
 
 .coin-info-item2 {
   text-align: center;
@@ -844,7 +851,8 @@ input::-webkit-input-placeholder, input::-moz-placeholder, input:-ms-input-place
         .single-coin-detaile .center-header .info_coin-page .currency_icon .currency_symbol, .single-coin-detaile .center-header .info_coin-page .coin-price .currency_symbol {
           font-size: 12px;
           color: #9ca5be;
-          font-weight: 700; }
+          font-weight: 700;
+          display: inline-block; }
       .single-coin-detaile .center-header .info_coin-page .coin-price {
         font-size: 20px; }
       .single-coin-detaile .center-header .info_coin-page .price-number-coin {
@@ -853,12 +861,12 @@ input::-webkit-input-placeholder, input::-moz-placeholder, input:-ms-input-place
     padding: 7px 0; }
   .single-coin-detaile .best-coin-value {
     background-color: #fff;
-    padding: 30px;
+    padding: 30px 20px;
     border-radius: 5px; }
 
 .currency_symbol {
   color: #ff8033;
-  display: inline-block;
+  display: table-cell;
   vertical-align: middle; }
 
 .chart-header {
@@ -1181,7 +1189,8 @@ div.breadcrumb {
   .watch-list-detaile .coin-title h3 span {
     font-size: 16px;
     vertical-align: baseline;
-    color: #ff8033; }
+    color: #ff8033;
+    display: inline-block; }
   .watch-list-detaile .coin-value-detaile {
     display: flex; }
     .watch-list-detaile .coin-value-detaile .coin-price {
@@ -1195,12 +1204,14 @@ div.breadcrumb {
         font-size: 16px;
         font-weight: 500;
         margin-bottom: 5px;
-        display: block; }
+        display: table; }
       .watch-list-detaile .coin-value-detaile .coin-price .currency_symbol {
         font-size: 12px;
-        vertical-align: baseline; }
+        vertical-align: baseline;
+        display: inline-block; }
       .watch-list-detaile .coin-value-detaile .coin-price .currency-sign {
-        opacity: 0.7; }
+        display: table-cell;
+        vertical-align: middle; }
 
 canvas {
   width: 100%;

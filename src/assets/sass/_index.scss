@@ -167,14 +167,7 @@
         display: table-cell;
         vertical-align: middle;
     }
-    .currentImage{
-        height: 14px;
-        display: table-cell;
-        vertical-align: middle;
-        @include filter(brightness(60%) invert(60%));
-        margin-right: 4px;
-        opacity: 0.7;
-    }
+    
     .currency-value{
         letter-spacing: 0.02em; 
         display: table-cell;
@@ -195,6 +188,14 @@
 }
 .price_nagative{
     color: $color-nagative;
+}
+.currentImage{
+    height: 14px;
+    display: table-cell;
+    vertical-align: middle;
+    @include filter(brightness(60%) invert(60%));
+    margin-right: 4px;
+    opacity: 0.7;
 }
 /*pagination*/
 .coin-page-pagination{
@@ -244,10 +245,12 @@
     background: $bg-color;
     padding: 30px 0;
     .price-sign-coin{
-    color: $sign-color;
+        color: $sign-color;
+        display: inline-block;
     }
     .price-number-coin{
         color: $text-white;
+        display: inline-block;
     }
 }
 .coin-info-item2{

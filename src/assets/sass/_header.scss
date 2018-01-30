@@ -166,9 +166,15 @@ display: none;
 }
 .price-sign-coin{
     vertical-align: middle;
-    font-size: 20px;
+    font-size: 18px;
     color: $light-gray;
     letter-spacing: 0.02em;
+    display: table-cell;
+
+    img{
+        height: 16px;
+        margin-right: 0;
+    }
 }
 .price-number-coin{
     @extend .price-sign-coin;
