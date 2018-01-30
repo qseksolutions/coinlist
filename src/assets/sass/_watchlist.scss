@@ -29,11 +29,11 @@
     border-radius: 50%;
     padding: 7px;
     position: absolute;
-    background-color: $light-gray;
     right: -5px;
     top: -5px;
     text-align: center;
     cursor: pointer;
+    @include filter(brightness(25%)); 
     img{
         width: 12px;
     }
@@ -69,6 +69,11 @@ div.breadcrumb{
 
 .watch-price-chart{
     text-align: center;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
     .price-updown{
             font-size: 16px;
             font-weight: 500;
@@ -78,7 +83,7 @@ div.breadcrumb{
     svg{
         overflow: visible !important;
         padding-top: 15px;
-        width: 50%;
+        width: 60%;
         display: block;
         margin: 0 auto;
     }    
@@ -112,9 +117,13 @@ div.breadcrumb{
     
         .coin-price{
             flex-grow: 1;
+            .small-text{
+                font-size: 12px;
+                font-weight: 600;
+                margin-bottom: 0;
+            }
             .secound-value{
                 text-align: left;
-                color: $dark-blue;
                 font-size: 16px;
                 font-weight: 500;
                 margin-bottom: 5px;

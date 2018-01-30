@@ -176,6 +176,8 @@
             -webkit-box-shadow: 0 6px 10px 0 rgba(202,215,223,.4);
             box-shadow: 0 6px 10px 0 rgba(202,215,223,.4);
             top: 110%;
+            max-height: 170px;
+            overflow: auto;
         }
     }
     .currency-select{

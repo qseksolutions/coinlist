@@ -12,19 +12,18 @@
 @import'address-amount';
 @import'watchlist';
 @import'portfolio';
+@import'support';
 
 body {
   font-family: 'montserrat' !important; 
   color: $primary-color;
   background-color: $body-bg-color !important;
   line-height: normal !important;
-  font-size: 13px !important;
+  font-size: 13px !important;    display: flex;
+    flex-direction: column;
+    height: 100vh;
 }
 
-a{
-    text-decoration: none !important;
-    @include transition(all ease 0.5s);
-}
 main{
     -moz-flex: 1 0 auto;
     -webkit-flex: 1 0 auto;
@@ -34,6 +33,10 @@ footer{
     flex-shrink: 0;
 }
 
+a{
+    text-decoration: none !important;
+    @include transition(all ease 0.5s);
+}
 
 /*header*/
 
@@ -43,7 +46,7 @@ footer{
     position: fixed;
     height: 100%;
     width: 100%;
-    background: #262626;
+    background: #eee;
     padding-top: 30vh;
     text-align: center;
     transition: opacity 1.8s ease-out;

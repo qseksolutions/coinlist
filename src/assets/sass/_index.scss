@@ -96,7 +96,10 @@
                 overflow: hidden;
                 text-overflow: ellipsis;
                 text-align: left;
-
+                
+                a{
+                    color: $primary-color;
+                }
             }
         }
         .main-coin-price  {

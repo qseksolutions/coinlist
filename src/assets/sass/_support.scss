@@ -1,0 +1,131 @@
+@import'variables'; 
+.support-main-bg{
+    background: url(../images/support-bg.png);
+    background-size: 100% 40%;
+    background-position: top center;
+    background-repeat: no-repeat;
+}
+.support-header{
+    padding: 40px 0;
+    text-align: center;
+    position: relative;
+    h2{
+        display: block;
+        text-align: center;
+        color: $text-white;
+        font-size: 24px;
+        font-weight: 100;
+    }
+}
+
+.searchbar-support{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 40px;
+    .support-input{
+        padding: 12px 15px;
+        border-radius: 25px 0 0 25px;
+        border: solid 3px $dark-blue;
+        border-right: none;
+        background-color: rgba($dark-blue , 0.2);
+        width: 350px;
+        font-size: 14px;
+        outline: none;
+        color: #fff;
+    }
+    .support-search-btn{
+        padding: 10px 15px;
+        border-radius:  0 25px 25px 0 ;
+        border: solid 3px $dark-blue;
+        border-left: none;
+        background-color: rgba($dark-blue , 0.2);
+        outline: none;
+        cursor: pointer;
+        img{
+            width: 21px;
+        }
+    }
+}
+
+.support-cate-child {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    margin-top: 30px;
+    text-align: center;
+    @include transition (all ease-in-out 0.5s);
+    &:hover .cate-icon img{
+            @include filter(brightness(1));
+        }
+    &:hover  span.cate-box-title{
+            color: $dark-blue;
+        }
+    .cate-icon{
+        width: 80px;
+        margin: auto;
+        display: block;
+
+        img{
+             @include filter(brightness(0));
+        }
+    }
+    span.cate-box-title {
+        font-size: 18px;
+        margin: 20px 0 0;
+        display: block;
+        font-weight: 500;
+        color: $primary-color;
+    }
+}
+
+.suport-text-sec{
+    padding: 70px 0;
+
+    .qus-title{
+        position: relative;
+        color: $text-black;
+        font-size: 28px;
+        font-weight: 600;
+        &::after{
+            position: absolute;
+            content: "";
+            top: -10px;
+            left: 0;
+            width: 80px;
+            height: 5px;
+            border-radius: 5px;
+            background-color:$dark-blue; 
+        }
+    }
+    
+    .qus-point{
+        color:$primary-color;
+        font-weight: 500;
+        margin: 20px 0 10px;
+    }
+    .support-qus{
+        margin-bottom: 20px;
+         p{
+            font-size: 14px;
+            line-height: 22px;
+            color: $dark-gray;
+            text-align: justify;
+        }
+    }
+}
+.support-contant-box{
+    background: $bg-color;
+    padding: 50px 0;
+}
+
+.support-bottom-text{
+    h4{
+        color: $text-white;
+    }
+    span{
+        color: $light-gray;
+        text-transform: uppercase;
+        font-size: 14px;
+    }
+}
