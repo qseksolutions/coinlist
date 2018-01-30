@@ -26,6 +26,7 @@
 .coin-heading{
     color: $dark-gray;
     font-weight: 600;
+    text-transform: uppercase;
 }
 
 .main-table{
@@ -111,7 +112,6 @@
                 font-size: 14px;
                 letter-spacing: 0.1em;
                 font-weight: 600;
-                opacity: 0.7;
             }
 
             .currency-value{
@@ -167,7 +167,14 @@
         display: table-cell;
         vertical-align: middle;
     }
-
+    .currentImage{
+        height: 14px;
+        display: table-cell;
+        vertical-align: middle;
+        @include filter(brightness(60%) invert(60%));
+        margin-right: 4px;
+        opacity: 0.7;
+    }
     .currency-value{
         letter-spacing: 0.02em; 
         display: table-cell;

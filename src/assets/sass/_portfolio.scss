@@ -162,7 +162,7 @@
     }
     .currancy-form-input{
         display: flex;
-        position: relative;
+        position: unset;
         background-color: #fff;
         border-radius: 5px;
         border:solid 1px $border-color;

@@ -225,13 +225,13 @@
               <div class="coin-market-cap">
                 <div class="coin-align text-center">
                   <button *ngIf="coin.followstatus == 0" class="btn btn-follow" (click)="followcoin(coin);" [style.display]="loginData != null ? 'initial':'none'">
-                    <img src="assets/currency-svg/plus.svg" class="follow-plus" /> follow
+                    <img src="assets/currency-svg/plus.svg" class="follow-plus" /> Follow
                   </button>
                   <button *ngIf="coin.followstatus == 1" class="btn btn-follow" (click)="followcoin(coin);" [style.display]="loginData != null ? 'initial':'none'">
-                    <img src="assets/currency-svg/minus.svg" class="follow-plus" /> unfollow
+                    <img src="assets/currency-svg/minus.svg" class="follow-plus" /> Unfollow
                   </button>
                   <button class="btn btn-follow" data-toggle="modal" data-target="#sign-in" [style.display]="loginData == null ? 'initial':'none'">
-                    <img src="assets/currency-svg/plus.svg" class="follow-plus" /> follow
+                    <img src="assets/currency-svg/plus.svg" class="follow-plus" /> Follow
                   </button>
                   <button class="btn btn-follow btn-buy">Buy/Sell</button>
                 </div>
