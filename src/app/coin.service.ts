@@ -21,7 +21,9 @@ export class CoinService {
   followlistAPI: any = myGlobals.followlistAPI;
   getallcoinlistAPI: any = myGlobals.getallcoinlistAPI;
 
-  constructor(private http: Http) { }
+  constructor(private http: Http) {
+    alert(this.basecur);
+   }
 
   getCoinCount() {
     const headers = new Headers({ 'Content-Type': 'application/x-www-form-urlencoded' });
@@ -84,7 +86,6 @@ export class CoinService {
     /* const url = 'https://api.coinmarketcap.com/v1/ticker/' + coinid + '/';
     return this.http.get(url)
       .map((response: Response) => response.json()); */
-    alert(this.basecur);
 
     const headers = new Headers({ 'Content-Type': 'application/x-www-form-urlencoded' });
     const options = new RequestOptions({ headers: headers });
@@ -124,6 +125,7 @@ export class CoinService {
 
     const form = new URLSearchParams();
     form.append('userid', this.userid);
+    form.append('base', this.basecur);
 
     return this.http.post(this.api_url + this.followlistAPI, form, options)
       .map((response: Response) => response.json());

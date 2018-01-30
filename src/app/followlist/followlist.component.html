@@ -50,7 +50,11 @@
                     <div class="coin-price">
                       <span class="title-first">Last Price </span>
                       <span class="secound-value">
-                        <span class="currency-sign">$</span> {{follow.price_usd}} </span>
+                        <span class="currency-sign">
+                          <img src="assets/currency-svg/{{basecurr | lowercase}}.svg" width="16">
+                        </span> 
+                        {{follow['price_'+basecurr] | number : '1.2-2'}}
+                      </span>
 
                       <p class="small-text"> {{follow.price_btc}}
                         <span class="currency_symbol">BTC</span>
