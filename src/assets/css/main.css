@@ -161,10 +161,10 @@
   color: #8a96a3; }
 
 .searchbar, .searchbar-small-device {
-  float: left;
+  float: right;
   padding: 27px 0; }
   .searchbar .btn-extended, .searchbar-small-device .btn-extended {
-    width: 300px;
+    width: 200px;
     padding: 1px 30px;
     outline: none;
     border: none;
@@ -301,7 +301,7 @@
 .exchange_button .btn.btn-menu-exchage {
   background-image: none !important; }
 .exchange_button .btn.btn-green {
-  background-image: url(../images/angle-arrow-down.svg);
+  background-image: url(../currency-svg/angle-arrow-down.svg);
   background-position: 105px 30px;
   background-repeat: no-repeat;
   background-size: 13px 13px;
@@ -538,7 +538,11 @@
   .currency-symbol img {
     display: table-cell;
     vertical-align: middle;
-    margin-right: 5px; }
+    margin-right: 5px;
+    -webkit-filter: brightness(0) invert(1);
+    -moz-filter: brightness(0) invert(1);
+    -ms-filter: brightness(0) invert(1);
+    filter: brightness(0) invert(1); }
   .currency-symbol .currency-di-text {
     display: table-cell;
     vertical-align: middle;
@@ -623,9 +627,13 @@
   .coin-table-list .currency-sign {
     color: #acb1bf;
     font-size: 14px;
-    letter-spacing: 0.1em; }
+    letter-spacing: 0.1em;
+    display: table-cell;
+    vertical-align: middle; }
   .coin-table-list .currency-value {
-    letter-spacing: 0.02em; }
+    letter-spacing: 0.02em;
+    display: table-cell;
+    vertical-align: middle; }
   .coin-table-list .follow-plus, .coin-table-list .follow-minus {
     width: 8px;
     vertical-align: unset; }
@@ -784,25 +792,7 @@
   background-color: #3d3379;
   border-radius: 0 0 5px 5px; }
 
-input::-webkit-input-placeholder {
-  color: #9ca5be !important;
-  font-family: 'montserrat' !important;
-  font-size: 16px;
-  font-weight: 400; }
-
-input:-moz-placeholder {
-  color: #9ca5be !important;
-  font-family: 'montserrat' !important;
-  font-size: 16px;
-  font-weight: 400; }
-
-input::-moz-placeholder {
-  color: #9ca5be !important;
-  font-family: 'montserrat' !important;
-  font-size: 16px;
-  font-weight: 400; }
-
-input:-ms-input-placeholder {
+input::-webkit-input-placeholder, input::-moz-placeholder, input:-ms-input-placeholder, textarea:-ms-input-placeholder, textarea:-moz-placeholder, textarea:-webkit-input-placeholder {
   color: #9ca5be !important;
   font-family: 'montserrat' !important;
   font-size: 16px;
@@ -1117,10 +1107,7 @@ input:-ms-input-placeholder {
   top: -5px;
   text-align: center;
   cursor: pointer;
-  -webkit-filter: brightness(25%);
-  -moz-filter: brightness(25%);
-  -ms-filter: brightness(25%);
-  filter: brightness(25%); }
+  background-color: #8a96a3; }
   .close-btn img {
     width: 12px; }
 
@@ -1179,12 +1166,12 @@ div.breadcrumb {
 
 .watch-list-detaile {
   border-right: solid 2px #ebeef3; }
-  .watch-list-detaile .coin-title {
+  .watch-list-detaile .coin-title a {
     color: #3d3379; }
-    .watch-list-detaile .coin-title h3 span {
-      font-size: 16px;
-      vertical-align: baseline;
-      color: #ff8033; }
+  .watch-list-detaile .coin-title h3 span {
+    font-size: 16px;
+    vertical-align: baseline;
+    color: #ff8033; }
   .watch-list-detaile .coin-value-detaile {
     display: flex; }
     .watch-list-detaile .coin-value-detaile .coin-price {
@@ -1341,7 +1328,8 @@ canvas {
   background-color: #fff;
   border-radius: 5px;
   border: solid 1px #ebeef3;
-  margin-bottom: 30px; }
+  margin-bottom: 30px;
+  overflow: hidden; }
   .portfolio-model .currancy-form-input .dropdown-menu {
     min-width: 100%;
     border-radius: 5px;
@@ -1434,6 +1422,15 @@ canvas {
     .searchbar-support .support-search-btn img {
       width: 21px; }
 
+.active .support-cate-child .cate-icon img {
+  -webkit-filter: brightness(1);
+  -moz-filter: brightness(1);
+  -ms-filter: brightness(1);
+  filter: brightness(1); }
+.active .support-cate-child span.cate-box-title {
+  color: #3d3379;
+  /**/ }
+
 .support-cate-child {
   background-color: #fff;
   padding: 20px;
@@ -1505,6 +1502,42 @@ canvas {
   color: #9ca5be;
   text-transform: uppercase;
   font-size: 14px; }
+
+/*model*/
+.contact-input {
+  font-size: 16px;
+  padding: 15px 20px;
+  outline: none;
+  color: #9ca5be;
+  width: 100%;
+  min-width: 20px;
+  border: none;
+  margin: 0px;
+  flex: 10;
+  border-radius: 5px;
+  font-family: 'montserrat' !important;
+  line-height: 16px; }
+
+.input-file-container {
+  padding: 8px 15px; }
+
+.input-file-trigger {
+  margin-bottom: 0;
+  cursor: pointer; }
+
+.contact-textarea {
+  height: 150px; }
+
+.js .input-file {
+  display: none; }
+.js .file-return {
+  font-size: 14px;
+  font-weight: 600;
+  color: #8a96a3;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center; }
 
 body {
   font-family: 'montserrat' !important;

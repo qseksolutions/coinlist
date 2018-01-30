@@ -160,3 +160,35 @@ if(curl[3] == 'portfolio') {
     $('#datepicker').datepicker();
 }
 
+$(document).ready(function() {
+    $(".support-categories a").on('click', function(e) {
+        e.preventDefault()
+        var page = $(this).data('page');
+        $(".suport-text-sec .support-qus-contant:not('.hidden')").stop().fadeOut('fast', function() {
+            $(this).addClass('hidden');
+            $('.suport-text-sec .support-qus-contant[data-page="'+page+'"]').fadeIn('slow').removeClass('hidden');
+        });
+
+        $('.support-categories a.active').removeClass('active');
+        $(this).addClass('active');
+    });
+});
+    
+document.querySelector("html").classList.add('js');
+
+var fileInput  = document.querySelector( ".input-file" ),  
+    button     = document.querySelector( ".input-file-trigger" ),
+    the_return = document.querySelector(".file-return");
+      
+button.addEventListener( "keydown", function( event ) {  
+    if ( event.keyCode == 13 || event.keyCode == 32 ) {  
+        fileInput.focus();  
+    }  
+});
+button.addEventListener( "click", function( event ) {
+   fileInput.focus();
+   return false;
+});  
+fileInput.addEventListener( "change", function( event ) {  
+    the_return.innerHTML = this.value;  
+});  

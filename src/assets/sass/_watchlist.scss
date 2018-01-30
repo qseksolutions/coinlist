@@ -33,7 +33,7 @@
     top: -5px;
     text-align: center;
     cursor: pointer;
-    @include filter(brightness(25%)); 
+    background-color: $dark-gray;
     img{
         width: 12px;
     }
@@ -103,8 +103,9 @@ div.breadcrumb{
 .watch-list-detaile{
     border-right: solid 2px $border-color;
     .coin-title {
-        color: $dark-blue;
-
+        a{
+            color: $dark-blue;
+        }
         h3{
             span{font-size: 16px;
                 vertical-align: baseline;

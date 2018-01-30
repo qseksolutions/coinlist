@@ -167,6 +167,7 @@
         border-radius: 5px;
         border:solid 1px $border-color;
         margin-bottom: 30px;
+        overflow: hidden;
 
         .dropdown-menu{
             min-width: 100%;
