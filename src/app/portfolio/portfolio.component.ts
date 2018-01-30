@@ -34,6 +34,7 @@ export class PortfolioComponent implements OnInit {
         this.allcoin = resData.data;
       }
     });
+    console.log(this.model);
   }
 
   /* coinsearch(term: string) {
@@ -50,9 +51,9 @@ export class PortfolioComponent implements OnInit {
     text$
       .debounceTime(200)
       .map(term => term === '' ? []
-        : this.allcoin.filter(v => v.name.toLowerCase().indexOf(term.toLowerCase()) > -1).slice(0, 10));
+        : this.allcoin.filter(v => v.id.toLowerCase().indexOf(term.toLowerCase()) > -1).slice(0, 10));
 
-  formatter = (x: { name: string }) => x.name;
+  formatter = (x: { name: string, symbol: string }) => x.name + ' (' + x.symbol + ')';
 
   isImage(src) {
     const deferred = defer();

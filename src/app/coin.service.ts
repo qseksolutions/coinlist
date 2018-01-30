@@ -8,7 +8,7 @@ import { URLSearchParams } from '@angular/http';
 export class CoinService {
 
   userid: any = myGlobals.userid;
-  basecur: any = myGlobals.basecurr;
+  basecur: any = localStorage.getItem('base');
   api_url: any = myGlobals.api_url;
   loginAPI: any = myGlobals.loginAPI;
   registerAPI: any = myGlobals.registerAPI;
@@ -21,9 +21,7 @@ export class CoinService {
   followlistAPI: any = myGlobals.followlistAPI;
   getallcoinlistAPI: any = myGlobals.getallcoinlistAPI;
 
-  constructor(private http: Http) {
-    alert(this.basecur);
-   }
+  constructor(private http: Http) { }
 
   getCoinCount() {
     const headers = new Headers({ 'Content-Type': 'application/x-www-form-urlencoded' });

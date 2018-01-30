@@ -277,19 +277,17 @@
 
 
                   <div class="col-md-6 col-sm-12 col-12 ">
-                    <div>
-                      <form class="currancy-form-input">
-                        <ng-template #rt let-r="result" let-t="term">
-                          <div class="dropdown-currency-name currency-select currency-name">{{r.name}} ({{r.symbol}})</div>
-                          <div id="icon-currency" class="currency_icon">
-                            <img src="assets/currency-svg/{{r.symbol | lowercase}}.svg" (error)="errorHandler($event,r.symbol)" class="input-currency-icon">
-                          </div>
-                        </ng-template>
-                        <input id="typeahead-template" type="text" class="form-control currency-select currency-name" [(ngModel)]="model" name="searchparam" [ngbTypeahead]="search" [resultTemplate]="rt" [inputFormatter]="formatter" placeholder="Bitcoin (BTC)" />
+                    <div class="currancy-form-input">
+                      <ng-template #rt let-r="result" let-t="term">
+                        <div [attr.value]="r.symbol" class="dropdown-currency-name currency-select currency-name">{{r.name}} ({{r.symbol}})</div>
                         <div id="icon-currency" class="currency_icon">
-                          <img src="assets/currency-svg/btc.svg" class="input-currency-icon">
+                          <img src="assets/currency-svg/{{r.symbol | lowercase}}.svg" (error)="errorHandler($event,r.symbol)" class="input-currency-icon">
                         </div>
-                      </form>
+                      </ng-template>
+                      <input id="typeahead-template" type="text" class="form-control currency-select currency-name" [(ngModel)]="model" name="searchparam" [ngbTypeahead]="search" [resultTemplate]="rt" [inputFormatter]="formatter" placeholder="Bitcoin (BTC)" id="selectedcoin"/>
+                      <div id="icon-coin" class="currency_icon">
+                        <img src="assets/currency-svg/btc.svg" class="input-currency-icon">
+                      </div>
                     </div>
                   </div>
 
