@@ -280,7 +280,7 @@
                     <div>
                       <form class="currancy-form-input">
                         <ng-template #rt let-r="result" let-t="term">
-                          <div class="dropdown-currency-name currency-name">{{r.name}} ({{r.symbol}})</div>
+                          <div class="dropdown-currency-name currency-select currency-name">{{r.name}} ({{r.symbol}})</div>
                           <div id="icon-currency" class="currency_icon">
                             <img src="assets/currency-svg/{{r.symbol | lowercase}}.svg" (error)="errorHandler($event,r.symbol)" class="input-currency-icon">
                           </div>

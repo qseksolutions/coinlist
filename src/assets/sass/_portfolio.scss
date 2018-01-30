@@ -162,12 +162,11 @@
     }
     .currancy-form-input{
         display: flex;
-        position: unset;
+        position: relative;
         background-color: #fff;
         border-radius: 5px;
         border:solid 1px $border-color;
         margin-bottom: 30px;
-        overflow: hidden;
 
         .dropdown-menu{
             min-width: 100%;
@@ -177,8 +176,13 @@
             -webkit-box-shadow: 0 6px 10px 0 rgba(202,215,223,.4);
             box-shadow: 0 6px 10px 0 rgba(202,215,223,.4);
             top: 110%;
-            max-height: 170px;
+            max-height: 192px;
             overflow: auto;
+
+            .dropdown-item {
+                padding: 0;
+                display: flex;
+            }
         }
     }
     .currency-select{
