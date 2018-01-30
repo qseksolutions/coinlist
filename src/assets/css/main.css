@@ -1405,7 +1405,37 @@ footer {
 .alert p {
   margin-bottom: 0; }
 
-#toast-container > div {
-    opacity: 1 !important;
-}
 /*# sourceMappingURL=main.css.map */
+
+
+
+.portfolio-model .currency-list, .portfolio-model #addQuote {
+  max-height: 179px;
+  overflow: auto;
+}
+.results[_ngcontent-c4] {
+  top: 50px;
+  width: 100%;
+}
+.dropdown-item {
+  display: flex !important;
+  position: relative;
+  border-bottom: solid 1px #ebeef3 !important;
+  cursor: pointer;
+  margin: 0 0px;
+  padding: 0px 10px !important;
+}
+.dropdown-currency-name.currency-name {
+  flex: 10;
+  padding: 15px 10px;
+  font-family: 'montserrat' !important;
+}
+.currancy-form-input > .dropdown-menu {
+  max-height: 196px;
+  overflow: auto;
+}
+.currentImage {
+  filter: brightness(80%);
+  width: 12px;
+  display: table-cell;
+}

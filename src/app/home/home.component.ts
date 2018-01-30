@@ -38,6 +38,7 @@ export class HomeComponent implements OnInit {
   public urlString: any = myGlobals.base_url;
   public loginData: any = myGlobals.login_ses;
   public userid: any = myGlobals.userid;
+  public basecurr: any = myGlobals.basecurr;
   interval: any;
   selectedIndex: any;
   perioddata: any;
@@ -111,7 +112,7 @@ export class HomeComponent implements OnInit {
     this.limit = 50;
 
     this.coinservice.getCoinList(this.start, this.limit).subscribe(resData => {
-    if (resData.data.length > 0) {
+      if (resData.data.length > 0) {
         this.coins = resData.data;
       }
     });
