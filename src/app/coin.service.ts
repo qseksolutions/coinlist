@@ -8,6 +8,7 @@ import { URLSearchParams } from '@angular/http';
 export class CoinService {
 
   userid: any = myGlobals.userid;
+  basecur: any = myGlobals.basecurr;
   api_url: any = myGlobals.api_url;
   loginAPI: any = myGlobals.loginAPI;
   registerAPI: any = myGlobals.registerAPI;
@@ -18,6 +19,7 @@ export class CoinService {
   cointrackbyuserAPI: any = myGlobals.cointrackbyuserAPI;
   singlecoinAPI: any = myGlobals.singlecoinAPI;
   followlistAPI: any = myGlobals.followlistAPI;
+  getallcoinlistAPI: any = myGlobals.getallcoinlistAPI;
 
   constructor(private http: Http) { }
 
@@ -46,10 +48,11 @@ export class CoinService {
     if (this.userid != null) {
       const currentuser = this.userid;
       // tslint:disable-next-line:max-line-length
-      return this.http.get(this.api_url + this.coinlistAPI + '?limit= ' + limitdata + ' &start=' + startdata + '&userid=' + currentuser, options)
+      return this.http.get(this.api_url + this.coinlistAPI + '?limit= ' + limitdata + ' &start=' + startdata + '&userid=' + currentuser + '&base=' + this.basecur, options)
         .map((response: Response) => response.json());
     } else {
-      return this.http.get(this.api_url + this.coinlistAPI + '?limit= ' + limitdata + ' &start=' + startdata, options)
+      // tslint:disable-next-line:max-line-length
+      return this.http.get(this.api_url + this.coinlistAPI + '?limit= ' + limitdata + ' &start=' + startdata + '&base=' + this.basecur, options)
         .map((response: Response) => response.json());
     }
   }
@@ -62,20 +65,35 @@ export class CoinService {
       .map((response: Response) => response.json());
   }
 
+  getallcoin(term) {
+    const headers = new Headers({ 'Content-Type': 'application/x-www-form-urlencoded' });
+    const options = new RequestOptions({ headers: headers });
+
+    if (term !== '') {
+      return this.http.get(this.api_url + this.getallcoinlistAPI + '/?coin=' + term, options)
+        .map((response: Response) => response.json());
+    } else {
+      return this.http.get(this.api_url + this.getallcoinlistAPI, options)
+        .map((response: Response) => response.json());
+    }
+
+  }
+
   getSingleCoin(coin) {
     const coinid = coin;
     /* const url = 'https://api.coinmarketcap.com/v1/ticker/' + coinid + '/';
     return this.http.get(url)
       .map((response: Response) => response.json()); */
+    alert(this.basecur);
 
     const headers = new Headers({ 'Content-Type': 'application/x-www-form-urlencoded' });
     const options = new RequestOptions({ headers: headers });
 
     if (this.userid != null) {
-      return this.http.get(this.api_url + this.singlecoinAPI + '/' + coinid + '/?userid=' + this.userid, options)
+      return this.http.get(this.api_url + this.singlecoinAPI + '/' + coinid + '/?userid=' + this.userid + '&base=' + this.basecur, options)
         .map((response: Response) => response.json());
     } else {
-      return this.http.get(this.api_url + this.singlecoinAPI + '/' + coinid, options)
+      return this.http.get(this.api_url + this.singlecoinAPI + '/' + coinid + '/?base=' + this.basecur, options)
         .map((response: Response) => response.json());
     }
   }

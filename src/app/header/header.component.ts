@@ -26,6 +26,7 @@ export class HeaderComponent implements OnInit {
 
   public urlString: any = myGlobals.base_url;
   public loginData: any = myGlobals.login_ses;
+  public basecurr: any = myGlobals.basecurr;
   public login_ses: any = 0;
   currencylist: any ;
   private user: SocialUser;
@@ -44,6 +45,12 @@ export class HeaderComponent implements OnInit {
 
   // tslint:disable-next-line:max-line-length
   constructor(private coinservice: CoinService, private router: Router, toasterService: ToasterService, private authService: AuthService) {
+    if (this.basecurr == null) {
+      localStorage.setItem('base', 'USD');
+      this.basecurr = 'USD';
+    } else {
+      localStorage.setItem('base', this.basecurr);
+    }
     this.toasterService = toasterService;
     this.regex = /^([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/;
     // tslint:disable-next-line:triple-equals
@@ -173,5 +180,10 @@ export class HeaderComponent implements OnInit {
     this.authService.signOut();
     localStorage.clear();
     window.location.href = this.urlString;
+  }
+
+  closeNav(basecur) {
+    localStorage.setItem('base', basecur);
+    location.reload();
   }
 }

@@ -1,4 +1,5 @@
 import { NgModule } from '@angular/core';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule, Routes } from '@angular/router';
 import { FormsModule } from '@angular/forms';
@@ -93,6 +94,7 @@ export function highchartsModules() {
       },
     ]),
     BrowserModule,
+    NgbModule.forRoot(),
     FormsModule,
     HttpModule,
     BrowserAnimationsModule,

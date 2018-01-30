@@ -7,9 +7,11 @@
             <div class="watchlist-coin-detaile">
               <span class="coin-lable"> NET WORTH </span>
               <span class="watchlist-main-price">
-                <span class="dollar_sign">$</span>2,558.62</span>
+                <span class="dollar_sign">$</span>2,558.62
+              </span>
               <h4 class="main-coin-value"> 7.47%
-                <img class="up-down-arrow" src="assets/currency-svg/arrow-up-green.svg"> </h4>
+                <img class="up-down-arrow" src="assets/currency-svg/arrow-up-green.svg">
+              </h4>
             </div>
           </div>
         </div>
@@ -276,32 +278,18 @@
 
                   <div class="col-md-6 col-sm-12 col-12 ">
                     <div class="currancy-form-input">
-                      <input value="" pattern="" id="dropdownMenuButton" class="currency-select currency-name" placeholder="Bitcoin (BTC)">
-                      <div id="icon-currency" class="currency_icon">
-                        <img src="assets/currency-svg/btc.svg" class="input-currency-icon">
-                      </div>
-                      <div id="crypto-currency-menu" class="dropdown-menu">
-                        <ul class="list-unstyled currency-list">
-                          <li>
-                            <div value="btc" pattern="" class="dropdown-currency-name currency-name">Bitcoin (BTC)</div>
-                            <div class="dropdown-currency-icon">
-                              <img src="assets/currency-svg/btc.svg" class="input-currency-icon">
-                            </div>
-                          </li>
-                          <li>
-                            <div value="eth" pattern="" class="dropdown-currency-name">Ethereum (ETH)</div>
-                            <div class="dropdown-currency-icon">
-                              <img src="assets/currency-svg/ETH.svg" class="input-currency-icon">
-                            </div>
-                          </li>
-                          <li>
-                            <div value="xrp" pattern="" class="dropdown-currency-name">Ripple (XRP)</div>
-                            <div class="dropdown-currency-icon">
-                              <img src="assets/currency-svg/xrp.svg" class="input-currency-icon">
-                            </div>
-                          </li>
-                        </ul>
-                      </div>
+                      <form class="currancy-form-input">
+                        <ng-template #rt let-r="result" let-t="term">
+                          <div class="dropdown-currency-name currency-name">{{r.name}} ({{r.symbol}})</div>
+                          <div id="icon-currency" class="currency_icon">
+                            <img src="assets/currency-svg/{{r.symbol | lowercase}}.svg" (error)="errorHandler($event,r.symbol)" class="input-currency-icon">
+                          </div>
+                        </ng-template>
+                        <input id="typeahead-template" type="text" class="form-control currency-select currency-name" [(ngModel)]="model" name="searchparam" [ngbTypeahead]="search" [resultTemplate]="rt" [inputFormatter]="formatter" placeholder="Bitcoin (BTC)" />
+                        <div id="icon-currency" class="currency_icon">
+                          <img src="assets/currency-svg/btc.svg" class="input-currency-icon">
+                        </div>
+                      </form>
                     </div>
                   </div>
 
