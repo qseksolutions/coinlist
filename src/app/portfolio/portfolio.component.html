@@ -7,7 +7,7 @@
             <div class="watchlist-coin-detaile">
               <span class="coin-lable"> NET WORTH </span>
               <span class="watchlist-main-price">
-                <span class="dollar_sign">$</span>2,558.62
+                <span class="dollar_sign">{{base_sing}}</span>2,558.62
               </span>
               <h4 class="main-coin-value"> 7.47%
                 <img class="up-down-arrow" src="assets/currency-svg/arrow-up-green.svg">
@@ -94,11 +94,11 @@
               <div class="coin-align">
                 <div class="rate-count">
                   <span class="coin-name">
-                    <span class="currency-sign">$</span>
+                    <span class="currency-sign">{{base_sing}}</span>
                     {{portfolio.dc_price / portfolio.coin_amount | number : '1.2-2'}}
                   </span>
                   <span class="coin-amount">
-                    <span class="coin-symbol"> (${{portfolio.bc_price / portfolio.coin_amount | number : '1.2-2'}})</span>
+                    <span class="coin-symbol"> ({{portfolio.bc_price / portfolio.coin_amount | number : '1.2-2'}})</span>
                   </span>
                 </div>
               </div>
@@ -108,11 +108,11 @@
               <div class="coin-align">
                 <div class="cost-count">
                   <span class="coin-name">
-                    <span class="currency-sign">$</span>
+                    <span class="currency-sign">{{base_sing}}</span>
                     {{portfolio.dc_price | number : '1.2-2'}}
                   </span>
                   <span class="coin-amount">
-                    <span class="coin-symbol"> (${{portfolio.bc_price | number : '1.2-2'}})</span>
+                    <span class="coin-symbol"> ({{portfolio.bc_price | number : '1.2-2'}})</span>
                   </span>
                 </div>
               </div>

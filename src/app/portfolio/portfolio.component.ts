@@ -29,6 +29,7 @@ export class PortfolioComponent implements OnInit {
 
   public urlString: any = myGlobals.base_url;
   public loginData: any = myGlobals.login_ses;
+  public base_sing: any = myGlobals.base_sing;
   allcoin: any;
   allcurrency: any;
   portfoliolist: any;
@@ -66,7 +67,7 @@ export class PortfolioComponent implements OnInit {
     text$
       .debounceTime(200)
       .map(term => term === '' ? []
-        : this.allcoin.filter(v => v.id.toLowerCase().indexOf(term.toLowerCase()) > -1).slice(0, 10));
+        : this.allcoin.filter(v => v.id.toLowerCase().indexOf(term.toLowerCase()) > -1).slice(0, 10))
 
   formatter = (x: { name: string, symbol: string }) => x.name + ' (' + x.symbol + ')';
 
@@ -74,7 +75,7 @@ export class PortfolioComponent implements OnInit {
     text$
       .debounceTime(200)
       .map(termcur => termcur === '' ? []
-        : this.allcurrency.filter(v => v.currency_symbol.toLowerCase().indexOf(termcur.toLowerCase()) > -1).slice(0, 10));
+        : this.allcurrency.filter(v => v.currency_symbol.toLowerCase().indexOf(termcur.toLowerCase()) > -1).slice(0, 10))
 
   formattercur = (x: { currency_symbol: string }) => x.currency_symbol;
 

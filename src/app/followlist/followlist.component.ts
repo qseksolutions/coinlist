@@ -25,6 +25,7 @@ export class FollowlistComponent implements OnInit {
   public urlString: any = myGlobals.base_url;
   public login_ses: any = myGlobals.login_ses;
   public basecurr: any = myGlobals.basecurr;
+  public base_sing: any = myGlobals.base_sing;
   followlist: any;
   graph: any;
 

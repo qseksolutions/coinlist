@@ -39,6 +39,7 @@ export class HomeComponent implements OnInit {
   public loginData: any = myGlobals.login_ses;
   public userid: any = myGlobals.userid;
   public basecurr: any = myGlobals.basecurr;
+  public base_sing: any = myGlobals.base_sing;
   interval: any;
   selectedIndex: any;
   perioddata: any;
@@ -96,6 +97,8 @@ export class HomeComponent implements OnInit {
           // tslint:disable-next-line:triple-equals
           this.start = (parseInt(this.page[1], 0) - 1) * 50;
           this.page = this.page[1];
+        } else if (this.page[1] === 0) {
+          window.location.href = this.urlString + '?page=1';
         } else {
           this.start = 0;
           this.page = 1;
@@ -123,9 +126,13 @@ export class HomeComponent implements OnInit {
         const total = responceData.data.totalcoins / 50;
         this.coincount = Math.ceil(total);
         this.totalcoin = responceData.data.totalcoins;
+        if (this.page > this.coincount) {
+          window.location.href = this.urlString + '?page=' + this.coincount;
+        }
       } else {
         this.totalmarket = 0;
         this.totaltrade = 0;
+        this.coincount = 0;
         this.totalcoin = 0;
       }
     });

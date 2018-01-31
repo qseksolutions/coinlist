@@ -7,7 +7,7 @@
             <div class="watchlist-coin-detaile">
               <span class="coin-lable"> NET WORTH </span>
               <span class="watchlist-main-price">
-                <span class="dollar_sign">$</span>2,558.62</span>
+                <span class="dollar_sign">{{base_sing}}</span>2,558.62</span>
               <h4 class="main-coin-value"> 7.47%
                 <img class="up-down-arrow" src="assets/currency-svg/arrow-up-green.svg"> </h4>
             </div>
@@ -49,8 +49,7 @@
                   <div class="coin-value-detaile">
                     <div class="coin-price">
                       <span class="title-first">Last Price </span>
-                      <span class="secound-value">
-                        $
+                      <span class="secound-value"> {{base_sing}}
                         <span class="currency-sign">
                         {{follow['price_'+basecurr] | number : '1.2-2'}}
                         </span>

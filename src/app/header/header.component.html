@@ -72,7 +72,7 @@
           <label class="currency_label" for="base_currency">Base currency</label>
 
           <ul name="base_currency" id="base_currency" class="select_contry">
-            <li *ngFor="let currency of currencylist" (click)="closeNav(currency.currency_symbol)">
+            <li *ngFor="let currency of currencylist" (click)="closeNav(currency.currency_symbol,currency.currency_sign)" [ngClass]="basecurr == currency.currency_symbol ? 'active' : ''">
               <a href="javascript:void(0);">
                 <img src="assets/currency-symbol/{{currency.currency_symbol | lowercase}}.svg">
                 <span class="currency-shortname"> {{currency.currency_symbol}} </span>

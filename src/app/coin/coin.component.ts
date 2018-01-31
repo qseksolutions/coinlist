@@ -36,6 +36,7 @@ export class CoinComponent implements OnInit {
   public loginData: any = myGlobals.login_ses;
   public userid: any = myGlobals.userid;
   public basecurr: any = myGlobals.basecurr;
+  public base_sing: any = myGlobals.base_sing;
 
   // tslint:disable-next-line:max-line-length
   constructor(private coinservice: CoinService, private router: Router, toasterService: ToasterService, private http: Http, private titleService: Title, private datePipe: DatePipe) {

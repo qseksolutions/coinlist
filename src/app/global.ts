@@ -24,4 +24,5 @@ export const username = localStorage.getItem('name');
 export const usertype = localStorage.getItem('usertype');
 export const userstatus = localStorage.getItem('status');
 export const basecurr = localStorage.getItem('base');
+export const base_sing = localStorage.getItem('base_sing');
 export const user_base = localStorage.getItem('user_base');

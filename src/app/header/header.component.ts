@@ -18,17 +18,18 @@ export class HeaderComponent implements OnInit {
   private toasterService: ToasterService;
 
   public toasterconfig: ToasterConfig =
-    new ToasterConfig({
-      showCloseButton: true,
-      tapToDismiss: false,
-      timeout: 2000
-    });
+  new ToasterConfig({
+    showCloseButton: true,
+    tapToDismiss: false,
+    timeout: 2000
+  });
 
   public urlString: any = myGlobals.base_url;
   public loginData: any = myGlobals.login_ses;
   public basecurr: any = myGlobals.basecurr;
+  public base_sing: any = myGlobals.base_sing;
   public login_ses: any = 0;
-  currencylist: any ;
+  currencylist: any;
   private user: SocialUser;
   private loggedIn: boolean;
   regex: any;
@@ -49,9 +50,11 @@ export class HeaderComponent implements OnInit {
 
     if (this.basecurr == null) {
       localStorage.setItem('base', 'USD');
+      localStorage.setItem('base_sing', '$');
       this.basecurr = 'USD';
     } else {
       localStorage.setItem('base', this.basecurr);
+      localStorage.setItem('base_sing', this.base_sing);
     }
     this.regex = /^([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/;
     // tslint:disable-next-line:triple-equals
@@ -65,6 +68,7 @@ export class HeaderComponent implements OnInit {
   ngOnInit() {
     this.coinservice.getallcurrencylist().subscribe(resData => {
       if (resData.status === true) {
+        console.log(resData);
         this.currencylist = resData.data;
       }
     });
@@ -185,8 +189,9 @@ export class HeaderComponent implements OnInit {
     window.location.href = this.urlString;
   }
 
-  closeNav(basecur) {
+  closeNav(basecur, base_sing) {
     localStorage.setItem('base', basecur);
+    localStorage.setItem('base_sing', base_sing);
     location.reload();
   }
 }
