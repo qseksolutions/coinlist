@@ -159,7 +159,7 @@
   display: table-cell; }
   .price-sign-coin img, .price-number-coin img {
     height: 16px;
-    margin-right: 0; }
+    margin-right: 4px; }
 
 .price-number-coin {
   color: #8a96a3; }
