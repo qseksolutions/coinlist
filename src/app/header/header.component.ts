@@ -86,6 +86,8 @@ export class HeaderComponent implements OnInit {
             localStorage.setItem('name', resData.data.name);
             localStorage.setItem('usertype', resData.data.usertype);
             localStorage.setItem('status', resData.data.status);
+            localStorage.setItem('base', resData.data.d_currency);
+            localStorage.setItem('user_base', resData.data.d_currency);
             setTimeout(() => {
               location.reload();
             }, 1000);
@@ -114,6 +116,8 @@ export class HeaderComponent implements OnInit {
             localStorage.setItem('name', resData.data.name);
             localStorage.setItem('usertype', resData.data.usertype);
             localStorage.setItem('status', resData.data.status);
+            localStorage.setItem('base', resData.data.d_currency);
+            localStorage.setItem('user_base', resData.data.d_currency);
             setTimeout(() => {
               location.reload();
             }, 1000);
@@ -142,6 +146,8 @@ export class HeaderComponent implements OnInit {
           localStorage.setItem('name', resData.data.name);
           localStorage.setItem('usertype', resData.data.usertype);
           localStorage.setItem('status', resData.data.status);
+          localStorage.setItem('base', resData.data.d_currency);
+          localStorage.setItem('user_base', resData.data.d_currency);
           setTimeout(() => {
             location.reload();
           }, 1000);

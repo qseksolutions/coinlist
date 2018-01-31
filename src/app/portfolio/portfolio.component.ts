@@ -19,7 +19,9 @@ export class PortfolioComponent implements OnInit {
   public urlString: any = myGlobals.base_url;
   public loginData: any = myGlobals.login_ses;
   allcoin: any;
+  allcurrency: any;
   public model: any;
+  public modelcur: any;
 
   constructor(private coinservice: CoinService, private router: Router) {
     if (this.loginData == null) {
@@ -34,7 +36,12 @@ export class PortfolioComponent implements OnInit {
         this.allcoin = resData.data;
       }
     });
-    console.log(this.model);
+    this.coinservice.getallcurrencylist().subscribe(resData => {
+      if (resData.status === true) {
+        console.log(resData);
+        this.allcurrency = resData.data;
+      }
+    });
   }
 
   /* coinsearch(term: string) {
@@ -54,6 +61,14 @@ export class PortfolioComponent implements OnInit {
         : this.allcoin.filter(v => v.id.toLowerCase().indexOf(term.toLowerCase()) > -1).slice(0, 10));
 
   formatter = (x: { name: string, symbol: string }) => x.name + ' (' + x.symbol + ')';
+
+  searchcur = (text$: Observable<string>) =>
+    text$
+      .debounceTime(200)
+      .map(termcur => termcur === '' ? []
+        : this.allcurrency.filter(v => v.currency_symbol.toLowerCase().indexOf(termcur.toLowerCase()) > -1).slice(0, 10));
+
+  formattercur = (x: { currency_symbol: string }) => x.currency_symbol;
 
   isImage(src) {
     const deferred = defer();

@@ -105,9 +105,7 @@
             <div class="col-lg-2 col-md-2 col-md-2 col-sm-2 col-4">
               <div class="main-coin-price">
                 <div class="coin-align">
-                  <span class="currency-sign">
-                    <img class="currentImage" src="assets/currency-svg/{{basecurr | lowercase}}.svg">
-                  </span>
+                  <span class="currency-sign"> $ </span>
                   <span class="currency-value">{{coin['price_'+basecurr] | number : '1.2-2'}}</span>
                 </div>
               </div>
@@ -116,9 +114,7 @@
             <div class="col-lg-2 col-md-2 col-sm-2 col-2 hidden-xs-down">
               <div class="coin-market-cap">
                 <div class="coin-align" [style.display]="coin['24h_volume_'+basecurr] != null ? 'table-cell':'none'">
-                  <span class="currency-sign">
-                    <img class="currentImage" src="assets/currency-svg/{{basecurr | lowercase}}.svg">
-                  </span>
+                  <span class="currency-sign"> $ </span>
                   <span class="currency-value">{{coin['24h_volume_'+basecurr] | number}}</span>
                 </div>
                 <div class="coin-align" [style.display]="coin['24h_volume_'+basecurr] == null ? 'table-cell':'none'">
@@ -131,9 +127,7 @@
             <div class="col-lg-2 col-md-2 col-sm-2 col-2 hidden-xs-down">
               <div class="volume-price">
                 <div class="coin-align" [style.display]="coin.market_cap_+basecurr != null ? 'table-cell':'none'">
-                  <span class="currency-sign">
-                    <img class="currentImage" src="assets/currency-svg/{{basecurr | lowercase}}.svg">
-                  </span>
+                  <span class="currency-sign"> $ </span>
                   <span class="currency-value">{{coin['market_cap_'+basecurr] | number : '1.2-2'}}</span>
                 </div>
                 <div class="coin-align" [style.display]="coin.market_cap_+basecurr == null ? 'table-cell':'none'">
