@@ -17,9 +17,7 @@
                 </div>
               </div>
               <div class="coin-price">
-                <span class="price-sign-coin">
-                  <img class="currentImage" src="assets/currency-svg/{{basecurr | lowercase}}.svg">
-                </span>
+                <span class="price-sign-coin"> $ </span>
                 <span class="price-number-coin">{{coin['price_'+basecurr] | number : '1.2-2'}}</span>
               </div>
             </div>
@@ -38,9 +36,7 @@
         <div class="col-6 col-sm-6 col-md-3 col-lg-3">
           <div class="best-coin-value" *ngIf="coin.market_cap_+basecurr != null">
             <label class="coin-lable">MARKET CAP</label>
-            <span class="price-sign-coin">
-              <img class="currentImage" src="assets/currency-svg/{{basecurr | lowercase}}.svg">
-            </span>
+            <span class="price-sign-coin"> $ </span>
             <span class="price-number-coin">{{coin['market_cap_'+basecurr] | number : '1.2-2'}}</span>
           </div>
           <div class="best-coin-value" *ngIf="coin.market_cap_+basecurr == null">
@@ -52,9 +48,7 @@
         <div class="col-6 col-sm-6 col-md-3 col-lg-3">
           <div class="best-coin-value" *ngIf="coin['24h_volume_'+basecurr] != null">
             <label class="coin-lable">24H VOLUME</label>
-            <span class="price-sign-coin">
-              <img class="currentImage" src="assets/currency-svg/{{basecurr | lowercase}}.svg">
-            </span>
+            <span class="price-sign-coin"> $ </span>
             <span class="price-number-coin">{{coin['24h_volume_'+basecurr] | number}}</span>
           </div>
           <div class="best-coin-value" *ngIf="coin['24h_volume_'+basecurr] == null">

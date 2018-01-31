@@ -37,6 +37,7 @@ import { PortfolioComponent } from './portfolio/portfolio.component';
 import { SupportComponent } from './support/support.component';
 import { AdvertiseComponent } from './advertise/advertise.component';
 import { FollowlistComponent } from './followlist/followlist.component';
+import { ProfileComponent } from './profile/profile.component';
 
 
 export function highchartsModules() {
@@ -73,12 +74,12 @@ export function highchartsModules() {
         pathMatch: 'full'
       },
       {
-        path: 'portfolio',
+        path: 'user/portfolio',
         component: PortfolioComponent,
         pathMatch: 'full'
       },
       {
-        path: 'followlist',
+        path: 'user/followlist',
         component: FollowlistComponent,
         pathMatch: 'full'
       },
@@ -90,6 +91,11 @@ export function highchartsModules() {
       {
         path: 'advertise',
         component: AdvertiseComponent,
+        pathMatch: 'full'
+      },
+      {
+        path: 'user/profile',
+        component: ProfileComponent,
         pathMatch: 'full'
       },
     ]),
@@ -113,7 +119,8 @@ export function highchartsModules() {
     PortfolioComponent,
     SupportComponent,
     AdvertiseComponent,
-    FollowlistComponent
+    FollowlistComponent,
+    ProfileComponent
   ],
   providers: [
     { provide: HIGHCHARTS_MODULES, useFactory: highchartsModules }

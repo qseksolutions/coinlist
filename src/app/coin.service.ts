@@ -7,39 +7,105 @@ import { URLSearchParams } from '@angular/http';
 @Injectable()
 export class CoinService {
 
-  userid: any = myGlobals.userid;
-  basecur: any = myGlobals.basecurr;
   api_url: any = myGlobals.api_url;
+
   loginAPI: any = myGlobals.loginAPI;
   registerAPI: any = myGlobals.registerAPI;
   userbysocialAPI: any = myGlobals.userbysocialAPI;
+  addtradeAPI: any = myGlobals.addtradeAPI;
+
+  currencylistAPI: any = myGlobals.currencylistAPI;
   coinlistAPI: any = myGlobals.coinlistAPI;
   totalcoinAPI: any = myGlobals.totalcoinAPI;
-  currencylistAPI: any = myGlobals.currencylistAPI;
-  cointrackbyuserAPI: any = myGlobals.cointrackbyuserAPI;
   singlecoinAPI: any = myGlobals.singlecoinAPI;
   followlistAPI: any = myGlobals.followlistAPI;
   getallcoinlistAPI: any = myGlobals.getallcoinlistAPI;
+  portfoliolistAPI: any = myGlobals.portfoliolistAPI;
 
-  constructor(private http: Http) {
-    alert(this.basecur);
-   }
+  cointrackbyuserAPI: any = myGlobals.cointrackbyuserAPI;
 
-  getCoinCount() {
+  userid: any = myGlobals.userid;
+  basecur: any = localStorage.getItem('base');
+  user_base: any = localStorage.getItem('user_base');
+
+  constructor(private http: Http) { }
+
+  loginuserdata(login) {
     const headers = new Headers({ 'Content-Type': 'application/x-www-form-urlencoded' });
     const options = new RequestOptions({ headers: headers });
 
-    return this.http.get(this.api_url + this.totalcoinAPI, options)
+    const form = new URLSearchParams();
+    form.append('email', login.email);
+    form.append('password', login.password);
+
+    return this.http.post(this.api_url + this.loginAPI, form, options)
       .map((response: Response) => response.json());
   }
 
-  /* getCoinList(start, limit) {
-    const startdata = start;
-    const limitdata = limit;
-    const url = 'https://api.coinmarketcap.com/v1/ticker/?start=' + startdata + '&limit=' + limitdata;
-    return this.http.get(url)
-    .map((response: Response) => response.json());
-  } */
+  newuserregister(register) {
+    const headers = new Headers({ 'Content-Type': 'application/x-www-form-urlencoded' });
+    const options = new RequestOptions({ headers: headers });
+
+    const form = new URLSearchParams();
+    form.append('name', register.username);
+    form.append('email', register.useremail);
+    form.append('password', register.userpass);
+    form.append('usertype', '1');
+
+    return this.http.post(this.api_url + this.registerAPI, form, options)
+      .map((response: Response) => response.json());
+  }
+
+  sociallogin(social) {
+    const headers = new Headers({ 'Content-Type': 'application/x-www-form-urlencoded' });
+    const options = new RequestOptions({ headers: headers });
+
+    const form = new URLSearchParams();
+    form.append('name', social.name);
+    form.append('email', social.email);
+    form.append('password', social.id);
+    form.append('photo', social.photoUrl);
+    if (social.provider === 'GOOGLE') {
+      form.append('usertype', '3');
+    } else if (social.provider === 'FACEBOOK') {
+      form.append('usertype', '2');
+    }
+
+    return this.http.post(this.api_url + this.userbysocialAPI, form, options)
+      .map((response: Response) => response.json());
+  }
+
+  addtrade(trans) {
+    const headers = new Headers({ 'Content-Type': 'application/x-www-form-urlencoded' });
+    const options = new RequestOptions({ headers: headers });
+
+    const form = new URLSearchParams();
+    form.append('userid', this.userid);
+    form.append('buycoin', trans.coin.symbol);
+    form.append('buyamount', trans.amount);
+    form.append('bcurrency', trans.curr.currency_symbol);
+    form.append('bcprice', trans.rate);
+    form.append('dcurrency', this.basecur);
+    if (trans.date.day < 10) {
+      trans.date.day = '0' + trans.date.day;
+    }
+    if (trans.date.month < 10) {
+      trans.date.month = '0' + trans.date.month;
+    }
+    form.append('tdate', trans.date.year + '-' + trans.date.month + '-' + trans.date.day);
+
+    return this.http.post(this.api_url + this.addtradeAPI, form, options)
+      .map((response: Response) => response.json());
+  }
+
+  getallcurrencylist() {
+    const headers = new Headers({ 'Content-Type': 'application/x-www-form-urlencoded' });
+    const options = new RequestOptions({ headers: headers });
+
+    return this.http.get(this.api_url + this.currencylistAPI, options)
+      .map((response: Response) => response.json());
+  }
+
   getCoinList(start, limit) {
     const headers = new Headers({ 'Content-Type': 'application/x-www-form-urlencoded' });
     const options = new RequestOptions({ headers: headers });
@@ -59,26 +125,12 @@ export class CoinService {
     }
   }
 
-  getallcurrencylist() {
+  getCoinCount() {
     const headers = new Headers({ 'Content-Type': 'application/x-www-form-urlencoded' });
     const options = new RequestOptions({ headers: headers });
 
-    return this.http.get(this.api_url + this.currencylistAPI, options)
+    return this.http.get(this.api_url + this.totalcoinAPI, options)
       .map((response: Response) => response.json());
-  }
-
-  getallcoin(term) {
-    const headers = new Headers({ 'Content-Type': 'application/x-www-form-urlencoded' });
-    const options = new RequestOptions({ headers: headers });
-
-    if (term !== '') {
-      return this.http.get(this.api_url + this.getallcoinlistAPI + '/?coin=' + term, options)
-        .map((response: Response) => response.json());
-    } else {
-      return this.http.get(this.api_url + this.getallcoinlistAPI, options)
-        .map((response: Response) => response.json());
-    }
-
   }
 
   getSingleCoin(coin) {
@@ -116,11 +168,11 @@ export class CoinService {
     }
 
     return this.http.post('https://qseksolutions.com/api.qsek.com/api/V1/getcoindata', form, options)
-    .map((response: Response) => response.json());
+      .map((response: Response) => response.json());
   }
 
   followlist() {
-    const headers = new Headers({ 'Content-Type': 'application/x-www-form-urlencoded'});
+    const headers = new Headers({ 'Content-Type': 'application/x-www-form-urlencoded' });
     const options = new RequestOptions({ headers: headers });
 
     const form = new URLSearchParams();
@@ -131,48 +183,30 @@ export class CoinService {
       .map((response: Response) => response.json());
   }
 
-  loginuserdata(login) {
-    const headers = new Headers({ 'Content-Type': 'application/x-www-form-urlencoded'});
+  getallcoin(term) {
+    const headers = new Headers({ 'Content-Type': 'application/x-www-form-urlencoded' });
     const options = new RequestOptions({ headers: headers });
 
-    const form = new URLSearchParams();
-    form.append('email', login.email);
-    form.append('password', login.password);
+    if (term !== '') {
+      return this.http.get(this.api_url + this.getallcoinlistAPI + '/?coin=' + term, options)
+        .map((response: Response) => response.json());
+    } else {
+      return this.http.get(this.api_url + this.getallcoinlistAPI, options)
+        .map((response: Response) => response.json());
+    }
 
-    return this.http.post(this.api_url + this.loginAPI, form, options)
-      .map((response: Response) => response.json());
   }
 
-  newuserregister(register) {
-    const headers = new Headers({ 'Content-Type': 'application/x-www-form-urlencoded'});
-    const options = new RequestOptions({ headers: headers });
-
-    const form = new URLSearchParams();
-    form.append('name', register.username);
-    form.append('email', register.useremail);
-    form.append('password', register.userpass);
-    form.append('usertype', '1');
-
-    return this.http.post(this.api_url + this.registerAPI, form, options)
-      .map((response: Response) => response.json());
-  }
-
-  sociallogin(social) {
+  portfoliolist() {
     const headers = new Headers({ 'Content-Type': 'application/x-www-form-urlencoded' });
     const options = new RequestOptions({ headers: headers });
 
     const form = new URLSearchParams();
-    form.append('name', social.name);
-    form.append('email', social.email);
-    form.append('password', social.id);
-    form.append('photo', social.photoUrl);
-    if (social.provider === 'GOOGLE') {
-      form.append('usertype', '3');
-    } else if (social.provider === 'FACEBOOK') {
-      form.append('usertype', '2');
-    }
+    form.append('userid', this.userid);
+    form.append('dcurrency', this.basecur);
+    form.append('odcurrency', this.user_base);
 
-    return this.http.post(this.api_url + this.userbysocialAPI, form, options)
+    return this.http.post(this.api_url + this.portfoliolistAPI, form, options)
       .map((response: Response) => response.json());
   }
 
@@ -193,6 +227,5 @@ export class CoinService {
     return this.http.post(this.api_url + this.cointrackbyuserAPI, form, options)
       .map((response: Response) => response.json());
   }
-
 
 }
