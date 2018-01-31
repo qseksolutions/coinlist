@@ -129,7 +129,7 @@ $(document).on('click','#dropdownMenuButton',function(){
     $('#crypto-currency-menu').slideToggle();
 });
 
-$(document).on('click',"button.dropdown-item",function(){
+$(document).on('click',"#ngb-typeahead-0 > button.dropdown-item",function(){
     var cur_symbol = $(this).children("div").attr('value').toLowerCase();
     $('#icon-coin').children().attr('src','assets/currency-svg/'+cur_symbol+'.svg');
 });
@@ -141,6 +141,17 @@ $(document).on('keyup',"#selectedcoin",function(e){
         var regExp = /\(([^)]+)\)/;
         var cur_symbol = regExp.exec(cur_symbol);
         $('#icon-coin').children().attr('src','assets/currency-svg/'+cur_symbol[1].toLowerCase()+'.svg');
+    }
+});
+
+$(document).on('click',"#ngb-typeahead-1 > button.dropdown-item",function(){
+    var cur_symbol = $(this).children("div").attr('value').toLowerCase();
+    $('#icon-curr').children().attr('src','assets/currency-svg/'+cur_symbol+'.svg');
+});
+$(document).on('keyup',"#selectedcur",function(e){
+    if (e.keyCode == 13) {
+        var cur_symbol = $(this).val();
+        $('#icon-curr').children().attr('src','assets/currency-svg/'+cur_symbol.toLowerCase()+'.svg');
     }
 });
   

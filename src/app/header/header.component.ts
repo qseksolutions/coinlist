@@ -45,13 +45,14 @@ export class HeaderComponent implements OnInit {
 
   // tslint:disable-next-line:max-line-length
   constructor(private coinservice: CoinService, private router: Router, toasterService: ToasterService, private authService: AuthService) {
+    this.toasterService = toasterService;
+
     if (this.basecurr == null) {
       localStorage.setItem('base', 'USD');
       this.basecurr = 'USD';
     } else {
       localStorage.setItem('base', this.basecurr);
     }
-    this.toasterService = toasterService;
     this.regex = /^([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/;
     // tslint:disable-next-line:triple-equals
     if (this.loginData == null) {
@@ -73,12 +74,10 @@ export class HeaderComponent implements OnInit {
     this.authService.signIn(GoogleLoginProvider.PROVIDER_ID);
     this.authService.authState.subscribe((user) => {
       this.user = user;
-      console.log(this.user);
       this.loggedIn = (user != null);
       if (this.user != null) {
         this.coinservice.sociallogin(this.user).subscribe(resData => {
           if (resData.status === true) {
-            console.log(resData);
             this.toasterService.pop('success', 'Success', resData.message);
             localStorage.setItem('login_ses', resData.status);
             localStorage.setItem('id', resData.data.id);
@@ -103,12 +102,10 @@ export class HeaderComponent implements OnInit {
     this.authService.signIn(FacebookLoginProvider.PROVIDER_ID);
     this.authService.authState.subscribe((user) => {
       this.user = user;
-      console.log(this.user);
       this.loggedIn = (user != null);
       if (this.user != null) {
         this.coinservice.sociallogin(this.user).subscribe(resData => {
           if (resData.status === true) {
-            console.log(resData);
             this.toasterService.pop('success', 'Success', resData.message);
             localStorage.setItem('login_ses', resData.status);
             localStorage.setItem('id', resData.data.id);

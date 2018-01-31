@@ -7,6 +7,8 @@ import { defer } from 'q';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/debounceTime';
 import 'rxjs/add/operator/map';
+import { URLSearchParams } from '@angular/http';
+import { ToasterContainerComponent, ToasterService, ToasterConfig } from 'angular2-toaster';
 
 @Component({
   selector: 'app-portfolio',
@@ -16,43 +18,49 @@ import 'rxjs/add/operator/map';
 })
 export class PortfolioComponent implements OnInit {
 
+  private toasterService: ToasterService;
+
+  public toasterconfig: ToasterConfig =
+  new ToasterConfig({
+    showCloseButton: true,
+    tapToDismiss: false,
+    timeout: 2000
+  });
+
   public urlString: any = myGlobals.base_url;
   public loginData: any = myGlobals.login_ses;
   allcoin: any;
   allcurrency: any;
+  portfoliolist: any;
   public model: any;
   public modelcur: any;
+  public modeldate: any;
 
-  constructor(private coinservice: CoinService, private router: Router) {
+  constructor(private coinservice: CoinService, private router: Router, toasterService: ToasterService) {
+    this.toasterService = toasterService;
     if (this.loginData == null) {
       window.location.href = this.urlString;
     }
   }
 
   ngOnInit() {
-    this.coinservice.getallcoin('').subscribe(resData => {
+    this.coinservice.portfoliolist().subscribe(resData => {
       if (resData.status === true) {
         console.log(resData);
+        this.portfoliolist = resData.data;
+      }
+    });
+    this.coinservice.getallcoin('').subscribe(resData => {
+      if (resData.status === true) {
         this.allcoin = resData.data;
       }
     });
     this.coinservice.getallcurrencylist().subscribe(resData => {
       if (resData.status === true) {
-        console.log(resData);
         this.allcurrency = resData.data;
       }
     });
   }
-
-  /* coinsearch(term: string) {
-    if (term === '') {
-      return of([]);
-    }
-
-    this.coinservice.getallcoin(term).subscribe(resData => {
-      this.allcoin = resData.data;
-    });
-  } */
 
   search = (text$: Observable<string>) =>
     text$
@@ -70,6 +78,20 @@ export class PortfolioComponent implements OnInit {
 
   formattercur = (x: { currency_symbol: string }) => x.currency_symbol;
 
+  onSubmitAddtransaction(trans) {
+    const transaction = trans;
+    this.coinservice.addtrade(transaction).subscribe(resData => {
+      if (resData.status === true) {
+        this.toasterService.pop('success', 'Success', resData.message);
+        setTimeout(() => {
+          location.reload();
+        }, 1000);
+      } else {
+        this.toasterService.pop('error', 'Error', resData.message);
+      }
+    });
+  }
+
   isImage(src) {
     const deferred = defer();
     const image = new Image();
@@ -84,13 +106,13 @@ export class PortfolioComponent implements OnInit {
   }
 
   errorHandler(event, name) {
-    const imgurl = 'assets/currency-25/' + name.toLowerCase() + '.png';
+    const imgurl = 'assets/currency-50/' + name.toLowerCase() + '.png';
     this.isImage(imgurl).then(function (test) {
       // tslint:disable-next-line:triple-equals
       if (test == true) {
         return event.target.src = imgurl;
       } else {
-        return event.target.src = 'assets/currency-25/not-found-25.png';
+        return event.target.src = 'assets/currency-50/not-found-25.png';
       }
     });
   }
