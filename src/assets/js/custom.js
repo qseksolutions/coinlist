@@ -15,7 +15,7 @@ $(function(){
     if(cur_name == 'btc') {
         cur_name = 'btc-mono';
     }
-    $(".currency-symbol img").attr('src','assets/currency-svg/'+cur_name+'.svg');
+    $(".currency-symbol img").attr('src','assets/currency-symbol/'+cur_name+'.svg');
   });
 
 });

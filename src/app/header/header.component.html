@@ -11,7 +11,7 @@
         <div class="exchange_button">
           <a href="javascript:void(0)" class="btn btn-sm btn-green btn-exchange" id="currency-btn" onclick="openNav()">
             <span class="currency-symbol">
-              <img src="assets/currency-svg/{{basecurr | lowercase}}.svg" width="16">
+              <img src="assets/currency-symbol/{{basecurr | lowercase}}.svg" width="16">
               <span class="currency-di-text">{{basecurr}}</span>
             </span>
           </a>
@@ -74,7 +74,7 @@
           <ul name="base_currency" id="base_currency" class="select_contry">
             <li *ngFor="let currency of currencylist" (click)="closeNav(currency.currency_symbol)">
               <a href="javascript:void(0);">
-                <img src="assets/currency-svg/{{currency.currency_symbol | lowercase}}.svg">
+                <img src="assets/currency-symbol/{{currency.currency_symbol | lowercase}}.svg">
                 <span class="currency-shortname"> {{currency.currency_symbol}} </span>
                 <span class="currency-name"> {{currency.currency_name}} </span>
               </a>
