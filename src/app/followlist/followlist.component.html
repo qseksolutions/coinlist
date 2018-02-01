@@ -49,8 +49,9 @@
                   <div class="coin-value-detaile">
                     <div class="coin-price">
                       <span class="title-first">Last Price </span>
-                      <span class="secound-value"> {{base_sing}}
-                        <span class="currency-sign">
+                      <span class="secound-value">
+                        <span class="currency-sign"> {{base_sing}}</span>
+                        <span class="currency-value">
                         {{follow['price_'+basecurr] | number : '1.2-2'}}
                         </span>
                         <span class="small-text"> ({{follow.price_btc}}

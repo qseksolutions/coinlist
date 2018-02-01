@@ -94,7 +94,7 @@ div.breadcrumb{
 }
 .title-first{
     font-size: 12px;
-    margin: 5px 0;
+    margin: 5px 0 8px 0;
     color: $light-gray;
     font-weight: 700;
     display:block;
@@ -120,26 +120,31 @@ div.breadcrumb{
         .coin-price{
             flex-grow: 1;
             .small-text{
-                font-size: 12px;
+                font-size: 16px;
                 font-weight: 600;
                 margin-bottom: 0;
             }
             .secound-value{
                 text-align: left;
-                font-size: 16px;
+                font-size: 22px;
                 font-weight: 500;
                 margin-bottom: 5px;
                 display: table;
             }
             .currency_symbol{
-                font-size: 12px;
+                font-size: 16px;
                 vertical-align: baseline;
                 display: inline-block;
+                color:$dark-gray;
             }
             .currency-sign{
                 display: table-cell;
                 vertical-align: middle;
+                color: $sign-color;
+                padding-right: 3px;
             }
+
+            .currency-value{}
         }
     }
 }

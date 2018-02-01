@@ -42,7 +42,8 @@
         display: table-cell;
         vertical-align: middle;
         margin-right: 5px;
-        @include filter(brightness(0) invert(1))
+        @include filter(brightness(0) invert(1));
+        height: 15px;
     }
     .currency-di-text{
         display: table-cell;
@@ -108,15 +109,13 @@
             @extend .volume-price;
 
             .currency-sign{
-                color: $dark-blue;
-                font-size: 14px;
-                letter-spacing: 0.1em;
-                font-weight: 600;
+                color: $sign-color;
+                font-size: 13px;
+                padding-right: 3px;
             }
 
             .currency-value{
-                letter-spacing: 0.02em;  
-                color: $dark-blue;
+                letter-spacing: 0.02em; 
                 font-weight: 600;
             }
         }
@@ -138,6 +137,7 @@
         .update-price{
             display: table-cell;
             vertical-align: middle;
+            padding-left: 10px;
             
             .price-updown{
                 font-size: 12px;
@@ -161,11 +161,11 @@
         }
 
     .currency-sign{
-        color: $sign-color;
-        font-size: 14px;
-        letter-spacing: 0.1em;
+        font-size: 13px;
         display: table-cell;
         vertical-align: middle;
+        padding-right: 3px;
+        color: $sign-color;
     }
     
     .currency-value{

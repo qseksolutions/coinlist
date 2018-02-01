@@ -112,8 +112,7 @@
           color: #f17428;
           text-decoration: none; }
       .sidenav .select_contry li a img {
-        width: 25px;
-        height: 25px;
+        height: 19px;
         display: block;
         margin: auto;
         -webkit-transition: all ease 0.5s;
@@ -153,16 +152,21 @@
 
 .price-sign-coin, .price-number-coin {
   vertical-align: middle;
-  font-size: 18px;
-  color: #9ca5be;
+  font-size: 16px;
+  color: #acb1bf;
   letter-spacing: 0.02em;
-  display: table-cell; }
+  display: table-cell;
+  padding-right: 3px;
+  line-height: 18px;
+  font-weight: 500; }
   .price-sign-coin img, .price-number-coin img {
     height: 16px;
     margin-right: 4px; }
 
 .price-number-coin {
-  color: #8a96a3; }
+  color: #8a96a3;
+  line-height: 16px;
+  font-weight: 400; }
 
 .searchbar, .searchbar-small-device {
   float: right;
@@ -306,10 +310,10 @@
   background-image: none !important; }
 .exchange_button .btn.btn-green {
   background-image: url(../currency-svg/angle-arrow-down.svg);
-  background-position: 105px 30px;
+  background-position: 86px 32px;
   background-repeat: no-repeat;
-  background-size: 13px 13px;
-  padding: 32px 50px 32px 40px;
+  background-size: 12px 12px;
+  padding: 33px 50px 33px 40px;
   border-radius: 0; }
 
 .btn.btn-exchange, .btn.btn-social {
@@ -547,7 +551,8 @@
     -webkit-filter: brightness(0) invert(1);
     -moz-filter: brightness(0) invert(1);
     -ms-filter: brightness(0) invert(1);
-    filter: brightness(0) invert(1); }
+    filter: brightness(0) invert(1);
+    height: 15px; }
   .currency-symbol .currency-di-text {
     display: table-cell;
     vertical-align: middle;
@@ -567,7 +572,7 @@
 
 .coin-table-list {
   padding: 10px 0;
-  color: #444956;
+  color: #4b4b4b;
   text-align: center; }
   .coin-table-list .coin-coint {
     display: table;
@@ -595,15 +600,13 @@
       text-overflow: ellipsis;
       text-align: left; }
       .coin-table-list .coin-coint .main-coin-title a, .coin-table-list .coin-coint .protfolia-table-detaile .rate-count a, .protfolia-table-detaile .coin-table-list .coin-coint .rate-count a, .coin-table-list .coin-coint .protfolia-table-detaile .remove-btn a, .protfolia-table-detaile .coin-table-list .coin-coint .remove-btn a, .coin-table-list .coin-coint .protfolia-table-detaile .cost-count a, .protfolia-table-detaile .coin-table-list .coin-coint .cost-count a, .coin-table-list .coin-coint .protfolia-table-detaile .date-table a, .protfolia-table-detaile .coin-table-list .coin-coint .date-table a {
-        color: #444956; }
+        color: #4b4b4b; }
   .coin-table-list .main-coin-price .currency-sign {
-    color: #3d3379;
-    font-size: 14px;
-    letter-spacing: 0.1em;
-    font-weight: 600; }
+    color: #acb1bf;
+    font-size: 13px;
+    padding-right: 3px; }
   .coin-table-list .main-coin-price .currency-value {
     letter-spacing: 0.02em;
-    color: #3d3379;
     font-weight: 600; }
   .coin-table-list .volume-price, .coin-table-list .main-coin-price, .coin-table-list .coin-market-cap {
     width: 100%;
@@ -615,7 +618,8 @@
     text-align: left; }
   .coin-table-list .update-price {
     display: table-cell;
-    vertical-align: middle; }
+    vertical-align: middle;
+    padding-left: 10px; }
     .coin-table-list .update-price .price-updown {
       font-size: 12px;
       font-weight: 700;
@@ -629,11 +633,11 @@
       padding-top: 7px;
       display: block; }
   .coin-table-list .currency-sign {
-    color: #acb1bf;
-    font-size: 14px;
-    letter-spacing: 0.1em;
+    font-size: 13px;
     display: table-cell;
-    vertical-align: middle; }
+    vertical-align: middle;
+    padding-right: 3px;
+    color: #acb1bf; }
   .coin-table-list .currency-value {
     letter-spacing: 0.02em;
     display: table-cell;
@@ -772,7 +776,7 @@
   border-bottom: solid 1px #ebeef3;
   margin: 15px 20px; }
 .login-model .model-label {
-  color: #444956;
+  color: #4b4b4b;
   font-size: 13px;
   display: block; }
 .login-model .model-input {
@@ -1043,7 +1047,7 @@ input::-webkit-input-placeholder, input::-moz-placeholder, input:-ms-input-place
 /*footer*/
 .footer-curr-fee {
   font-size: 16px;
-  color: #444956;
+  color: #4b4b4b;
   font-weight: 600; }
 
 .footer-curr-time {
@@ -1176,7 +1180,7 @@ div.breadcrumb {
 
 .title-first {
   font-size: 12px;
-  margin: 5px 0;
+  margin: 5px 0 8px 0;
   color: #9ca5be;
   font-weight: 700;
   display: block;
@@ -1196,22 +1200,25 @@ div.breadcrumb {
     .watch-list-detaile .coin-value-detaile .coin-price {
       flex-grow: 1; }
       .watch-list-detaile .coin-value-detaile .coin-price .small-text {
-        font-size: 12px;
+        font-size: 16px;
         font-weight: 600;
         margin-bottom: 0; }
       .watch-list-detaile .coin-value-detaile .coin-price .secound-value {
         text-align: left;
-        font-size: 16px;
+        font-size: 22px;
         font-weight: 500;
         margin-bottom: 5px;
         display: table; }
       .watch-list-detaile .coin-value-detaile .coin-price .currency_symbol {
-        font-size: 12px;
+        font-size: 16px;
         vertical-align: baseline;
-        display: inline-block; }
+        display: inline-block;
+        color: #8a96a3; }
       .watch-list-detaile .coin-value-detaile .coin-price .currency-sign {
         display: table-cell;
-        vertical-align: middle; }
+        vertical-align: middle;
+        color: #acb1bf;
+        padding-right: 3px; }
 
 canvas {
   width: 100%;
@@ -1402,6 +1409,10 @@ canvas {
     padding: 10px;
     padding-right: 5px; }
 
+ngb-datepicker.dropdown-menu {
+  min-width: auto !important;
+  max-height: none !important; }
+
 .support-main-bg {
   background: url(../images/support-bg.png);
   background-size: 100% 40%;
@@ -1485,7 +1496,7 @@ canvas {
     margin: 20px 0 0;
     display: block;
     font-weight: 500;
-    color: #444956; }
+    color: #4b4b4b; }
 
 .suport-text-sec {
   padding: 70px 0; }
@@ -1504,7 +1515,7 @@ canvas {
       border-radius: 5px;
       background-color: #3d3379; }
   .suport-text-sec .qus-point {
-    color: #444956;
+    color: #4b4b4b;
     font-weight: 500;
     margin: 20px 0 10px; }
   .suport-text-sec .support-qus {
@@ -1564,7 +1575,7 @@ canvas {
 
 body {
   font-family: 'montserrat' !important;
-  color: #444956;
+  color: #4b4b4b !important;
   background-color: #f8f9fb !important;
   line-height: normal !important;
   font-size: 13px !important;

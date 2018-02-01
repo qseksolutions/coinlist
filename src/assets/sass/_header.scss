@@ -128,8 +128,7 @@ display: none;
 
             a{
                 img{
-                    width: 25px;
-                    height: 25px;
+                    height: 19px;
                     display: block;
                     margin: auto;
                     @include transition(all ease 0.5s);
@@ -166,10 +165,13 @@ display: none;
 }
 .price-sign-coin{
     vertical-align: middle;
-    font-size: 18px;
-    color: $light-gray;
+    font-size: 16px;
+    color: $sign-color;
     letter-spacing: 0.02em;
     display: table-cell;
+    padding-right: 3px;
+    line-height: 18px;
+    font-weight: 500;
 
     img{
         height: 16px;
@@ -179,6 +181,8 @@ display: none;
 .price-number-coin{
     @extend .price-sign-coin;
     color: $dark-gray;
+    line-height: 16px;
+    font-weight: 400;
 }
 .searchbar{
   float: right;

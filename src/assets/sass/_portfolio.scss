@@ -238,3 +238,8 @@
         @extend .currency-list;
     }
 }
+
+ngb-datepicker.dropdown-menu {
+    min-width: auto !important;
+    max-height: none !important;
+}
