@@ -82,7 +82,7 @@
                   </span>
                 </div>
                 <div class="main-coin-title">
-                  <span class="coin-name">{{portfolio.name}}</span>
+                  <span class="coin-name">{{portfolio.coin_name}}</span>
                   <span class="coin-amount">{{portfolio.coin_amount}}
                     <span class="coin-symbol"> {{portfolio.buy_coin}}</span>
                   </span>
@@ -98,7 +98,7 @@
                     {{portfolio.dc_price / portfolio.coin_amount | number : '1.2-2'}}
                   </span>
                   <span class="coin-amount">
-                    <span class="coin-symbol"> ({{portfolio.bc_price / portfolio.coin_amount | number : '1.2-2'}})</span>
+                    <span class="coin-symbol"> ({{portfolio.bc_sign}} {{portfolio.bc_price / portfolio.coin_amount | number : '1.2-2'}})</span>
                   </span>
                 </div>
               </div>
@@ -112,7 +112,7 @@
                     {{portfolio.dc_price | number : '1.2-2'}}
                   </span>
                   <span class="coin-amount">
-                    <span class="coin-symbol"> ({{portfolio.bc_price | number : '1.2-2'}})</span>
+                    <span class="coin-symbol"> ({{portfolio.bc_sign}} {{portfolio.bc_price | number : '1.2-2'}})</span>
                   </span>
                 </div>
               </div>
@@ -129,7 +129,7 @@
             <div class="col-lg-1 col-md-2 col-sm-2 col-2">
               <div class="coin-align">
                 <div class="remove-btn">
-                  <a href="#" class="btn btn-remove"> Remove </a>
+                  <a href="javascript:;" class="btn btn-remove" (click)="traderemove(portfolio.id)"> Remove </a>
                 </div>
               </div>
             </div>

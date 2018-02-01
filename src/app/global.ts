@@ -6,6 +6,7 @@ export const loginAPI = 'login';
 export const registerAPI = 'register';
 export const userbysocialAPI = 'userbysocial';
 export const addtradeAPI = 'addtrade';
+export const removetradeAPI = 'removetrade';
 
 export const currencylistAPI = 'currencylist';
 export const coinlistAPI = 'coinlist';

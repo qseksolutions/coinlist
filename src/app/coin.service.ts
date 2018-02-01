@@ -13,6 +13,7 @@ export class CoinService {
   registerAPI: any = myGlobals.registerAPI;
   userbysocialAPI: any = myGlobals.userbysocialAPI;
   addtradeAPI: any = myGlobals.addtradeAPI;
+  removetradeAPI: any = myGlobals.removetradeAPI;
 
   currencylistAPI: any = myGlobals.currencylistAPI;
   coinlistAPI: any = myGlobals.coinlistAPI;
@@ -27,6 +28,7 @@ export class CoinService {
   userid: any = myGlobals.userid;
   basecur: any = localStorage.getItem('base');
   user_base: any = localStorage.getItem('user_base');
+  base_sing: any = localStorage.getItem('base_sing');
 
   constructor(private http: Http) { }
 
@@ -81,11 +83,13 @@ export class CoinService {
 
     const form = new URLSearchParams();
     form.append('userid', this.userid);
+    form.append('coin_name', trans.coin.name);
     form.append('buycoin', trans.coin.symbol);
     form.append('buyamount', trans.amount);
     form.append('bcurrency', trans.curr.currency_symbol);
     form.append('bcprice', trans.rate);
     form.append('dcurrency', this.basecur);
+    form.append('bc_sign', trans.curr.currency_sign);
     if (trans.date.day < 10) {
       trans.date.day = '0' + trans.date.day;
     }
@@ -95,6 +99,18 @@ export class CoinService {
     form.append('tdate', trans.date.year + '-' + trans.date.month + '-' + trans.date.day);
 
     return this.http.post(this.api_url + this.addtradeAPI, form, options)
+      .map((response: Response) => response.json());
+  }
+
+  removetrade(tradeid) {
+    const headers = new Headers({ 'Content-Type': 'application/x-www-form-urlencoded' });
+    const options = new RequestOptions({ headers: headers });
+
+    const form = new URLSearchParams();
+    form.append('userid', this.userid);
+    form.append('trade_id', tradeid);
+
+    return this.http.post(this.api_url + this.removetradeAPI, form, options)
       .map((response: Response) => response.json());
   }
 
@@ -129,7 +145,7 @@ export class CoinService {
     const headers = new Headers({ 'Content-Type': 'application/x-www-form-urlencoded' });
     const options = new RequestOptions({ headers: headers });
 
-    return this.http.get(this.api_url + this.totalcoinAPI, options)
+    return this.http.get(this.api_url + this.totalcoinAPI + '/?base=' + this.basecur, options)
       .map((response: Response) => response.json());
   }
 

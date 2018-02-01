@@ -24,7 +24,7 @@
         <div class="col-12 col-sm-12 col-md-12 col-lg-12">
 
           <div class="breadcrumb">
-            <span class="bread-c-big-text">Watchlist</span>
+            <span class="bread-c-big-text">Followlist</span>
           </div>
           <div class="watch-list" *ngFor="let follow of followlist">
             <div class="watchlist-coin-img">
@@ -53,11 +53,10 @@
                         <span class="currency-sign">
                         {{follow['price_'+basecurr] | number : '1.2-2'}}
                         </span>
+                        <span class="small-text"> ({{follow.price_btc}}
+                          <span class="currency_symbol">BTC</span>)
+                        </span>
                       </span>
-
-                      <p class="small-text"> {{follow.price_btc}}
-                        <span class="currency_symbol">BTC</span>
-                      </p>
                     </div>
                   </div>
                 </div>
@@ -70,10 +69,9 @@
                     <span class="price-updown" [ngClass]="follow.percent_change_1h >= 0 ? 'price_positive' : 'price_nagative'">{{follow.percent_change_1h | number : '1.2-2'}}%
                       <img class="up-down-arrow" [src]="follow.percent_change_1h >= 0 ? 'assets/currency-svg/arrow-up-green.svg' : 'assets/currency-svg/arrow-down-red.svg'">
                     </span>
-                    <svg viewBox="0 0 500 100" class="chart">
+                    <!-- <svg viewBox="0 0 500 100" class="chart">
                       <polyline fill="none" [attr.stroke]="follow.percent_change_1h >= 0 ? '#3cd483' : '#ff6060'" stroke-width="10" [attr.points]="graph"></polyline>
-
-                    </svg>
+                    </svg> -->
 
                   </div>
                 </div>
@@ -86,10 +84,9 @@
                     <span class="price-updown" [ngClass]="follow.percent_change_24h >= 0 ? 'price_positive' : 'price_nagative'">{{follow.percent_change_24h | number : '1.2-2'}}%
                       <img class="up-down-arrow" [src]="follow.percent_change_24h >= 0 ? 'assets/currency-svg/arrow-up-green.svg' : 'assets/currency-svg/arrow-down-red.svg'">
                     </span>
-                    <svg viewBox="0 0 500 100" class="chart">
+                    <!-- <svg viewBox="0 0 500 100" class="chart">
                       <polyline fill="none" [attr.stroke]="follow.percent_change_24h >= 0 ? '#3cd483' : '#ff6060'" stroke-width="10" [attr.points]="graph"></polyline>
-
-                    </svg>
+                    </svg> -->
 
                   </div>
                 </div>
@@ -102,10 +99,9 @@
                     <span class="price-updown" [ngClass]="follow.percent_change_7d >= 0 ? 'price_positive' : 'price_nagative'">{{follow.percent_change_7d | number : '1.2-2'}}%
                       <img class="up-down-arrow" [src]="follow.percent_change_7d >= 0 ? 'assets/currency-svg/arrow-up-green.svg' : 'assets/currency-svg/arrow-down-red.svg'">
                     </span>
-                    <svg viewBox="0 0 500 100" class="chart">
+                    <!-- <svg viewBox="0 0 500 100" class="chart">
                       <polyline fill="none" [attr.stroke]="follow.percent_change_7d >= 0 ? '#3cd483' : '#ff6060'" stroke-width="10" [attr.points]="graph"></polyline>
-
-                    </svg>
+                    </svg> -->
 
                   </div>
                 </div>

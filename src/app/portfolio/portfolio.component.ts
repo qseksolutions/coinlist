@@ -80,13 +80,23 @@ export class PortfolioComponent implements OnInit {
   formattercur = (x: { currency_symbol: string }) => x.currency_symbol;
 
   onSubmitAddtransaction(trans) {
-    const transaction = trans;
-    this.coinservice.addtrade(transaction).subscribe(resData => {
+    this.coinservice.addtrade(trans).subscribe(resData => {
       if (resData.status === true) {
         this.toasterService.pop('success', 'Success', resData.message);
         setTimeout(() => {
           location.reload();
         }, 1000);
+      } else {
+        this.toasterService.pop('error', 'Error', resData.message);
+      }
+    });
+  }
+
+  traderemove(tradeid) {
+    this.coinservice.removetrade(tradeid).subscribe(resData => {
+      if (resData.status === true) {
+        this.toasterService.pop('success', 'Success', resData.message);
+        this.ngOnInit();
       } else {
         this.toasterService.pop('error', 'Error', resData.message);
       }

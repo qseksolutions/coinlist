@@ -97,7 +97,8 @@ export class HomeComponent implements OnInit {
           // tslint:disable-next-line:triple-equals
           this.start = (parseInt(this.page[1], 0) - 1) * 50;
           this.page = this.page[1];
-        } else if (this.page[1] === 0) {
+        // tslint:disable-next-line:triple-equals
+        } else if (this.page['1'] == 0) {
           window.location.href = this.urlString + '?page=1';
         } else {
           this.start = 0;
@@ -121,8 +122,8 @@ export class HomeComponent implements OnInit {
     });
     this.coinservice.getCoinCount().subscribe(responceData => {
       if (responceData.status === true) {
-        this.totalmarket = responceData.data.totalmarketcap;
-        this.totaltrade = responceData.data.totalvolume;
+        this.totalmarket = responceData.data['totalmarketcap_' + this.basecurr];
+        this.totaltrade = responceData.data['totalvolume_' + this.basecurr];
         const total = responceData.data.totalcoins / 50;
         this.coincount = Math.ceil(total);
         this.totalcoin = responceData.data.totalcoins;
