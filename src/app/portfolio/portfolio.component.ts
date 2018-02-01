@@ -10,6 +10,8 @@ import 'rxjs/add/operator/map';
 import { URLSearchParams } from '@angular/http';
 import { ToasterContainerComponent, ToasterService, ToasterConfig } from 'angular2-toaster';
 
+declare var jQuery: any;
+
 @Component({
   selector: 'app-portfolio',
   templateUrl: './portfolio.component.html',
@@ -47,7 +49,6 @@ export class PortfolioComponent implements OnInit {
   ngOnInit() {
     this.coinservice.portfoliolist().subscribe(resData => {
       if (resData.status === true) {
-        console.log(resData);
         this.portfoliolist = resData.data;
       }
     });
@@ -80,16 +81,32 @@ export class PortfolioComponent implements OnInit {
   formattercur = (x: { currency_symbol: string }) => x.currency_symbol;
 
   onSubmitAddtransaction(trans) {
-    this.coinservice.addtrade(trans).subscribe(resData => {
-      if (resData.status === true) {
-        this.toasterService.pop('success', 'Success', resData.message);
-        setTimeout(() => {
-          location.reload();
-        }, 1000);
-      } else {
-        this.toasterService.pop('error', 'Error', resData.message);
-      }
-    });
+    if (trans.date === undefined || trans.date === null) {
+      this.toasterService.pop('error', 'Required', 'Please select date');
+    } else if (trans.coin === undefined || trans.coin === '') {
+      this.toasterService.pop('error', 'Required', 'Please select coin');
+    } else if (trans.curr === undefined || trans.curr === '') {
+      this.toasterService.pop('error', 'Required', 'Please select currency');
+    } else if (trans.amount === '') {
+      this.toasterService.pop('error', 'Required', 'Please enter amount');
+    } else if (trans.rate === '') {
+      this.toasterService.pop('error', 'Required', 'Please enter rate');
+    } else {
+      this.coinservice.addtrade(trans).subscribe(resData => {
+        if (resData.status === true) {
+          this.toasterService.pop('success', 'Success', resData.message);
+          this.ngOnInit();
+          setTimeout(() => {
+            jQuery('#coin_image').attr('src', 'assets/currency-svg/btc.svg');
+            jQuery('#curr_image').attr('src', 'assets/currency-svg/usd.svg');
+            jQuery('.form-control').val('');
+            jQuery('#newtransaction').modal('hide');
+          }, 1000);
+        } else {
+          this.toasterService.pop('error', 'Error', resData.message);
+        }
+      });
+    }
   }
 
   traderemove(tradeid) {

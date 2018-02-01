@@ -191,7 +191,7 @@
                       </ng-template>
                       <input id="typeahead-template" type="text" class="form-control currency-select currency-name" [(ngModel)]="model" name="coin" [ngbTypeahead]="search" [resultTemplate]="rt" [inputFormatter]="formatter" placeholder="Bitcoin (BTC)" id="selectedcoin"/>
                       <div id="icon-coin" class="currency_icon">
-                        <img src="assets/currency-svg/btc.svg" class="input-currency-icon">
+                        <img src="assets/currency-svg/btc.svg" class="input-currency-icon" id="coin_image">
                       </div>
                     </div>
                   </div>
@@ -206,7 +206,7 @@
                       </ng-template>
                       <input id="typeahead-template" type="text" class="form-control currency-select currency-name" [(ngModel)]="modelcur" name="curr" [ngbTypeahead]="searchcur" [resultTemplate]="os" [inputFormatter]="formattercur" placeholder="USD" id="selectedcur" />
                       <div id="icon-curr" class="currency_icon">
-                        <img src="assets/currency-svg/usd.svg" class="input-currency-icon" style="filter:brightness(60%);">
+                        <img src="assets/currency-svg/usd.svg" class="input-currency-icon" style="filter:brightness(60%);" id="curr_image">
                       </div>
                     </div>
                   </div>

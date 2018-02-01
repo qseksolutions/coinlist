@@ -88,7 +88,7 @@ export class CoinService {
     form.append('buyamount', trans.amount);
     form.append('bcurrency', trans.curr.currency_symbol);
     form.append('bcprice', trans.rate);
-    form.append('dcurrency', this.basecur);
+    form.append('dcurrency', this.user_base);
     form.append('bc_sign', trans.curr.currency_sign);
     if (trans.date.day < 10) {
       trans.date.day = '0' + trans.date.day;
