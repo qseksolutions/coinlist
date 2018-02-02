@@ -177,7 +177,7 @@
             <div class="col-lg-1 col-md-3 col-sm-3 col-3">
               <div class="coin-align">
                 <div class="rate-count">
-                  <span class="coin-name" [ngClass]="pl.current_price * pl.coin_amount - pl.totalcost / pl.totalcost * 100 > 0 ? 'green' : 'red'">
+                  <span class="coin-name" [ngClass]="((pl.current_price * pl.coin_amount) - pl.totalcost) / pl.totalcost * 100 > 0 ? 'green' : 'red'">
                     {{((pl.current_price * pl.coin_amount) - pl.totalcost) / pl.totalcost * 100 | number : '1.2-2'}}%
                   </span>
                 </div>
