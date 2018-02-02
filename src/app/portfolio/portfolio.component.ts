@@ -35,9 +35,14 @@ export class PortfolioComponent implements OnInit {
   allcoin: any;
   allcurrency: any;
   portfoliolist: any;
+  profitlosslist: any;
   public model: any;
   public modelcur: any;
   public modeldate: any;
+  totalcost: any = 0;
+  value: any = 0;
+  overolsum: any = 0;
+  overolper: any = 0;
 
   constructor(private coinservice: CoinService, private router: Router, toasterService: ToasterService) {
     this.toasterService = toasterService;
@@ -47,6 +52,18 @@ export class PortfolioComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.coinservice.profitlosslist().subscribe(resData => {
+      if (resData.status === true) {
+        console.log(resData.data);
+        for (let i = 0; i < resData.data.length; i++) {
+          this.totalcost += resData.data[i]['totalcost'];
+          this.value += resData.data[i]['current_price'] * resData.data[i]['coin_amount'];
+        }
+        this.overolsum = this.value;
+        this.overolper = (this.value - this.totalcost) / this.totalcost * 100;
+        this.profitlosslist = resData.data;
+      }
+    });
     this.coinservice.portfoliolist().subscribe(resData => {
       if (resData.status === true) {
         this.portfoliolist = resData.data;

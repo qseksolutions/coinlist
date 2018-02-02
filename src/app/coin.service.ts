@@ -22,6 +22,7 @@ export class CoinService {
   followlistAPI: any = myGlobals.followlistAPI;
   getallcoinlistAPI: any = myGlobals.getallcoinlistAPI;
   portfoliolistAPI: any = myGlobals.portfoliolistAPI;
+  profitlosslistAPI: any = myGlobals.profitlosslistAPI;
 
   cointrackbyuserAPI: any = myGlobals.cointrackbyuserAPI;
 
@@ -219,10 +220,23 @@ export class CoinService {
 
     const form = new URLSearchParams();
     form.append('userid', this.userid);
-    form.append('dcurrency', this.basecur);
-    form.append('odcurrency', this.user_base);
+    form.append('bcurrency', this.basecur);
+    form.append('dcurrency', this.user_base);
 
     return this.http.post(this.api_url + this.portfoliolistAPI, form, options)
+      .map((response: Response) => response.json());
+  }
+
+  profitlosslist() {
+    const headers = new Headers({ 'Content-Type': 'application/x-www-form-urlencoded' });
+    const options = new RequestOptions({ headers: headers });
+
+    const form = new URLSearchParams();
+    form.append('userid', this.userid);
+    form.append('bcurrency', this.basecur);
+    form.append('dcurrency', this.user_base);
+
+    return this.http.post(this.api_url + this.profitlosslistAPI, form, options)
       .map((response: Response) => response.json());
   }
 

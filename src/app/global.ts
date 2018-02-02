@@ -15,6 +15,7 @@ export const singlecoinAPI = 'coinlist';
 export const followlistAPI = 'followlist';
 export const getallcoinlistAPI = 'getallcoinlist';
 export const portfoliolistAPI = 'portfoliolist';
+export const profitlosslistAPI = 'profitlosslist';
 
 export const cointrackbyuserAPI = 'cointrackbyuser';
 
