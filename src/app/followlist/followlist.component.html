@@ -7,9 +7,12 @@
             <div class="watchlist-coin-detaile">
               <span class="coin-lable"> NET WORTH </span>
               <span class="watchlist-main-price">
-                <span class="dollar_sign">{{base_sing}}</span>2,558.62</span>
-              <h4 class="main-coin-value"> 7.47%
-                <img class="up-down-arrow" src="assets/currency-svg/arrow-up-green.svg"> </h4>
+                <span class="dollar_sign">{{base_sing}}</span>{{overolsum | number : '1.2-2'}}
+              </span>
+              <h4 class="main-coin-value" [ngClass]="overolper > 0 ? 'green' : 'red'">
+                {{overolper | number : '1.2-2'}}%
+                <img class="up-down-arrow" [src]="overolper > 0 ? 'assets/currency-svg/arrow-up-green.svg' : 'assets/currency-svg/arrow-down-red.svg'">
+              </h4>
             </div>
           </div>
         </div>

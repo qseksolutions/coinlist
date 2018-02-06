@@ -39,9 +39,7 @@ import { AdvertiseComponent } from './advertise/advertise.component';
 import { FollowlistComponent } from './followlist/followlist.component';
 import { ProfileComponent } from './profile/profile.component';
 
-
 export function highchartsModules() {
-    // apply Highstock Modules to this array
     return [ highstock, exporting ];
 }
 
@@ -69,8 +67,13 @@ export function highchartsModules() {
         pathMatch: 'full'
       },
       {
-        path: 'amount',
-        component: AmountComponent,
+        path: 'advertise',
+        component: AdvertiseComponent,
+        pathMatch: 'full'
+      },
+      {
+        path: 'support',
+        component: SupportComponent,
         pathMatch: 'full'
       },
       {
@@ -81,16 +84,6 @@ export function highchartsModules() {
       {
         path: 'user/followlist',
         component: FollowlistComponent,
-        pathMatch: 'full'
-      },
-      {
-        path: 'support',
-        component: SupportComponent,
-        pathMatch: 'full'
-      },
-      {
-        path: 'advertise',
-        component: AdvertiseComponent,
         pathMatch: 'full'
       },
       {

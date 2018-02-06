@@ -6,6 +6,11 @@ import { ToasterContainerComponent, ToasterService, ToasterConfig } from 'angula
 import { AuthService } from 'angular4-social-login';
 import { SocialUser } from 'angular4-social-login';
 import { FacebookLoginProvider, GoogleLoginProvider } from 'angular4-social-login';
+import { defer } from 'q';
+import { Observable } from 'rxjs/Observable';
+import 'rxjs/add/operator/debounceTime';
+import 'rxjs/add/operator/map';
+import { window } from 'rxjs/operator/window';
 
 @Component({
   selector: 'app-header',
@@ -32,7 +37,9 @@ export class HeaderComponent implements OnInit {
   currencylist: any;
   private user: SocialUser;
   private loggedIn: boolean;
+  public model: any;
   regex: any;
+  allcoin: any;
 
   login = {
     email: '',
@@ -71,6 +78,26 @@ export class HeaderComponent implements OnInit {
         this.currencylist = resData.data;
       }
     });
+    this.coinservice.getallcoin('').subscribe(resData => {
+      if (resData.status === true) {
+        this.allcoin = resData.data;
+      }
+    });
+  }
+
+  search = (text$: Observable<string>) =>
+    text$
+      .debounceTime(200)
+      .map(term => term === '' ? []
+        : this.allcoin.filter(v => v.id.toLowerCase().indexOf(term.toLowerCase()) > -1).slice(0, 10))
+
+  formattersearch = (x: { name: string, symbol: string }) => x.name + ' (' + x.symbol + ')';
+
+  keyDownFunction(event) {
+    if (event.keyCode === 13) {
+      console.log(this.model);
+      location.href = this.urlString + 'coin/' + this.model.id;
+    }
   }
 
   signInWithGoogle(): void {
@@ -185,12 +212,37 @@ export class HeaderComponent implements OnInit {
   destroyUser() {
     this.authService.signOut();
     localStorage.clear();
-    window.location.href = this.urlString;
+    location.href = this.urlString;
   }
 
   closeNav(basecur, base_sing) {
     localStorage.setItem('base', basecur);
     localStorage.setItem('base_sing', base_sing);
     location.reload();
+  }
+
+  isImage(src) {
+    const deferred = defer();
+    const image = new Image();
+    image.onerror = function () {
+      deferred.resolve(false);
+    };
+    image.onload = function () {
+      deferred.resolve(true);
+    };
+    image.src = src;
+    return deferred.promise;
+  }
+
+  errorHandler(event, name) {
+    const imgurl = 'assets/currency-25/' + name.toLowerCase() + '.png';
+    this.isImage(imgurl).then(function (test) {
+      // tslint:disable-next-line:triple-equals
+      if (test == true) {
+        return event.target.src = imgurl;
+      } else {
+        return event.target.src = 'assets/currency-50/not-found-25.png';
+      }
+    });
   }
 }
