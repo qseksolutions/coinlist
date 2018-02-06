@@ -33,7 +33,7 @@
     top: -5px;
     text-align: center;
     cursor: pointer;
-    @include filter(brightness(25%)); 
+    background-color: $dark-gray;
     img{
         width: 12px;
     }
@@ -94,7 +94,7 @@ div.breadcrumb{
 }
 .title-first{
     font-size: 12px;
-    margin: 5px 0;
+    margin: 5px 0 8px 0;
     color: $light-gray;
     font-weight: 700;
     display:block;
@@ -103,12 +103,14 @@ div.breadcrumb{
 .watch-list-detaile{
     border-right: solid 2px $border-color;
     .coin-title {
-        color: $dark-blue;
-
+        a{
+            color: $dark-blue;
+        }
         h3{
             span{font-size: 16px;
                 vertical-align: baseline;
                 color: $btn-bg-color;
+                display: inline-block;
             }
         }
     }
@@ -118,24 +120,31 @@ div.breadcrumb{
         .coin-price{
             flex-grow: 1;
             .small-text{
-                font-size: 12px;
+                font-size: 16px;
                 font-weight: 600;
                 margin-bottom: 0;
             }
             .secound-value{
                 text-align: left;
-                font-size: 16px;
+                font-size: 22px;
                 font-weight: 500;
                 margin-bottom: 5px;
-                display: block;
+                display: table;
             }
             .currency_symbol{
-                font-size: 12px;
+                font-size: 16px;
                 vertical-align: baseline;
+                display: inline-block;
+                color:$dark-gray;
             }
             .currency-sign{
-                opacity: 0.7;
+                display: table-cell;
+                vertical-align: middle;
+                color: $sign-color;
+                padding-right: 3px;
             }
+
+            .currency-value{}
         }
     }
 }

@@ -26,6 +26,7 @@
 .coin-heading{
     color: $dark-gray;
     font-weight: 600;
+    text-transform: uppercase;
 }
 
 .main-table{
@@ -41,6 +42,8 @@
         display: table-cell;
         vertical-align: middle;
         margin-right: 5px;
+        @include filter(brightness(0) invert(1));
+        height: 15px;
     }
     .currency-di-text{
         display: table-cell;
@@ -106,16 +109,13 @@
             @extend .volume-price;
 
             .currency-sign{
-                color: $dark-blue;
-                font-size: 14px;
-                letter-spacing: 0.1em;
-                font-weight: 600;
-                opacity: 0.7;
+                color: $sign-color;
+                font-size: 13px;
+                padding-right: 3px;
             }
 
             .currency-value{
-                letter-spacing: 0.02em;  
-                color: $dark-blue;
+                letter-spacing: 0.02em; 
                 font-weight: 600;
             }
         }
@@ -137,6 +137,7 @@
         .update-price{
             display: table-cell;
             vertical-align: middle;
+            padding-left: 10px;
             
             .price-updown{
                 font-size: 12px;
@@ -160,13 +161,17 @@
         }
 
     .currency-sign{
+        font-size: 13px;
+        display: table-cell;
+        vertical-align: middle;
+        padding-right: 3px;
         color: $sign-color;
-        font-size: 14px;
-        letter-spacing: 0.1em;
     }
-
+    
     .currency-value{
-        letter-spacing: 0.02em;  
+        letter-spacing: 0.02em; 
+        display: table-cell;
+        vertical-align: middle; 
     }
     
     .follow-plus{
@@ -183,6 +188,14 @@
 }
 .price_nagative{
     color: $color-nagative;
+}
+.currentImage{
+    height: 14px;
+    display: table-cell;
+    vertical-align: middle;
+    @include filter(brightness(60%) invert(60%));
+    margin-right: 4px;
+    opacity: 0.7;
 }
 /*pagination*/
 .coin-page-pagination{
@@ -232,10 +245,12 @@
     background: $bg-color;
     padding: 30px 0;
     .price-sign-coin{
-    color: $sign-color;
+        color: $sign-color;
+        display: inline-block;
     }
     .price-number-coin{
         color: $text-white;
+        display: inline-block;
     }
 }
 .coin-info-item2{
@@ -383,23 +398,23 @@ input::-webkit-input-placeholder {
     font-size: 16px;
     font-weight: 400;
 }
-input:-moz-placeholder {
-    color:$light-gray !important;
-    font-family: 'montserrat' !important;
-    font-size: 16px;
-    font-weight: 400;
-}
 input::-moz-placeholder {
-    color:$light-gray !important;
-    font-family: 'montserrat' !important;
-    font-size: 16px;
-    font-weight: 400;
+    @extend input::-webkit-input-placeholder;
 }
 input:-ms-input-placeholder {
-    color:$light-gray !important;
-    font-family: 'montserrat' !important;
-    font-size: 16px;
-    font-weight: 400;
+    @extend input::-webkit-input-placeholder;
+}
+textarea:-ms-input-placeholder{
+    @extend input::-webkit-input-placeholder;
+}
+textarea:-moz-placeholder{
+    @extend input::-webkit-input-placeholder;
+}
+textarea:-webkit-input-placeholder{
+    @extend input::-webkit-input-placeholder;
+}
+textarea:-webkit-input-placeholder{
+    @extend input::-webkit-input-placeholder;
 }
 
 .coin-market-cap .btn-buy{

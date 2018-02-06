@@ -11,18 +11,10 @@
         <div class="exchange_button">
           <a href="javascript:void(0)" class="btn btn-sm btn-green btn-exchange" id="currency-btn" onclick="openNav()">
             <span class="currency-symbol">
-              <img src="assets/currency-svg/usd.svg" width="16">
-              <span class="currency-di-text">USD</span>
+              <!-- <img src="assets/currency-symbol/{{basecurr | lowercase}}.svg"> -->
+              <span class="currency-di-text">{{basecurr}}</span>
             </span>
           </a>
-        </div>
-        <div class="searchbar">
-          <div class="btn-search">
-            <button class="search-btn">
-              <img src="assets/currency-svg/search.svg">
-            </button>
-            <input type="text" class="btn-extended" placeholder="Search Coin.." />
-          </div>
         </div>
         <div class="login-detail" [ngClass]="login_ses == 1 ? '':'hidden'">
           <ul class="list-unstyled">
@@ -38,11 +30,15 @@
             </a>
             <ul class="dropdown-menu">
               <li>
-                <a href="{{urlString}}followlist">
+                <a href="{{urlString}}user/profile">
+                  <i class="fa fa-user" aria-hidden="true"></i> Profile</a>
+              </li>
+              <li>
+                <a href="{{urlString}}user/followlist">
                   <i class="fa fa-book" aria-hidden="true"></i> Follow List</a>
               </li>
               <li>
-                <a href="{{urlString}}portfolio">
+                <a href="{{urlString}}user/portfolio">
                   <i class="fa fa-line-chart" aria-hidden="true"></i> Portfolio</a>
               </li>
               <li>
@@ -52,6 +48,23 @@
             </ul>
           </li>
         </ul>
+        <div class="searchbar">
+          <form (keydown)="keyDownFunction($event)">
+            <div class="btn-search">
+              <button class="search-btn">
+                <img src="assets/currency-svg/search.svg">
+              </button>
+              <ng-template #sc let-s="result" let-c="term" id="allcoinsearch">
+                <div [attr.value]="s.symbol" class="dropdown-currency-name currency-select currency-name">{{s.name}} ({{s.symbol}})</div>
+                <div id="icon-currency" class="currency_icon">
+                  <img src="assets/currency-svg/{{s.symbol | lowercase}}.svg" (error)="errorHandler($event,s.symbol)" class="input-currency-icon">
+                </div>
+              </ng-template>
+              <input id="typeahead-template-new" type="text" class="btn-extended" [(ngModel)]="model" name="search" [ngbTypeahead]="search" [resultTemplate]="sc" [inputFormatter]="formattersearch" placeholder="Search Coin.."/>
+            </div>
+          </form>
+        </div>
+        
       </div>
       <!--sidebar-start-->
       <div class="sidenav" id="mySidenav">
@@ -67,9 +80,9 @@
           <label class="currency_label" for="base_currency">Base currency</label>
 
           <ul name="base_currency" id="base_currency" class="select_contry">
-            <li *ngFor="let currency of currencylist" onclick="closeNav()">
+            <li *ngFor="let currency of currencylist" (click)="closeNav(currency.currency_symbol,currency.currency_sign)" [ngClass]="basecurr == currency.currency_symbol ? 'active' : ''">
               <a href="javascript:void(0);">
-                <img src="assets/currency-svg/{{currency.currency_symbol | lowercase}}.svg">
+                <img src="assets/currency-symbol/{{currency.currency_symbol | lowercase}}.svg">
                 <span class="currency-shortname"> {{currency.currency_symbol}} </span>
                 <span class="currency-name"> {{currency.currency_name}} </span>
               </a>

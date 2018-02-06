@@ -7,9 +7,12 @@
             <div class="watchlist-coin-detaile">
               <span class="coin-lable"> NET WORTH </span>
               <span class="watchlist-main-price">
-                <span class="dollar_sign">$</span>2,558.62</span>
-              <h4 class="main-coin-value"> 7.47%
-                <img class="up-down-arrow" src="assets/currency-svg/arrow-up-green.svg"> </h4>
+                <span class="dollar_sign">{{base_sing}}</span>{{overolsum | number : '1.2-2'}}
+              </span>
+              <h4 class="main-coin-value" [ngClass]="overolper > 0 ? 'green' : 'red'">
+                {{overolper | number : '1.2-2'}}%
+                <img class="up-down-arrow" [src]="overolper > 0 ? 'assets/currency-svg/arrow-up-green.svg' : 'assets/currency-svg/arrow-down-red.svg'">
+              </h4>
             </div>
           </div>
         </div>
@@ -24,7 +27,7 @@
         <div class="col-12 col-sm-12 col-md-12 col-lg-12">
 
           <div class="breadcrumb">
-            <span class="bread-c-big-text">Watchlist</span>
+            <span class="bread-c-big-text">Followlist</span>
           </div>
           <div class="watch-list" *ngFor="let follow of followlist">
             <div class="watchlist-coin-img">
@@ -50,11 +53,14 @@
                     <div class="coin-price">
                       <span class="title-first">Last Price </span>
                       <span class="secound-value">
-                        <span class="currency-sign">$</span> {{follow.price_usd}} </span>
-
-                      <p class="small-text"> {{follow.price_btc}}
-                        <span class="currency_symbol">BTC</span>
-                      </p>
+                        <span class="currency-sign"> {{base_sing}}</span>
+                        <span class="currency-value">
+                        {{follow['price_'+basecurr] | number : '1.2-2'}}
+                        </span>
+                        <span class="small-text"> ({{follow.price_btc}}
+                          <span class="currency_symbol">BTC</span>)
+                        </span>
+                      </span>
                     </div>
                   </div>
                 </div>
@@ -67,10 +73,9 @@
                     <span class="price-updown" [ngClass]="follow.percent_change_1h >= 0 ? 'price_positive' : 'price_nagative'">{{follow.percent_change_1h | number : '1.2-2'}}%
                       <img class="up-down-arrow" [src]="follow.percent_change_1h >= 0 ? 'assets/currency-svg/arrow-up-green.svg' : 'assets/currency-svg/arrow-down-red.svg'">
                     </span>
-                    <svg viewBox="0 0 500 100" class="chart">
+                    <!-- <svg viewBox="0 0 500 100" class="chart">
                       <polyline fill="none" [attr.stroke]="follow.percent_change_1h >= 0 ? '#3cd483' : '#ff6060'" stroke-width="10" [attr.points]="graph"></polyline>
-
-                    </svg>
+                    </svg> -->
 
                   </div>
                 </div>
@@ -83,10 +88,9 @@
                     <span class="price-updown" [ngClass]="follow.percent_change_24h >= 0 ? 'price_positive' : 'price_nagative'">{{follow.percent_change_24h | number : '1.2-2'}}%
                       <img class="up-down-arrow" [src]="follow.percent_change_24h >= 0 ? 'assets/currency-svg/arrow-up-green.svg' : 'assets/currency-svg/arrow-down-red.svg'">
                     </span>
-                    <svg viewBox="0 0 500 100" class="chart">
+                    <!-- <svg viewBox="0 0 500 100" class="chart">
                       <polyline fill="none" [attr.stroke]="follow.percent_change_24h >= 0 ? '#3cd483' : '#ff6060'" stroke-width="10" [attr.points]="graph"></polyline>
-
-                    </svg>
+                    </svg> -->
 
                   </div>
                 </div>
@@ -99,10 +103,9 @@
                     <span class="price-updown" [ngClass]="follow.percent_change_7d >= 0 ? 'price_positive' : 'price_nagative'">{{follow.percent_change_7d | number : '1.2-2'}}%
                       <img class="up-down-arrow" [src]="follow.percent_change_7d >= 0 ? 'assets/currency-svg/arrow-up-green.svg' : 'assets/currency-svg/arrow-down-red.svg'">
                     </span>
-                    <svg viewBox="0 0 500 100" class="chart">
+                    <!-- <svg viewBox="0 0 500 100" class="chart">
                       <polyline fill="none" [attr.stroke]="follow.percent_change_7d >= 0 ? '#3cd483' : '#ff6060'" stroke-width="10" [attr.points]="graph"></polyline>
-
-                    </svg>
+                    </svg> -->
 
                   </div>
                 </div>

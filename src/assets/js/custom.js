@@ -15,7 +15,7 @@ $(function(){
     if(cur_name == 'btc') {
         cur_name = 'btc-mono';
     }
-    $(".currency-symbol img").attr('src','assets/currency-svg/'+cur_name+'.svg');
+    $(".currency-symbol img").attr('src','assets/currency-symbol/'+cur_name+'.svg');
   });
 
 });
@@ -128,6 +128,32 @@ $(function(){
 $(document).on('click','#dropdownMenuButton',function(){
     $('#crypto-currency-menu').slideToggle();
 });
+
+$(document).on('click',"#ngb-typeahead-0 > button.dropdown-item",function(){
+    var cur_symbol = $(this).children("div").attr('value').toLowerCase();
+    $('#icon-coin').children().attr('src','assets/currency-svg/'+cur_symbol+'.svg');
+});
+$(document).on('keyup',"#selectedcoin",function(e){
+    if (e.keyCode == 13) {
+        var cur_symbol = $(this).val();
+        var cur_symbol = cur_symbol.split(' ');
+        var cur_symbol = cur_symbol[cur_symbol.length-1];
+        var regExp = /\(([^)]+)\)/;
+        var cur_symbol = regExp.exec(cur_symbol);
+        $('#icon-coin').children().attr('src','assets/currency-svg/'+cur_symbol[1].toLowerCase()+'.svg');
+    }
+});
+
+$(document).on('click',"#ngb-typeahead-1 > button.dropdown-item",function(){
+    var cur_symbol = $(this).children("div").attr('value').toLowerCase();
+    $('#icon-curr').children().attr('src','assets/currency-svg/'+cur_symbol+'.svg');
+});
+$(document).on('keyup',"#selectedcur",function(e){
+    if (e.keyCode == 13) {
+        var cur_symbol = $(this).val();
+        $('#icon-curr').children().attr('src','assets/currency-svg/'+cur_symbol.toLowerCase()+'.svg');
+    }
+});
   
   $(document).on('click','.currency-list li div',function(){
 
@@ -160,3 +186,35 @@ if(curl[3] == 'portfolio') {
     $('#datepicker').datepicker();
 }
 
+$(document).ready(function() {
+    $(".support-categories a").on('click', function(e) {
+        e.preventDefault()
+        var page = $(this).data('page');
+        $(".suport-text-sec .support-qus-contant:not('.hidden')").stop().fadeOut('fast', function() {
+            $(this).addClass('hidden');
+            $('.suport-text-sec .support-qus-contant[data-page="'+page+'"]').fadeIn('slow').removeClass('hidden');
+        });
+
+        $('.support-categories a.active').removeClass('active');
+        $(this).addClass('active');
+    });
+});
+    
+document.querySelector("html").classList.add('js');
+
+/*var fileInput  = document.querySelector( ".input-file" ),  
+    button     = document.querySelector( ".input-file-trigger" ),
+    the_return = document.querySelector(".file-return");
+      
+button.addEventListener( "keydown", function( event ) {  
+    if ( event.keyCode == 13 || event.keyCode == 32 ) {  
+        fileInput.focus();  
+    }  
+});
+button.addEventListener( "click", function( event ) {
+   fileInput.focus();
+   return false;
+});  
+fileInput.addEventListener( "change", function( event ) {  
+    the_return.innerHTML = this.value;  
+});*/  

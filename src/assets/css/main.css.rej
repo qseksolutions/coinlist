@@ -1,0 +1,7 @@
+diff a/src/assets/css/main.css b/src/assets/css/main.css	(rejected hunks)
+@@ -1549,5 +1549,4 @@
+ .alert p {
+   margin-bottom: 0; }
+ 
+-    opacity: 1 !important;
+ /*# sourceMappingURL=main.css.map */

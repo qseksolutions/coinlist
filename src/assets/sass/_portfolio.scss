@@ -176,8 +176,13 @@
             -webkit-box-shadow: 0 6px 10px 0 rgba(202,215,223,.4);
             box-shadow: 0 6px 10px 0 rgba(202,215,223,.4);
             top: 110%;
-            max-height: 170px;
+            max-height: 192px;
             overflow: auto;
+
+            .dropdown-item {
+                padding: 0;
+                display: flex;
+            }
         }
     }
     .currency-select{
@@ -232,4 +237,9 @@
     #addQuote{
         @extend .currency-list;
     }
+}
+
+ngb-datepicker.dropdown-menu {
+    min-width: auto !important;
+    max-height: none !important;
 }

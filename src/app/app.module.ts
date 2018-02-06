@@ -1,4 +1,5 @@
 import { NgModule } from '@angular/core';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule, Routes } from '@angular/router';
 import { FormsModule } from '@angular/forms';
@@ -36,10 +37,9 @@ import { PortfolioComponent } from './portfolio/portfolio.component';
 import { SupportComponent } from './support/support.component';
 import { AdvertiseComponent } from './advertise/advertise.component';
 import { FollowlistComponent } from './followlist/followlist.component';
-
+import { ProfileComponent } from './profile/profile.component';
 
 export function highchartsModules() {
-    // apply Highstock Modules to this array
     return [ highstock, exporting ];
 }
 
@@ -67,18 +67,8 @@ export function highchartsModules() {
         pathMatch: 'full'
       },
       {
-        path: 'amount',
-        component: AmountComponent,
-        pathMatch: 'full'
-      },
-      {
-        path: 'portfolio',
-        component: PortfolioComponent,
-        pathMatch: 'full'
-      },
-      {
-        path: 'followlist',
-        component: FollowlistComponent,
+        path: 'advertise',
+        component: AdvertiseComponent,
         pathMatch: 'full'
       },
       {
@@ -87,12 +77,23 @@ export function highchartsModules() {
         pathMatch: 'full'
       },
       {
-        path: 'advertise',
-        component: AdvertiseComponent,
+        path: 'user/portfolio',
+        component: PortfolioComponent,
+        pathMatch: 'full'
+      },
+      {
+        path: 'user/followlist',
+        component: FollowlistComponent,
+        pathMatch: 'full'
+      },
+      {
+        path: 'user/profile',
+        component: ProfileComponent,
         pathMatch: 'full'
       },
     ]),
     BrowserModule,
+    NgbModule.forRoot(),
     FormsModule,
     HttpModule,
     BrowserAnimationsModule,
@@ -111,7 +112,8 @@ export function highchartsModules() {
     PortfolioComponent,
     SupportComponent,
     AdvertiseComponent,
-    FollowlistComponent
+    FollowlistComponent,
+    ProfileComponent
   ],
   providers: [
     { provide: HIGHCHARTS_MODULES, useFactory: highchartsModules }

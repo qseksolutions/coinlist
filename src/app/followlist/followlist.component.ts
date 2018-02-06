@@ -24,8 +24,14 @@ export class FollowlistComponent implements OnInit {
 
   public urlString: any = myGlobals.base_url;
   public login_ses: any = myGlobals.login_ses;
+  public basecurr: any = myGlobals.basecurr;
+  public base_sing: any = myGlobals.base_sing;
   followlist: any;
   graph: any;
+  totalcost: any = 0;
+  value: any = 0;
+  overolsum: any = 0;
+  overolper: any = 0;
 
   constructor(private coinservice: CoinService, private router: Router, toasterService: ToasterService, private http: Http) {
     this.toasterService = toasterService;
@@ -41,6 +47,17 @@ export class FollowlistComponent implements OnInit {
     this.coinservice.followlist().subscribe(resData => {
       if (resData.status === true) {
         this.followlist = resData.data;
+      }
+    });
+    this.coinservice.profitlosslist().subscribe(resData => {
+      if (resData.status === true) {
+        console.log(resData.data);
+        for (let i = 0; i < resData.data.length; i++) {
+          this.totalcost += resData.data[i]['totalcost'];
+          this.value += resData.data[i]['current_price'] * resData.data[i]['coin_amount'];
+        }
+        this.overolsum = this.value;
+        this.overolper = (this.value - this.totalcost) / this.totalcost * 100;
       }
     });
   }

@@ -7,12 +7,13 @@ import { ToasterContainerComponent, ToasterService, ToasterConfig } from 'angula
 import { StockChart } from 'angular-highcharts';
 import { Title } from '@angular/platform-browser';
 import { defer } from 'q';
+import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-coin',
   templateUrl: './coin.component.html',
   styleUrls: ['./coin.component.css'],
-  providers: [CoinService],
+  providers: [CoinService, DatePipe],
 })
 export class CoinComponent implements OnInit {
 
@@ -34,9 +35,11 @@ export class CoinComponent implements OnInit {
   public follow: any;
   public loginData: any = myGlobals.login_ses;
   public userid: any = myGlobals.userid;
+  public basecurr: any = myGlobals.basecurr;
+  public base_sing: any = myGlobals.base_sing;
 
   // tslint:disable-next-line:max-line-length
-  constructor(private coinservice: CoinService, private router: Router, toasterService: ToasterService, private http: Http, private titleService: Title) {
+  constructor(private coinservice: CoinService, private router: Router, toasterService: ToasterService, private http: Http, private titleService: Title, private datePipe: DatePipe) {
     this.toasterService = toasterService;
 
     this.perioddata = localStorage.getItem('period');
