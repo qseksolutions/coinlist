@@ -3,9 +3,9 @@ import { Router } from '@angular/router';
 import { CoinService } from '../coin.service';
 import * as myGlobals from './../global';
 import { ToasterContainerComponent, ToasterService, ToasterConfig } from 'angular2-toaster';
-import { AuthService } from 'angular4-social-login';
+/* import { AuthService } from 'angular4-social-login';
 import { SocialUser } from 'angular4-social-login';
-import { FacebookLoginProvider, GoogleLoginProvider } from 'angular4-social-login';
+import { FacebookLoginProvider, GoogleLoginProvider } from 'angular4-social-login'; */
 import { defer } from 'q';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/debounceTime';
@@ -35,7 +35,7 @@ export class HeaderComponent implements OnInit {
   public base_sing: any = myGlobals.base_sing;
   public login_ses: any = 0;
   currencylist: any;
-  private user: SocialUser;
+  // private user: SocialUser;
   private loggedIn: boolean;
   public model: any;
   regex: any;
@@ -52,7 +52,7 @@ export class HeaderComponent implements OnInit {
   };
 
   // tslint:disable-next-line:max-line-length
-  constructor(private coinservice: CoinService, private router: Router, toasterService: ToasterService, private authService: AuthService) {
+  constructor(private coinservice: CoinService, private router: Router, toasterService: ToasterService) {
     this.toasterService = toasterService;
 
     if (this.basecurr == null) {
@@ -100,7 +100,7 @@ export class HeaderComponent implements OnInit {
     }
   }
 
-  signInWithGoogle(): void {
+  /* signInWithGoogle() {
     this.authService.signIn(GoogleLoginProvider.PROVIDER_ID);
     this.authService.authState.subscribe((user) => {
       this.user = user;
@@ -128,7 +128,7 @@ export class HeaderComponent implements OnInit {
     });
   }
 
-  signInWithFB(): void {
+  signInWithFB() {
     this.authService.signIn(FacebookLoginProvider.PROVIDER_ID);
     this.authService.authState.subscribe((user) => {
       this.user = user;
@@ -154,7 +154,7 @@ export class HeaderComponent implements OnInit {
         });
       }
     });
-  }
+  } */
 
   onSubmitLogin() {
     if (this.login.email === '') {
@@ -210,7 +210,7 @@ export class HeaderComponent implements OnInit {
   }
 
   destroyUser() {
-    this.authService.signOut();
+    // this.authService.signOut();
     localStorage.clear();
     location.href = this.urlString;
   }

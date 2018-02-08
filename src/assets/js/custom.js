@@ -186,7 +186,7 @@ if(curl[3] == 'portfolio') {
     $('#datepicker').datepicker();
 }
 
-$(document).ready(function() {
+/*$(document).ready(function() {
     $(".support-categories a").on('click', function(e) {
         e.preventDefault()
         var page = $(this).data('page');
@@ -198,7 +198,7 @@ $(document).ready(function() {
         $('.support-categories a.active').removeClass('active');
         $(this).addClass('active');
     });
-});
+});*/
     
 document.querySelector("html").classList.add('js');
 

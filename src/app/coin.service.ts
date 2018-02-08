@@ -23,6 +23,8 @@ export class CoinService {
   getallcoinlistAPI: any = myGlobals.getallcoinlistAPI;
   portfoliolistAPI: any = myGlobals.portfoliolistAPI;
   profitlosslistAPI: any = myGlobals.profitlosslistAPI;
+  categorylistAPI: any = myGlobals.categorylistAPI;
+  supportlistAPI: any = myGlobals.supportlistAPI;
 
   cointrackbyuserAPI: any = myGlobals.cointrackbyuserAPI;
 
@@ -31,7 +33,15 @@ export class CoinService {
   user_base: any = localStorage.getItem('user_base');
   base_sing: any = localStorage.getItem('base_sing');
 
-  constructor(private http: Http) { }
+  constructor(private http: Http) {
+    if (this.basecur == null) {
+      localStorage.setItem('base', 'USD');
+      localStorage.setItem('user_base', 'USD');
+      localStorage.setItem('base_sing', '$');
+      this.basecur = 'USD';
+      this.user_base = 'USD';
+    }
+  }
 
   loginuserdata(login) {
     const headers = new Headers({ 'Content-Type': 'application/x-www-form-urlencoded' });
@@ -237,6 +247,22 @@ export class CoinService {
     form.append('dcurrency', this.user_base);
 
     return this.http.post(this.api_url + this.profitlosslistAPI, form, options)
+      .map((response: Response) => response.json());
+  }
+
+  categorylist() {
+    const headers = new Headers({ 'Content-Type': 'application/x-www-form-urlencoded' });
+    const options = new RequestOptions({ headers: headers });
+
+    return this.http.get(this.api_url + this.categorylistAPI, options)
+      .map((response: Response) => response.json());
+  }
+
+  questionlist() {
+    const headers = new Headers({ 'Content-Type': 'application/x-www-form-urlencoded' });
+    const options = new RequestOptions({ headers: headers });
+
+    return this.http.get(this.api_url + this.supportlistAPI, options)
       .map((response: Response) => response.json());
   }
 
