@@ -8,7 +8,7 @@ import { APP_BASE_HREF } from '@angular/common';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ChartModule, HIGHCHARTS_MODULES } from 'angular-highcharts';
 import { ToasterModule } from 'angular2-toaster';
-import { SocialLoginModule, AuthServiceConfig } from 'angular4-social-login';
+/* import { SocialLoginModule, AuthServiceConfig } from 'angular4-social-login';
 import { GoogleLoginProvider, FacebookLoginProvider } from 'angular4-social-login';
 
 const config = new AuthServiceConfig([
@@ -20,7 +20,7 @@ const config = new AuthServiceConfig([
     id: FacebookLoginProvider.PROVIDER_ID,
     provider: new FacebookLoginProvider('1592228807481172')
   }
-]);
+]); */
 
 
 import highstock from 'highcharts/modules/stock.src';
@@ -99,7 +99,7 @@ export function highchartsModules() {
     BrowserAnimationsModule,
     ChartModule,
     ToasterModule,
-    SocialLoginModule.initialize(config)
+    // SocialLoginModule.initialize(config)
   ],
   declarations: [
     AppComponent,

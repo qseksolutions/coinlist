@@ -1616,4 +1616,8 @@ a {
 .alert p {
   margin-bottom: 0; }
 
+.searchbar-support ngb-typeahead-window#ngb-typeahead-0 {
+  min-width: 35%;
+}
+
 /*# sourceMappingURL=main.css.map */

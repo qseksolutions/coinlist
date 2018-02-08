@@ -1,15 +1,28 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { ToasterContainerComponent, ToasterService, ToasterConfig } from 'angular2-toaster';
 
 @Component({
+  // tslint:disable-next-line:component-selector
   selector: 'my-app',
   templateUrl: './app.component.html'
 })
 export class AppComponent {
 
+  private toasterService: ToasterService;
+
+  public toasterconfig: ToasterConfig =
+    new ToasterConfig({
+      showCloseButton: true,
+      tapToDismiss: false,
+      timeout: 2000
+    });
+
   showHeader: any;
   public location = '';
-  constructor(private router: Router) {
+
+  constructor(private router: Router, toasterService: ToasterService) {
+    this.toasterService = toasterService;
   }
 
   ngOnInit() {
