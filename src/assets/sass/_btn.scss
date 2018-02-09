@@ -1,6 +1,7 @@
 @import'variables';
 
 .btn{
+    cursor: pointer;
     font-family: 'montserrat' !important;   
     .btn-green-sm{
         display: none;
@@ -71,14 +72,14 @@
         font-weight: 600;
         text-transform: uppercase;
         text-align: center;
-        padding: 7px 20px;
+        padding: 12px 20px;
         border-radius: 25px;
         line-height: 13px;
         color: #fff;
         border:0px;
         cursor: pointer; 
         @include transition(0.5s);
-        background-color: $btn-bg-color;
+        border: solid 1.5px $btn-bg-color;
      
     &:hover{
         background-color: $hover-orange;
