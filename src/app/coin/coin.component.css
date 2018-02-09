@@ -1,0 +1,17 @@
+.btn.btn-visit-site {
+    font-size: 13px;   
+    padding: 5px 10px;
+    border-radius: 4px;   
+    color: #fff;   
+    background-color: #ff8033;
+    line-height: 18px;
+}
+.coin-lable, .single-coin-detaile .best-coin-value .coin-lable {
+ letter-spacing: normal;
+}
+.chart-header .chart-value .red {    
+    border: solid 1.5px #ff6060;   
+}
+.chart-header .chart-value .green {    
+    border: solid 1.5px #3cd483;   
+}
