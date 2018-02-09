@@ -1202,7 +1202,8 @@ div.breadcrumb {
       .watch-list-detaile .coin-value-detaile .coin-price .small-text {
         font-size: 16px;
         font-weight: 600;
-        margin-bottom: 0; }
+        margin-bottom: 0;
+        color: #8a96a3; }
       .watch-list-detaile .coin-value-detaile .coin-price .secound-value {
         text-align: left;
         font-size: 22px;
