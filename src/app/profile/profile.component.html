@@ -9,25 +9,34 @@
 
           <div class="profile-form portfolio-model">
             <form>
-              <div class="profile-input">
-                <input type="text" name="Name" placeholder="Name" class="contact-input">
+              <div class="form-group">
+                <label class="input-label">Name:</label>
+                <div class="profile-input">
+                  <input type="text" name="Name" placeholder="Name" class="contact-input">
+                </div>
               </div>
 
-              <div class="profile-input">
-                <input type="Email" name="Name" placeholder="Email" class="contact-input" disabled>
-              </div>
-              <div class="dropdown">
-                <div _ngcontent-c3="" class="currancy-form-input mb-0 dropdown-toggle" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                      <input _ngcontent-c3="" aria-multiline="false" autocapitalize="off" autocomplete="off" autocorrect="off" class="form-control currency-select currency-name ng-pristine ng-valid ng-touched" id="selectedcoin" name="coin" placeholder="Bitcoin (BTC)" role="combobox" type="text" ng-reflect-input-formatter="function (x) { return x.name +" ng-reflect-ngb-typeahead="function (text$) {
-                          " ng-reflect-result-template="[object Object]" ng-reflect-name="coin" aria-autocomplete="list" aria-expanded="false">
-                      <button _ngcontent-c3="" class="button-arrow currency_icon" id="icon-coin">
-                        <img _ngcontent-c3="" class="input-currency-icon" id="coin_image" src="assets/currency-svg/carret.svg">
-                      </button>
+              <div class="form-group">
+                <label class="input-label">Email:</label>
+                <div class="profile-input">
+                  <input type="Email" name="Name" placeholder="Email" class="contact-input" disabled>
                 </div>
-                <div class="dropdown-menu w-100" aria-labelledby="dropdownMenuButton">
-                  <a class="dropdown-item" href="#">Action</a>
-                  <a class="dropdown-item" href="#">Another action</a>
-                  <a class="dropdown-item" href="#">Something else here</a>
+              </div>
+              <div class="form-group">
+                <label class="input-label">Default Currency:</label>
+                <div class="dropdown">
+                  <div _ngcontent-c3="" class="currancy-form-input mb-0 dropdown-toggle" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <input _ngcontent-c3="" aria-multiline="false" autocapitalize="off" autocomplete="off" autocorrect="off" class="form-control currency-select currency-name ng-pristine ng-valid ng-touched" id="selectedcoin" name="coin" placeholder="Bitcoin (BTC)" role="combobox" type="text" ng-reflect-input-formatter="function (x) { return x.name +" ng-reflect-ngb-typeahead="function (text$) {
+                            " ng-reflect-result-template="[object Object]" ng-reflect-name="coin" aria-autocomplete="list" aria-expanded="false">
+                        <button _ngcontent-c3="" class="button-arrow currency_icon" id="icon-coin">
+                          <img _ngcontent-c3="" class="input-currency-icon" id="coin_image" src="assets/currency-svg/carret.svg">
+                        </button>
+                  </div>
+                  <div class="dropdown-menu w-100" aria-labelledby="dropdownMenuButton">
+                    <a class="dropdown-item" href="#">Action</a>
+                    <a class="dropdown-item" href="#">Another action</a>
+                    <a class="dropdown-item" href="#">Something else here</a>
+                  </div>
                 </div>
               </div>
             </form>
@@ -57,12 +66,18 @@
 
           <div class="profile-form portfolio-model">
             <form>
-              <div class="profile-input">
-                <input type="Password" name="Name" placeholder="Old Password" class="contact-input">
+              <div class="form-group">
+                <label class="input-label">Old Password:</label>
+                <div class="profile-input">
+                  <input type="Password" name="Name" placeholder="Old Password" class="contact-input">
+                </div>
               </div>
 
-              <div class="profile-input mb-0">
-                <input type="Password" name="Name" placeholder="New Password" class="contact-input">
+              <div class="form-group">
+                <label class="input-label">New Password:</label>
+                <div class="profile-input mb-0">
+                  <input type="Password" name="Name" placeholder="New Password" class="contact-input">
+                </div>
               </div>
 
             </form>
