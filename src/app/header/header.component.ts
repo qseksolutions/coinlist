@@ -22,13 +22,6 @@ export class HeaderComponent implements OnInit {
 
   private toasterService: ToasterService;
 
-  public toasterconfig: ToasterConfig =
-  new ToasterConfig({
-    showCloseButton: true,
-    tapToDismiss: false,
-    timeout: 2000
-  });
-
   public urlString: any = myGlobals.base_url;
   public loginData: any = myGlobals.login_ses;
   public basecurr: any = myGlobals.basecurr;

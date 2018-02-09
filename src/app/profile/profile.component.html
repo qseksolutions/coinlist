@@ -10,24 +10,24 @@
           <div class="profile-form portfolio-model">
             <form>
               <div class="profile-input">
-                <input type="text" name="Name" placeholder="Name" class="contact-input">
+                <input type="text" placeholder="Name" class="contact-input" name="username" [(ngModel)]="prof.username">
               </div>
 
               <div class="profile-input">
-                <input type="Email" name="Name" placeholder="Email" class="contact-input" disabled>
+                <input type="Email" placeholder="Email" class="contact-input" disabled>
               </div>
               <div class="dropdown">
-                <div _ngcontent-c3="" class="currancy-form-input mb-0 dropdown-toggle" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                      <input _ngcontent-c3="" aria-multiline="false" autocapitalize="off" autocomplete="off" autocorrect="off" class="form-control currency-select currency-name ng-pristine ng-valid ng-touched" id="selectedcoin" name="coin" placeholder="Bitcoin (BTC)" role="combobox" type="text" ng-reflect-input-formatter="function (x) { return x.name +" ng-reflect-ngb-typeahead="function (text$) {
-                          " ng-reflect-result-template="[object Object]" ng-reflect-name="coin" aria-autocomplete="list" aria-expanded="false">
-                      <button _ngcontent-c3="" class="button-arrow currency_icon" id="icon-coin">
-                        <img _ngcontent-c3="" class="input-currency-icon" id="coin_image" src="assets/currency-svg/carret.svg">
-                      </button>
-                </div>
-                <div class="dropdown-menu w-100" aria-labelledby="dropdownMenuButton">
-                  <a class="dropdown-item" href="#">Action</a>
-                  <a class="dropdown-item" href="#">Another action</a>
-                  <a class="dropdown-item" href="#">Something else here</a>
+                <div class="currancy-form-input mb-0 dropdown-toggle" id="dropdownMenuButton">
+                    <ng-template #sc let-s="result" let-c="term" id="allcoinsearch">
+                      <div [attr.value]="s.symbol" class="dropdown-currency-name currency-select currency-name">{{s.currency_symbol}}</div>
+                      <div id="icon-currency" class="currency_icon">
+                        <img src="assets/currency-svg/{{s.currency_symbol | lowercase}}.svg" class="input-currency-icon">
+                      </div>
+                    </ng-template>
+                    <input id="typeahead-template-new-cur" type="text" class="form-control currency-select currency-name" [(ngModel)]="prof.b_currency" name="b_currency" [ngbTypeahead]="search" [resultTemplate]="sc" [inputFormatter]="formattercur" placeholder="Search currency" />
+                    <button class="button-arrow currency_icon" id="icon-coin">
+                      <img class="input-currency-icon" id="coin_image" src="assets/currency-svg/carret.svg">
+                    </button>
                 </div>
               </div>
             </form>
