@@ -120,7 +120,7 @@
                       <button type="button" class="btn btn-sign" (click)="onSubmitLogin()"> SIGN IN </button>
                     </div>
                     
-                    <!-- <div class="model-social">
+                    <div class="model-social">
                       <span class="social-title">Use your social accounts</span>
                       <ul class="list-unstyled">
                         <li>
@@ -132,7 +132,7 @@
                             <img src="assets/currency-svg/facebook.svg" /> Facebook</a>
                         </li>
                       </ul>
-                    </div> -->
+                    </div>
 
                     <div class="modal-bottom">
                       <span class="float-left">
@@ -178,7 +178,7 @@
                     </div>
 
                     <div class="model-btn">
-                      <button type="button" class="btn btn-sign" (click)="onSubmitRegister()"> Registration </button>
+                      <button type="button" class="btn btn-sign" (click)="onSubmitRegister()"> Submit </button>
                     </div>
 
                     <div class="model-social">
@@ -221,11 +221,11 @@
                   <form>
                     <div class="model-username">
                       <label class="model-label">Email</label>
-                      <input type="Email" placeholder="Email" class="model-input">
+                      <input type="Email" placeholder="Email" class="model-input" name="forgot" [(ngModel)]="forgot">
                     </div>
 
                     <div class="model-btn">
-                      <button type="submit" class="btn btn-sign"> Submit </button>
+                      <button type="submit" class="btn btn-sign" (click)="onSubmitforgotpassword()"> Submit </button>
                     </div>
 
                     <div class="modal-bottom text-center">
