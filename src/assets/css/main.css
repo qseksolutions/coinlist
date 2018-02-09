@@ -183,6 +183,9 @@
     -moz-transition: 0.5s;
     -ms-transition: 0.5s;
     transition: 0.5s; }
+  .searchbar .dropdown-item, .searchbar-small-device .dropdown-item {
+    display: flex;
+    padding: 0 3px; }
   .searchbar .btn-search, .searchbar-small-device .btn-search {
     border-radius: 40px;
     cursor: pointer;
@@ -295,6 +298,7 @@
   font-weight: 600;
   font-style: normal; }
 .btn {
+  cursor: pointer;
   font-family: 'montserrat' !important; }
   .btn .btn-green-sm {
     display: none;
@@ -353,7 +357,7 @@
   font-weight: 600;
   text-transform: uppercase;
   text-align: center;
-  padding: 7px 20px;
+  padding: 12px 20px;
   border-radius: 25px;
   line-height: 13px;
   color: #fff;
@@ -363,7 +367,7 @@
   -moz-transition: 0.5s;
   -ms-transition: 0.5s;
   transition: 0.5s;
-  background-color: #ff8033; }
+  border: solid 1.5px #ff8033; }
   .btn.btn-visit-site:hover {
     background-color: #f17428; }
 .btn.btn-web, .btn.btn-buy {
@@ -574,6 +578,9 @@
   padding: 10px 0;
   color: #4b4b4b;
   text-align: center; }
+  .coin-table-list a img {
+    width: 20px;
+    height: auto; }
   .coin-table-list .coin-coint {
     display: table;
     width: 100%;
@@ -813,7 +820,35 @@
   background-color: #3d3379;
   border-radius: 0 0 5px 5px; }
 
-input::-webkit-input-placeholder, input::-moz-placeholder, input:-ms-input-placeholder, textarea:-ms-input-placeholder, textarea:-moz-placeholder, textarea:-webkit-input-placeholder {
+::placeholder, ::-moz-placeholder, ::-ms-input-placeholder {
+  color: #9ca5be !important;
+  font-family: 'montserrat' !important;
+  font-size: 16px;
+  font-weight: 400; }
+
+::-webkit-input-placeholder {
+  /* Chrome */
+  color: #9ca5be !important;
+  font-family: 'montserrat' !important;
+  font-size: 16px;
+  font-weight: 400; }
+
+:-ms-input-placeholder {
+  /* IE 10+ */
+  color: #9ca5be !important;
+  font-family: 'montserrat' !important;
+  font-size: 16px;
+  font-weight: 400; }
+
+::-moz-placeholder {
+  /* Firefox 19+ */
+  color: #9ca5be !important;
+  font-family: 'montserrat' !important;
+  font-size: 16px;
+  font-weight: 400; }
+
+:-moz-placeholder {
+  /* Firefox 4 - 18 */
   color: #9ca5be !important;
   font-family: 'montserrat' !important;
   font-size: 16px;
@@ -1543,7 +1578,7 @@ ngb-datepicker.dropdown-menu {
   font-size: 16px;
   padding: 15px 20px;
   outline: none;
-  color: #9ca5be;
+  color: #4b4b4b;
   width: 100%;
   min-width: 20px;
   border: none;
@@ -1616,9 +1651,5 @@ a {
 
 .alert p {
   margin-bottom: 0; }
-
-.searchbar-support ngb-typeahead-window#ngb-typeahead-0 {
-  min-width: 35%;
-}
 
 /*# sourceMappingURL=main.css.map */

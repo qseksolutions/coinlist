@@ -48,6 +48,16 @@ export class HomeComponent implements OnInit {
   constructor(private coinservice: CoinService, private router: Router, private http: Http, toasterService: ToasterService) {
     this.toasterService = toasterService;
 
+    if (this.basecurr == null) {
+      localStorage.setItem('base', 'USD');
+      localStorage.setItem('base_sing', '$');
+      this.basecurr = 'USD';
+      this.base_sing = '$';
+    } else {
+      localStorage.setItem('base', this.basecurr);
+      localStorage.setItem('base_sing', this.base_sing);
+    }
+
     this.perioddata = localStorage.getItem('period');
     if (this.perioddata === 'hour') {
       this.selectedIndex = 1;

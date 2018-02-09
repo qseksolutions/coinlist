@@ -197,7 +197,10 @@ display: none;
     display: block;
     @include transition(0.5s);
   }
-  
+  .dropdown-item {
+    display: flex;
+    padding: 0 3px;
+   }
   .btn-search{
     border-radius: 40px;
     cursor: pointer;

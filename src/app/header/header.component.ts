@@ -3,9 +3,9 @@ import { Router } from '@angular/router';
 import { CoinService } from '../coin.service';
 import * as myGlobals from './../global';
 import { ToasterContainerComponent, ToasterService, ToasterConfig } from 'angular2-toaster';
-/* import { AuthService } from 'angular4-social-login';
+import { AuthService } from 'angular4-social-login';
 import { SocialUser } from 'angular4-social-login';
-import { FacebookLoginProvider, GoogleLoginProvider } from 'angular4-social-login'; */
+import { FacebookLoginProvider, GoogleLoginProvider } from 'angular4-social-login';
 import { defer } from 'q';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/debounceTime';
@@ -22,22 +22,16 @@ export class HeaderComponent implements OnInit {
 
   private toasterService: ToasterService;
 
-  public toasterconfig: ToasterConfig =
-  new ToasterConfig({
-    showCloseButton: true,
-    tapToDismiss: false,
-    timeout: 2000
-  });
-
   public urlString: any = myGlobals.base_url;
   public loginData: any = myGlobals.login_ses;
   public basecurr: any = myGlobals.basecurr;
   public base_sing: any = myGlobals.base_sing;
   public login_ses: any = 0;
   currencylist: any;
-  // private user: SocialUser;
+  private user: SocialUser;
   private loggedIn: boolean;
   public model: any;
+  public forgot: any;
   regex: any;
   allcoin: any;
 
@@ -52,7 +46,7 @@ export class HeaderComponent implements OnInit {
   };
 
   // tslint:disable-next-line:max-line-length
-  constructor(private coinservice: CoinService, private router: Router, toasterService: ToasterService) {
+  constructor(private coinservice: CoinService, private router: Router, toasterService: ToasterService, private authService: AuthService) {
     this.toasterService = toasterService;
 
     if (this.basecurr == null) {
@@ -95,12 +89,11 @@ export class HeaderComponent implements OnInit {
 
   keyDownFunction(event) {
     if (event.keyCode === 13) {
-      console.log(this.model);
       location.href = this.urlString + 'coin/' + this.model.id;
     }
   }
 
-  /* signInWithGoogle() {
+  signInWithGoogle() {
     this.authService.signIn(GoogleLoginProvider.PROVIDER_ID);
     this.authService.authState.subscribe((user) => {
       this.user = user;
@@ -154,7 +147,7 @@ export class HeaderComponent implements OnInit {
         });
       }
     });
-  } */
+  }
 
   onSubmitLogin() {
     if (this.login.email === '') {
@@ -209,8 +202,26 @@ export class HeaderComponent implements OnInit {
     }
   }
 
+  onSubmitforgotpassword() {
+    if (this.forgot === '' || this.forgot === undefined) {
+      this.toasterService.pop('error', 'Required', 'Please enter email');
+    } else {
+      this.coinservice.forgotpassword(this.forgot).subscribe(resData => {
+        // tslint:disable-next-line:triple-equals
+        if (resData.status == true) {
+          this.toasterService.pop('success', 'Success', resData.message);
+          setTimeout(() => {
+            location.reload();
+          }, 2000);
+        } else {
+          this.toasterService.pop('error', 'Error', resData.message);
+        }
+      });
+    }
+  }
+
   destroyUser() {
-    // this.authService.signOut();
+    this.authService.signOut();
     localStorage.clear();
     location.href = this.urlString;
   }

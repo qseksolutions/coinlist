@@ -1,3 +1,98 @@
-<p>
-  profile works!
-</p>
+<section class="profile-contant">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-12 col-sm-8 col-md-6 col-lg-6">
+        <div class="Profile-head">
+          <div class="profile-title">
+            <h3 class="">Profile</h3>
+          </div>
+
+          <form>
+            <div class="profile-form portfolio-model">
+              <div class="form-group">
+                <label class="input-label">Name:</label>
+                <div class="profile-input">
+                  <input type="text" id="unmae" placeholder="Name" class="contact-input" name="uname" [(ngModel)]="prof.uname" value="{{profile.name}}">
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label class="input-label">Email:</label>
+                <div class="profile-input">
+                  <input type="Email" placeholder="Email" class="contact-input" disabled value="{{profile.email}}">
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="input-label">Default Currency: {{profile.d_currency}}</label>
+                <div class="dropdown">
+                  <div class="currancy-form-input mb-0 dropdown-toggle" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <ng-template #os let-o="result" let-s="termcur" id="allcurr">
+                      <div class="dropdown-currency-name currency-select currency-name">{{o.currency_symbol}}</div>
+                      <div id="icon-currency" class="currency_icon">
+                        <img src="assets/currency-svg/{{o.currency_symbol | lowercase}}.svg" class="input-currency-icon" style="filter:brightness(60%);">
+                      </div>
+                    </ng-template>
+                    <input id="typeahead-template" type="text" class="form-control currency-select currency-name" [(ngModel)]="prof.b_curr" name="b_curr" [ngbTypeahead]="searchcur" [resultTemplate]="os" [inputFormatter]="formattercur" placeholder="Change your currency here" id="selectedcur" value="{{profile.d_currency}}"/>
+                    <button class="button-arrow currency_icon" id="icon-coin">
+                      <img class="input-currency-icon" id="coin_image" src="assets/currency-svg/carret.svg">
+                    </button>
+                    <!-- <input aria-multiline="false" autocapitalize="off" autocomplete="off" autocorrect="off" class="form-control currency-select currency-name ng-pristine ng-valid ng-touched" id="selectedcoin" name="coin" placeholder="Bitcoin (BTC)" role="combobox" type="text" ng-reflect-input-formatter="function (x) { return x.name +" ng-reflect-ngb-typeahead="function (text$) { " ng-reflect-result-template="[object Object]" ng-reflect-name="coin" aria-autocomplete="list" aria-expanded="false"> -->
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            <div class="profile-footer">
+              <div class="profile-btn text-right">
+                <button class="btn btn-save" (click)="onSubmitPrafile()">Save</button>
+                <button class="btn btn-cancel">cancel</button>                
+              </div>
+            </div>
+            
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="profile-contant">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-12 col-sm-8 col-md-6 col-lg-6">
+        <div class="Profile-head">
+          <div class="profile-title">
+            <h3 class="">Change Password</h3>
+          </div>
+
+          <div class="profile-form portfolio-model">
+            <form>
+              <div class="form-group">
+                <label class="input-label">Old Password:</label>
+                <div class="profile-input">
+                  <input type="Password" name="Name" placeholder="Old Password" class="contact-input">
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label class="input-label">New Password:</label>
+                <div class="profile-input mb-0">
+                  <input type="Password" name="Name" placeholder="New Password" class="contact-input">
+                </div>
+              </div>
+
+            </form>
+          </div>
+
+          <div class="profile-footer">
+            <div class="profile-btn text-right">
+                <button class="btn btn-save" type="submit">Save</button>
+                <button class="btn btn-cancel" type="submit">cancel</button>                
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
