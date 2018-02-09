@@ -19,7 +19,7 @@
         <div class="login-detail" [ngClass]="login_ses == 1 ? '':'hidden'">
           <ul class="list-unstyled">
             <li>
-              <a href="#" data-toggle="modal" data-target="#sign-in">Sing In</a>
+              <a href="#" data-toggle="modal" data-target="#sign-in">Sign In</a>
             </li>
           </ul>
         </div>
@@ -107,13 +107,13 @@
                 <div class="model-signin">
                   <form>
                     <div class="model-username">
-                      <label class="model-label">Username</label>
-                      <input type="text" placeholder="Useremail" class="model-input" name="email" [(ngModel)]="login.email">
+                      <label class="model-label">Useremail</label>
+                      <input type="text" placeholder="Please enter email" class="model-input" name="email" [(ngModel)]="login.email">
                     </div>
 
                     <div class="model-username">
                       <label class="model-label">Password</label>
-                      <input type="Password" placeholder="Password" class="model-input" name="password" [(ngModel)]="login.password">
+                      <input type="Password" placeholder="Please enter password" class="model-input" name="password" [(ngModel)]="login.password">
                     </div>
 
                     <div class="model-btn">
@@ -164,17 +164,17 @@
                   <form>
                     <div class="model-username">
                       <label class="model-label">Name</label>
-                      <input type="text" placeholder="Name" class="model-input" name="username" [(ngModel)]="register.username">
+                      <input type="text" placeholder="Please enter name" class="model-input" name="username" [(ngModel)]="register.username">
                     </div>
 
                     <div class="model-username">
                       <label class="model-label">Email</label>
-                      <input type="Email" placeholder="Email" class="model-input" name="useremail" [(ngModel)]="register.useremail">
+                      <input type="Email" placeholder="Please enter email" class="model-input" name="useremail" [(ngModel)]="register.useremail">
                     </div>
 
                     <div class="model-username">
                       <label class="model-label">Password</label>
-                      <input type="Password" placeholder="Password" class="model-input" name="userpass" [(ngModel)]="register.userpass">
+                      <input type="Password" placeholder="Please enter password" class="model-input" name="userpass" [(ngModel)]="register.userpass">
                     </div>
 
                     <div class="model-btn">

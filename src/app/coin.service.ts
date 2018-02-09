@@ -146,9 +146,14 @@ export class CoinService {
 
     const form = new URLSearchParams();
     form.append('id', this.userid);
-    form.append('name', profile.name);
-    form.append('d_currency', profile.d_currency);
-    form.append('d_symbol', profile.d_symbol);
+    form.append('name', profile.uname);
+    if (profile.b_curr !== '') {
+      form.append('d_currency', profile.b_curr.currency_symbol);
+      form.append('user_base', this.user_base);
+      localStorage.setItem('user_base', profile.b_curr.currency_symbol);
+    } else {
+      form.append('d_currency', '');
+    }
 
     return this.http.post(this.api_url + this.profileupdateAPI, form, options)
       .map((response: Response) => response.json());

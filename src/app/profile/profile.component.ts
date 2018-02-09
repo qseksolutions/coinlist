@@ -10,6 +10,8 @@ import 'rxjs/add/operator/map';
 import { URLSearchParams } from '@angular/http';
 import { ToasterContainerComponent, ToasterService, ToasterConfig } from 'angular2-toaster';
 
+declare var $;
+
 @Component({
   selector: 'app-profile',
   templateUrl: './profile.component.html',
@@ -19,11 +21,15 @@ import { ToasterContainerComponent, ToasterService, ToasterConfig } from 'angula
 export class ProfileComponent implements OnInit {
 
   private toasterService: ToasterService;
-  profile: any;
   allcurrency: any;
+  profile = {
+    name: '',
+    email: '',
+    d_currency: '',
+  };
   prof = {
-    username: '',
-    b_currency: ''
+    uname: '',
+    b_curr: ''
   };
 
   constructor(private coinservice: CoinService, private router: Router, toasterService: ToasterService) {
@@ -51,8 +57,22 @@ export class ProfileComponent implements OnInit {
 
   formattercur = (x: { currency_symbol: string }) => x.currency_symbol;
 
-  onSubmitPrafile(profile) {
-    console.log(profile);
+  onSubmitPrafile() {
+    this.prof.uname = $('#unmae').val();
+    if (this.prof.uname === '') {
+      this.toasterService.pop('error', 'Required', 'Please enter name');
+    } else {
+      this.coinservice.profileupdate(this.prof).subscribe(resData => {
+        if (resData.status === true) {
+          this.toasterService.pop('success', 'Success', resData.message);
+          setTimeout(() => {
+            location.reload();
+          }, 1000);
+        } else {
+          this.toasterService.pop('error', 'Error', resData.message);
+        }
+      });
+    }
   }
 
 }
