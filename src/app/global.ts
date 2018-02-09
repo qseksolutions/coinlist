@@ -1,5 +1,5 @@
 export const header = '';
-export const base_url = 'https://gifted-easley-b50f49.netlify.com/';
+export const base_url = 'http://coinlisting.io/';
 export const api_url = 'http://api.coinlisting.io:3000/v1/';
 
 export const loginAPI = 'login';
