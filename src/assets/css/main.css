@@ -578,6 +578,9 @@
   padding: 10px 0;
   color: #4b4b4b;
   text-align: center; }
+  .coin-table-list a img {
+    width: 20px;
+    height: auto; }
   .coin-table-list .coin-coint {
     display: table;
     width: 100%;
@@ -817,7 +820,35 @@
   background-color: #3d3379;
   border-radius: 0 0 5px 5px; }
 
-input::-webkit-input-placeholder, input::-moz-placeholder, input:-ms-input-placeholder, textarea:-ms-input-placeholder, textarea:-moz-placeholder, textarea:-webkit-input-placeholder {
+::placeholder, ::-moz-placeholder, ::-ms-input-placeholder {
+  color: #9ca5be !important;
+  font-family: 'montserrat' !important;
+  font-size: 16px;
+  font-weight: 400; }
+
+::-webkit-input-placeholder {
+  /* Chrome */
+  color: #9ca5be !important;
+  font-family: 'montserrat' !important;
+  font-size: 16px;
+  font-weight: 400; }
+
+:-ms-input-placeholder {
+  /* IE 10+ */
+  color: #9ca5be !important;
+  font-family: 'montserrat' !important;
+  font-size: 16px;
+  font-weight: 400; }
+
+::-moz-placeholder {
+  /* Firefox 19+ */
+  color: #9ca5be !important;
+  font-family: 'montserrat' !important;
+  font-size: 16px;
+  font-weight: 400; }
+
+:-moz-placeholder {
+  /* Firefox 4 - 18 */
   color: #9ca5be !important;
   font-family: 'montserrat' !important;
   font-size: 16px;
@@ -1547,7 +1578,7 @@ ngb-datepicker.dropdown-menu {
   font-size: 16px;
   padding: 15px 20px;
   outline: none;
-  color: #9ca5be;
+  color: #4b4b4b;
   width: 100%;
   min-width: 20px;
   border: none;
