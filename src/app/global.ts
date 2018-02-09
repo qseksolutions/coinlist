@@ -1,5 +1,5 @@
 export const header = '';
-export const base_url = 'http://localhost:4417/';
+export const base_url = 'http://localhost:4200/';
 export const api_url = 'http://api.coinlisting.io:3000/v1/';
 
 export const loginAPI = 'login';
@@ -7,6 +7,8 @@ export const registerAPI = 'register';
 export const userbysocialAPI = 'userbysocial';
 export const addtradeAPI = 'addtrade';
 export const removetradeAPI = 'removetrade';
+export const forgotpasswordAPI = 'forgotpassword';
+export const profileupdateAPI = 'profileupdate';
 
 export const currencylistAPI = 'currencylist';
 export const coinlistAPI = 'coinlist';
@@ -18,6 +20,7 @@ export const portfoliolistAPI = 'portfoliolist';
 export const profitlosslistAPI = 'profitlosslist';
 export const categorylistAPI = 'categorylist';
 export const supportlistAPI = 'supportlist';
+export const getprofileupdatedataAPI = 'getprofileupdatedata';
 
 export const cointrackbyuserAPI = 'cointrackbyuser';
 

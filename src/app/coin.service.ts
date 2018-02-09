@@ -14,6 +14,8 @@ export class CoinService {
   userbysocialAPI: any = myGlobals.userbysocialAPI;
   addtradeAPI: any = myGlobals.addtradeAPI;
   removetradeAPI: any = myGlobals.removetradeAPI;
+  forgotpasswordAPI: any = myGlobals.forgotpasswordAPI;
+  profileupdateAPI: any = myGlobals.profileupdateAPI;
 
   currencylistAPI: any = myGlobals.currencylistAPI;
   coinlistAPI: any = myGlobals.coinlistAPI;
@@ -25,13 +27,15 @@ export class CoinService {
   profitlosslistAPI: any = myGlobals.profitlosslistAPI;
   categorylistAPI: any = myGlobals.categorylistAPI;
   supportlistAPI: any = myGlobals.supportlistAPI;
+  getprofileupdatedataAPI: any = myGlobals.getprofileupdatedataAPI;
 
   cointrackbyuserAPI: any = myGlobals.cointrackbyuserAPI;
 
-  userid: any = myGlobals.userid;
+  userid: any = localStorage.getItem('id');
   basecur: any = localStorage.getItem('base');
   user_base: any = localStorage.getItem('user_base');
   base_sing: any = localStorage.getItem('base_sing');
+  useremail: any = localStorage.getItem('email');
 
   constructor(private http: Http) {
     if (this.basecur == null) {
@@ -122,6 +126,31 @@ export class CoinService {
     form.append('trade_id', tradeid);
 
     return this.http.post(this.api_url + this.removetradeAPI, form, options)
+      .map((response: Response) => response.json());
+  }
+
+  forgotpassword(email) {
+    const headers = new Headers({ 'Content-Type': 'application/x-www-form-urlencoded' });
+    const options = new RequestOptions({ headers: headers });
+
+    const form = new URLSearchParams();
+    form.append('email', email);
+
+    return this.http.post(this.api_url + this.forgotpasswordAPI, form, options)
+      .map((response: Response) => response.json());
+  }
+
+  profileupdate(profile) {
+    const headers = new Headers({ 'Content-Type': 'application/x-www-form-urlencoded' });
+    const options = new RequestOptions({ headers: headers });
+
+    const form = new URLSearchParams();
+    form.append('id', this.userid);
+    form.append('name', profile.name);
+    form.append('d_currency', profile.d_currency);
+    form.append('d_symbol', profile.d_symbol);
+
+    return this.http.post(this.api_url + this.profileupdateAPI, form, options)
       .map((response: Response) => response.json());
   }
 
@@ -263,6 +292,17 @@ export class CoinService {
     const options = new RequestOptions({ headers: headers });
 
     return this.http.get(this.api_url + this.supportlistAPI, options)
+      .map((response: Response) => response.json());
+  }
+
+  getprofileupdatedata() {
+    const headers = new Headers({ 'Content-Type': 'application/x-www-form-urlencoded' });
+    const options = new RequestOptions({ headers: headers });
+
+    const form = new URLSearchParams();
+    form.append('email', this.useremail);
+
+    return this.http.post(this.api_url + this.getprofileupdatedataAPI, form, options)
       .map((response: Response) => response.json());
   }
 
