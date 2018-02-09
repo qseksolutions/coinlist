@@ -67,3 +67,8 @@ input.contact-input[disabled] {
 .profile-form .dropdown-item{
     padding: 10px 1.5rem;
 }
+.input-label{
+    color: #8a96a3;
+    font-weight: 500;
+    font-size: 14px;
+}
