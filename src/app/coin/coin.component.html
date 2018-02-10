@@ -5,7 +5,7 @@
       <div class="row">
         <div class="col-md-12 hidden-sm-down">
           <div class="center-header">
-            <div class="info_coin-page" *ngIf="coin.price_usd != null">
+            <div class="info_coin-page">
               <div class="currency_icon">
                 <span class="currency-coin-icon">
                   <img class="img-responsive" src="{{coin.imgpath}}" onError="this.src='assets/currency-50/not-found-50.png'" alt="{{coin.name}}">
@@ -47,8 +47,7 @@
               </div>
               <div class="coin-price">
                 <span class="price-sign-coin"> {{base_sing}} </span>
-                <span class="price-number-coin" *ngIf="coin['price_'+basecurr] != null">{{coin['price_'+basecurr] | number : '1.2-2'}}</span>
-                <span class="price-number-coin" *ngIf="coin['price_'+basecurr] == null">0</span>
+                <span class="price-number-coin">{{coin['price_'+basecurr] | number : '1.2-2'}}</span>
               </div>
             </div>
             <div class="text-center m-3">
@@ -64,52 +63,32 @@
       </div>
       <div class="row">
         <div class="col-12 col-sm-6 col-md-6 col-lg-3">
-          <div class="best-coin-value" *ngIf="coin.market_cap_+basecurr != null">
+          <div class="best-coin-value">
             <label class="coin-lable">MARKET CAP</label>
             <span class="price-sign-coin"> {{base_sing}} </span>
             <span class="price-number-coin">{{coin['market_cap_'+basecurr] | number : '1.2-2'}}</span>
-          </div>
-          <div class="best-coin-value" *ngIf="coin.market_cap_+basecurr == null">
-            <label class="coin-lable">MARKET CAP</label>
-            <span class="price-sign-coin"></span>
-            <span class="price-number-coin">-</span>
-          </div>
+          </div>          
         </div>
         <div class="col-12 col-sm-6 col-md-6 col-lg-3">
-          <div class="best-coin-value" *ngIf="coin['24h_volume_'+basecurr] != null">
+          <div class="best-coin-value">
             <label class="coin-lable">24H VOLUME</label>
             <span class="price-sign-coin"> {{base_sing}} </span>
             <span class="price-number-coin">{{coin['24h_volume_'+basecurr] | number}}</span>
-          </div>
-          <div class="best-coin-value" *ngIf="coin['24h_volume_'+basecurr] == null">
-            <label class="coin-lable">24H VOLUME</label>
-            <span class="price-sign-coin"></span>
-            <span class="price-number-coin">-</span>
-          </div>
+          </div>          
         </div>
         <div class="col-12 col-sm-6 col-md-6 col-lg-3">
-          <div class="best-coin-value" *ngIf="coin.available_supply != null">
+          <div class="best-coin-value">
             <label class="coin-lable">CIRCULATING SUPPLY</label>
             <span class="price-number-coin">{{coin.available_supply | number}}</span>
             <span class="currency_symbol">{{coin.symbol}}</span>
-          </div>
-          <div class="best-coin-value" *ngIf="coin.available_supply == null">
-            <label class="coin-lable">CIRCULATING SUPPLY</label>
-            <span class="price-number-coin"></span>
-            <span class="currency_symbol">-</span>
-          </div>
+          </div>         
         </div>
         <div class="col-12 col-sm-6 col-md-6 col-lg-3">
-          <div class="best-coin-value" *ngIf="coin.total_supply != null">
+          <div class="best-coin-value">
             <label class="coin-lable">TOTAL SUPPLY</label>
             <span class="price-number-coin">{{coin.total_supply | number}}</span>
             <span class="currency_symbol">{{coin.symbol}}</span>
-          </div>
-          <div class="best-coin-value" *ngIf="coin.total_supply == null">
-            <label class="coin-lable">TOTAL SUPPLY</label>
-            <span class="price-number-coin">{{coin.total_supply | number}}</span>
-            <span class="currency_symbol">{{coin.symbol}}</span>
-          </div>
+          </div>          
         </div>
         <div class="clearfix"></div>
       </div>
@@ -148,22 +127,22 @@
             </ul>
           </div>
 
-          <div class="chart-value text-right" *ngIf="coin.percent_change_1h != null" [style.display]="selectedIndex == 1 ? 'initial':'none'">
+          <div class="chart-value text-right" [style.display]="selectedIndex == 1 ? 'initial':'none'">
             <span [ngClass]="coin.percent_change_1h >= 0 ? 'green' : 'red'"> {{coin.percent_change_1h | number : '1.2-2'}}% </span>
           </div>
-          <div class="chart-value text-right" *ngIf="coin.percent_change_24h != null" [style.display]="selectedIndex == 2 ? 'initial':'none'">
+          <div class="chart-value text-right" [style.display]="selectedIndex == 2 ? 'initial':'none'">
             <span [ngClass]="coin.percent_change_24h >= 0 ? 'green' : 'red'"> {{coin.percent_change_24h | number : '1.2-2'}}% </span>
           </div>
-          <div class="chart-value text-right" *ngIf="coin.percent_change_7d != null" [style.display]="selectedIndex == 3 ? 'initial':'none'">
+          <div class="chart-value text-right" [style.display]="selectedIndex == 3 ? 'initial':'none'">
             <span [ngClass]="coin.percent_change_7d >= 0 ? 'green' : 'red'"> {{coin.percent_change_7d | number : '1.2-2'}}% </span>
           </div>
-          <div class="chart-value text-right" *ngIf="coin.percent_change_1m != null" [style.display]="selectedIndex == 4 ? 'initial':'none'">
+          <div class="chart-value text-right" [style.display]="selectedIndex == 4 ? 'initial':'none'">
             <span [ngClass]="coin.percent_change_1m >= 0 ? 'green' : 'red'"> {{coin.percent_change_1m | number : '1.2-2'}}% </span>
           </div>
-          <div class="chart-value text-right" *ngIf="coin.percent_change_1y != null" [style.display]="selectedIndex == 5 ? 'initial':'none'">
+          <div class="chart-value text-right" [style.display]="selectedIndex == 5 ? 'initial':'none'">
             <span [ngClass]="coin.percent_change_1y >= 0 ? 'green' : 'red'"> {{coin.percent_change_1y | number : '1.2-2'}}% </span>
           </div>
-          <div class="chart-value text-right" *ngIf="coin.percent_change_all != null" [style.display]="selectedIndex == 6 ? 'initial':'none'">
+          <div class="chart-value text-right" [style.display]="selectedIndex == 6 ? 'initial':'none'">
             <span [ngClass]="coin.percent_change_all >= 0 ? 'green' : 'red'"> {{coin.percent_change_all | number : '1.2-2'}}% </span>
           </div>
         </div>
@@ -194,22 +173,22 @@
             </ul>
           </div>
           
-          <div class="chart-value text-right" *ngIf="coin.percent_change_1h != null" [style.display]="selectedIndex == 1 ? 'initial':'none'">
+          <div class="chart-value text-right" [style.display]="selectedIndex == 1 ? 'initial':'none'">
             <span [ngClass]="coin.percent_change_1h >= 0 ? 'green' : 'red'"> {{coin.percent_change_1h | number : '1.2-2'}}% </span>
           </div>
-          <div class="chart-value text-right" *ngIf="coin.percent_change_24h != null" [style.display]="selectedIndex == 2 ? 'initial':'none'">
+          <div class="chart-value text-right" [style.display]="selectedIndex == 2 ? 'initial':'none'">
             <span [ngClass]="coin.percent_change_24h >= 0 ? 'green' : 'red'"> {{coin.percent_change_24h | number : '1.2-2'}}% </span>
           </div>
-          <div class="chart-value text-right" *ngIf="coin.percent_change_7d != null" [style.display]="selectedIndex == 3 ? 'initial':'none'">
+          <div class="chart-value text-right" [style.display]="selectedIndex == 3 ? 'initial':'none'">
             <span [ngClass]="coin.percent_change_7d >= 0 ? 'green' : 'red'"> {{coin.percent_change_7d | number : '1.2-2'}}% </span>
           </div>
-          <div class="chart-value text-right" *ngIf="coin.percent_change_1m != null" [style.display]="selectedIndex == 4 ? 'initial':'none'">
+          <div class="chart-value text-right" [style.display]="selectedIndex == 4 ? 'initial':'none'">
             <span [ngClass]="coin.percent_change_1m >= 0 ? 'green' : 'red'"> {{coin.percent_change_1m | number : '1.2-2'}}% </span>
           </div>
-          <div class="chart-value text-right" *ngIf="coin.percent_change_1y != null" [style.display]="selectedIndex == 5 ? 'initial':'none'">
+          <div class="chart-value text-right" [style.display]="selectedIndex == 5 ? 'initial':'none'">
             <span [ngClass]="coin.percent_change_1y >= 0 ? 'green' : 'red'"> {{coin.percent_change_1y | number : '1.2-2'}}% </span>
           </div>
-          <div class="chart-value text-right" *ngIf="coin.percent_change_all != null" [style.display]="selectedIndex == 6 ? 'initial':'none'">
+          <div class="chart-value text-right" [style.display]="selectedIndex == 6 ? 'initial':'none'">
             <span [ngClass]="coin.percent_change_all >= 0 ? 'green' : 'red'"> {{coin.percent_change_all | number : '1.2-2'}}% </span>
           </div>
         </div>
