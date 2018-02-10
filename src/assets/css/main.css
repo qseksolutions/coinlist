@@ -178,7 +178,7 @@
     border: none;
     font-weight: 500;
     font-size: 20px;
-    display: block;
+    display: none;
     -webkit-transition: 0.5s;
     -moz-transition: 0.5s;
     -ms-transition: 0.5s;
@@ -193,6 +193,8 @@
     text-align: center;
     padding: 0 9px;
     position: relative; }
+    .searchbar .btn-search.clicked .btn-extended, .searchbar-small-device .btn-search.clicked .btn-extended {
+      display: block; }
     .searchbar .btn-search img, .searchbar-small-device .btn-search img {
       width: 20px; }
     .searchbar .btn-search button.search-btn, .searchbar-small-device .btn-search button.search-btn {
@@ -201,7 +203,7 @@
       outline: none;
       cursor: pointer;
       position: absolute;
-      left: 0;
+      left: -20px;
       top: 2px; }
 
 .credit {
@@ -948,7 +950,9 @@
     background: linear-gradient(135deg, #170b32 0%, #3d3379 100%);
     padding: 20px;
     border-radius: 5px;
-    height: 100%; }
+    height: 100%;
+    display: flex;
+    align-items: center; }
     .coin-descripation .coin-web .web-text {
       color: #fff;
       font-size: 14px;

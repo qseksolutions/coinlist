@@ -218,3 +218,13 @@ button.addEventListener( "click", function( event ) {
 fileInput.addEventListener( "change", function( event ) {  
     the_return.innerHTML = this.value;  
 });*/  
+
+$('.search-btn').click(function(){
+  $('.btn-search').toggleClass('clicked');
+ 
+  
+  if($('.btn-search').hasClass('clicked')){
+    $('.btn-extended').focus();
+  }
+  
+});

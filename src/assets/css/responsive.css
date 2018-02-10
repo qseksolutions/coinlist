@@ -9,7 +9,10 @@
     font-size: 11px !important; }
 
   .btn.btn-follow {
-    font-size: 0 !important; } }
+    font-size: 0 !important; }
+
+  .single-coin-detaile .best-coin-value {
+    margin-bottom: 20px; } }
 /*(min-width : 768px)*/
 /*(max-width : 767px)*/
 @media only screen and (max-width: 767px) {
@@ -28,13 +31,12 @@
     padding: 15px 15px !important; }
 
   .coin-page__header .contant_coin-page .exchange-logo {
-    padding: 15px !important;
+    padding: 10px !important;
     width: 40% !important; }
 
   .searchbar {
-    clear: both !important;
     float: none !important;
-    padding: 15px !important; }
+    padding: 10px !important; }
 
   .coin-table-list .main-coin-price .currency-value {
     font-size: 11px !important; }
@@ -89,7 +91,8 @@
 
   /*single-page*/
   .single-coin-detaile .best-coin-value {
-    margin-bottom: 20px; }
+    margin-bottom: 10px;
+    padding: 10px 15px !important; }
 
   .single-page-detaile {
     padding: 30px 0 !important; }
@@ -99,18 +102,55 @@
     .single-coin-detaile .center-header .info_coin-page {
       text-align: center;
       display: block !important; }
+      .single-coin-detaile .center-header .info_coin-page .coin-price {
+        display: block !important;
+        margin-bottom: 10px; }
       .single-coin-detaile .center-header .info_coin-page .price-sign-coin {
         font-size: 20px !important;
         display: inline-block !important; }
       .single-coin-detaile .center-header .info_coin-page .price-number-coin {
         font-size: 20px !important;
-        display: block !important; }
+        display: inline-block !important; }
       .single-coin-detaile .center-header .info_coin-page .currency_icon {
         display: block !important;
         margin: 10px;
         padding-right: 0 !important; }
         .single-coin-detaile .center-header .info_coin-page .currency_icon .currency-coin-icon {
-          display: block !important; } }
+          display: block !important;
+          padding-right: 0 !important; } }
 /*(max-width : 449px)*/
+@media only screen and (max-width: 449px) {
+  .searchbar {
+    float: none !important;
+    padding: 10px !important; }
+    .searchbar .btn-search button.search-btn {
+      left: 6px !important;
+      top: 0 !important; }
+    .searchbar .btn-search.clicked .search-btn {
+      left: -150px !important;
+      background-color: #fff !important; }
+    .searchbar .btn-search.clicked .btn-extended {
+      display: block;
+      position: absolute;
+      background-color: #fff;
+      width: 270px !important;
+      left: -121px !important;
+      top: -2px !important; }
+
+  .chart-header.small-chart-header {
+    display: block !important; }
+    .chart-header.small-chart-header .chart-title {
+      display: block !important;
+      margin-bottom: 10px; }
+    .chart-header.small-chart-header .chart-btn {
+      display: inline-block !important; }
+      .chart-header.small-chart-header .chart-btn ul li {
+        padding: 0 0 !important; }
+    .chart-header.small-chart-header .chart-value {
+      display: inline-block;
+      float: right; }
+      .chart-header.small-chart-header .chart-value .green, .chart-header.small-chart-header .chart-value .red {
+        padding: 8px 10px !important;
+        font-size: 11px !important; } }
 
 /*# sourceMappingURL=responsive.css.map */

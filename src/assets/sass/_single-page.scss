@@ -138,6 +138,8 @@
         padding: 20px;
         border-radius: 5px;
         height: 100%;
+        display: flex;
+        align-items: center;
         .web-text{
             color: $text-white;
             font-size: 14px;

@@ -28,6 +28,11 @@
     .btn.btn-follow{
         font-size: 0 !important;
     }
+    .single-coin-detaile{
+         .best-coin-value{
+            margin-bottom: 20px;
+         }
+    }
 }
 /*(min-width : 768px)*/
 @media #{$all-tab} {
@@ -65,15 +70,14 @@
     .coin-page__header{
          .contant_coin-page{
               .exchange-logo{
-                padding: 15px !important;
+                padding: 10px !important;
                 width: 40% !important;
               }
          }
     }
     .searchbar{
-        clear: both !important;
         float: none !important;
-        padding: 15px !important;
+        padding: 10px !important;
     }
 
     .coin-table-list {
@@ -155,7 +159,8 @@
     /*single-page*/
     .single-coin-detaile{
          .best-coin-value{
-            margin-bottom: 20px;
+            margin-bottom: 10px;
+            padding: 10px 15px !important;
          }
     }
     .single-page-detaile{
@@ -167,13 +172,17 @@
             .info_coin-page {
                 text-align: center;
                 display: block !important;
+                .coin-price{
+                    display: block !important;
+                    margin-bottom: 10px;
+                }
                 .price-sign-coin{
                     font-size: 20px !important;
                     display: inline-block !important;
                 }
                 .price-number-coin{
                     font-size: 20px !important;
-                    display: block !important;                    
+                    display: inline-block !important;                    
                 }
                 .currency_icon {
                     display: block !important;
@@ -181,6 +190,7 @@
                     padding-right: 0 !important;
                      .currency-coin-icon {
                         display: block !important;
+                        padding-right: 0 !important;
                      }
                 }
             }
@@ -190,8 +200,62 @@
 
 /*(max-width : 449px)*/
 @media #{$small-mobile} {
+	.searchbar{
+        float: none !important;
+        padding: 10px !important;
+        .btn-search {
+            button{
+                &.search-btn{
+                    left: 6px !important;
+                    top: 0 !important;
+                }
+            }
+            &.clicked{
+                .search-btn{
+                    left: -150px !important;
+                    background-color: #fff !important;
+                }
+                .btn-extended{
+                    display: block;
+                    position: absolute;
+                    background-color: #fff;
+                    width: 270px !important;
+                    left: -121px !important;
+                    top: -2px !important;
+                }
+            }
+        }
+    }
+    .chart-header{
+        
+        &.small-chart-header{
+            display: block !important;
+            .chart-title{
+                display: block !important;
+                margin-bottom: 10px;
+            }
+            .chart-btn{
+                display: inline-block !important;
+                ul{
+                    li{
+                        padding:  0 0 !important;
+                    }
+                }
+            }
+            .chart-value{
+                display: inline-block;
+                float: right;
+                .green{
+                    padding: 8px 10px !important;
+                    font-size: 11px !important;
+                }
+                .red{
+                    @extend .green;
+                }
+            }
+        }
+    }
 	
-	
-}
+}   
 
 

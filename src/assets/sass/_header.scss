@@ -194,7 +194,7 @@ display: none;
     border: none;
     font-weight: 500;
     font-size: 20px;
-    display: block;
+    display: none;
     @include transition(0.5s);
   }
   .dropdown-item {
@@ -203,6 +203,12 @@ display: none;
    }
   .btn-search{
     border-radius: 40px;
+    &.clicked{
+        .btn-extended {
+            display: block;
+        }
+        
+    }
     cursor: pointer;
     transition: all 0.4s ease-in-out;
     text-align: center;
@@ -217,7 +223,7 @@ display: none;
         outline: none;
         cursor: pointer;
         position: absolute;
-        left: 0;
+        left: -20px;
         top: 2px;
     }
   }
