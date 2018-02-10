@@ -17,6 +17,7 @@ export class CoinService {
   forgotpasswordAPI: any = myGlobals.forgotpasswordAPI;
   profileupdateAPI: any = myGlobals.profileupdateAPI;
   changepasswordAPI: any = myGlobals.changepasswordAPI;
+  addcontactusAPI: any = myGlobals.addcontactusAPI;
 
   currencylistAPI: any = myGlobals.currencylistAPI;
   coinlistAPI: any = myGlobals.coinlistAPI;
@@ -170,6 +171,21 @@ export class CoinService {
     form.append('password', password.new_pass);
 
     return this.http.post(this.api_url + this.changepasswordAPI, form, options)
+      .map((response: Response) => response.json());
+  }
+
+  addcontactus(contact, image) {
+    const headers = new Headers({ 'Content-Type': 'application/x-www-form-urlencoded' });
+    const options = new RequestOptions({ headers: headers });
+
+    const form = new URLSearchParams();
+    form.append('name', contact.cname);
+    form.append('email', contact.cemail);
+    form.append('subject', contact.subject);
+    form.append('image', image);
+    form.append('message', contact.message);
+
+    return this.http.post(this.api_url + this.addcontactusAPI, form, options)
       .map((response: Response) => response.json());
   }
 
