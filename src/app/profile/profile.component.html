@@ -12,14 +12,14 @@
               <div class="form-group">
                 <label class="input-label">Name:</label>
                 <div class="profile-input">
-                  <input type="text" id="unmae" placeholder="Name" class="contact-input" name="uname" [(ngModel)]="prof.uname" value="{{profile.name}}">
+                  <input type="text" id="unmae" placeholder="Please enter name" class="contact-input" name="uname" [(ngModel)]="prof.uname" value="{{profile.name}}">
                 </div>
               </div>
 
               <div class="form-group">
                 <label class="input-label">Email:</label>
                 <div class="profile-input">
-                  <input type="Email" placeholder="Email" class="contact-input" disabled value="{{profile.email}}">
+                  <input type="Email" placeholder="Please enter email" class="contact-input" disabled value="{{profile.email}}">
                 </div>
               </div>
               <div class="form-group">
@@ -65,32 +65,38 @@
             <h3 class="">Change Password</h3>
           </div>
 
-          <div class="profile-form portfolio-model">
-            <form>
+          <form>
+            <div class="profile-form portfolio-model">
               <div class="form-group">
                 <label class="input-label">Old Password:</label>
                 <div class="profile-input">
-                  <input type="Password" name="Name" placeholder="Old Password" class="contact-input">
+                  <input type="Password" name="old_pass" placeholder="Enter old password" class="contact-input" [(ngModel)]="pass.old_pass">
                 </div>
               </div>
 
               <div class="form-group">
                 <label class="input-label">New Password:</label>
                 <div class="profile-input mb-0">
-                  <input type="Password" name="Name" placeholder="New Password" class="contact-input">
+                  <input type="Password" name="new_pass" placeholder="Enter new password" class="contact-input" [(ngModel)]="pass.new_pass">
+                </div>
+              </div>
+              
+              <div class="form-group">
+                <label class="input-label">Confirm Password:</label>
+                <div class="profile-input mb-0">
+                  <input type="Password" name="con_pass" placeholder="Enter confirm password" class="contact-input" [(ngModel)]="pass.con_pass">
                 </div>
               </div>
 
-            </form>
-          </div>
-
-          <div class="profile-footer">
-            <div class="profile-btn text-right">
-                <button class="btn btn-save" type="submit">Save</button>
-                <button class="btn btn-cancel" type="submit">cancel</button>                
             </div>
-          </div>
-
+            
+            <div class="profile-footer">
+              <div class="profile-btn text-right">
+                <button class="btn btn-save" type="submit" (click)="onSubmitChangePassword()">Save</button>
+                <button class="btn btn-cancel">Cancel</button>                
+              </div>
+            </div>
+          </form>
         </div>
       </div>
     </div>

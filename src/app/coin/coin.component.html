@@ -5,7 +5,7 @@
       <div class="row">
         <div class="col-md-12">
           <div class="center-header">
-            <div class="info_coin-page" *ngIf="coin.price_usd != null">
+            <div class="info_coin-page">
               <div class="currency_icon">
                 <span class="currency-coin-icon">
                   <img class="img-responsive" src="{{coin.imgpath}}" onError="this.src='assets/currency-50/not-found-50.png'" alt="{{coin.name}}">
@@ -18,7 +18,8 @@
               </div>
               <div class="coin-price">
                 <span class="price-sign-coin"> {{base_sing}} </span>
-                <span class="price-number-coin">{{coin['price_'+basecurr] | number : '1.2-2'}}</span>
+                <span class="price-number-coin" *ngIf="coin['price_'+basecurr] != null">{{coin['price_'+basecurr] | number : '1.2-2'}}</span>
+                <span class="price-number-coin" *ngIf="coin['price_'+basecurr] == null">0</span>
               </div>
             </div>
             <div class="">

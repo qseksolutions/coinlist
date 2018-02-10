@@ -9,6 +9,7 @@ export const addtradeAPI = 'addtrade';
 export const removetradeAPI = 'removetrade';
 export const forgotpasswordAPI = 'forgotpassword';
 export const profileupdateAPI = 'profileupdate';
+export const changepasswordAPI = 'changepassword';
 
 export const currencylistAPI = 'currencylist';
 export const coinlistAPI = 'coinlist';

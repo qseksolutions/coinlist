@@ -16,6 +16,7 @@ export class CoinService {
   removetradeAPI: any = myGlobals.removetradeAPI;
   forgotpasswordAPI: any = myGlobals.forgotpasswordAPI;
   profileupdateAPI: any = myGlobals.profileupdateAPI;
+  changepasswordAPI: any = myGlobals.changepasswordAPI;
 
   currencylistAPI: any = myGlobals.currencylistAPI;
   coinlistAPI: any = myGlobals.coinlistAPI;
@@ -156,6 +157,19 @@ export class CoinService {
     }
 
     return this.http.post(this.api_url + this.profileupdateAPI, form, options)
+      .map((response: Response) => response.json());
+  }
+
+  passwordchange(password) {
+    const headers = new Headers({ 'Content-Type': 'application/x-www-form-urlencoded' });
+    const options = new RequestOptions({ headers: headers });
+
+    const form = new URLSearchParams();
+    form.append('id', this.userid);
+    form.append('old_pass', password.old_pass);
+    form.append('password', password.new_pass);
+
+    return this.http.post(this.api_url + this.changepasswordAPI, form, options)
       .map((response: Response) => response.json());
   }
 

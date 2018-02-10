@@ -27,9 +27,9 @@ export class CoinComponent implements OnInit {
     });
 
   chart: StockChart;
-  coin: any;
   market_cap: any;
   price_usd: any;
+  coin: any;
   selectedIndex: any = 6;
   perioddata: any;
   public follow: any;

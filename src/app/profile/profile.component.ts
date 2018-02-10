@@ -21,6 +21,13 @@ declare var $;
 export class ProfileComponent implements OnInit {
 
   private toasterService: ToasterService;
+  public toasterconfig: ToasterConfig =
+  new ToasterConfig({
+    showCloseButton: true,
+    tapToDismiss: false,
+    timeout: 2000
+  });
+
   allcurrency: any;
   profile = {
     name: '',
@@ -30,6 +37,11 @@ export class ProfileComponent implements OnInit {
   prof = {
     uname: '',
     b_curr: ''
+  };
+  pass = {
+    old_pass: '',
+    new_pass: '',
+    con_pass: ''
   };
 
   constructor(private coinservice: CoinService, private router: Router, toasterService: ToasterService) {
@@ -63,6 +75,30 @@ export class ProfileComponent implements OnInit {
       this.toasterService.pop('error', 'Required', 'Please enter name');
     } else {
       this.coinservice.profileupdate(this.prof).subscribe(resData => {
+        if (resData.status === true) {
+          this.toasterService.pop('success', 'Success', resData.message);
+          setTimeout(() => {
+            location.reload();
+          }, 1000);
+        } else {
+          this.toasterService.pop('error', 'Error', resData.message);
+        }
+      });
+    }
+  }
+
+  onSubmitChangePassword() {
+    console.log(this.pass);
+    if (this.pass.old_pass === '') {
+      this.toasterService.pop('error', 'Required', 'Please enter old password');
+    } else if (this.pass.new_pass === '') {
+      this.toasterService.pop('error', 'Required', 'Please enter new password');
+    } else if (this.pass.con_pass === '') {
+      this.toasterService.pop('error', 'Required', 'Please enter confirm password');
+    } else if (this.pass.new_pass !== this.pass.con_pass) {
+      this.toasterService.pop('error', 'Required', 'Password does not match !');
+    } else {
+      this.coinservice.passwordchange(this.pass).subscribe(resData => {
         if (resData.status === true) {
           this.toasterService.pop('success', 'Success', resData.message);
           setTimeout(() => {
