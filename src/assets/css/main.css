@@ -12,7 +12,7 @@
     .coin-page__header .contant_coin-page .exchange-logo {
       width: 30%;
       float: left;
-      padding: 25px 15px; }
+      padding: 14px 15px; }
       .coin-page__header .contant_coin-page .exchange-logo .logo-text {
         display: inline-block;
         margin-top: -2px;
@@ -21,6 +21,9 @@
         vertical-align: middle;
         letter-spacing: 0.9px;
         font-weight: 400; }
+      .coin-page__header .contant_coin-page .exchange-logo .exchange-logo-img {
+        width: 200px;
+        display: block; }
     .coin-page__header .contant_coin-page .right-header {
       float: right;
       width: 60%; }
@@ -45,9 +48,6 @@
         font-weight: 600;
         outline: none; }
 
-::-webkit-scrollbar {
-  display: none; }
-
 .sidenav {
   height: 100%;
   width: 0;
@@ -68,7 +68,8 @@
       position: absolute;
       right: 20px;
       top: 20px;
-      cursor: pointer; }
+      cursor: pointer;
+      z-index: 3; }
     .sidenav .menu-dropdown-content .dropdown_btn {
       padding-bottom: 20px;
       margin-bottom: 20px;
@@ -139,6 +140,34 @@
         -moz-transition: all ease 0.5s;
         -ms-transition: all ease 0.5s;
         transition: all ease 0.5s; }
+  .sidenav .sidebar-search .side-searchbtn {
+    position: relative; }
+    .sidenav .sidebar-search .side-searchbtn .sidesearch-btn {
+      background: no-repeat;
+      border: none;
+      outline: none;
+      cursor: pointer;
+      position: relative;
+      height: 35px;
+      z-index: 2;
+      border-radius: 5px;
+      padding: 8px; }
+      .sidenav .sidebar-search .side-searchbtn .sidesearch-btn img {
+        width: 20px; }
+    .sidenav .sidebar-search .side-searchbtn .sidesearch-input {
+      position: absolute;
+      top: 0;
+      padding-left: 36px;
+      width: 500px;
+      background-color: transparent;
+      outline: none;
+      font-weight: 500;
+      font-size: 20px;
+      display: block;
+      z-index: 0;
+      border-radius: 5px;
+      height: 35px;
+      border: solid 1px #3d3379; }
 
 /*single-page*/
 .detaile-coin-page {
@@ -170,31 +199,40 @@
 
 .searchbar, .searchbar-small-device {
   float: right;
-  padding: 27px 0; }
+  padding: 21px 0; }
   .searchbar .btn-extended, .searchbar-small-device .btn-extended {
-    width: 200px;
-    padding: 1px 30px;
+    width: 0px;
+    padding: 0;
     outline: none;
-    border: none;
     font-weight: 500;
     font-size: 20px;
-    display: none;
-    -webkit-transition: 0.5s;
-    -moz-transition: 0.5s;
-    -ms-transition: 0.5s;
-    transition: 0.5s; }
+    display: block;
+    -webkit-transition: all ease 0.5s;
+    -moz-transition: all ease 0.5s;
+    -ms-transition: all ease 0.5s;
+    transition: all ease 0.5s;
+    position: absolute;
+    right: 0;
+    top: 0px;
+    z-index: 0;
+    border-radius: 5px;
+    height: 35px;
+    border: solid 1px #3d3379;
+    margin-right: 15px; }
   .searchbar .dropdown-item, .searchbar-small-device .dropdown-item {
     display: flex;
     padding: 0 3px; }
   .searchbar .btn-search, .searchbar-small-device .btn-search {
-    border-radius: 40px;
-    cursor: pointer;
-    transition: all 0.4s ease-in-out;
     text-align: center;
     padding: 0 9px;
     position: relative; }
     .searchbar .btn-search.clicked .btn-extended, .searchbar-small-device .btn-search.clicked .btn-extended {
-      display: block; }
+      display: block;
+      width: 250px;
+      right: 0px;
+      padding: 0 10px; }
+    .searchbar .btn-search.clicked .search-btn, .searchbar-small-device .btn-search.clicked .search-btn {
+      border-radius: 0 5px 5px 0; }
     .searchbar .btn-search img, .searchbar-small-device .btn-search img {
       width: 20px; }
     .searchbar .btn-search button.search-btn, .searchbar-small-device .btn-search button.search-btn {
@@ -202,9 +240,12 @@
       border: none;
       outline: none;
       cursor: pointer;
-      position: absolute;
-      left: -20px;
-      top: 2px; }
+      position: relative;
+      height: 35px;
+      z-index: 2;
+      background-color: #3d3379;
+      border-radius: 5px;
+      padding: 8px; }
 
 .credit {
   position: absolute;
@@ -262,7 +303,9 @@
   top: 45px;
   border: 1px solid #ebeef3;
   border-radius: 0 0 5px 5px;
-  border-top: 0; }
+  border-top: 0;
+  right: 0 !important;
+  left: -100%; }
 .login-detail .dropdown-toggle::after {
   vertical-align: unset;
   border-top: 5px solid;

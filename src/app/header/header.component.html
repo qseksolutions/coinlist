@@ -3,8 +3,8 @@
     <div class="contant_coin-page">
       <div class="exchange-logo">
         <a href="{{urlString}}" class="exchange-logo-img">
-          <!-- <img class="" src="assets/currency-svg/logo-only.svg" alt="" width="30" height="30"> -->
-          <span class="logo-text">Coinlisting</span>
+           <img class="img-fluid hidden-sm-down" src="assets/currency-svg/coinlisting-logo.svg" alt=""> 
+           <img class="img-fluid hidden-md-up" src="assets/currency-svg/small-logo.svg" alt=""> 
         </a>
       </div>
       <div class="right-header text-right">
@@ -23,10 +23,35 @@
             </li>
           </ul>
         </div>
-        <ul class="login-detail nav" [ngClass]="login_ses == 0 ? '':'hidden'">
+        <ul class="login-detail nav hidden-sm-down" [ngClass]="login_ses == 0 ? '':'hidden'">
           <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown"> My Account
               <b class="caret"></b>
+            </a>
+            <ul class="dropdown-menu">
+               <li>
+                <a href="{{urlString}}user/profile">
+                  <i class="fa fa-user" aria-hidden="true"></i> Profile</a>
+              </li> 
+              <li>
+                <a href="{{urlString}}user/followlist">
+                  <i class="fa fa-book" aria-hidden="true"></i> Follow List</a>
+              </li>
+              <li>
+                <a href="{{urlString}}user/portfolio">
+                  <i class="fa fa-line-chart" aria-hidden="true"></i> Portfolio</a>
+              </li>
+              <li>
+                <a href="javascript:;" (click)="destroyUser();">
+                  <i class="fa fa-sign-out" aria-hidden="true"></i> Log Out</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+        <ul class="login-detail nav hidden-md-up" [ngClass]="login_ses == 0 ? '':'hidden'">
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+              <img src="assets/currency-svg/menu.svg" class="img-fluid">
             </a>
             <ul class="dropdown-menu">
                <li>
@@ -72,10 +97,14 @@
           <label class="closebtn" onclick="closeNav()">
             <img class="" src="assets/currency-svg/close.svg" width="20" height="20">
           </label>
-          <div class="dropdown_btn">
-            <a href="{{urlString}}exchange" class="btn btn-sm btn-exchange btn-menu-exchage btn-green">
-              <span class="align-middle">Exchange</span>
-            </a>
+          <div class="dropdown_btn sidebar-search ">
+            <div  class="side-searchbtn">
+              <button  class="sidesearch-btn">
+                <img src="assets/currency-svg/search.svg">
+              </button>
+              <!---->
+              <input class="sidesearch-input" id="typeahead-template-new" name="search" placeholder="Search Coin.." type="text" >
+            </div>
           </div>
           <label class="currency_label" for="base_currency">Base currency</label>
 

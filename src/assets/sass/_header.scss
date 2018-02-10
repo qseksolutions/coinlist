@@ -13,7 +13,7 @@
         .exchange-logo{
             width: 30%;
             float: left;
-            padding: 25px 15px;
+            padding: 14px 15px;
             .logo-text{
                 display: inline-block;
                 margin-top: -2px;
@@ -22,6 +22,10 @@
                 vertical-align: middle;
                 letter-spacing: 0.9px;
                 font-weight: 400;
+            }
+            .exchange-logo-img{
+                width: 200px;
+                display: block;
             }
         }
         .right-header {
@@ -57,9 +61,7 @@
         }
     }
 }
-::-webkit-scrollbar {
-display: none;
-}
+
 .sidenav{ 
     height: 100%;
     width: 0;
@@ -79,6 +81,7 @@ display: none;
             right: 20px;
             top: 20px;
             cursor: pointer;
+            z-index: 3;
         }
         .dropdown_btn{
             padding-bottom: 20px;
@@ -151,6 +154,42 @@ display: none;
             }  
         }
     }
+    .sidebar-search{
+        .side-searchbtn{
+            position: relative;
+
+            .sidesearch-btn{
+                background: no-repeat;
+                border: none;
+                outline: none;
+                cursor: pointer;
+                position: relative;
+                height: 35px;
+                z-index: 2;
+                border-radius: 5px;
+                padding: 8px;
+                
+                img{
+                    width: 20px;
+                }
+            }
+            .sidesearch-input{
+                position: absolute;
+                top: 0;
+                padding-left: 36px;
+                width: 500px;
+                background-color: transparent;
+                outline: none;
+                font-weight: 500;
+                font-size: 20px;
+                display: block;
+                z-index: 0;
+                border-radius: 5px;
+                height: 35px;
+                border: solid 1px $dark-blue;
+            }
+        }
+    }
 }
 /*single-page*/
 .detaile-coin-page{
@@ -186,45 +225,61 @@ display: none;
 }
 .searchbar{
   float: right;
-  padding: 27px 0;  
+  padding: 21px 0;  
   .btn-extended{
-    width: 200px;
-    padding: 1px 30px;
+    width: 0px;
+    padding: 0;
     outline: none;
-    border: none;
     font-weight: 500;
     font-size: 20px;
-    display: none;
-    @include transition(0.5s);
+    display: block;
+    @include transition(all ease 0.5s);
+    position: absolute;
+    right: 0;
+    top: 0px;
+    z-index: 0;
+    border-radius: 5px;
+    height: 35px;
+    border: solid 1px $dark-blue;
+    margin-right: 15px;
   }
   .dropdown-item {
     display: flex;
     padding: 0 3px;
    }
   .btn-search{
-    border-radius: 40px;
+        text-align: center;
+        padding: 0 9px;
+        position: relative;
     &.clicked{
         .btn-extended {
             display: block;
+            width: 250px;
+            right: 0px;
+            padding: 0 10px;
+        }
+        .search-btn{
+            border-radius:  0 5px 5px 0;
         }
         
     }
-    cursor: pointer;
-    transition: all 0.4s ease-in-out;
-    text-align: center;
-    padding: 0 9px;
-    position: relative;
+    
     img{
         width: 20px;
     }
-    button.search-btn {
-        background: no-repeat;
-        border: none;
-        outline: none;
-        cursor: pointer;
-        position: absolute;
-        left: -20px;
-        top: 2px;
+    button{
+        &.search-btn {
+            background: no-repeat;
+            border: none;
+            outline: none;
+            cursor: pointer;
+            position: relative;
+            height: 35px;
+            z-index: 2;
+            background-color: $dark-blue;
+            border-radius:5px;
+            padding: 8px;
+        }
     }
   }
 }
@@ -311,6 +366,8 @@ display: none;
         border: 1px solid $border-color;
         border-radius: 0 0 5px 5px;
         border-top: 0;
+        right: 0 !important;
+        left: -100%;
     }
     .dropdown-toggle::after{
         vertical-align: unset;

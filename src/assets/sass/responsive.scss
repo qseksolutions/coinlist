@@ -44,6 +44,24 @@
     body{
         font-size: 11px !important;
     }
+
+    .sidenav{
+        .menu-dropdown-content{
+            padding: 2px 10px !important;
+        }
+        .select_contry{
+
+            li{ 
+                width: 60px !important;
+
+                a{
+                     .currency-name{
+                        display: none;
+                     }
+                }
+            }
+        }
+    }
     .table-title {
         .main-chart-btn{
              ul{
@@ -65,19 +83,25 @@
         }
     }
     .login-detail{
-        padding: 15px 15px !important;
+        padding: 11px 15px !important;
     }
     .coin-page__header{
          .contant_coin-page{
               .exchange-logo{
-                padding: 10px !important;
+                padding:4px 10px !important;
                 width: 40% !important;
               }
+               .exchange-logo-img{
+                   width: 30px !important;
+               }
          }
     }
     .searchbar{
-        float: none !important;
-        padding: 10px !important;
+        float: float !important;
+        padding: 4px 0 !important;
+        .btn-search{
+            padding: 0 !important;
+        }
     }
 
     .coin-table-list {
@@ -196,36 +220,66 @@
             }
         }
     }
+    .login-detail {
+        &.nav{
+            a{
+                width: 20px;
+                display: block;
+            }
+        }
+        .dropdown-toggle::after{
+            display: none;
+        }
+        .dropdown-menu{
+            transition: all ease 0.5s;
+            right: 0 !important; 
+            left: 100% !important;
+            display: block !important;
+            position: fixed !important;
+            width: 0;
+            top: 42px !important;
+
+            li{
+                a{
+                    width: 100%;
+                }
+            }
+        }
+        .show > .dropdown-menu {
+            display: block !important;
+            width: 100% !important;
+            opacity: 1;
+            left: 0 !important;
+        }
+    }
+    .searchbar{
+        .btn-search {
+            &.clicked{
+                .search-btn{
+
+                }
+                .btn-extended{
+                    width: 250px !important;
+                    right: 44% !important;
+                    padding: 0 10px !important;
+                }
+            }
+            
+        }
+    }
+    .sidebar-search{
+        .side-searchbtn{
+            .sidesearch-input{
+                width: calc(100% - 50px) !important;
+                margin-right: 100px;
+            }   
+        }
+    }
 }       
 
 /*(max-width : 449px)*/
 @media #{$small-mobile} {
-	.searchbar{
-        float: none !important;
-        padding: 10px !important;
-        .btn-search {
-            button{
-                &.search-btn{
-                    left: 6px !important;
-                    top: 0 !important;
-                }
-            }
-            &.clicked{
-                .search-btn{
-                    left: -150px !important;
-                    background-color: #fff !important;
-                }
-                .btn-extended{
-                    display: block;
-                    position: absolute;
-                    background-color: #fff;
-                    width: 270px !important;
-                    left: -121px !important;
-                    top: -2px !important;
-                }
-            }
-        }
-    }
+	
     .chart-header{
         
         &.small-chart-header{
@@ -253,6 +307,22 @@
                     @extend .green;
                 }
             }
+        }
+    }
+
+    .searchbar{
+        .btn-search {
+            &.clicked{
+                .search-btn{
+
+                }
+                .btn-extended{
+                    width: 200px !important;
+                    right: 0 !important;
+                    padding: 0 10px !important;
+                }
+            }
+            
         }
     }
 	
