@@ -19,6 +19,8 @@ export class CoinService {
   changepasswordAPI: any = myGlobals.changepasswordAPI;
   addcontactusAPI: any = myGlobals.addcontactusAPI;
 
+  maincurrencylistAPI: any = myGlobals.maincurrencylistAPI;
+  subcurrencylistAPI: any = myGlobals.subcurrencylistAPI;
   currencylistAPI: any = myGlobals.currencylistAPI;
   coinlistAPI: any = myGlobals.coinlistAPI;
   totalcoinAPI: any = myGlobals.totalcoinAPI;
@@ -114,6 +116,7 @@ export class CoinService {
       trans.date.month = '0' + trans.date.month;
     }
     form.append('tdate', trans.date.year + '-' + trans.date.month + '-' + trans.date.day);
+    console.log(form);
 
     return this.http.post(this.api_url + this.addtradeAPI, form, options)
       .map((response: Response) => response.json());
@@ -187,6 +190,33 @@ export class CoinService {
 
     return this.http.post(this.api_url + this.addcontactusAPI, form, options)
       .map((response: Response) => response.json());
+  }
+
+  getmaincurrencylist(curr) {
+    const headers = new Headers({ 'Content-Type': 'application/x-www-form-urlencoded' });
+    const options = new RequestOptions({ headers: headers });
+
+    if (curr !== '') {
+      return this.http.get(this.api_url + this.maincurrencylistAPI + '/?curr=' + curr, options)
+        .map((response: Response) => response.json());
+    } else {
+      return this.http.get(this.api_url + this.maincurrencylistAPI, options)
+        .map((response: Response) => response.json());
+    }
+
+  }
+
+  getsubcurrencylist(curr) {
+    const headers = new Headers({ 'Content-Type': 'application/x-www-form-urlencoded' });
+    const options = new RequestOptions({ headers: headers });
+
+    if (curr !== '') {
+      return this.http.get(this.api_url + this.subcurrencylistAPI + '/?curr=' + curr, options)
+        .map((response: Response) => response.json());
+    } else {
+      return this.http.get(this.api_url + this.subcurrencylistAPI, options)
+        .map((response: Response) => response.json());
+    }
   }
 
   getallcurrencylist() {

@@ -24,7 +24,7 @@
   <section>
     <div class="container">
       <div class="row">
-        <div class="col-12 col-sm-12 col-md-12 col-lg-12">
+        <div class="col-12 col-sm-12 col-md-12 col-lg-12" *ngIf="followlist != ''">
 
           <div class="breadcrumb">
             <span class="bread-c-big-text">Followlist</span>
@@ -107,6 +107,20 @@
                       <polyline fill="none" [attr.stroke]="follow.percent_change_7d >= 0 ? '#3cd483' : '#ff6060'" stroke-width="10" [attr.points]="graph"></polyline>
                     </svg> -->
 
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-12 col-sm-12 col-md-12 col-lg-12" *ngIf="followlist == ''">
+          <div class="watch-list" style="padding: 5px;margin-top: 3%; ">
+            <div class="row">
+              <div class="col-12 col-sm-12 col-md-12 col-lg-12">
+                <div class="watch-list-detaile" style="border:0;">
+                  <div class="coin-title" style="text-align: center;">
+                    <h3> <span class="currency_symbol">You don’t have any coins in your follow list yet.</span> </h3>
                   </div>
                 </div>
               </div>

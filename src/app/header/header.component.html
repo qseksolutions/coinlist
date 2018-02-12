@@ -102,17 +102,28 @@
                 <img src="assets/currency-svg/search.svg">
               </button>
               <!---->
-              <input class="sidesearch-input" name="search" placeholder="Search Coin.." type="text" >
+              <input class="sidesearch-input" name="search" placeholder="Search Coin.." type="text" (keyup)="getcurrency($event)">
             </div>
           </div>
-          <label class="currency_label" for="base_currency">Base currency</label>
-
-          <ul name="base_currency" id="base_currency" class="select_contry">
-            <li *ngFor="let currency of currencylist" (click)="closeNav(currency.currency_symbol,currency.currency_sign)" [ngClass]="basecurr == currency.currency_symbol ? 'active' : ''">
+          
+          <label class="currency_label" for="base_currency" *ngIf="maincurrencylist != ''">Main currency</label>
+          <ul name="base_currency" id="base_currency" class="select_contry" *ngIf="maincurrencylist != ''">
+            <li *ngFor="let mcurr of maincurrencylist" (click)="closeNav(mcurr.currency_symbol,mcurr.currency_sign)" [ngClass]="basecurr == mcurr.currency_symbol ? 'active' : ''">
               <a href="javascript:void(0);">
-                <img src="assets/currency-symbol/{{currency.currency_symbol | lowercase}}.svg">
-                <span class="currency-shortname"> {{currency.currency_symbol}} </span>
-                <span class="currency-name"> {{currency.currency_name}} </span>
+                <img src="assets/currency-symbol/{{mcurr.currency_symbol | lowercase}}.svg">
+                <span class="currency-shortname"> {{mcurr.currency_symbol}} </span>
+                <span class="currency-name"> {{mcurr.currency_name}} </span>
+              </a>
+            </li>
+          </ul>
+
+          <label class="currency_label" for="base_currency" *ngIf="subcurrencylist != ''">Base currency</label>
+          <ul name="base_currency" id="base_currency" class="select_contry" *ngIf="subcurrencylist != ''">
+            <li *ngFor="let scurr of subcurrencylist" (click)="closeNav(scurr.currency_symbol,scurr.currency_sign)" [ngClass]="basecurr == scurr.currency_symbol ? 'active' : ''">
+              <a href="javascript:void(0);">
+                <img src="assets/currency-symbol/{{scurr.currency_symbol | lowercase}}.svg">
+                <span class="currency-shortname"> {{scurr.currency_symbol}} </span>
+                <span class="currency-name"> {{scurr.currency_name}} </span>
               </a>
             </li>
           </ul>

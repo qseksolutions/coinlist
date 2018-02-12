@@ -47,6 +47,8 @@ export class FollowlistComponent implements OnInit {
     this.coinservice.followlist().subscribe(resData => {
       if (resData.status === true) {
         this.followlist = resData.data;
+      } else {
+        this.followlist = '';
       }
     });
     this.coinservice.profitlosslist().subscribe(resData => {

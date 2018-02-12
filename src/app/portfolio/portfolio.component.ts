@@ -62,11 +62,15 @@ export class PortfolioComponent implements OnInit {
         this.overolsum = this.value;
         this.overolper = (this.value - this.totalcost) / this.totalcost * 100;
         this.profitlosslist = resData.data;
+      } else {
+        this.profitlosslist = '';
       }
     });
     this.coinservice.portfoliolist().subscribe(resData => {
       if (resData.status === true) {
         this.portfoliolist = resData.data;
+      } else {
+        this.portfoliolist = '';
       }
     });
     this.coinservice.getallcoin('').subscribe(resData => {

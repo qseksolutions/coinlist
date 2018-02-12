@@ -41,6 +41,7 @@ export class SupportComponent implements OnInit {
   public selectedIndex: any = 1;
   public modelfaq: any = 1;
   image: any;
+  imageShow: any = false;
 
   contact = {
     cname: '',
@@ -98,11 +99,16 @@ export class SupportComponent implements OnInit {
   onFileChange(event) {
     const reader = new FileReader();
     if (event.target.files && event.target.files.length > 0) {
+      this.imageShow = true;
       const file = event.target.files[0];
       reader.readAsDataURL(file);
       reader.onload = () => {
         this.image = reader.result;
-        console.log(this.image);
+        if (this.image !== '') {
+          setTimeout(() => {
+            this.imageShow = false;
+          }, 2000);
+        }
       };
     }
   }
@@ -118,14 +124,16 @@ export class SupportComponent implements OnInit {
       this.toasterService.pop('error', 'Required', 'Please enter valid email');
     } else if (formModel.subject === '') {
       this.toasterService.pop('error', 'Required', 'Please enter subject');
-    } else if (this.image === '') {
-      this.toasterService.pop('error', 'Required', 'Please enter image');
     } else if (formModel.message === '') {
       this.toasterService.pop('error', 'Required', 'Please enter message');
     } else {
       setTimeout(() => {
         console.log(formModel);
-        this.image = this.image.replace(/\+/g, '#');
+        if (this.image !== '') {
+          this.image = this.image.replace(/\+/g, '#');
+        } else {
+          this.image = '';
+        }
         this.coinservice.addcontactus(formModel, this.image).subscribe(resData => {
           if (resData.status === true) {
             this.toasterService.pop('success', 'Success', resData.message);

@@ -119,6 +119,7 @@
                             <div class="input-file-container">  
                               <input class="input-file contact-input" type="file" id="avatar" (change)="onFileChange($event)" #fileInput>
                               <label tabindex="0" for="avatar" class="btn contact-btn input-file-trigger">Select a file...</label>
+                              <img src="../../assets/images/image_loader.gif" style="width: 30px;" *ngIf="imageShow"/>
                             </div>
                               <p class="file-return"></p>
                             </div>
@@ -132,7 +133,7 @@
 
                         <div class="col-md-12 col-sm-12 col-12">
                           <div class="text-center">
-                            <button href="#" class="btn btn-save" type="submit">Send</button>
+                            <button href="#" class="btn btn-save" id="contact_us_btn" type="submit">Send</button>
                           </div>
                         </div>
                       </div>
