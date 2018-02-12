@@ -148,8 +148,8 @@
           </div>
         </div>
         <div class="chart-header small-chart-header hidden-md-up ">
-          <div class="chart-title">
-            <span>{{coin && coin.name}} Price</span>
+          <div class="chart-title" *ngIf="coin">
+            <span>{{coin.name}} Price</span>
           </div>
           <div class="chart-btn text-center">
             <ul class="list-unstyled">
@@ -199,23 +199,23 @@
   </div>  
 </section>
 
-<section class="coin-descripation">
+<section class="coin-descripation" *ngIf="coin">
   <div class="container">
     <div class="row">
       <div class="col-12 col-sm-12 col-md-12 col-lg-12">
         <div class="coin-web">
           <div class="web-text">
-            <div class="">
-              <label class="coin-lable">WHAT IS {{coin && coin.name}}? </label>
+            <div class="" >
+              <label class="coin-lable">WHAT IS {{coin.name}}? </label>
             </div>
             <p [style.display]="coin && coin.defination != null ? 'initial':'none'">
-               {{coin && coin.defination}}
+               {{coin.defination}}
             </p>
             <p [style.display]="coin && coin.defination == null ? 'initial':'none'">
-               There’s no description of {{coin && coin.name}} yet.
+               There’s no description of {{coin.name}} yet.
             </p>
           </div>
-          <div class="coin-web-btn">
+          <div class="coin-web-btn" *ngIf="coin">
               <a href="{{coin.website}}" target="_blank" class="btn btn-visit-site"> Visit Site </a>
           </div>
         </div>
