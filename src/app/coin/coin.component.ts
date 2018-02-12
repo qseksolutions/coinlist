@@ -116,7 +116,7 @@ export class CoinComponent implements OnInit {
           },
           tooltip: {
             formatter: function () {
-              return this.x + '<br/><b> $ ' + this.y + '</b>';
+              return '<div> {{ this.x | dateFormat }} <br/><b> ${{ this.y }}</b></div>';
             },
             crosshairs: {
               color: 'rgba(61, 51, 121, 1)',
