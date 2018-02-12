@@ -225,7 +225,7 @@
 }
 .searchbar{
   float: right;
-  padding: 21px 0;  
+  padding: 24px 0;  
   .btn-extended{
     width: 0px;
     padding: 0;
@@ -239,8 +239,8 @@
     top: 0px;
     z-index: 0;
     border-radius: 5px;
-    height: 35px;
-    border: solid 1px $dark-blue;
+    height: 30px;
+    border:none;
     margin-right: 15px;
   }
   .dropdown-item {
@@ -257,15 +257,21 @@
             width: 250px;
             right: 0px;
             padding: 0 10px;
+            border: solid 1px $dark-blue;
         }
         .search-btn{
             border-radius:  0 5px 5px 0;
+            background-color: $dark-blue;
+            img{
+                width: 15px;
+                @include filter(brightness(0%) invert(100%));                
+            }
         }
         
     }
     
     img{
-        width: 20px;
+        width: 16px;
     }
     button{
         &.search-btn {
@@ -274,11 +280,11 @@
             outline: none;
             cursor: pointer;
             position: relative;
-            height: 35px;
+            height: 30px;
             z-index: 2;
-            background-color: $dark-blue;
+            background-color: transparent;
             border-radius:5px;
-            padding: 8px;
+            padding: 7px;
         }
     }
   }
