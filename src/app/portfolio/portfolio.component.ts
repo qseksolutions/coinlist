@@ -101,7 +101,29 @@ export class PortfolioComponent implements OnInit {
 
   formattercur = (x: { currency_symbol: string }) => x.currency_symbol;
 
+  getcoinprice(trans) {
+    if (trans.date === undefined || trans.date === null) {
+      this.toasterService.pop('error', 'Required', 'Please select date');
+    } else if (trans.coin === undefined || trans.coin === '') {
+      this.toasterService.pop('error', 'Required', 'Please select coin');
+    } else if (trans.curr === undefined || trans.curr === '') {
+      this.toasterService.pop('error', 'Required', 'Please select currency');
+    } else if (trans.amount === '') {
+      this.toasterService.pop('error', 'Required', 'Please enter amount');
+    } else {
+      this.coinservice.getcoinprice(trans).subscribe(resData => {
+        console.log(resData);
+        if (resData.Response === 'Error') {
+          this.toasterService.pop('error', 'Error', resData.Message);
+        } else {
+          jQuery('#rate').val(resData[trans.coin.symbol][trans.curr.currency_symbol] * trans.amount);
+        }
+      });
+    }
+  }
+
   onSubmitAddtransaction(trans) {
+    trans.rate = jQuery('#rate').val();
     if (trans.date === undefined || trans.date === null) {
       this.toasterService.pop('error', 'Required', 'Please select date');
     } else if (trans.coin === undefined || trans.coin === '') {

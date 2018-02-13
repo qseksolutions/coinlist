@@ -1708,4 +1708,16 @@ a {
 .alert p {
   margin-bottom: 0; }
 
+button.dropdown-item.active > div > a {
+    color: #FFF;
+}
+
+button.dropdown-item > div > a {
+    color: #000;
+}
+
+canvas {
+  height: 50px;
+}
+
 /*# sourceMappingURL=main.css.map */

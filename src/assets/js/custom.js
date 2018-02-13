@@ -4,6 +4,7 @@ $('a[href="#"]').click(function(e) {
 
 var curl = window.location.href;
 var curl = curl.split("/");
+// console.log(curl);
 
 $(function(){
   
@@ -42,9 +43,9 @@ function scrollFunction() {
 }
 
 // When the user clicks on the button, scroll to the top of the document
-setTimeout(function(){ 
+/*setTimeout(function(){ 
     $('.loading').fadeOut();
-}, 2000);
+}, 2000);*/
 
 function topFunction() {
     $('html, body').animate({scrollTop:0}, 'slow');

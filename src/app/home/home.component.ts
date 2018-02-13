@@ -75,6 +75,7 @@ export class HomeComponent implements OnInit {
     }
     this.prepage = 0;
     this.nxtpage = 2;
+
   }
 
   toggleClass(period, index: number) {

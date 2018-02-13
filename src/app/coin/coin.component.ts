@@ -115,9 +115,9 @@ export class CoinComponent implements OnInit {
             enabled: false
           },
           tooltip: {
-            formatter: function () {
+            /* formatter: function () {
               return '<div> {{ this.x | dateFormat }} <br/><b> ${{ this.y }}</b></div>';
-            },
+            }, */
             crosshairs: {
               color: 'rgba(61, 51, 121, 1)',
               zIndex: 22,
@@ -211,6 +211,18 @@ export class CoinComponent implements OnInit {
             buttonOptions: {
               enabled: false
             }
+          },
+          responsive: {
+            rules: [{
+              condition: {
+                maxWidth: 500
+              },
+              chartOptions: {
+                legend: {
+                  enabled: false
+                }
+              }
+            }]
           }
         });
     });

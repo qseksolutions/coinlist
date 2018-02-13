@@ -25,6 +25,7 @@ export const profitlosslistAPI = 'profitlosslist';
 export const categorylistAPI = 'categorylist';
 export const supportlistAPI = 'supportlist';
 export const getprofileupdatedataAPI = 'getprofileupdatedata';
+export const getselectcoinpriceAPI = 'getselectcoinprice';
 
 export const cointrackbyuserAPI = 'cointrackbyuser';
 

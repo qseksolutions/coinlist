@@ -23,6 +23,21 @@
 
   <section>
     <div class="container">
+      <div class="col-12 col-sm-12 col-md-12 col-lg-12" *ngIf="portfoliolist == undefined">
+        <div class="watch-list" style="padding: 5px;margin:10% 0%;">
+          <div class="row">
+            <div class="col-12 col-sm-12 col-md-12 col-lg-12">
+              <div class="watch-list-detaile" style="border:0;">
+                <div class="coin-title" style="text-align: center;">
+                  <img src="../../assets/images/image_loader.gif">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="container" *ngIf="portfoliolist != undefined">
       <div class="row" *ngIf="portfoliolist != ''">
         <div class="col-12 col-sm-12 col-md-12 col-lg-12">
           <div class="breadcrumb">
@@ -311,24 +326,27 @@
       
       </div>
 
-      <div class="row" *ngIf="portfoliolist == ''">
-        <div class="col-12 col-sm-12 col-md-12 col-lg-12">
-          <div class="breadcrumb">
-            <div class="add-newbtn" style="text-align: center;">
-              <a href="#" class="btn btn-add" data-toggle="modal" data-target="#newtransaction">New Transaction</a>
+      <div class="col-12 col-sm-12 col-md-12 col-lg-12" *ngIf="portfoliolist == ''">
+        <div class="watch-list" style="padding: 5px;margin-top:5%;">
+          <div class="row">
+            <div class="col-12 col-sm-12 col-md-12 col-lg-12">
+              <div class="watch-list-detaile" style="border:0;">
+                <div class="coin-title" style="text-align: center;">
+                  <h3>
+                    <span class="currency_symbol">You don’t have any coins in your portfolio list yet.</span>
+                  </h3>
+                </div>
+              </div>
             </div>
           </div>
         </div>
       </div>
-      <div class="protfolio-table" *ngIf="portfoliolist == ''">
-        <div class="protfolio-table-title">
-          <div class="row">
-            <div class="col-lg-12 col-md-12 col-sm-12 col-12">
-              <div class="alignment" style="text-align: center;">
-                <span>
-                  <a href="#" class="coin-heading"> You don’t have any coins in your portfolio yet. </a>
-                </span>
-              </div>
+
+      <div class="row" *ngIf="portfoliolist == ''">
+        <div class="col-12 col-sm-12 col-md-12 col-lg-12">
+          <div class="">
+            <div class="add-newbtn" style="text-align: center;">
+              <a href="#" class="btn btn-add" data-toggle="modal" data-target="#newtransaction" style="margin-bottom:10%;">New Transaction</a>
             </div>
           </div>
         </div>
@@ -400,7 +418,7 @@
                           <img src="assets/currency-svg/{{o.currency_symbol | lowercase}}.svg" class="input-currency-icon" style="filter:brightness(60%);">
                         </div>
                       </ng-template>
-                      <input id="typeahead-template" type="text" class="form-control currency-select currency-name" [(ngModel)]="modelcur" name="curr" [ngbTypeahead]="searchcur" [resultTemplate]="os" [inputFormatter]="formattercur" placeholder="USD" id="selectedcur" />
+                      <input id="typeahead-template" type="text" class="form-control currency-select currency-name" [(ngModel)]="modelcur" name="curr" [ngbTypeahead]="searchcur" [resultTemplate]="os" [inputFormatter]="formattercur" placeholder="USD" id="selectedcur" (change)="getcoinprice(form.value);"/>
                       <div id="icon-curr" class="currency_icon">
                         <img src="assets/currency-svg/usd.svg" class="input-currency-icon" style="filter:brightness(60%);" id="curr_image">
                       </div>
@@ -419,7 +437,7 @@
 
                   <div class="col-md-6 col-sm-12 col-12 ">
                     <div class="currancy-form-input">
-                      <input class="currency-select" placeholder="Rate" name="rate" ngModel>
+                      <input class="currency-select" placeholder="Rate" name="rate" id="rate" ngModel>
                       <div class="currency_icon">
                         <img src="assets/currency-svg/rate.svg" class="input-currency-icon">
                       </div>

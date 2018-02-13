@@ -32,6 +32,7 @@ export class CoinService {
   categorylistAPI: any = myGlobals.categorylistAPI;
   supportlistAPI: any = myGlobals.supportlistAPI;
   getprofileupdatedataAPI: any = myGlobals.getprofileupdatedataAPI;
+  getselectcoinpriceAPI: any = myGlobals.getselectcoinpriceAPI;
 
   cointrackbyuserAPI: any = myGlobals.cointrackbyuserAPI;
 
@@ -40,6 +41,8 @@ export class CoinService {
   user_base: any = localStorage.getItem('user_base');
   base_sing: any = localStorage.getItem('base_sing');
   useremail: any = localStorage.getItem('email');
+
+  coindate: any;
 
   constructor(private http: Http) {
     if (this.basecur == null) {
@@ -116,7 +119,6 @@ export class CoinService {
       trans.date.month = '0' + trans.date.month;
     }
     form.append('tdate', trans.date.year + '-' + trans.date.month + '-' + trans.date.day);
-    console.log(form);
 
     return this.http.post(this.api_url + this.addtradeAPI, form, options)
       .map((response: Response) => response.json());
@@ -368,6 +370,40 @@ export class CoinService {
     form.append('email', this.useremail);
 
     return this.http.post(this.api_url + this.getprofileupdatedataAPI, form, options)
+      .map((response: Response) => response.json());
+  }
+
+  /* getcoinprice(trans) {
+    const headers = new Headers({ 'Content-Type': 'application/x-www-form-urlencoded' });
+    const options = new RequestOptions({ headers: headers });
+
+    const form = new URLSearchParams();
+    form.append('currency', trans.curr.currency_symbol);
+    form.append('coin', trans.coin.id);
+    form.append('totalcoin', trans.amount);
+    if (trans.date.day < 10) {
+      trans.date.day = '0' + trans.date.day;
+    }
+    if (trans.date.month < 10) {
+      trans.date.month = '0' + trans.date.month;
+    }
+    form.append('currdate', trans.date.year + '-' + trans.date.month + '-' + trans.date.day);
+    const newDate = trans.date.year + '/' + trans.date.month + '/' + trans.date.day;
+    this.coindate = new Date(newDate).getTime();
+    form.append('coindate', this.coindate);
+
+    return this.http.post(this.api_url + this.getselectcoinpriceAPI, form, options)
+      .map((response: Response) => response.json());
+  } */
+
+  getcoinprice(trans) {
+
+    const newDate = trans.date.year + '/' + trans.date.month + '/' + trans.date.day;
+    this.coindate = new Date(newDate).getTime();
+    this.coindate = this.coindate / 1000;
+
+    // tslint:disable-next-line:max-line-length
+    return this.http.get('https://min-api.cryptocompare.com/data/pricehistorical?fsym=' + trans.coin.symbol + '&tsyms=' + trans.curr.currency_symbol + '&ts=' + this.coindate)
       .map((response: Response) => response.json());
   }
 

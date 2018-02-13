@@ -54,7 +54,11 @@
 
 <section>
   <div class="container">
-    <div class="main-table">
+    <div class="main-table text-center" *ngIf="coins == ''">
+      <img src="../../assets/images/image_loader.gif">
+    </div>
+
+    <div class="main-table" *ngIf="coins != ''">
       <div class="table-cate-title">
         <div class="row">
           <div class="col-lg-3 col-md-4 col-sm-4 col-5">

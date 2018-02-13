@@ -89,11 +89,11 @@ export class HeaderComponent implements OnInit {
         this.subcurrencylist = '';
       }
     });
-    /* this.coinservice.getallcoin().subscribe(resData => {
+    this.coinservice.getallcoin('').subscribe(resData => {
       if (resData.status === true) {
         this.allcoin = resData.data;
       }
-    }); */
+    });
   }
 
   getcurrency(event: any) {

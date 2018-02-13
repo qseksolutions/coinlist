@@ -1,0 +1,7 @@
+.searchbar .btn-search.clicked .btn-extended, .searchbar-small-device .btn-search.clicked .btn-extended {
+    font-size: 15px;
+}
+.sidenav .sidebar-search .side-searchbtn .sidesearch-input {
+    color: #FFF;
+    font-size: 18px;
+}
