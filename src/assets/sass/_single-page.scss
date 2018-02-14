@@ -115,17 +115,17 @@
             vertical-align: middle;
             font-weight: 600;
             padding: 10px 15px;
-            border: solid 1px $text-green;
+            border: solid 1.5px $text-green;
             border-radius: 5px;
+            min-width: 100px;
+            display: block;
+            text-align: center;
+            float: right;
         }
         .red{
-            color: $color-nagative;
-            font-size: 14px;
-            vertical-align: middle;
-            font-weight: 500;
-            padding: 10px 15px;
-            border: solid 1px $color-nagative;
-            border-radius: 5px;
+            @extend .green;
+            color: $color-nagative !important;
+            border: solid 1.5px $color-nagative;
         }
     }
 }
@@ -140,6 +140,7 @@
         height: 100%;
         display: flex;
         align-items: center;
+        justify-content: space-between;
         .web-text{
             color: $text-white;
             font-size: 14px;
@@ -152,6 +153,8 @@
             .coin-lable{
                 margin-bottom: 25px;
             }
+        }
+        .coin-web-btn{
         }
     }
 }

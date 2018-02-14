@@ -19,14 +19,14 @@
 @media #{$only-tab}{
     .coin-table-list {
         .currency-sign{
-            font-size: 11px !important;
+            font-size: 11px ;
         }
         .currency-value{
-            font-size: 11px !important;
+            font-size: 11px ;
         }
     }
     .btn.btn-follow{
-        font-size: 0 !important;
+        font-size: 0 ;
     }
     .single-coin-detaile{
          .best-coin-value{
@@ -42,17 +42,17 @@
 /*(max-width : 767px)*/
 @media #{$big-mobile} {
     body{
-        font-size: 11px !important;
+        font-size: 11px ;
     }
 
     .sidenav{
         .menu-dropdown-content{
-            padding: 2px 10px !important;
+            padding: 2px 10px ;
         }
         .select_contry{
 
             li{ 
-                width: 60px !important;
+                width: 60px ;
 
                 a{
                      .currency-name{
@@ -66,7 +66,7 @@
         .main-chart-btn{
              ul{
                   li{
-                    padding: 0 !important; 
+                    padding: 0 ; 
                 }
              }
         }
@@ -74,11 +74,11 @@
     .coin-table-list {
         .main-coin-price{
              .currency-value{
-                font-size: 11px !important;
+                font-size: 11px ;
 
              }
               .currency-sign{
-                  font-size: 11px !important;
+                  font-size: 11px ;
               }
         }
     }
@@ -88,125 +88,119 @@
     .coin-page__header{
          .contant_coin-page{
               .exchange-logo{
-                padding:4px 10px !important;
-                width: 40% !important;
-              }
+                padding:4px 10px ;
+                width: 40% ;
                .exchange-logo-img{
-                   width: 140px !important;
+                   width: 140px ;
                }
+              }
          }
     }
     .searchbar{
-        float: float !important;
-        padding: 6px 0 !important;
+        float: float ;
+        padding: 6px 0 ;
         .btn-search{
-            padding: 0 !important;
+            padding: 0 ;
         }
     }
 
-    .coin-table-list {
-        .main-coin-price{
-             .currency-value{
-                font-size: 11px !important;
-
-             }
-              .currency-sign{
-                  font-size: 11px !important;
-              }
-        }
-    }
     .coin-table-list {
         .coin-coint {
 
             .main-coin-title{
                 a{
-                    font-size: 11px !important;
+                    font-size: 11px ;
                 }
             }
             .coin-count-icon {
-                width: 50px !important;
+                width: 50px ;
                 .count-text{
-                    font-size: 9px!important;
-                    width: 20px !important;
-                    padding: 10px 0 10px 5px !important;
+                    font-size: 9px;
+                    width: 20px ;
+                    padding: 10px 0 10px 5px ;
                 }
                 .coin-symbol {
                     img{
-                        width: 16px !important;
+                        width: 16px ;
                     }
                 }
             }
         }
+        .update-price {
+            .price-updown{
+                font-size: 11px;
+            }
+        }
     }
     .coin-info-item2{
-        width: 100% !important;
+        width: 100% ;
     }
     .coin-info-item{
-        width: 100% !important;
+        width: 100% ;
     }
     .coin-lable{
-        font-size: 10px !important;
+        font-size: 10px ;
     }
     .price-sign-coin, .price-number-coin{
-        font-size: 12px !important;
+        font-size: 12px ;
     }
     .main-table{
-        padding: 10px !important; 
+        padding: 10px ; 
     }
     .coin-heading{
-        font-size: 11px !important;
+        font-size: 11px ;
     }
     /*btn*/
     .btn{
-
         &.btn-chart{
-            padding: 4px 0 !important;
+            padding: 4px 0 ;
             width: 35px;
             height: 25px;
-            border-radius: 4px !important;
+            border-radius: 4px ;
         }
         &.btn-green{
-            background-image: none;
+            background-image: none !important;
             padding: 15px !important;
         }
-
     }
 
     /*watchlist*/
     .watchlist-coin-img{
-        display: none !important;
+        display: none ;
     }
     .watch-list-detaile{
-        border-right: none !important;
+        border-right: none ;
+        border-bottom: solid 2px #ebeef3;
+        margin-bottom: 10px;
     }
 
     /*single-page*/
     .single-coin-detaile{
          .best-coin-value{
             margin-bottom: 10px;
-            padding: 10px 15px !important;
+            padding: 10px 15px ;
          }
     }
     .single-page-detaile{
-        padding: 30px 0 !important;
+        padding: 30px 0 ;
     }
     .single-coin-detaile {
         .center-header {
-            display: block !important;
+            display: block ;
             .info_coin-page {
                 text-align: center;
-                display: block !important;
+                display: block ;
                 .coin-price{
-                    display: block !important;
+                    display: block ;
                     margin-bottom: 10px;
                 }
                 .price-sign-coin{
-                    font-size: 20px !important;
-                    display: inline-block !important;
+                    font-size: 20px ;
+                    display: inline-block ;
                 }
                 .price-number-coin{
-                    font-size: 20px !important;
-                    display: inline-block !important;                    
+                    font-size: 20px ;
+                    display: inline-block ;                    
                 }
                 .currency_icon {
                     display: block !important;
@@ -232,12 +226,12 @@
         }
         .dropdown-menu{
             transition: all ease 0.5s;
-            right: 0 !important; 
-            left: 100% !important;
-            display: block !important;
-            position: fixed !important;
+            right: 0 ; 
+            left: 100% ;
+            display: block ;
+            position: fixed ;
             width: 0;
-            top: 42px !important;
+            top: 42px ;
 
             li{
                 a{
@@ -246,10 +240,10 @@
             }
         }
         .show > .dropdown-menu {
-            display: block !important;
-            width: 100% !important;
+            display: block ;
+            width: 100% ;
             opacity: 1;
-            left: 0 !important;
+            left: 0 ;
         }
     }
     .searchbar{
@@ -259,9 +253,9 @@
 
                 }
                 .btn-extended{
-                    width: 250px !important;
-                    right: 44% !important;
-                    padding: 0 10px !important;
+                    width: 250px ;
+                    right: 44% ;
+                    padding: 0 10px ;
                 }
             }
             
@@ -270,10 +264,21 @@
     .sidebar-search{
         .side-searchbtn{
             .sidesearch-input{
-                width: calc(100% - 50px) !important;
+                width: calc(100% - 50px) ;
                 margin-right: 100px;
             }   
         }
+    }
+
+    /*profile*/
+    .profile-title{
+        padding: 0;
+    }
+    .profile-form{
+        padding: 10px 10px;
+    }
+    .profile-footer{
+        padding: 10px 0 0;
     }
 }       
 
@@ -283,16 +288,16 @@
     .chart-header{
         
         &.small-chart-header{
-            display: block !important;
+            display: block ;
             .chart-title{
-                display: block !important;
+                display: block ;
                 margin-bottom: 10px;
             }
             .chart-btn{
-                display: inline-block !important;
+                display: inline-block ;
                 ul{
                     li{
-                        padding:  0 0 !important;
+                        padding:  0 0 ;
                     }
                 }
             }
@@ -300,8 +305,8 @@
                 display: inline-block;
                 float: right;
                 .green{
-                    padding: 8px 10px !important;
-                    font-size: 11px !important;
+                    padding: 8px 10px ;
+                    font-size: 11px ;
                 }
                 .red{
                     @extend .green;
@@ -317,9 +322,9 @@
 
                 }
                 .btn-extended{
-                    width: 200px !important;
-                    right: 0 !important;
-                    padding: 0 10px !important;
+                    width: 200px ;
+                    right: 0 ;
+                    padding: 0 10px ;
                 }
             }
             

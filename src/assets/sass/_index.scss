@@ -165,20 +165,6 @@
             }
             
         }
-
-    .currency-sign{
-        font-size: 13px;
-        display: table-cell;
-        vertical-align: middle;
-        padding-right: 3px;
-        color: $sign-color;
-    }
-    
-    .currency-value{
-        letter-spacing: 0.02em; 
-        display: table-cell;
-        vertical-align: middle; 
-    }
     
     .follow-plus{
         width: 8px;
@@ -188,6 +174,18 @@
     .follow-minus{
         @extend .follow-plus;
     }
+}
+.currency-value{
+    letter-spacing: 0.02em; 
+    display: table-cell;
+    vertical-align: middle; 
+}
+.currency-sign{
+    font-size: 13px;
+    display: table-cell;
+    vertical-align: middle;
+    padding-right: 3px;
+    color: $sign-color;
 }
 .price_positive{
     color: $bg-green;
@@ -291,7 +289,7 @@
 .coin-lable{
     font-size: 12px;
     color:$light-gray;
-    letter-spacing: 0.15em;
+    letter-spacing: normal;
     text-transform: uppercase;
     font-weight: 700;
     margin-bottom: 10px;

@@ -72,14 +72,15 @@
         font-weight: 600;
         text-transform: uppercase;
         text-align: center;
-        padding: 12px 20px;
-        border-radius: 25px;
-        line-height: 13px;
-        color: #fff;
+        padding: 5px 10px;
+        border-radius: 4px;
+        line-height: 18px;
+        color: $text-white;
         border:0px;
         cursor: pointer; 
         @include transition(0.5s);
         border: solid 1.5px $btn-bg-color;
+        background-color: $btn-bg-color;
      
     &:hover{
         background-color: $hover-orange;

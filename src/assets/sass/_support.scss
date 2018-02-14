@@ -1,10 +1,18 @@
 @import'variables'; 
 .support-main-bg{
-    background: url(../images/support-bg.png);
-    background-size: 100% 40%;
-    background-position: top center;
-    background-repeat: no-repeat;
-    height: 1500px;
+    position: relative;
+    &:before{
+        content: "";
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 1000px;
+        background-image: url(../images/support-bg.png);
+        background-size: 100% 40%;
+        background-position: top center;
+        background-repeat: no-repeat;
+    }
 }
 .support-header{
     padding: 40px 0;

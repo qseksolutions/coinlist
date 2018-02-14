@@ -410,9 +410,9 @@
   font-weight: 600;
   text-transform: uppercase;
   text-align: center;
-  padding: 12px 20px;
-  border-radius: 25px;
-  line-height: 13px;
+  padding: 5px 10px;
+  border-radius: 4px;
+  line-height: 18px;
   color: #fff;
   border: 0px;
   cursor: pointer;
@@ -420,7 +420,8 @@
   -moz-transition: 0.5s;
   -ms-transition: 0.5s;
   transition: 0.5s;
-  border: solid 1.5px #ff8033; }
+  border: solid 1.5px #ff8033;
+  background-color: #ff8033; }
   .btn.btn-visit-site:hover {
     background-color: #f17428; }
 .btn.btn-web, .btn.btn-buy {
@@ -692,19 +693,21 @@
       overflow: visible;
       padding-top: 7px;
       display: block; }
-  .coin-table-list .currency-sign {
-    font-size: 13px;
-    display: table-cell;
-    vertical-align: middle;
-    padding-right: 3px;
-    color: #acb1bf; }
-  .coin-table-list .currency-value {
-    letter-spacing: 0.02em;
-    display: table-cell;
-    vertical-align: middle; }
   .coin-table-list .follow-plus, .coin-table-list .follow-minus {
     width: 8px;
     vertical-align: unset; }
+
+.currency-value {
+  letter-spacing: 0.02em;
+  display: table-cell;
+  vertical-align: middle; }
+
+.currency-sign {
+  font-size: 13px;
+  display: table-cell;
+  vertical-align: middle;
+  padding-right: 3px;
+  color: #acb1bf; }
 
 .price_positive {
   color: #3ad483; }
@@ -794,7 +797,7 @@
 .coin-lable, .single-coin-detaile .best-coin-value .coin-lable {
   font-size: 12px;
   color: #9ca5be;
-  letter-spacing: 0.15em;
+  letter-spacing: normal;
   text-transform: uppercase;
   font-weight: 700;
   margin-bottom: 10px;
@@ -978,22 +981,21 @@
       display: inline-block; }
       .chart-header .chart-btn ul li.active a {
         background: #3d3379; }
-  .chart-header .chart-value .green {
+  .chart-header .chart-value .green, .chart-header .chart-value .red {
     color: #3cd483;
     font-size: 13px;
     vertical-align: middle;
     font-weight: 600;
     padding: 10px 15px;
-    border: solid 1px #3cd483;
-    border-radius: 5px; }
+    border: solid 1.5px #3cd483;
+    border-radius: 5px;
+    min-width: 100px;
+    display: block;
+    text-align: center;
+    float: right; }
   .chart-header .chart-value .red {
-    color: #ff6060;
-    font-size: 14px;
-    vertical-align: middle;
-    font-weight: 500;
-    padding: 10px 15px;
-    border: solid 1px #ff6060;
-    border-radius: 5px; }
+    color: #ff6060 !important;
+    border: solid 1.5px #ff6060; }
 
 .coin-descripation {
   padding: 50px 0; }
@@ -1003,7 +1005,8 @@
     border-radius: 5px;
     height: 100%;
     display: flex;
-    align-items: center; }
+    align-items: center;
+    justify-content: space-between; }
     .coin-descripation .coin-web .web-text {
       color: #fff;
       font-size: 14px;
@@ -1190,7 +1193,7 @@
   background: linear-gradient(135deg, #170b32 0%, #3d3379 100%); }
 
 .watchlist-netwroth {
-  padding: 90px 50px 0; }
+  padding: 90px 50px; }
 
 .watch-list {
   background-color: #fff;
@@ -1234,8 +1237,7 @@
       opacity: 0.6;
       margin-right: 10px; }
   .watchlist-coin-detaile .main-coin-value {
-    font-size: 14px;
-    color: #3cd483; }
+    font-size: 14px; }
 
 div.breadcrumb {
   padding: 40px 0;
@@ -1311,13 +1313,6 @@ div.breadcrumb {
         color: #acb1bf;
         padding-right: 3px; }
 
-canvas {
-  width: 100%;
-  height: 200px;
-  margin-bottom: 20px;
-  user-select: none;
-  tap-highlight-color: transparent; }
-
 .protfolio-table {
   margin-bottom: 50px; }
 
@@ -1350,7 +1345,7 @@ canvas {
     display: table-cell;
     vertical-align: middle; }
   .protfolia-table-detaile .coin-name {
-    font-size: 16px;
+    font-size: 13px;
     font-weight: 500;
     color: #3d3379;
     display: block; }
@@ -1371,7 +1366,7 @@ canvas {
     font-size: 15px;
     font-weight: 400; }
   .protfolia-table-detaile .date-table {
-    font-size: 15px;
+    font-size: 13px;
     font-weight: 400; }
   .protfolia-table-detaile .main-coin-title, .protfolia-table-detaile .rate-count, .protfolia-table-detaile .remove-btn, .protfolia-table-detaile .cost-count, .protfolia-table-detaile .date-table {
     display: table-cell;
@@ -1475,6 +1470,8 @@ canvas {
   border-radius: 5px 0 0 5px;
   font-family: 'montserrat' !important;
   line-height: 16px; }
+  .portfolio-model .currency-select a {
+    color: #9ca5be; }
 .portfolio-model .currency_icon, .portfolio-model .single-coin-detaile .center-header .info_coin-page .currency_icon .currency-coin-icon, .single-coin-detaile .center-header .info_coin-page .currency_icon .portfolio-model .currency-coin-icon, .portfolio-model .single-coin-detaile .center-header .info_coin-page .currency_icon .currency_icon, .single-coin-detaile .center-header .info_coin-page .currency_icon .portfolio-model .currency_icon, .portfolio-model .single-coin-detaile .center-header .info_coin-page .coin-price, .single-coin-detaile .center-header .info_coin-page .portfolio-model .coin-price {
   color: #9ca5be;
   text-align: center;
@@ -1504,12 +1501,65 @@ ngb-datepicker.dropdown-menu {
   min-width: auto !important;
   max-height: none !important; }
 
+.green, .chart-header .chart-value .red {
+  color: #3cd483 !important; }
+
+.red {
+  color: #ff6060 !important; }
+
+/*table*/
+.protfolio-table .table-responsive {
+  display: inline-table; }
+.protfolio-table .table th {
+  padding: 10px 20px;
+  vertical-align: middle;
+  background-color: #f6f7fc;
+  width: 100%;
+  border: none; }
+  .protfolio-table .table th:first-child {
+    border-radius: 5px 0 0 0; }
+  .protfolio-table .table th:last-child {
+    border-radius: 0 5px 0 0; }
+.protfolio-table .table td {
+  width: 12.5%;
+  padding: 10px 20px;
+  border: none; }
+.protfolio-table .table thead tr {
+  display: flex;
+  width: 100%;
+  border-radius: 5px 5px 0 0;
+  border: solid 1px #ebeef3;
+  border-bottom: none; }
+  .protfolio-table .table thead tr th .alignment {
+    display: flex;
+    align-items: center; }
+.protfolio-table .table tbody {
+  border: none; }
+  .protfolio-table .table tbody tr {
+    margin-bottom: 10px;
+    width: 100%;
+    border: none;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    display: flex;
+    padding: 0; }
+
+.recent-table {
+  width: 1110px; }
+
 .support-main-bg {
-  background: url(../images/support-bg.png);
-  background-size: 100% 40%;
-  background-position: top center;
-  background-repeat: no-repeat;
-  height: 1500px; }
+  position: relative; }
+  .support-main-bg:before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 1000px;
+    background-image: url(../images/support-bg.png);
+    background-size: 100% 40%;
+    background-position: top center;
+    background-repeat: no-repeat; }
 
 .support-header {
   padding: 40px 0;
@@ -1665,6 +1715,73 @@ ngb-datepicker.dropdown-menu {
   justify-content: center;
   align-items: center; }
 
+.profile-contant {
+  padding: 40px 0; }
+
+.Profile-head {
+  background-color: #fff;
+  border-radius: 10px;
+  padding: 15px; }
+
+.profile-title {
+  border-bottom: solid 1px #f8f9fb;
+  padding: 10px 0;
+  color: #8a96a3; }
+
+.profile-title h3 {
+  font-size: 22px; }
+
+.profile-form {
+  padding: 30px; }
+
+.profile-input {
+  display: flex;
+  position: relative;
+  background-color: #fff;
+  border-radius: 5px;
+  border: solid 1px #ebeef3;
+  margin-bottom: 30px; }
+
+input.contact-input[disabled] {
+  cursor: not-allowed; }
+
+.profile-btn .btn.btn-save {
+  min-width: auto; }
+
+.profile-footer {
+  padding: 30px 0 15px;
+  border-top: solid 1px #f8f9fb; }
+
+.btn-cancel {
+  border-radius: 50px;
+  font-size: 13px;
+  color: #8a96a3;
+  font-weight: 600;
+  text-transform: uppercase;
+  line-height: 13px;
+  background-color: transparent;
+  border: solid 1px #8a96a3;
+  margin-left: 10px; }
+
+.button-arrow {
+  background: none;
+  border: none;
+  cursor: pointer; }
+
+.form-group .dropdown-toggle::after {
+  display: none; }
+
+.profile-form .dropdown-menu {
+  max-height: 120px;
+  overflow: scroll; }
+.profile-form .dropdown-item {
+  padding: 10px 1.5rem; }
+
+.input-label {
+  color: #8a96a3;
+  font-weight: 500;
+  font-size: 14px; }
+
 body {
   font-family: 'montserrat' !important;
   color: #4b4b4b !important;
@@ -1707,17 +1824,5 @@ a {
 
 .alert p {
   margin-bottom: 0; }
-
-button.dropdown-item.active > div > a {
-    color: #FFF;
-}
-
-button.dropdown-item > div > a {
-    color: #000;
-}
-
-canvas {
-  height: 50px;
-}
 
 /*# sourceMappingURL=main.css.map */
