@@ -42,7 +42,7 @@
           <div class="breadcrumb">
             <span class="bread-c-big-text">Portfolio</span>
             <div class="add-newbtn float-right">
-              <a href="#" class="btn btn-add" data-toggle="modal" data-target="#newtransaction">New Transaction</a>
+              <a href="#" class="btn btn-add" data-toggle="modal" data-target="#newtransaction">Add Transaction</a>
             </div>
           </div>
 
@@ -334,13 +334,13 @@
         </div>
       </div>
       <div class="col-12 col-sm-12 col-md-12 col-lg-12" *ngIf="portfoliolist == ''">
-        <div class="watch-list" style="padding: 5px;margin-top:5%;">
+        <div class="watch-list" style="">
           <div class="row">
             <div class="col-12 col-sm-12 col-md-12 col-lg-12">
               <div class="watch-list-detaile" style="border:0;">
                 <div class="coin-title" style="text-align: center;">
                   <h3>
-                    <span class="currency_symbol">You don’t have any coins in your portfolio list yet.</span>
+                    <span class="currency_symbol">You didn’t added any Transaction in your portfolio list yet.</span>
                   </h3>
                 </div>
               </div>
@@ -353,7 +353,7 @@
         <div class="col-12 col-sm-12 col-md-12 col-lg-12">
           <div class="">
             <div class="add-newbtn" style="text-align: center;">
-              <a href="#" class="btn btn-add" data-toggle="modal" data-target="#newtransaction" style="margin-bottom:10%;">New Transaction</a>
+              <a href="#" class="btn btn-add" data-toggle="modal" data-target="#newtransaction" style="margin-bottom:10%;">Add New Transaction</a>
             </div>
           </div>
         </div>
@@ -394,7 +394,7 @@
                   <div class="col-md-8 col-sm-12 col-12 ">
                     <div class="currancy-form-input">
                       <!-- <input class="currency-select form-control date" placeholder="Date" id='datepicker' name="date" ngModel> -->
-                      <input class="currency-select form-control date" placeholder="yyyy-mm-dd" name="date" [(ngModel)]="modeldate" ngbDatepicker #d="ngbDatepicker" (click)="d.toggle()">
+                      <input class="currency-select form-control date" placeholder="Select date of Purchase..." name="date" [(ngModel)]="modeldate" (input)="getcoinprice(form.value);" ngbDatepicker #d="ngbDatepicker" (click)="d.toggle()" >
                       <div class="currency_icon date" for="datepicker">
                         <img src="assets/currency-svg/calendar.svg" class="input-currency-icon">
                       </div>
@@ -405,12 +405,12 @@
                   <div class="col-md-6 col-sm-12 col-12 ">
                     <div class="currancy-form-input">
                       <ng-template #rt let-r="result" let-t="term" id="allcoin">
-                        <div [attr.value]="r.symbol" class="dropdown-currency-name currency-select currency-name">{{r.name}} ({{r.symbol}})</div>
+                        <div [attr.value]="r.symbol" class="dropdown-currency-name currency-select currency-name" >{{r.name}} ({{r.symbol}})</div>
                         <div id="icon-currency" class="currency_icon">
                           <img src="assets/currency-svg/{{r.symbol | lowercase}}.svg" (error)="errorHandler($event,r.symbol)" class="input-currency-icon">
                         </div>
                       </ng-template>
-                      <input id="typeahead-template" type="text" class="form-control currency-select currency-name" [(ngModel)]="model" name="coin" [ngbTypeahead]="search" [resultTemplate]="rt" [inputFormatter]="formatter" placeholder="Bitcoin (BTC)" id="selectedcoin"/>
+                      <input id="typeahead-template" type="text" class="form-control currency-select currency-name" [(ngModel)]="model" name="coin" [ngbTypeahead]="search" [resultTemplate]="rt" [inputFormatter]="formatter" placeholder="Select Coin..." id="selectedcoin" (change)="getcoinprice(form.value);"/>
                       <div id="icon-coin" class="currency_icon">
                         <img src="assets/currency-svg/btc.svg" class="input-currency-icon" id="coin_image">
                       </div>
@@ -420,14 +420,14 @@
                   <div class="col-md-6 col-sm-12 col-12 ">
                     <div class="currancy-form-input">
                       <ng-template #os let-o="result" let-s="termcur" id="allcurr">
-                        <div [attr.value]="o.currency_symbol" class="dropdown-currency-name currency-select currency-name">{{o.currency_symbol}}</div>
+                        <div [attr.value]="o.currency_symbol" class="dropdown-currency-name currency-select currency-name" >{{o.currency_symbol}}</div>
                         <div id="icon-currency" class="currency_icon">
-                          <img src="assets/currency-svg/{{o.currency_symbol | lowercase}}.svg" class="input-currency-icon" style="filter:brightness(60%);">
+                          <img src="assets/currency-symbol/{{o.currency_symbol | lowercase}}.svg" class="input-currency-icon" style="filter:brightness(60%);">
                         </div>
                       </ng-template>
-                      <input id="typeahead-template" type="text" class="form-control currency-select currency-name" [(ngModel)]="modelcur" name="curr" [ngbTypeahead]="searchcur" [resultTemplate]="os" [inputFormatter]="formattercur" placeholder="USD" id="selectedcur" (change)="getcoinprice(form.value);"/>
+                      <input id="typeahead-template" type="text" class="form-control currency-select currency-name" [(ngModel)]="modelcur" name="curr" [ngbTypeahead]="searchcur" [resultTemplate]="os" [inputFormatter]="formattercur" placeholder="Select Currency.." value="USD" id="selectedcur" (change)="getcoinprice(form.value);"/>
                       <div id="icon-curr" class="currency_icon">
-                        <img src="assets/currency-svg/usd.svg" class="input-currency-icon" style="filter:brightness(60%);" id="curr_image">
+                        <img src="assets/currency-symbol/usd.svg" class="input-currency-icon" style="filter:brightness(60%);" id="curr_image">
                       </div>
                     </div>
                   </div>
@@ -435,7 +435,7 @@
 
                   <div class="col-md-6 col-sm-12 col-12 ">
                     <div class="currancy-form-input">
-                      <input class="currency-select" placeholder="Amount" name="amount" ngModel>
+                      <input class="currency-select" placeholder="Enter Coin Amount..." name="amount" ngModel (keyUp)="getcoinprice(form.value);"> 
                       <div class="currency_icon">
                         <img src="assets/currency-svg/hashtag.svg" class="input-currency-icon">
                       </div>
@@ -444,7 +444,7 @@
 
                   <div class="col-md-6 col-sm-12 col-12 ">
                     <div class="currancy-form-input">
-                      <input class="currency-select" placeholder="Rate" name="rate" id="rate" ngModel>
+                      <input class="currency-select" placeholder="Enter Value of Coin..." name="rate" id="rate" ngModel>
                       <div class="currency_icon">
                         <img src="assets/currency-svg/rate.svg" class="input-currency-icon">
                       </div>

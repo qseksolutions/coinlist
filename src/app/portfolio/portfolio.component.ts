@@ -115,19 +115,11 @@ export class PortfolioComponent implements OnInit {
   formattercur = (x: { currency_symbol: string }) => x.currency_symbol;
 
   getcoinprice(trans) {
-    if (trans.date === undefined || trans.date === null) {
-      this.toasterService.pop('error', 'Required', 'Please select date');
-    } else if (trans.coin === undefined || trans.coin === '') {
-      this.toasterService.pop('error', 'Required', 'Please select coin');
-    } else if (trans.curr === undefined || trans.curr === '') {
-      this.toasterService.pop('error', 'Required', 'Please select currency');
-    } else if (trans.amount === '') {
-      this.toasterService.pop('error', 'Required', 'Please enter amount');
-    } else {
+    if ( trans.date !== null || trans.coin !== ''|| trans.curr !== '' || trans.amount !== '') {      
       this.coinservice.getcoinprice(trans).subscribe(resData => {
         console.log(resData);
         if (resData.Response === 'Error') {
-          this.toasterService.pop('error', 'Error', resData.Message);
+          jQuery('#rate').val("0");
         } else {
           jQuery('#rate').val(resData[trans.coin.symbol][trans.curr.currency_symbol] * trans.amount);
         }
@@ -154,7 +146,7 @@ export class PortfolioComponent implements OnInit {
           this.ngOnInit();
           setTimeout(() => {
             jQuery('#coin_image').attr('src', 'assets/currency-svg/btc.svg');
-            jQuery('#curr_image').attr('src', 'assets/currency-svg/usd.svg');
+            jQuery('#curr_image').attr('src', 'assets/currency-symbol/usd.svg');
             jQuery('.form-control').val('');
             jQuery('#newtransaction').modal('hide');
           }, 1000);
