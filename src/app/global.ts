@@ -26,6 +26,8 @@ export const categorylistAPI = 'categorylist';
 export const supportlistAPI = 'supportlist';
 export const getprofileupdatedataAPI = 'getprofileupdatedata';
 export const getselectcoinpriceAPI = 'getselectcoinprice';
+export const getsingleseometaAPI = 'getsingleseometa';
+export const gettestseometaAPI = 'gettestseometa';
 
 export const cointrackbyuserAPI = 'cointrackbyuser';
 

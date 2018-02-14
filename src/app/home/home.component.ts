@@ -6,6 +6,7 @@ import * as myGlobals from './../global';
 import { defer } from 'q';
 import { Observable } from 'rxjs/Observable';
 import { ToasterContainerComponent, ToasterService, ToasterConfig } from 'angular2-toaster';
+import { Title, Meta } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-home',
@@ -45,7 +46,8 @@ export class HomeComponent implements OnInit {
   perioddata: any;
   login_ses: any =  0;
 
-  constructor(private coinservice: CoinService, private router: Router, private http: Http, toasterService: ToasterService) {
+  // tslint:disable-next-line:max-line-length
+  constructor(private coinservice: CoinService, private router: Router, private http: Http, toasterService: ToasterService, private title: Title, private meta: Meta ) {
     this.toasterService = toasterService;
 
     if (this.basecurr == null) {
@@ -90,6 +92,17 @@ export class HomeComponent implements OnInit {
   }
 
   ngOnInit() {
+    const curl = window.location.href;
+    this.coinservice.gettestseometa(curl).subscribe(resData => {
+      if (resData.status === true) {
+        // this.title.setTitle(resData.data.title + ' | Coinlisting - Cryptocurrency prices');
+        this.meta.addTag({ name: 'description', content: resData.data.description });
+        this.meta.addTag({ name: 'keywords', content: resData.data.keywords });
+        this.meta.addTag({ name: 'author', content: 'coinlisting' });
+        this.meta.addTag({ name: 'robots', content: resData.data.robots });
+        this.meta.addTag({ name: 'title', content: ' www.coinlisting.io' });
+      }
+    });
     this.realtimetabledata(this.perioddata);
   }
 

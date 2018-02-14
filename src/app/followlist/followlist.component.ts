@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { CoinService } from '../coin.service';
 import * as myGlobals from './../global';
 import { ToasterContainerComponent, ToasterService, ToasterConfig } from 'angular2-toaster';
+import { Title, Meta } from '@angular/platform-browser';
 import { defer } from 'q';
 
 @Component({
@@ -33,7 +34,8 @@ export class FollowlistComponent implements OnInit {
   overolsum: any = 0;
   overolper: any = 0;
 
-  constructor(private coinservice: CoinService, private router: Router, toasterService: ToasterService, private http: Http) {
+  // tslint:disable-next-line:max-line-length
+  constructor(private coinservice: CoinService, private router: Router, toasterService: ToasterService, private http: Http, private title: Title, private meta: Meta) {
     this.toasterService = toasterService;
 
     if (this.login_ses == null) {
@@ -42,6 +44,17 @@ export class FollowlistComponent implements OnInit {
   }
 
   ngOnInit() {
+    const curl = window.location.href;
+    this.coinservice.gettestseometa(curl).subscribe(resData => {
+      if (resData.status === true) {
+        this.title.setTitle(resData.data.title + ' | Coinlisting - Cryptocurrency prices');
+        this.meta.addTag({ name: 'description', content: resData.data.description });
+        this.meta.addTag({ name: 'keywords', content: resData.data.keywords });
+        this.meta.addTag({ name: 'author', content: 'coinlisting' });
+        this.meta.addTag({ name: 'robots', content: resData.data.robots });
+        this.meta.addTag({ name: 'title', content: ' www.coinlisting.io' });
+      }
+    });
     // tslint:disable-next-line:max-line-length
     this.graph = '00,120,20,120,40,160,60,60,80,80,100,80,120,60,140,100,160,90,180,80,200,110,220,10,240,70,260,100,280,100,300,40,320,0,340,100,360,100,380,120,400,60,420,70,440,80';
     this.coinservice.followlist().subscribe(resData => {
@@ -53,7 +66,6 @@ export class FollowlistComponent implements OnInit {
     });
     this.coinservice.profitlosslist().subscribe(resData => {
       if (resData.status === true) {
-        console.log(resData.data);
         for (let i = 0; i < resData.data.length; i++) {
           this.totalcost += resData.data[i]['totalcost'];
           this.value += resData.data[i]['current_price'] * resData.data[i]['coin_amount'];

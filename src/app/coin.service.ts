@@ -33,6 +33,8 @@ export class CoinService {
   supportlistAPI: any = myGlobals.supportlistAPI;
   getprofileupdatedataAPI: any = myGlobals.getprofileupdatedataAPI;
   getselectcoinpriceAPI: any = myGlobals.getselectcoinpriceAPI;
+  getsingleseometaAPI: any = myGlobals.getsingleseometaAPI;
+  gettestseometaAPI: any = myGlobals.gettestseometaAPI;
 
   cointrackbyuserAPI: any = myGlobals.cointrackbyuserAPI;
 
@@ -370,6 +372,28 @@ export class CoinService {
     form.append('email', this.useremail);
 
     return this.http.post(this.api_url + this.getprofileupdatedataAPI, form, options)
+      .map((response: Response) => response.json());
+  }
+
+  getsingleseometa(url) {
+    const headers = new Headers({ 'Content-Type': 'application/x-www-form-urlencoded' });
+    const options = new RequestOptions({ headers: headers });
+
+    const form = new URLSearchParams();
+    form.append('url', url);
+
+    return this.http.post(this.api_url + this.getsingleseometaAPI, form, options)
+      .map((response: Response) => response.json());
+  }
+
+  gettestseometa(url) {
+    const headers = new Headers({ 'Content-Type': 'application/x-www-form-urlencoded' });
+    const options = new RequestOptions({ headers: headers });
+
+    const form = new URLSearchParams();
+    form.append('url', url);
+
+    return this.http.post(this.api_url + this.gettestseometaAPI, form, options)
       .map((response: Response) => response.json());
   }
 

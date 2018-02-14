@@ -5,9 +5,9 @@ import { CoinService } from '../coin.service';
 import * as myGlobals from './../global';
 import { ToasterContainerComponent, ToasterService, ToasterConfig } from 'angular2-toaster';
 import { StockChart } from 'angular-highcharts';
-import { Title } from '@angular/platform-browser';
 import { defer } from 'q';
 import { DatePipe } from '@angular/common';
+import { Title, Meta } from '@angular/platform-browser';
 import * as moment from 'moment';
 
 @Component({
@@ -40,7 +40,7 @@ export class CoinComponent implements OnInit {
   public base_sing: any = myGlobals.base_sing;
 
   // tslint:disable-next-line:max-line-length
-  constructor(private coinservice: CoinService, private router: Router, toasterService: ToasterService, private http: Http, private titleService: Title, private datePipe: DatePipe) {
+  constructor(private coinservice: CoinService, private router: Router, toasterService: ToasterService, private http: Http, private titleService: Title, private datePipe: DatePipe, private meta: Meta) {
     this.toasterService = toasterService;
 
     this.perioddata = localStorage.getItem('period');
@@ -89,6 +89,20 @@ export class CoinComponent implements OnInit {
   }
 
   ngOnInit() {
+    const curl = window.location.href;
+    const ccoin = curl.split('/');
+    const durl = curl.replace('/' + ccoin[4], '');
+    this.coinservice.gettestseometa(durl).subscribe(resData => {
+      if (resData.status === true) {
+        const desc = resData.data.description;
+        resData.data.description = desc.replace('[COIN]', ccoin[4]);
+        this.meta.addTag({ name: 'description', content: resData.data.description });
+        this.meta.addTag({ name: 'keywords', content: resData.data.keywords });
+        this.meta.addTag({ name: 'author', content: 'coinlisting' });
+        this.meta.addTag({ name: 'robots', content: resData.data.robots });
+        this.meta.addTag({ name: 'title', content: 'www.coinlisting.io' });
+      }
+    });
     this.realTimeData();
     this.realTimeGraph(this.perioddata);
   }
@@ -108,8 +122,8 @@ export class CoinComponent implements OnInit {
             zoomType: 'x',
             backgroundColor: null,
             renderTo: 'container',
-            style:{
-                fontFamily: "Montserrat",
+            style: {
+                fontFamily: 'Montserrat',
              },
           },
           rangeSelector: {
@@ -120,8 +134,9 @@ export class CoinComponent implements OnInit {
           },
           tooltip: {
              formatter: function () {
-              return  '<span style="font-size:11px;font-weight:bold;color:#9ca5be;margin-bottom:10px;">' + moment.unix(this.x/1000).format(" DD MMM, YYYY HH:mm") + '</span><br/><span style=""> $ ' + this.y +'</span>'
-            }, 
+              // tslint:disable-next-line:max-line-length
+              return  '<span style="font-size:11px;font-weight:bold;color:#9ca5be;margin-bottom:10px;">' + moment.unix(this.x / 1000).format(' DD MMM, YYYY HH:mm') + '</span><br/><span style=""> $ ' + this.y + '</span>';
+            },
             crosshairs: {
               color: 'rgba(61, 51, 121, 1)',
               zIndex: 22,
@@ -132,13 +147,13 @@ export class CoinComponent implements OnInit {
               color: 'rgba(61, 51, 121, 1)',
               fontSize: '13px',
               textAlign : 'center',
-              fontWeight:'bold',
+              fontWeight: 'bold',
             },
             backgroundColor: '#FFF',
             borderColor: 'rgba(61, 51, 121, 1)',
             borderRadius: 5,
             borderWidth: 2,
-             padding:10
+             padding: 10
           },
           xAxis: {
             type: 'datetime',
