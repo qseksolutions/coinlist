@@ -8,6 +8,7 @@ import { StockChart } from 'angular-highcharts';
 import { Title } from '@angular/platform-browser';
 import { defer } from 'q';
 import { DatePipe } from '@angular/common';
+import * as moment from 'moment';
 
 @Component({
   selector: 'app-coin',
@@ -106,7 +107,10 @@ export class CoinComponent implements OnInit {
             type: 'spline',
             zoomType: 'x',
             backgroundColor: null,
-            renderTo: 'container'
+            renderTo: 'container',
+            style:{
+                fontFamily: "Montserrat",
+             },
           },
           rangeSelector: {
             enabled: false,
@@ -115,9 +119,9 @@ export class CoinComponent implements OnInit {
             enabled: false
           },
           tooltip: {
-            /* formatter: function () {
-              return '<div> {{ this.x | dateFormat }} <br/><b> ${{ this.y }}</b></div>';
-            }, */
+             formatter: function () {
+              return  '<span style="font-size:11px;font-weight:bold;color:#9ca5be;margin-bottom:10px;">' + moment.unix(this.x/1000).format(" DD MMM, YYYY HH:mm") + '</span><br/><span style=""> $ ' + this.y +'</span>'
+            }, 
             crosshairs: {
               color: 'rgba(61, 51, 121, 1)',
               zIndex: 22,
@@ -127,12 +131,14 @@ export class CoinComponent implements OnInit {
             style: {
               color: 'rgba(61, 51, 121, 1)',
               fontSize: '13px',
-              align : 'center'
+              textAlign : 'center',
+              fontWeight:'bold',
             },
             backgroundColor: '#FFF',
             borderColor: 'rgba(61, 51, 121, 1)',
             borderRadius: 5,
-            borderWidth: 2
+            borderWidth: 2,
+             padding:10
           },
           xAxis: {
             type: 'datetime',
@@ -233,7 +239,6 @@ export class CoinComponent implements OnInit {
     const coinid = url.split('/');
     this.coinservice.getSingleCoin(coinid[4])
     .subscribe(resData => {
-      console.log(resData);
       if (resData.status === true) {
         this.titleService.setTitle(resData.data.name + ' (' + resData.data.symbol + ') Price - Coinlisting');
         const imgurl = 'assets/currency-svg/' + resData.data.symbol.toLowerCase() + '.svg';
