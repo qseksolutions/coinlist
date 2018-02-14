@@ -162,7 +162,7 @@
       background-color: transparent;
       outline: none;
       font-weight: 500;
-      font-size: 20px;
+      font-size: 15px;
       display: block;
       z-index: 0;
       border-radius: 5px;
@@ -981,7 +981,7 @@
       display: inline-block; }
       .chart-header .chart-btn ul li.active a {
         background: #3d3379; }
-  .chart-header .chart-value .green, .chart-header .chart-value .red {
+  .chart-header .chart-value .green {
     color: #3cd483;
     font-size: 13px;
     vertical-align: middle;
@@ -989,13 +989,22 @@
     padding: 10px 15px;
     border: solid 1.5px #3cd483;
     border-radius: 5px;
-    min-width: 100px;
+    min-width: 130px;
     display: block;
     text-align: center;
     float: right; }
   .chart-header .chart-value .red {
-    color: #ff6060 !important;
-    border: solid 1.5px #ff6060; }
+    color: #ff6060;
+    font-size: 13px;
+    vertical-align: middle;
+    font-weight: 600;
+    padding: 10px 15px;
+    border: solid 1.5px #ff6060;
+    border-radius: 5px;
+    min-width: 130px;
+    display: block;
+    text-align: center;
+    float: right; }
 
 .coin-descripation {
   padding: 50px 0; }
@@ -1501,7 +1510,7 @@ ngb-datepicker.dropdown-menu {
   min-width: auto !important;
   max-height: none !important; }
 
-.green, .chart-header .chart-value .red {
+.green {
   color: #3cd483 !important; }
 
 .red {

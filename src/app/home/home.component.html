@@ -69,7 +69,7 @@
             </div>
           </div>
       
-          <div class="col-lg-2 col-md-2 col-md-2 col-sm-3 col-3">
+          <div class="col-lg-2 col-md-2 col-md-4 col-sm-3 col-3">
             <div class="alignment">
               <span>
                 <a href="#" class="coin-heading"> PRICE </a>
@@ -93,7 +93,7 @@
             </div>
           </div>
       
-          <div class="col-lg-1 col-md-4 col-sm-4 col-4">
+          <div class="col-lg-1 col-md-2 col-sm-2 col-4">
             <div class="alignment">
               <span>
                 <a href="#" class="coin-heading"> Change </a>
@@ -133,7 +133,7 @@
               </div>
             </div>
 
-            <div class="col-lg-2 col-md-2 col-sm-4 col-3">
+            <div class="col-lg-2 col-md-4 col-sm-3 col-4">
               <div class="main-coin-price">
                 <div class="coin-align">
                   <span class="currency-sign"> {{base_sing}} </span>
@@ -168,7 +168,7 @@
               </div>
             </div>
 
-            <div class="col-lg-1 col-md-4 col-sm-3 col-4" [ngClass]="selectedIndex == 1 ? '':'hidden'">
+            <div class="col-lg-1 col-md-2 col-sm-2 col-3" [ngClass]="selectedIndex == 1 ? '':'hidden'">
               <div class="alignment">
                 <div class="update-price" [style.display]="coin.percent_change_1h != null ? 'table-cell':'none'">
                   <span class="price-updown" [ngClass]="coin.percent_change_1h >= 0 ? 'price_positive' : 'price_nagative'">{{coin.percent_change_1h | number : '1.2-2'}}%
@@ -181,7 +181,7 @@
               </div>
             </div>
 
-            <div class="col-lg-1 col-md-4 col-sm-3 col-4" [ngClass]="selectedIndex == 2 ? '':'hidden'">
+            <div class="col-lg-1 col-md-4 col-sm-2 col-4" [ngClass]="selectedIndex == 2 ? '':'hidden'">
               <div class="alignment">
                 <div class="update-price" [style.display]="coin.percent_change_24h != null ? 'table-cell':'none'">
                   <span class="price-updown" [ngClass]="coin.percent_change_24h >= 0 ? 'price_positive' : 'price_nagative'">{{coin.percent_change_24h | number : '1.2-2'}}%
@@ -194,7 +194,7 @@
               </div>
             </div>
 
-            <div class="col-lg-1 col-md-4 col-sm-3 col-4" [ngClass]="selectedIndex == 3 ? '':'hidden'">
+            <div class="col-lg-1 col-md-4 col-sm-2 col-4" [ngClass]="selectedIndex == 3 ? '':'hidden'">
               <div class="alignment">
                 <div class="update-price" [style.display]="coin.percent_change_7d != null ? 'table-cell':'none'">
                   <span class="price-updown" [ngClass]="coin.percent_change_7d >= 0 ? 'price_positive' : 'price_nagative'">{{coin.percent_change_7d | number : '1.2-2'}}%
@@ -207,7 +207,7 @@
               </div>
             </div>
 
-            <div class="col-lg-1 col-md-4 col-sm-3 col-4" [ngClass]="selectedIndex == 4 ? '':'hidden'">
+            <div class="col-lg-1 col-md-4 col-sm-2 col-4" [ngClass]="selectedIndex == 4 ? '':'hidden'">
               <div class="alignment">
                 <div class="update-price" [style.display]="coin.percent_change_1m != null ? 'table-cell':'none'">
                   <span class="price-updown" [ngClass]="coin.percent_change_1m >= 0 ? 'price_positive' : 'price_nagative'">{{coin.percent_change_1m | number : '1.2-2'}}%
@@ -220,7 +220,7 @@
               </div>
             </div>
 
-            <div class="col-lg-1 col-md-4 col-sm-3 col-4" [ngClass]="selectedIndex == 5 ? '':'hidden'">
+            <div class="col-lg-1 col-md-4 col-sm-2 col-4" [ngClass]="selectedIndex == 5 ? '':'hidden'">
               <div class="alignment">
                 <div class="update-price" [style.display]="coin.percent_change_1y != null ? 'table-cell':'none'">
                   <span class="price-updown" [ngClass]="coin.percent_change_1y >= 0 ? 'price_positive' : 'price_nagative'">{{coin.percent_change_1y | number : '1.2-2'}}%
@@ -233,7 +233,7 @@
               </div>
             </div>
 
-            <div class="col-lg-1 col-md-4 col-sm-3 col-4" [ngClass]="selectedIndex == 6 ? '':'hidden'">
+            <div class="col-lg-1 col-md-4 col-sm-2 col-4" [ngClass]="selectedIndex == 6 ? '':'hidden'">
               <div class="alignment">
                 <div class="update-price" [style.display]="coin.percent_change_all != null ? 'table-cell':'none'">
                   <span class="price-updown" [ngClass]="coin.percent_change_all >= 0 ? 'price_positive' : 'price_nagative'">{{coin.percent_change_all | number : '1.2-2'}}%

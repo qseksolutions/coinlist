@@ -117,15 +117,23 @@
             padding: 10px 15px;
             border: solid 1.5px $text-green;
             border-radius: 5px;
-            min-width: 100px;
+            min-width: 130px;
             display: block;
             text-align: center;
             float: right;
         }
         .red{
-            @extend .green;
-            color: $color-nagative !important;
+            color: $color-nagative;
+            font-size: 13px;
+            vertical-align: middle;
+            font-weight: 600;
+            padding: 10px 15px;
             border: solid 1.5px $color-nagative;
+            border-radius: 5px;
+            min-width: 130px;
+            display: block;
+            text-align: center;
+            float: right;
         }
     }
 }
