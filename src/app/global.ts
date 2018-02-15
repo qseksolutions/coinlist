@@ -6,6 +6,7 @@ export const loginAPI = 'login';
 export const registerAPI = 'register';
 export const userbysocialAPI = 'userbysocial';
 export const addtradeAPI = 'addtrade';
+export const updatetradeAPI = 'updatetrade';
 export const removetradeAPI = 'removetrade';
 export const forgotpasswordAPI = 'forgotpassword';
 export const profileupdateAPI = 'profileupdate';
@@ -28,6 +29,7 @@ export const getprofileupdatedataAPI = 'getprofileupdatedata';
 export const getselectcoinpriceAPI = 'getselectcoinprice';
 export const getsingleseometaAPI = 'getsingleseometa';
 export const gettestseometaAPI = 'gettestseometa';
+export const gettradesingledataAPI = 'gettradesingledata';
 
 export const cointrackbyuserAPI = 'cointrackbyuser';
 

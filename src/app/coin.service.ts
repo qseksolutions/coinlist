@@ -13,6 +13,7 @@ export class CoinService {
   registerAPI: any = myGlobals.registerAPI;
   userbysocialAPI: any = myGlobals.userbysocialAPI;
   addtradeAPI: any = myGlobals.addtradeAPI;
+  updatetradeAPI: any = myGlobals.updatetradeAPI;
   removetradeAPI: any = myGlobals.removetradeAPI;
   forgotpasswordAPI: any = myGlobals.forgotpasswordAPI;
   profileupdateAPI: any = myGlobals.profileupdateAPI;
@@ -35,6 +36,7 @@ export class CoinService {
   getselectcoinpriceAPI: any = myGlobals.getselectcoinpriceAPI;
   getsingleseometaAPI: any = myGlobals.getsingleseometaAPI;
   gettestseometaAPI: any = myGlobals.gettestseometaAPI;
+  gettradesingledataAPI: any = myGlobals.gettradesingledataAPI;
 
   cointrackbyuserAPI: any = myGlobals.cointrackbyuserAPI;
 
@@ -123,6 +125,31 @@ export class CoinService {
     form.append('tdate', trans.date.year + '-' + trans.date.month + '-' + trans.date.day);
 
     return this.http.post(this.api_url + this.addtradeAPI, form, options)
+      .map((response: Response) => response.json());
+  }
+
+  updatetrade(trans) {
+    const headers = new Headers({ 'Content-Type': 'application/x-www-form-urlencoded' });
+    const options = new RequestOptions({ headers: headers });
+    console.log(trans);
+    const fcoin = trans.coin;
+    const tcoin = fcoin.split('(');
+    const lcoin = tcoin[1].split(')');
+    trans.coin = lcoin[0];
+
+    const form = new URLSearchParams();
+    form.append('port_id', trans.port_id);
+    form.append('userid', this.userid);
+    form.append('coin_name', tcoin[0]);
+    form.append('buycoin', lcoin[0]);
+    form.append('buyamount', trans.amount);
+    form.append('bcurrency', trans.curr);
+    form.append('bcprice', trans.rate);
+    form.append('dcurrency', this.user_base);
+    form.append('bc_sign', trans.curr_sign);
+    form.append('tdate', trans.date);
+
+    return this.http.post(this.api_url + this.updatetradeAPI, form, options)
       .map((response: Response) => response.json());
   }
 
@@ -397,6 +424,17 @@ export class CoinService {
       .map((response: Response) => response.json());
   }
 
+  gettradesingledata(id) {
+    const headers = new Headers({ 'Content-Type': 'application/x-www-form-urlencoded' });
+    const options = new RequestOptions({ headers: headers });
+
+    const form = new URLSearchParams();
+    form.append('port_id', id);
+
+    return this.http.post(this.api_url + this.gettradesingledataAPI, form, options)
+      .map((response: Response) => response.json());
+  }
+
   /* getcoinprice(trans) {
     const headers = new Headers({ 'Content-Type': 'application/x-www-form-urlencoded' });
     const options = new RequestOptions({ headers: headers });
@@ -422,13 +460,25 @@ export class CoinService {
 
   getcoinprice(trans) {
 
-    const newDate = trans.date.year + '/' + trans.date.month + '/' + trans.date.day;
-    this.coindate = new Date(newDate).getTime();
-    this.coindate = this.coindate / 1000;
+    if (trans.port_id === '') {
+      const newDate = trans.date.year + '/' + trans.date.month + '/' + trans.date.day;
+      this.coindate = new Date(newDate).getTime();
+      this.coindate = this.coindate / 1000;
 
-    // tslint:disable-next-line:max-line-length
-    return this.http.get('https://min-api.cryptocompare.com/data/pricehistorical?fsym=' + trans.coin.symbol + '&tsyms=' + trans.curr.currency_symbol + '&ts=' + this.coindate)
-      .map((response: Response) => response.json());
+      // tslint:disable-next-line:max-line-length
+      return this.http.get('https://min-api.cryptocompare.com/data/pricehistorical?fsym=' + trans.coin.symbol + '&tsyms=' + trans.curr.currency_symbol + '&ts=' + this.coindate)
+        .map((response: Response) => response.json());
+    } else {
+      const tdate = trans.date;
+      const newDate = tdate.replace(/-/g, '/');
+      this.coindate = new Date(newDate).getTime();
+      this.coindate = this.coindate / 1000;
+
+      // tslint:disable-next-line:max-line-length
+      return this.http.get('https://min-api.cryptocompare.com/data/pricehistorical?fsym=' + trans.coin + '&tsyms=' + trans.curr + '&ts=' + this.coindate)
+        .map((response: Response) => response.json());
+    }
+
   }
 
   cointrackbyuser(followstatus, coin_id, name) {

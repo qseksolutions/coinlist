@@ -147,12 +147,12 @@ $(document).on('keyup',"#selectedcoin",function(e){
 
 $(document).on('click',"#ngb-typeahead-1 > button.dropdown-item",function(){
     var cur_symbol = $(this).children("div").attr('value').toLowerCase();
-    $('#icon-curr').children().attr('src','assets/currency-svg/'+cur_symbol+'.svg');
+    $('#icon-curr').children().attr('src','assets/currency-symbol/'+cur_symbol+'.svg');
 });
 $(document).on('keyup',"#selectedcur",function(e){
     if (e.keyCode == 13) {
         var cur_symbol = $(this).val();
-        $('#icon-curr').children().attr('src','assets/currency-svg/'+cur_symbol.toLowerCase()+'.svg');
+        $('#icon-curr').children().attr('src','assets/currency-symbol/'+cur_symbol.toLowerCase()+'.svg');
     }
 });
   

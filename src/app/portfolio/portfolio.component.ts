@@ -113,34 +113,80 @@ export class PortfolioComponent implements OnInit {
         : this.allcurrency.filter(v => v.currency_symbol.toLowerCase().indexOf(termcur.toLowerCase()) > -1).slice(0, 10))
 
   formattercur = (x: { currency_symbol: string }) => x.currency_symbol;
+  formattersign = (x: { currency_sign: string }) => x.currency_sign;
 
   getcoinprice(trans) {
-    if ( trans.date !== null || trans.coin !== ''|| trans.curr !== '' || trans.amount !== '') {      
+    // tslint:disable-next-line:max-line-length
+    trans.port_id = jQuery('#port_id').val();
+    if (trans.date !== null && trans.date !== undefined && trans.coin !== undefined && trans.coin !== '' && trans.curr !== undefined && trans.curr !== '' && trans.amount !== '' && trans.port_id === '') {
       this.coinservice.getcoinprice(trans).subscribe(resData => {
-        console.log(resData);
         if (resData.Response === 'Error') {
-          jQuery('#rate').val("0");
+          jQuery('#rate').val('0');
         } else {
           jQuery('#rate').val(resData[trans.coin.symbol][trans.curr.currency_symbol] * trans.amount);
         }
       });
+    } else {
+      trans.date = jQuery('#tdate').val();
+      trans.coin = jQuery('#selectedcoin').val();
+      trans.curr = jQuery('#selectedcur').val();
+      trans.amount = jQuery('#tamount').val();
+      trans.rate = jQuery('#rate').val();
+      if (trans.date !== '' && trans.coin !== '' && trans.curr !== '' && trans.amount !== '') {
+        const fcoin = trans.coin;
+        const tcoin = fcoin.split('(');
+        const lcoin = tcoin[1].split(')');
+        trans.coin = lcoin[0];
+
+        this.coinservice.getcoinprice(trans).subscribe(resData => {
+          if (resData.Response === 'Error') {
+            jQuery('#rate').val('0');
+          } else {
+            jQuery('#rate').val(resData[trans.coin][trans.curr] * trans.amount);
+          }
+        });
+      }
     }
   }
 
   onSubmitAddtransaction(trans) {
     trans.rate = jQuery('#rate').val();
-    if (trans.date === undefined || trans.date === null) {
-      this.toasterService.pop('error', 'Required', 'Please select date');
-    } else if (trans.coin === undefined || trans.coin === '') {
-      this.toasterService.pop('error', 'Required', 'Please select coin');
-    } else if (trans.curr === undefined || trans.curr === '') {
-      this.toasterService.pop('error', 'Required', 'Please select currency');
-    } else if (trans.amount === '') {
-      this.toasterService.pop('error', 'Required', 'Please enter amount');
-    } else if (trans.rate === '') {
-      this.toasterService.pop('error', 'Required', 'Please enter rate');
+    trans.port_id = jQuery('#port_id').val();
+    if (trans.port_id === '') {
+      if (trans.date === undefined || trans.date === null) {
+        this.toasterService.pop('error', 'Required', 'Please select date');
+      } else if (trans.coin === undefined || trans.coin === '') {
+        this.toasterService.pop('error', 'Required', 'Please select coin');
+      } else if (trans.curr === undefined || trans.curr === '') {
+        this.toasterService.pop('error', 'Required', 'Please select currency');
+      } else if (trans.amount === '') {
+        this.toasterService.pop('error', 'Required', 'Please enter amount');
+      } else if (trans.rate === '') {
+        this.toasterService.pop('error', 'Required', 'Please enter rate');
+      } else {
+        this.coinservice.addtrade(trans).subscribe(resData => {
+          if (resData.status === true) {
+            this.toasterService.pop('success', 'Success', resData.message);
+            this.ngOnInit();
+            setTimeout(() => {
+              jQuery('#coin_image').attr('src', 'assets/currency-svg/btc.svg');
+              jQuery('#curr_image').attr('src', 'assets/currency-symbol/usd.svg');
+              jQuery('.form-control').val('');
+              jQuery('#newtransaction').modal('hide');
+            }, 1000);
+          } else {
+            this.toasterService.pop('error', 'Error', resData.message);
+          }
+        });
+      }
     } else {
-      this.coinservice.addtrade(trans).subscribe(resData => {
+      trans.date = jQuery('#tdate').val();
+      trans.coin = jQuery('#selectedcoin').val();
+      trans.curr = jQuery('#selectedcur').val();
+      trans.amount = jQuery('#tamount').val();
+      trans.rate = jQuery('#rate').val();
+      trans.curr_sign = jQuery('#selectedcursign').val();
+      this.coinservice.updatetrade(trans).subscribe(resData => {
         if (resData.status === true) {
           this.toasterService.pop('success', 'Success', resData.message);
           this.ngOnInit();
@@ -188,7 +234,33 @@ export class PortfolioComponent implements OnInit {
       if (test == true) {
         return event.target.src = imgurl;
       } else {
-        return event.target.src = 'assets/currency-50/not-found-25.png';
+        return event.target.src = 'assets/currency-50/not-found-50.png';
+      }
+    });
+  }
+
+  edittrade(id) {
+    this.coinservice.gettradesingledata(id).subscribe(resData => {
+      if (resData.status === true) {
+        jQuery('#tdate').val(resData.data.transaction_date);
+        jQuery('#selectedcoin').val(resData.data.coin_name + ' (' + resData.data.buy_coin + ')');
+        const coinimgurl = 'assets/currency-svg/' + resData.data.buy_coin.toLowerCase() + '.svg';
+        this.isImage(coinimgurl).then(function (test) {
+          if (test === true) {
+            jQuery('#coin_image').attr('src', coinimgurl);
+          } else {
+            jQuery('#coin_image').attr('src', 'assets/currency-50/' + resData.data.buy_coin.toLowerCase() + '.png');
+          }
+        });
+        jQuery('#selectedcur').val(resData.data.b_currency);
+        jQuery('#curr_image').attr('src', 'assets/currency-symbol/' + resData.data.b_currency.toLowerCase() + '.svg');
+        jQuery('#tamount').val(resData.data.coin_amount);
+        jQuery('#rate').val(resData.data.bc_price);
+        jQuery('#port_id').val(resData.data.id);
+        jQuery('#selectedcursign').val(resData.data.bc_sign);
+        jQuery('#newtransaction').modal('toggle');
+      } else {
+        this.toasterService.pop('error', 'Error', resData.message);
       }
     });
   }
