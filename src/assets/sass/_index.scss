@@ -445,3 +445,36 @@
 .coin-market-cap .btn-buy{
     display: none;
 }
+
+/*table*/
+.main-table{
+    table{
+        thead{
+            tr{
+                display: flex;
+
+                th{
+                    width: 20%;
+                    border:none;
+                    padding: 10px 0;
+                }
+            }
+        }
+        tbody{
+            @extend thead ;
+            &.coin-table-list{
+                border: none;
+            &:nth-of-type(2n+1) {
+                background: #f8f9fb;
+            }
+            }
+            
+            border-top: none;
+            tr{
+                td{
+                    @extend th ;
+                }
+            }
+        }
+    }
+}

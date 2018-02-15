@@ -913,6 +913,20 @@
 .coin-market-cap .btn-buy {
   display: none; }
 
+/*table*/
+.main-table table thead tr, .main-table table tbody tr {
+  display: flex; }
+  .main-table table thead tr th, .main-table table tbody tr th, .main-table table tbody tr td {
+    width: 20%;
+    border: none;
+    padding: 10px 0; }
+.main-table table tbody {
+  border-top: none; }
+  .main-table table tbody.coin-table-list {
+    border: none; }
+    .main-table table tbody.coin-table-list:nth-of-type(2n+1) {
+      background: #f8f9fb; }
+
 .detaile-coin-page {
   text-align: center;
   padding: 20px 0 0 0; }
@@ -1488,27 +1502,27 @@ ngb-datepicker.dropdown-menu {
 /*table*/
 .protfolio-table .table-responsive {
   display: inline-table; }
-.protfolio-table .table th {
+.protfolio-table .table th, .protfolio-table .table .main-table table tbody tr td, .main-table table tbody tr .protfolio-table .table td {
   padding: 10px 20px;
   vertical-align: middle;
   background-color: #f6f7fc;
   width: 100%;
   border: none; }
-  .protfolio-table .table th:first-child {
+  .protfolio-table .table th:first-child, .protfolio-table .table .main-table table tbody tr td:first-child, .main-table table tbody tr .protfolio-table .table td:first-child {
     border-radius: 5px 0 0 0; }
-  .protfolio-table .table th:last-child {
+  .protfolio-table .table th:last-child, .protfolio-table .table .main-table table tbody tr td:last-child, .main-table table tbody tr .protfolio-table .table td:last-child {
     border-radius: 0 5px 0 0; }
 .protfolio-table .table td {
   width: 12.5%;
   padding: 10px 20px;
   border: none; }
-.protfolio-table .table thead tr {
+.protfolio-table .table thead tr, .protfolio-table .table .main-table table tbody tr, .main-table table .protfolio-table .table tbody tr {
   display: flex;
   width: 100%;
   border-radius: 5px 5px 0 0;
   border: solid 1px #ebeef3;
   border-bottom: none; }
-  .protfolio-table .table thead tr th .alignment {
+  .protfolio-table .table thead tr th .alignment, .protfolio-table .table .main-table table tbody tr th .alignment, .main-table table .protfolio-table .table tbody tr th .alignment, .main-table table tbody .protfolio-table .table thead tr td .alignment, .protfolio-table .table .main-table table tbody tr td .alignment, .main-table table .protfolio-table .table tbody tr td .alignment {
     display: flex;
     align-items: center; }
 .protfolio-table .table tbody {

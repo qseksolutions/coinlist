@@ -30,6 +30,7 @@ $text-black:#000;
       -ms-filter: $filter;
           filter: $filter;
 } 
+$xx-small-mobile: "only screen and (max-width : 321px)";
 $small-mobile: "only screen and (max-width : 449px)";
 $big-mobile: "only screen and (max-width : 767px)";
 $all-tab: "only screen and (min-width : 768px)";

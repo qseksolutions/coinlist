@@ -72,6 +72,9 @@
             }
         }
     }
+    .coin-heading {
+        font-size: 10px;
+    }
     .table-title {
         .main-chart-btn{
              ul{
@@ -91,9 +94,16 @@
                   font-size: 11px ;
               }
         }
+        .update-price{
+            padding-left: 0;
+        }
     }
     .login-detail{
         padding: 11px 15px !important;
+
+        &.sign-small-text {
+            padding: 15px 15px !important;
+        }
     }
     .coin-page__header{
          .contant_coin-page{
@@ -157,9 +167,6 @@
     .main-table{
         padding: 10px ; 
     }
-    .coin-heading{
-        font-size: 11px ;
-    }
     /*btn*/
     .btn{
         &.btn-chart{
@@ -171,6 +178,9 @@
         &.btn-green{
             background-image: none !important;
             padding: 15px !important;
+        }
+        &.btn-follow{
+            font-size: 0;
         }
     }
 
@@ -311,6 +321,20 @@
     .support-contant-box{
         padding: 30px 0;
     }
+
+    /*model*/
+    .login-model{
+
+        .modal-dialog{
+            width: 500px;
+            -webkit-transform: translate(0, 0) !important;
+            -o-transform: translate(0, 0) !important;
+            transform: translate(0, 0) !important;
+        }
+        .modal{
+            overflow-y: auto;
+        }
+    } 
 }       
 
 /*(max-width : 449px)*/
@@ -332,16 +356,17 @@
                     }
                 }
             }
-            .chart-value{
-                display: inline-block;
-                float: right;
-                .green{
-                    padding: 8px 10px ;
-                    font-size: 11px ;
-                }
-                .red{
-                    @extend .green;
-                }
+        }
+        .chart-value{
+            display: inline-block;
+            float: right;
+            .green{
+                padding: 8px 10px ;
+                font-size: 11px ;
+                min-width: 110px;
+            }
+            .red{
+                @extend .green;
             }
         }
     }
@@ -384,6 +409,37 @@
             }
         }
     }
+    /*model*/
+    .login-model{
+
+        .modal-dialog{
+            width: 352px;
+        }
+    }
 }   
 
 
+@media #{$xx-small-mobile} {
+    .login-model{
+
+        .modal-dialog{
+            width: 300px;
+        }
+    }
+    .login-detail{
+        &.sign-small-text{
+            padding: 15px 8px !important;
+        }
+    }
+    .searchbar {
+        .btn-search{  
+            &.clicked {
+                .btn-extended {
+                    width: 150px;
+                    right: 0;
+                    padding: 0 10px;
+                }
+            }
+        }
+    }
+}

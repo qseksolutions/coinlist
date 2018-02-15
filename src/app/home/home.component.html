@@ -61,7 +61,7 @@
     <div class="main-table" *ngIf="coins != ''">
       <div class="table-cate-title">
         <div class="row">
-          <div class="col-lg-3 col-md-4 col-sm-4 col-5">
+          <div class="col-lg-3 col-md-4 col-sm-4 col-4">
             <div class="alignment">
               <span>
                 <a href="#" class="coin-heading"> CRYPTOCURRENCY </a>
@@ -69,7 +69,7 @@
             </div>
           </div>
       
-          <div class="col-lg-2 col-md-2 col-md-4 col-sm-3 col-3">
+          <div class="col-lg-2 col-md-3 col-sm-3 col-3">
             <div class="alignment">
               <span>
                 <a href="#" class="coin-heading"> PRICE </a>
@@ -93,7 +93,7 @@
             </div>
           </div>
       
-          <div class="col-lg-1 col-md-2 col-sm-2 col-4">
+          <div class="col-lg-1 col-md-3 col-sm-2 col-4">
             <div class="alignment">
               <span>
                 <a href="#" class="coin-heading"> Change </a>
@@ -113,7 +113,7 @@
       <div class="coin-table-list" *ngFor="let coin of coins; let i = index">
         <div class="main-coin-detail">
           <div class="row">
-            <div class="col-lg-3 col-md-4 col-sm-4 col-5">
+            <div class="col-lg-3 col-md-4 col-sm-4 col-4">
               <div class="coin-coint">
                 <div class="coin-count-icon">
                   <span class="count-text">{{i+1+start}}&ensp;&ensp;&ensp;</span>
@@ -133,7 +133,7 @@
               </div>
             </div>
 
-            <div class="col-lg-2 col-md-4 col-sm-3 col-4">
+            <div class="col-lg-2 col-md-3 col-sm-3 col-3">
               <div class="main-coin-price">
                 <div class="coin-align">
                   <span class="currency-sign"> {{base_sing}} </span>
@@ -168,7 +168,7 @@
               </div>
             </div>
 
-            <div class="col-lg-1 col-md-2 col-sm-2 col-3" [ngClass]="selectedIndex == 1 ? '':'hidden'">
+            <div class="col-lg-1 col-md-3 col-sm-2 col-3" [ngClass]="selectedIndex == 1 ? '':'hidden'">
               <div class="alignment">
                 <div class="update-price" [style.display]="coin.percent_change_1h != null ? 'table-cell':'none'">
                   <span class="price-updown" [ngClass]="coin.percent_change_1h >= 0 ? 'price_positive' : 'price_nagative'">{{coin.percent_change_1h | number : '1.2-2'}}%
@@ -181,7 +181,7 @@
               </div>
             </div>
 
-            <div class="col-lg-1 col-md-4 col-sm-2 col-4" [ngClass]="selectedIndex == 2 ? '':'hidden'">
+            <div class="col-lg-1 col-md-3 col-sm-2 col-4" [ngClass]="selectedIndex == 2 ? '':'hidden'">
               <div class="alignment">
                 <div class="update-price" [style.display]="coin.percent_change_24h != null ? 'table-cell':'none'">
                   <span class="price-updown" [ngClass]="coin.percent_change_24h >= 0 ? 'price_positive' : 'price_nagative'">{{coin.percent_change_24h | number : '1.2-2'}}%
@@ -194,7 +194,7 @@
               </div>
             </div>
 
-            <div class="col-lg-1 col-md-4 col-sm-2 col-4" [ngClass]="selectedIndex == 3 ? '':'hidden'">
+            <div class="col-lg-1 col-md-3 col-sm-2 col-4" [ngClass]="selectedIndex == 3 ? '':'hidden'">
               <div class="alignment">
                 <div class="update-price" [style.display]="coin.percent_change_7d != null ? 'table-cell':'none'">
                   <span class="price-updown" [ngClass]="coin.percent_change_7d >= 0 ? 'price_positive' : 'price_nagative'">{{coin.percent_change_7d | number : '1.2-2'}}%
@@ -207,7 +207,7 @@
               </div>
             </div>
 
-            <div class="col-lg-1 col-md-4 col-sm-2 col-4" [ngClass]="selectedIndex == 4 ? '':'hidden'">
+            <div class="col-lg-1 col-md-3 col-sm-2 col-4" [ngClass]="selectedIndex == 4 ? '':'hidden'">
               <div class="alignment">
                 <div class="update-price" [style.display]="coin.percent_change_1m != null ? 'table-cell':'none'">
                   <span class="price-updown" [ngClass]="coin.percent_change_1m >= 0 ? 'price_positive' : 'price_nagative'">{{coin.percent_change_1m | number : '1.2-2'}}%
@@ -220,7 +220,7 @@
               </div>
             </div>
 
-            <div class="col-lg-1 col-md-4 col-sm-2 col-4" [ngClass]="selectedIndex == 5 ? '':'hidden'">
+            <div class="col-lg-1 col-md-3 col-sm-2 col-4" [ngClass]="selectedIndex == 5 ? '':'hidden'">
               <div class="alignment">
                 <div class="update-price" [style.display]="coin.percent_change_1y != null ? 'table-cell':'none'">
                   <span class="price-updown" [ngClass]="coin.percent_change_1y >= 0 ? 'price_positive' : 'price_nagative'">{{coin.percent_change_1y | number : '1.2-2'}}%
@@ -233,7 +233,7 @@
               </div>
             </div>
 
-            <div class="col-lg-1 col-md-4 col-sm-2 col-4" [ngClass]="selectedIndex == 6 ? '':'hidden'">
+            <div class="col-lg-1 col-md-3 col-sm-2 col-4" [ngClass]="selectedIndex == 6 ? '':'hidden'">
               <div class="alignment">
                 <div class="update-price" [style.display]="coin.percent_change_all != null ? 'table-cell':'none'">
                   <span class="price-updown" [ngClass]="coin.percent_change_all >= 0 ? 'price_positive' : 'price_nagative'">{{coin.percent_change_all | number : '1.2-2'}}%
@@ -294,6 +294,524 @@
   </div>
 </section>
 
+<section>
+  <div class="container">
+    <div class="main-table table-responsive">
+      <table class="table">
+        <thead class="">
+          <tr class="">
+            <th class="">
+              <div class="alignment">
+                <span>
+                  <a class="coin-heading" href="#"> CRYPTOCURRENCY </a>
+                </span>
+              </div>
+            </th>
+        
+            <th class="">
+              <div class="alignment">
+                <span>
+                  <a class="coin-heading" href="#"> PRICE </a>
+                </span>
+              </div>
+            </th>
+        
+            <th class="">
+              <div class="alignment">
+                <span>
+                  <a class="coin-heading" href="#"> VOLUME (24h) </a>
+                </span>
+              </div>
+            </th>
+        
+            <th class="">
+              <div class="alignment">
+                <span>
+                  <a class="coin-heading" href="#"> MARKET CAP </a>
+                </span>
+              </div>
+            </th>
+        
+            <th class="">
+              <div class="alignment">
+                <span>
+                  <a class="coin-heading" href="#"> Change </a>
+                </span>
+              </div>
+            </th>
+        
+            <th class="">
+              <div class="alignment text-center">
+                <span>
+                  <a class="coin-heading" href="#"> Track </a>
+                </span>
+              </div>
+            </th>
+          </tr>
+        </thead>
+        <tbody class="coin-table-list ng-star-inserted">
+          <tr class="main-coin-detail">
+            
+              <td class="">
+                <div class="coin-coint">
+                  <div class="coin-count-icon">
+                    <span class="count-text">1&ensp;&ensp;&ensp;</span>
+                    <span class="coin-symbol">
+                      <a href="http://localhost:4200/coin/">
+                        
+                        <img src="assets/currency-svg/btc.svg">
+                        
+                      </a>
+                    </span>
+                  </div>
+                  <div class="main-coin-title">
+                    <a href="http://localhost:4200/coin/bitcoin">
+                      <span class="coin-name">Bitcoin</span>
+                    </a>
+                  </div>
+                </div>
+              </td>
+
+              <td class="">
+                <div class="main-coin-price">
+                  <div class="coin-align">
+                    <span class="currency-sign"> $ </span>
+                    <span class="currency-value">9,763.31</span>
+                  </div>
+                </div>
+              </td>
+
+              <td class="">
+                <div class="coin-market-cap">
+                  <div class="coin-align" style="display: table-cell;">
+                    <span class="currency-sign"> $ </span>
+                    <span class="currency-value">8,599,150,000</span>
+                  </div>
+                  <div class="coin-align" style="display: none;">
+                    <span class="currency-sign"></span>
+                    <span class="currency-value">-</span>
+                  </div>
+                </div>
+              </td>
+
+              <td>
+                <div class="volume-price">
+                  <div class="coin-align" style="display: table-cell;">
+                    <span class="currency-sign"> $ </span>
+                    <span class="currency-value">164,666,883,206.00</span>
+                  </div>
+                  <div class="coin-align" style="display: none;">
+                    <span class="currency-sign"></span>
+                    <span class="currency-value">-</span>
+                  </div>
+                </div>
+              </td>
+
+              <td class=" hidden" ng-reflect-ng-class="hidden">
+                <div class="alignment">
+                  <div class="update-price" style="display: table-cell;">
+                    <span class="price-updown price_positive" ng-reflect-klass="price-updown" ng-reflect-ng-class="price_positive">0.23%
+                      <img class="up-down-arrow" src="assets/currency-svg/arrow-up-green.svg">
+                    </span>
+                  </div>
+                  <div class="update-price" style="display: none;">
+                    <span class="price-updown">-</span>
+                  </div>
+                </div>
+              </td>
+
+              <td class=" hidden" ng-reflect-ng-class="hidden">
+                <div class="alignment">
+                  <div class="update-price" style="display: table-cell;">
+                    <span class="price-updown price_positive" ng-reflect-klass="price-updown" ng-reflect-ng-class="price_positive">9.98%
+                      <img class="up-down-arrow" src="assets/currency-svg/arrow-up-green.svg">
+                    </span>
+                  </div>
+                  <div class="update-price" style="display: none;">
+                    <span class="price-updown">-</span>
+                  </div>
+                </div>
+              </td>
+
+              <td class="hidden" ng-reflect-ng-class="hidden">
+                <div class="alignment">
+                  <div class="update-price" style="display: table-cell;">
+                    <span class="price-updown price_positive" ng-reflect-klass="price-updown" ng-reflect-ng-class="price_positive">19.64%
+                      <img class="up-down-arrow" src="assets/currency-svg/arrow-up-green.svg">
+                    </span>
+                  </div>
+                  <div class="update-price" style="display: none;">
+                    <span class="price-updown">-</span>
+                  </div>
+                </div>
+              </td>
+
+              <td class="hidden" ng-reflect-ng-class="hidden">
+                <div class="alignment">
+                  <div class="update-price" style="display: table-cell;">
+                    <span class="price-updown price_nagative" ng-reflect-klass="price-updown" ng-reflect-ng-class="price_nagative">-28.93%
+                      <img class="up-down-arrow" src="assets/currency-svg/arrow-down-red.svg">
+                    </span>
+                  </div>
+                  <div class="update-price" style="display: none;">
+                    <span class="price-updown">-</span>
+                  </div>
+                </div>
+              </td>
+
+              <td class="hidden" ng-reflect-ng-class="hidden">
+                <div class="alignment">
+                  <div class="update-price" style="display: table-cell;">
+                    <span class="price-updown price_positive" ng-reflect-klass="price-updown" ng-reflect-ng-class="price_positive">874.22%
+                      <img class="up-down-arrow" src="assets/currency-svg/arrow-up-green.svg">
+                    </span>
+                  </div>
+                  <div class="update-price" style="display: none;">
+                    <span class="price-updown">-</span>
+                  </div>
+                </div>
+              </td>
+
+              <td class="" ng-reflect-ng-class="">
+                <div class="alignment">
+                  <div class="update-price" style="display: table-cell;">
+                    <span class="price-updown price_positive" ng-reflect-klass="price-updown" ng-reflect-ng-class="price_positive">12,732,643.82%
+                      <img class="up-down-arrow" src="assets/currency-svg/arrow-up-green.svg">
+                    </span>
+                  </div>
+                  <div class="update-price" style="display: none;">
+                    <span class="price-updown">-</span>
+                  </div>
+                </div>
+              </td>
+
+              <td class="">
+                <div class="coin-market-cap">
+                  <div class="coin-align text-center">
+                    <button class="btn btn-follow ng-star-inserted" style="display: none;">
+                      <img class="follow-plus" src="assets/currency-svg/plus.svg"> Follow
+                    </button>
+                    
+                    <button class="btn btn-follow" data-target="#sign-in" data-toggle="modal" style="display: initial;">
+                      <img class="follow-plus" src="assets/currency-svg/plus.svg"> Follow
+                    </button>
+                    <button class="btn btn-follow btn-buy">Buy/Sell</button>
+                  </div>
+                </div>
+              </td>
+          </tr>
+        </tbody>
+
+        <tbody class="coin-table-list ng-star-inserted">
+          <tr class="main-coin-detail">
+            
+              <td class="">
+                <div class="coin-coint">
+                  <div class="coin-count-icon">
+                    <span class="count-text">1&ensp;&ensp;&ensp;</span>
+                    <span class="coin-symbol">
+                      <a href="http://localhost:4200/coin/">
+                        
+                        <img src="assets/currency-svg/btc.svg">
+                        
+                      </a>
+                    </span>
+                  </div>
+                  <div class="main-coin-title">
+                    <a href="http://localhost:4200/coin/bitcoin">
+                      <span class="coin-name">Bitcoin</span>
+                    </a>
+                  </div>
+                </div>
+              </td>
+
+              <td class="">
+                <div class="main-coin-price">
+                  <div class="coin-align">
+                    <span class="currency-sign"> $ </span>
+                    <span class="currency-value">9,763.31</span>
+                  </div>
+                </div>
+              </td>
+
+              <td class="">
+                <div class="coin-market-cap">
+                  <div class="coin-align" style="display: table-cell;">
+                    <span class="currency-sign"> $ </span>
+                    <span class="currency-value">8,599,150,000</span>
+                  </div>
+                  <div class="coin-align" style="display: none;">
+                    <span class="currency-sign"></span>
+                    <span class="currency-value">-</span>
+                  </div>
+                </div>
+              </td>
+
+              <td>
+                <div class="volume-price">
+                  <div class="coin-align" style="display: table-cell;">
+                    <span class="currency-sign"> $ </span>
+                    <span class="currency-value">164,666,883,206.00</span>
+                  </div>
+                  <div class="coin-align" style="display: none;">
+                    <span class="currency-sign"></span>
+                    <span class="currency-value">-</span>
+                  </div>
+                </div>
+              </td>
+
+              <td class=" hidden" ng-reflect-ng-class="hidden">
+                <div class="alignment">
+                  <div class="update-price" style="display: table-cell;">
+                    <span class="price-updown price_positive" ng-reflect-klass="price-updown" ng-reflect-ng-class="price_positive">0.23%
+                      <img class="up-down-arrow" src="assets/currency-svg/arrow-up-green.svg">
+                    </span>
+                  </div>
+                  <div class="update-price" style="display: none;">
+                    <span class="price-updown">-</span>
+                  </div>
+                </div>
+              </td>
+
+              <td class=" hidden" ng-reflect-ng-class="hidden">
+                <div class="alignment">
+                  <div class="update-price" style="display: table-cell;">
+                    <span class="price-updown price_positive" ng-reflect-klass="price-updown" ng-reflect-ng-class="price_positive">9.98%
+                      <img class="up-down-arrow" src="assets/currency-svg/arrow-up-green.svg">
+                    </span>
+                  </div>
+                  <div class="update-price" style="display: none;">
+                    <span class="price-updown">-</span>
+                  </div>
+                </div>
+              </td>
+
+              <td class="hidden" ng-reflect-ng-class="hidden">
+                <div class="alignment">
+                  <div class="update-price" style="display: table-cell;">
+                    <span class="price-updown price_positive" ng-reflect-klass="price-updown" ng-reflect-ng-class="price_positive">19.64%
+                      <img class="up-down-arrow" src="assets/currency-svg/arrow-up-green.svg">
+                    </span>
+                  </div>
+                  <div class="update-price" style="display: none;">
+                    <span class="price-updown">-</span>
+                  </div>
+                </div>
+              </td>
+
+              <td class="hidden" ng-reflect-ng-class="hidden">
+                <div class="alignment">
+                  <div class="update-price" style="display: table-cell;">
+                    <span class="price-updown price_nagative" ng-reflect-klass="price-updown" ng-reflect-ng-class="price_nagative">-28.93%
+                      <img class="up-down-arrow" src="assets/currency-svg/arrow-down-red.svg">
+                    </span>
+                  </div>
+                  <div class="update-price" style="display: none;">
+                    <span class="price-updown">-</span>
+                  </div>
+                </div>
+              </td>
+
+              <td class="hidden" ng-reflect-ng-class="hidden">
+                <div class="alignment">
+                  <div class="update-price" style="display: table-cell;">
+                    <span class="price-updown price_positive" ng-reflect-klass="price-updown" ng-reflect-ng-class="price_positive">874.22%
+                      <img class="up-down-arrow" src="assets/currency-svg/arrow-up-green.svg">
+                    </span>
+                  </div>
+                  <div class="update-price" style="display: none;">
+                    <span class="price-updown">-</span>
+                  </div>
+                </div>
+              </td>
+
+              <td class="" ng-reflect-ng-class="">
+                <div class="alignment">
+                  <div class="update-price" style="display: table-cell;">
+                    <span class="price-updown price_positive" ng-reflect-klass="price-updown" ng-reflect-ng-class="price_positive">12,732,643.82%
+                      <img class="up-down-arrow" src="assets/currency-svg/arrow-up-green.svg">
+                    </span>
+                  </div>
+                  <div class="update-price" style="display: none;">
+                    <span class="price-updown">-</span>
+                  </div>
+                </div>
+              </td>
+
+              <td class="">
+                <div class="coin-market-cap">
+                  <div class="coin-align text-center">
+                    <button class="btn btn-follow ng-star-inserted" style="display: none;">
+                      <img class="follow-plus" src="assets/currency-svg/plus.svg"> Follow
+                    </button>
+                    
+                    <button class="btn btn-follow" data-target="#sign-in" data-toggle="modal" style="display: initial;">
+                      <img class="follow-plus" src="assets/currency-svg/plus.svg"> Follow
+                    </button>
+                    <button class="btn btn-follow btn-buy">Buy/Sell</button>
+                  </div>
+                </div>
+              </td>
+          </tr>
+        </tbody>
+
+        <tbody class="coin-table-list ng-star-inserted">
+          <tr class="main-coin-detail">
+            
+              <td class="">
+                <div class="coin-coint">
+                  <div class="coin-count-icon">
+                    <span class="count-text">1&ensp;&ensp;&ensp;</span>
+                    <span class="coin-symbol">
+                      <a href="http://localhost:4200/coin/">
+                        
+                        <img src="assets/currency-svg/btc.svg">
+                        
+                      </a>
+                    </span>
+                  </div>
+                  <div class="main-coin-title">
+                    <a href="http://localhost:4200/coin/bitcoin">
+                      <span class="coin-name">Bitcoin</span>
+                    </a>
+                  </div>
+                </div>
+              </td>
+
+              <td class="">
+                <div class="main-coin-price">
+                  <div class="coin-align">
+                    <span class="currency-sign"> $ </span>
+                    <span class="currency-value">9,763.31</span>
+                  </div>
+                </div>
+              </td>
+
+              <td class="">
+                <div class="coin-market-cap">
+                  <div class="coin-align" style="display: table-cell;">
+                    <span class="currency-sign"> $ </span>
+                    <span class="currency-value">8,599,150,000</span>
+                  </div>
+                  <div class="coin-align" style="display: none;">
+                    <span class="currency-sign"></span>
+                    <span class="currency-value">-</span>
+                  </div>
+                </div>
+              </td>
+
+              <td>
+                <div class="volume-price">
+                  <div class="coin-align" style="display: table-cell;">
+                    <span class="currency-sign"> $ </span>
+                    <span class="currency-value">164,666,883,206.00</span>
+                  </div>
+                  <div class="coin-align" style="display: none;">
+                    <span class="currency-sign"></span>
+                    <span class="currency-value">-</span>
+                  </div>
+                </div>
+              </td>
+
+              <td class=" hidden" ng-reflect-ng-class="hidden">
+                <div class="alignment">
+                  <div class="update-price" style="display: table-cell;">
+                    <span class="price-updown price_positive" ng-reflect-klass="price-updown" ng-reflect-ng-class="price_positive">0.23%
+                      <img class="up-down-arrow" src="assets/currency-svg/arrow-up-green.svg">
+                    </span>
+                  </div>
+                  <div class="update-price" style="display: none;">
+                    <span class="price-updown">-</span>
+                  </div>
+                </div>
+              </td>
+
+              <td class=" hidden" ng-reflect-ng-class="hidden">
+                <div class="alignment">
+                  <div class="update-price" style="display: table-cell;">
+                    <span class="price-updown price_positive" ng-reflect-klass="price-updown" ng-reflect-ng-class="price_positive">9.98%
+                      <img class="up-down-arrow" src="assets/currency-svg/arrow-up-green.svg">
+                    </span>
+                  </div>
+                  <div class="update-price" style="display: none;">
+                    <span class="price-updown">-</span>
+                  </div>
+                </div>
+              </td>
+
+              <td class="hidden"  ng-reflect-ng-class="hidden">
+                <div class="alignment">
+                  <div class="update-price" style="display: table-cell;">
+                    <span class="price-updown price_positive" ng-reflect-klass="price-updown" ng-reflect-ng-class="price_positive">19.64%
+                      <img class="up-down-arrow" src="assets/currency-svg/arrow-up-green.svg">
+                    </span>
+                  </div>
+                  <div class="update-price" style="display: none;">
+                    <span class="price-updown">-</span>
+                  </div>
+                </div>
+              </td>
+
+              <td class="hidden" ng-reflect-ng-class="hidden">
+                <div class="alignment">
+                  <div class="update-price" style="display: table-cell;">
+                    <span class="price-updown price_nagative" ng-reflect-klass="price-updown" ng-reflect-ng-class="price_nagative">-28.93%
+                      <img class="up-down-arrow" src="assets/currency-svg/arrow-down-red.svg">
+                    </span>
+                  </div>
+                  <div class="update-price" style="display: none;">
+                    <span class="price-updown">-</span>
+                  </div>
+                </div>
+              </td>
+
+              <td class="hidden" ng-reflect-ng-class="hidden">
+                <div class="alignment">
+                  <div class="update-price" style="display: table-cell;">
+                    <span class="price-updown price_positive" ng-reflect-klass="price-updown" ng-reflect-ng-class="price_positive">874.22%
+                      <img class="up-down-arrow" src="assets/currency-svg/arrow-up-green.svg">
+                    </span>
+                  </div>
+                  <div class="update-price" style="display: none;">
+                    <span class="price-updown">-</span>
+                  </div>
+                </div>
+              </td>
+
+              <td class="" ng-reflect-ng-class="">
+                <div class="alignment">
+                  <div class="update-price" style="display: table-cell;">
+                    <span class="price-updown price_positive" ng-reflect-klass="price-updown" ng-reflect-ng-class="price_positive">12,732,643.82%
+                      <img class="up-down-arrow" src="assets/currency-svg/arrow-up-green.svg">
+                    </span>
+                  </div>
+                  <div class="update-price" style="display: none;">
+                    <span class="price-updown">-</span>
+                  </div>
+                </div>
+              </td>
+
+              <td class="">
+                <div class="coin-market-cap">
+                  <div class="coin-align text-center">
+                    <button class="btn btn-follow ng-star-inserted" style="display: none;">
+                      <img class="follow-plus" src="assets/currency-svg/plus.svg"> Follow
+                    </button>
+                    
+                    <button class="btn btn-follow" data-target="#sign-in" data-toggle="modal" style="display: initial;">
+                      <img class="follow-plus" src="assets/currency-svg/plus.svg"> Follow
+                    </button>
+                    <button class="btn btn-follow btn-buy">Buy/Sell</button>
+                  </div>
+                </div>
+              </td>
+          </tr>
+        </tbody>
+      </table>
+    
+    </div>
+  </div>
+</section>
 
 
 
