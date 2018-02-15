@@ -110,12 +110,12 @@
     .chart-value {
         @extend .chart-title;
         .green{
-            color: $text-green;
+            color: $color-positive;
             font-size: 13px;
             vertical-align: middle;
             font-weight: 600;
             padding: 10px 15px;
-            border: solid 1.5px $text-green;
+            border: solid 1.5px $color-positive;
             border-radius: 5px;
             min-width: 130px;
             display: block;
@@ -169,37 +169,4 @@
 
 .df{
     display: flex;
-}
-
-.highcharts-color-0 {
-	background:$bg-color !important;
-	stroke: transparent;
-}
-.highcharts-axis.highcharts-color-0 .highcharts-axis-line {
-	stroke:transparent;
-}
-.highcharts-axis.highcharts-color-0 text {
-	fill: $bg-color;
-}
-.highcharts-color-1 {
-	fill: $bg-green;
-	stroke: $bg-green;
-}
-.highcharts-axis.highcharts-color-1 .highcharts-axis-line {
-	stroke: $bg-green;
-}
-.highcharts-axis.highcharts-color-1 text {
-	fill: $bg-green;
-}
-.highcharts-yaxis .highcharts-axis-line {
-	stroke-width: 2px;
-}
-
-.highcharts-title {
-    fill :#170b32 !important;
-    color:#170b32 !important;    
-    font-weight: 500;
-    letter-spacing: 0.3em;
-    font-size: 18px !important;
-    font-family: 'montserrat';
 }
