@@ -42,8 +42,9 @@ export const userstatus = localStorage.getItem('status');
 export const basecurr = localStorage.getItem('base');
 export const base_sing = localStorage.getItem('base_sing');
 export const user_base = localStorage.getItem('user_base');
-const purl = window.location.href;
-if (purl === base_url) {
+const aurl = window.location.href;
+const burl = aurl.split('/');
+if (burl['3'] !== 'coin' || burl['3'] !== 'followlist' || burl['3'] !== 'portfolio' || burl['3'] !== 'profile') {
     this.srton = localStorage.getItem('sorton');
     this.srtby = localStorage.getItem('sortby');
 } else {
