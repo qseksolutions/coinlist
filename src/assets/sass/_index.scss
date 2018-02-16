@@ -456,6 +456,24 @@
                     width: 16.667%;
                     border:none;
                     padding: 10px 0;
+                    &:first-child{
+                        width: 20%;
+                    }
+                    &:nth-child(2){
+                        width: 20%;
+                    }
+                    &:nth-child(3){
+                        width: 20%;
+                    }
+                    &:nth-child(4){
+                        width: 20%;
+                    }
+                    &:nth-child(5){
+                        width: 10%;
+                    }
+                    &:last-child{
+                        width: 10%;
+                    }
                 }
             }
         }
@@ -473,6 +491,24 @@
                 }
                 td{
                     @extend th ;
+                    &:first-child{
+                        width: 20%;
+                    }
+                    &:nth-child(2){
+                        width: 20%;
+                    }
+                    &:nth-child(3){
+                        width: 20%;
+                    }
+                    &:nth-child(4){
+                        width: 20%;
+                    }
+                    &:nth-child(5){
+                        width: 10%;
+                    }
+                    &:last-child{
+                        width: 10%;
+                    }
                 }
             }
         }
