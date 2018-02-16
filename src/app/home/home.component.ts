@@ -185,20 +185,12 @@ export class HomeComponent implements OnInit {
     });
     this.coinservice.getCoinCount().subscribe(responceData => {
       if (responceData.status === true) {
-        this.totalmarket = responceData.data['totalmarketcap_' + this.basecurr];
-        this.totaltrade = responceData.data['totalvolume_' + this.basecurr];
         const total = responceData.data.totalcoins / 50;
         this.coincount = Math.ceil(total);
-        this.totalcoin = responceData.data.totalcoins;
         if (this.page > this.coincount) {
           window.location.href = this.urlString + '?page=' + this.coincount;
         }
-      } else {
-        this.totalmarket = 0;
-        this.totaltrade = 0;
-        this.coincount = 0;
-        this.totalcoin = 0;
-      }
+      } 
     });
   }
 
