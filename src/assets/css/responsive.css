@@ -36,7 +36,9 @@
   .coin-table-list .coin-coint .main-coin-title {
     width: 50px; }
 
-  .main-table table thead tr th, .main-table table tbody tr th, .main-table table tbody tr td {
+  .main-table table thead tr th {
+    padding: 10px; }
+  .main-table table tbody tr td {
     padding: 10px; } }
 /*(min-width : 768px)*/
 /*(max-width : 767px)*/
@@ -226,7 +228,32 @@
     -o-transform: translate(0, 0) !important;
     transform: translate(0, 0) !important; }
   .login-model .modal {
-    overflow-y: auto; } }
+    overflow-y: auto; }
+
+  /*home-table*/
+  .main-table {
+    overflow: hidden; }
+
+  .main-table-responsive {
+    overflow-x: auto; }
+
+  .coin-heading {
+    font-size: 10px; }
+
+  .coin-table-list .coin-coint .coin-count-icon {
+    width: 50px; }
+    .coin-table-list .coin-coint .coin-count-icon .count-text {
+      width: 20px;
+      font-size: 10px; }
+  .coin-table-list .coin-coint .main-coin-title {
+    width: 50px; }
+
+  .main-table table {
+    width: 700px; }
+    .main-table table thead tr th {
+      padding: 10px; }
+    .main-table table tbody tr td {
+      padding: 10px; } }
 /*(max-width : 449px)*/
 @media only screen and (max-width: 449px) {
   .chart-header.small-chart-header {
