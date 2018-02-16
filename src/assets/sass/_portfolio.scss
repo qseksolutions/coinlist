@@ -62,7 +62,10 @@
         @extend .main-coin-title;
     }
     .remove-btn{
-        @extend .main-coin-title;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        height: 100%;
     }
     .cost-count{
         @extend .main-coin-title;
@@ -85,14 +88,6 @@
     .main-coin-title{
         display: table-cell;
         vertical-align: middle;
-    }
-    .btn-remove{
-        padding: 6px 10px;
-        font-size: 10px;
-        background-color: $dark-blue;
-        color:$text-white;
-        line-height: normal;
-        cursor: pointer;
     }
 }
 
@@ -210,7 +205,8 @@
         line-height: 22px;
     }
     .input-currency-icon{
-        width: 22px;
+        width: auto;
+        height: 25px;
     }
 
     .currency-list{
@@ -312,4 +308,14 @@ ngb-datepicker.dropdown-menu {
 
 .recent-table{
     width: 1110px;
+}
+
+.watch-list-detaile{
+    .coin-value-detaile{
+          .coin-price{
+               .secound-value{
+                    font-size: 20px;
+               }
+          }
+    }
 }

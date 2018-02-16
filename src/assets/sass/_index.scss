@@ -464,13 +464,14 @@
             @extend thead ;
             &.coin-table-list{
                 border: none;
-            &:nth-of-type(2n+1) {
-                background: #f8f9fb;
-            }
+                
             }
             
             border-top: none;
             tr{
+                &:nth-of-type(2n+1) {
+                    background: #f8f9fb;
+                }
                 td{
                     @extend th ;
                 }

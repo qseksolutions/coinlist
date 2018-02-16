@@ -205,7 +205,7 @@
     padding: 0;
     outline: none;
     font-weight: 500;
-    font-size: 20px;
+    font-size: 15px;
     display: block;
     -webkit-transition: all ease 0.5s;
     -moz-transition: all ease 0.5s;
@@ -574,6 +574,15 @@
   line-height: 13px; }
   .btn.contact-btn:hover {
     background-color: #f17428; }
+.btn.btn-remove, .btn.btn-edit {
+  padding: 6px 10px;
+  font-size: 10px;
+  background-color: #ff6060;
+  color: #fff;
+  line-height: normal;
+  cursor: pointer; }
+.btn.btn-edit {
+  background-color: #3cd483; }
 
 .table-title {
   color: #fff;
@@ -651,7 +660,7 @@
         font-weight: 700;
         width: 30px;
         padding: 15px 0; }
-    .coin-table-list .coin-coint .main-coin-title, .coin-table-list .coin-coint .protfolia-table-detaile .rate-count, .protfolia-table-detaile .coin-table-list .coin-coint .rate-count, .coin-table-list .coin-coint .protfolia-table-detaile .remove-btn, .protfolia-table-detaile .coin-table-list .coin-coint .remove-btn, .coin-table-list .coin-coint .protfolia-table-detaile .cost-count, .protfolia-table-detaile .coin-table-list .coin-coint .cost-count, .coin-table-list .coin-coint .protfolia-table-detaile .date-table, .protfolia-table-detaile .coin-table-list .coin-coint .date-table {
+    .coin-table-list .coin-coint .main-coin-title, .coin-table-list .coin-coint .protfolia-table-detaile .rate-count, .protfolia-table-detaile .coin-table-list .coin-coint .rate-count, .coin-table-list .coin-coint .protfolia-table-detaile .cost-count, .protfolia-table-detaile .coin-table-list .coin-coint .cost-count, .coin-table-list .coin-coint .protfolia-table-detaile .date-table, .protfolia-table-detaile .coin-table-list .coin-coint .date-table {
       display: table-cell;
       vertical-align: middle;
       font-size: 14px;
@@ -660,7 +669,7 @@
       overflow: hidden;
       text-overflow: ellipsis;
       text-align: left; }
-      .coin-table-list .coin-coint .main-coin-title a, .coin-table-list .coin-coint .protfolia-table-detaile .rate-count a, .protfolia-table-detaile .coin-table-list .coin-coint .rate-count a, .coin-table-list .coin-coint .protfolia-table-detaile .remove-btn a, .protfolia-table-detaile .coin-table-list .coin-coint .remove-btn a, .coin-table-list .coin-coint .protfolia-table-detaile .cost-count a, .protfolia-table-detaile .coin-table-list .coin-coint .cost-count a, .coin-table-list .coin-coint .protfolia-table-detaile .date-table a, .protfolia-table-detaile .coin-table-list .coin-coint .date-table a {
+      .coin-table-list .coin-coint .main-coin-title a, .coin-table-list .coin-coint .protfolia-table-detaile .rate-count a, .protfolia-table-detaile .coin-table-list .coin-coint .rate-count a, .coin-table-list .coin-coint .protfolia-table-detaile .cost-count a, .protfolia-table-detaile .coin-table-list .coin-coint .cost-count a, .coin-table-list .coin-coint .protfolia-table-detaile .date-table a, .protfolia-table-detaile .coin-table-list .coin-coint .date-table a {
         color: #4b4b4b; }
   .coin-table-list .main-coin-price .currency-sign {
     color: #acb1bf;
@@ -924,8 +933,8 @@
   border-top: none; }
   .main-table table tbody.coin-table-list {
     border: none; }
-    .main-table table tbody.coin-table-list:nth-of-type(2n+1) {
-      background: #f8f9fb; }
+  .main-table table tbody tr:nth-of-type(2n+1) {
+    background: #f8f9fb; }
 
 .detaile-coin-page {
   text-align: center;
@@ -1275,9 +1284,9 @@ div.breadcrumb {
   .watch-list-detaile .coin-title a {
     color: #3d3379; }
   .watch-list-detaile .coin-title h3 span {
-    font-size: 16px;
+    font-size: 13px;
     vertical-align: baseline;
-    color: #ff8033;
+    color: #9ca5be;
     display: inline-block; }
   .watch-list-detaile .coin-value-detaile {
     display: flex; }
@@ -1333,7 +1342,7 @@ div.breadcrumb {
     display: table-cell;
     vertical-align: middle;
     width: 50px; }
-  .protfolia-table-detaile .main-coin-title, .protfolia-table-detaile .rate-count, .protfolia-table-detaile .remove-btn, .protfolia-table-detaile .cost-count, .protfolia-table-detaile .date-table {
+  .protfolia-table-detaile .main-coin-title, .protfolia-table-detaile .rate-count, .protfolia-table-detaile .cost-count, .protfolia-table-detaile .date-table {
     display: table-cell;
     vertical-align: middle; }
   .protfolia-table-detaile .coin-name {
@@ -1349,6 +1358,11 @@ div.breadcrumb {
   .protfolia-table-detaile .coin-symbol {
     color: #9ca5be;
     font-weight: 600; }
+  .protfolia-table-detaile .remove-btn {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 100%; }
   .protfolia-table-detaile .cost-count {
     font-size: 15px;
     font-weight: 400; }
@@ -1360,16 +1374,9 @@ div.breadcrumb {
   .protfolia-table-detaile .date-table {
     font-size: 13px;
     font-weight: 400; }
-  .protfolia-table-detaile .main-coin-title, .protfolia-table-detaile .rate-count, .protfolia-table-detaile .remove-btn, .protfolia-table-detaile .cost-count, .protfolia-table-detaile .date-table {
+  .protfolia-table-detaile .main-coin-title, .protfolia-table-detaile .rate-count, .protfolia-table-detaile .cost-count, .protfolia-table-detaile .date-table {
     display: table-cell;
     vertical-align: middle; }
-  .protfolia-table-detaile .btn-remove {
-    padding: 6px 10px;
-    font-size: 10px;
-    background-color: #3d3379;
-    color: #fff;
-    line-height: normal;
-    cursor: pointer; }
 
 .portfolio-model .modal-dialog {
   max-width: 100%;
@@ -1470,7 +1477,8 @@ div.breadcrumb {
   padding: 10px 15px;
   line-height: 22px; }
 .portfolio-model .input-currency-icon {
-  width: 22px; }
+  width: auto;
+  height: 25px; }
 .portfolio-model .currency-list, .portfolio-model #addQuote {
   margin-bottom: 0; }
   .portfolio-model .currency-list li, .portfolio-model #addQuote li {
@@ -1538,6 +1546,9 @@ ngb-datepicker.dropdown-menu {
 
 .recent-table {
   width: 1110px; }
+
+.watch-list-detaile .coin-value-detaile .coin-price .secound-value {
+  font-size: 20px; }
 
 .support-main-bg {
   position: relative; }

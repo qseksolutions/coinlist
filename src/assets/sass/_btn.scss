@@ -276,4 +276,16 @@
             background-color:$hover-orange;
         }
     }
+    &.btn-remove{
+        padding: 6px 10px;
+        font-size: 10px;
+        background-color: $color-nagative;
+        color:$text-white;
+        line-height: normal;
+        cursor: pointer;
+    }
+    &.btn-edit{
+        background-color: $color-positive;
+        @extend .btn-remove 
+    }
 }
