@@ -61,7 +61,8 @@
   -moz-transition: 0.5s;
   -ms-transition: 0.5s;
   transition: 0.5s;
-  padding: 10px 0; }
+  padding: 10px 0;
+  -ms-overflow-style: none; }
   .sidenav .menu-dropdown-content {
     padding: 10px; }
     .sidenav .menu-dropdown-content .closebtn {

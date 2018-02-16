@@ -73,6 +73,7 @@
     overflow-x: hidden;
     @include transition(0.5s);
     padding: 10px 0;
+    -ms-overflow-style:none;
     
     .menu-dropdown-content{
         padding: 10px;
