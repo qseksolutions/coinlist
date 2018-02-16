@@ -10,24 +10,23 @@
     }
 }
 
-.exchange_button a.btn.btn-menu-exchage{
-    display: inline-block;
-    padding: 10px 30px;
-    margin: 0 20px;
-}
+
 
 .exchange_button {
     
     .btn{
         &.btn-menu-exchage{
             background-image: none !important;
+            display: inline-block;
+            padding: 10px 30px;
+            margin: 0 20px;
         }
         &.btn-green{
             background-image: url(../currency-svg/angle-arrow-down.svg);
             background-position: 86px 32px;
             background-repeat: no-repeat;
             background-size: 12px 12px;
-            padding: 33px 50px 33px 40px;
+            padding: 34px 50px 33px 40px;
             border-radius: 0;
         }
     }
@@ -247,6 +246,7 @@
         font-weight: 600;
         text-transform: uppercase;
         line-height: 13px;
+        padding: 10px 20px;
         &:hover{
             background-color:$hover-orange;
         }
@@ -262,6 +262,14 @@
         line-height: 13px;
         &:hover{
             background-color:$hover-dark-blue;
+        }
+    }
+    &.btn-cancel{
+        @extend .btn-save ;
+        background-color: transparent;
+        color: $primary-color;
+        &:hover{
+            background-color:transparent;
         }
     }
     &.contact-btn{
@@ -283,6 +291,7 @@
         color:$text-white;
         line-height: normal;
         cursor: pointer;
+        margin-right: 10px;
     }
     &.btn-edit{
         background-color: $color-positive;

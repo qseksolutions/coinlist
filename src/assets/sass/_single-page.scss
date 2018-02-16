@@ -16,11 +16,13 @@
     color: $text-white;
 
     .center-header{
-        display: flex;
+        @include flexbox ;
         margin-bottom: 30px;
+        @include align-items (center);
+        @include justify-content (space-between);
 
         .info_coin-page{
-            flex: 1;
+            @include flex (1);
             display: table;
 
             .currency_icon{
@@ -146,9 +148,9 @@
         padding: 20px;
         border-radius: 5px;
         height: 100%;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
+        @include flexbox; 
+        @include align-items (center);
+        @include justify-content (space-between);
         .web-text{
             color: $text-white;
             font-size: 14px;
@@ -168,5 +170,5 @@
 }
 
 .df{
-    display: flex;
+    @include flexbox;
 }

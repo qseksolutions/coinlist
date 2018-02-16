@@ -68,9 +68,9 @@ div.breadcrumb{
 .watch-price-chart{
     text-align: center;
     text-align: center;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    @include flexbox;
+    @include align-items (center);
+    @include justify-content (center);
     height: 100%;
     .price-updown{
             font-size: 16px;
@@ -113,10 +113,10 @@ div.breadcrumb{
         }
     }
     .coin-value-detaile{
-        display: flex;
+       @include flexbox;
     
         .coin-price{
-            flex-grow: 1;
+            @include flex-grow (1);
             .small-text{
                 font-size: 16px;
                 font-weight: 600;

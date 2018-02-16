@@ -81,7 +81,14 @@
       color: #8a96a3;
       font-weight: 600; }
   .sidenav .select_contry {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-flex;
+    display: -ms-flexbox;
     display: flex;
+    -webkit-flex-wrap: wrap;
+    -moz-flex-wrap: wrap;
+    -ms-flex-wrap: wrap;
     flex-wrap: wrap;
     padding: 0;
     list-style: none;
@@ -96,6 +103,10 @@
       -moz-transition: all ease 0.5s;
       -ms-transition: all ease 0.5s;
       transition: all ease 0.5s;
+      display: -webkit-box;
+      display: -webkit-flex;
+      display: -moz-flex;
+      display: -ms-flexbox;
       display: flex;
       align-items: center;
       justify-content: center; }
@@ -167,13 +178,18 @@
       z-index: 0;
       border-radius: 5px;
       height: 35px;
-      border: solid 1px #3d3379; }
+      border: solid 1px #3d3379;
+      color: #fff; }
 
 /*single-page*/
 .detaile-coin-page {
   display: none; }
 
 .left-arrow-header {
+  -webkit-box-flex: 2;
+  -moz-box-flex: 2;
+  -webkit-flex: 2;
+  -ms-flex: 2;
   flex: 2; }
   .left-arrow-header .back-arrow {
     padding: 5px;
@@ -220,6 +236,10 @@
     border: none;
     margin-right: 15px; }
   .searchbar .dropdown-item, .searchbar-small-device .dropdown-item {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-flex;
+    display: -ms-flexbox;
     display: flex;
     padding: 0 3px; }
   .searchbar .btn-search, .searchbar-small-device .btn-search {
@@ -358,19 +378,17 @@
     background-color: #3ad483;
     color: #fff; }
 
-.exchange_button a.btn.btn-menu-exchage {
+.exchange_button .btn.btn-menu-exchage {
+  background-image: none !important;
   display: inline-block;
   padding: 10px 30px;
   margin: 0 20px; }
-
-.exchange_button .btn.btn-menu-exchage {
-  background-image: none !important; }
 .exchange_button .btn.btn-green {
   background-image: url(../currency-svg/angle-arrow-down.svg);
   background-position: 86px 32px;
   background-repeat: no-repeat;
   background-size: 12px 12px;
-  padding: 33px 50px 33px 40px;
+  padding: 34px 50px 33px 40px;
   border-radius: 0; }
 
 .btn.btn-exchange, .btn.btn-social {
@@ -550,10 +568,11 @@
   color: #fff;
   font-weight: 600;
   text-transform: uppercase;
-  line-height: 13px; }
+  line-height: 13px;
+  padding: 10px 20px; }
   .btn.btn-add:hover {
     background-color: #f17428; }
-.btn.btn-save {
+.btn.btn-save, .btn.btn-cancel {
   background-color: #3d3379;
   border-radius: 50px;
   font-size: 13px;
@@ -562,8 +581,13 @@
   min-width: 200px;
   text-transform: uppercase;
   line-height: 13px; }
-  .btn.btn-save:hover {
+  .btn.btn-save:hover, .btn.btn-cancel:hover {
     background-color: #292157; }
+.btn.btn-cancel {
+  background-color: transparent;
+  color: #4b4b4b; }
+  .btn.btn-cancel:hover {
+    background-color: transparent; }
 .btn.contact-btn {
   background-color: #ff8033;
   border-radius: 50px;
@@ -580,7 +604,8 @@
   background-color: #ff6060;
   color: #fff;
   line-height: normal;
-  cursor: pointer; }
+  cursor: pointer;
+  margin-right: 10px; }
 .btn.btn-edit {
   background-color: #3cd483; }
 
@@ -786,6 +811,10 @@
   background-color: rgba(0, 0, 0, 0.2);
   border: solid 1px rgba(251, 251, 251, 0.3);
   border-top: none;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-flex;
+  display: -ms-flexbox;
   display: flex; }
   .coin-info-item2 .coin-item-trade {
     padding: 20px;
@@ -924,9 +953,13 @@
 
 /*table*/
 .main-table table thead tr, .main-table table tbody tr {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-flex;
+  display: -ms-flexbox;
   display: flex; }
   .main-table table thead tr th, .main-table table tbody tr th, .main-table table tbody tr td {
-    width: 20%;
+    width: 16.667%;
     border: none;
     padding: 10px 0; }
 .main-table table tbody {
@@ -952,9 +985,25 @@
   padding: 20px;
   color: #fff; }
   .single-coin-detaile .center-header {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-flex;
+    display: -ms-flexbox;
     display: flex;
-    margin-bottom: 30px; }
+    margin-bottom: 30px;
+    -webkit-align-items: center;
+    -moz-align-items: center;
+    -ms-align-items: center;
+    align-items: center;
+    -webkit-justify-content: space-between;
+    -moz-justify-content: space-between;
+    -ms-justify-content: space-between;
+    justify-content: space-between; }
     .single-coin-detaile .center-header .info_coin-page {
+      -webkit-box-flex: 1;
+      -moz-box-flex: 1;
+      -webkit-flex: 1;
+      -ms-flex: 1;
       flex: 1;
       display: table; }
       .single-coin-detaile .center-header .info_coin-page .currency_icon, .single-coin-detaile .center-header .info_coin-page .currency_icon .currency-coin-icon, .single-coin-detaile .center-header .info_coin-page .currency_icon .currency_icon, .single-coin-detaile .center-header .info_coin-page .coin-price {
@@ -1036,8 +1085,18 @@
     padding: 20px;
     border-radius: 5px;
     height: 100%;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-flex;
+    display: -ms-flexbox;
     display: flex;
+    -webkit-align-items: center;
+    -moz-align-items: center;
+    -ms-align-items: center;
     align-items: center;
+    -webkit-justify-content: space-between;
+    -moz-justify-content: space-between;
+    -ms-justify-content: space-between;
     justify-content: space-between; }
     .coin-descripation .coin-web .web-text {
       color: #fff;
@@ -1049,6 +1108,10 @@
       margin-bottom: 25px; }
 
 .df {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-flex;
+  display: -ms-flexbox;
   display: flex; }
 
 .exchage_container {
@@ -1077,6 +1140,10 @@
 .currancy-form .pl-30 {
   padding-left: 30px; }
 .currancy-form .currancy-form-label {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-flex;
+  display: -ms-flexbox;
   display: flex;
   vertical-align: middle;
   margin-bottom: 16px; }
@@ -1089,12 +1156,22 @@
       margin: 0 10px; }
   .currancy-form .currancy-form-label .max-price {
     text-align: right;
+    -webkit-flex-grow: 1;
+    -moz-flex-grow: 1;
+    -ms-flex-grow: 1;
     flex-grow: 1;
     color: #9ca5be;
     font-size: 14px; }
 .currancy-form .currancy-form-input {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-flex;
+  display: -ms-flexbox;
   display: flex; }
   .currancy-form .currancy-form-input .form-input {
+    -webkit-flex-grow: 5;
+    -moz-flex-grow: 5;
+    -ms-flex-grow: 5;
     flex-grow: 5; }
     .currancy-form .currancy-form-input .form-input input {
       font-size: 16px;
@@ -1117,7 +1194,10 @@
     background-color: white;
     width: 155px;
     padding: 13px 15px 14px 18px;
-    flex-grow: 0;
+    -webkit-flex-grow: 1;
+    -moz-flex-grow: 1;
+    -ms-flex-grow: 1;
+    flex-grow: 1;
     flex-shrink: 0;
     vertical-align: middle;
     cursor: pointer;
@@ -1164,6 +1244,10 @@
     margin: 0 15px; }
 .crypto_currency .exchange-rate-detaile {
   border-top: none;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-flex;
+  display: -ms-flexbox;
   display: flex;
   padding: 0; }
   .crypto_currency .exchange-rate-detaile .exchange-rate, .crypto_currency .exchange-rate-detaile .miner-fee {
@@ -1251,9 +1335,19 @@ div.breadcrumb {
 .watch-price-chart {
   text-align: center;
   text-align: center;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-flex;
+  display: -ms-flexbox;
   display: flex;
-  justify-content: center;
+  -webkit-align-items: center;
+  -moz-align-items: center;
+  -ms-align-items: center;
   align-items: center;
+  -webkit-justify-content: center;
+  -moz-justify-content: center;
+  -ms-justify-content: center;
+  justify-content: center;
   height: 100%; }
   .watch-price-chart .price-updown {
     font-size: 16px;
@@ -1289,8 +1383,15 @@ div.breadcrumb {
     color: #9ca5be;
     display: inline-block; }
   .watch-list-detaile .coin-value-detaile {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-flex;
+    display: -ms-flexbox;
     display: flex; }
     .watch-list-detaile .coin-value-detaile .coin-price {
+      -webkit-flex-grow: 1;
+      -moz-flex-grow: 1;
+      -ms-flex-grow: 1;
       flex-grow: 1; }
       .watch-list-detaile .coin-value-detaile .coin-price .small-text {
         font-size: 16px;
@@ -1348,7 +1449,6 @@ div.breadcrumb {
   .protfolia-table-detaile .coin-name {
     font-size: 13px;
     font-weight: 500;
-    color: #3d3379;
     display: block; }
   .protfolia-table-detaile .coin-amount {
     font-weight: 500;
@@ -1358,9 +1458,17 @@ div.breadcrumb {
   .protfolia-table-detaile .coin-symbol {
     color: #9ca5be;
     font-weight: 600; }
+    .protfolia-table-detaile .coin-symbol img {
+      width: 30px; }
   .protfolia-table-detaile .remove-btn {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-flex;
+    display: -ms-flexbox;
     display: flex;
-    justify-content: space-between;
+    -webkit-align-items: center;
+    -moz-align-items: center;
+    -ms-align-items: center;
     align-items: center;
     height: 100%; }
   .protfolia-table-detaile .cost-count {
@@ -1436,6 +1544,10 @@ div.breadcrumb {
       -ms-transition: all ease 0.5s;
       transition: all ease 0.5s; }
 .portfolio-model .currancy-form-input {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-flex;
+  display: -ms-flexbox;
   display: flex;
   position: relative;
   background-color: #fff;
@@ -1454,6 +1566,10 @@ div.breadcrumb {
     overflow: auto; }
     .portfolio-model .currancy-form-input .dropdown-menu .dropdown-item {
       padding: 0;
+      display: -webkit-box;
+      display: -webkit-flex;
+      display: -moz-flex;
+      display: -ms-flexbox;
       display: flex; }
 .portfolio-model .currency-select {
   font-size: 16px;
@@ -1465,6 +1581,10 @@ div.breadcrumb {
   border: none;
   border-right: 1px solid #d3dae7;
   margin: 0px;
+  -webkit-box-flex: 10;
+  -moz-box-flex: 10;
+  -webkit-flex: 10;
+  -ms-flex: 10;
   flex: 10;
   border-radius: 5px 0 0 5px;
   font-family: 'montserrat' !important;
@@ -1482,6 +1602,10 @@ div.breadcrumb {
 .portfolio-model .currency-list, .portfolio-model #addQuote {
   margin-bottom: 0; }
   .portfolio-model .currency-list li, .portfolio-model #addQuote li {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-flex;
+    display: -ms-flexbox;
     display: flex;
     position: relative;
     border-bottom: solid 1px #ebeef3;
@@ -1490,12 +1614,18 @@ div.breadcrumb {
     .portfolio-model .currency-list li:last-child, .portfolio-model #addQuote li:last-child {
       border-bottom: 0; }
   .portfolio-model .currency-list .dropdown-currency-name, .portfolio-model #addQuote .dropdown-currency-name {
+    -webkit-box-flex: 10;
+    -moz-box-flex: 10;
+    -webkit-flex: 10;
+    -ms-flex: 10;
     flex: 10;
     padding: 15px 10px; }
   .portfolio-model .currency-list .dropdown-currency-icon, .portfolio-model #addQuote .dropdown-currency-icon {
     text-align: center;
     padding: 10px;
     padding-right: 5px; }
+.portfolio-model .button-arrow img {
+  height: 16px; }
 
 ngb-datepicker.dropdown-menu {
   min-width: auto !important;
@@ -1525,13 +1655,24 @@ ngb-datepicker.dropdown-menu {
   padding: 10px 20px;
   border: none; }
 .protfolio-table .table thead tr, .protfolio-table .table .main-table table tbody tr, .main-table table .protfolio-table .table tbody tr {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-flex;
+  display: -ms-flexbox;
   display: flex;
   width: 100%;
   border-radius: 5px 5px 0 0;
   border: solid 1px #ebeef3;
   border-bottom: none; }
   .protfolio-table .table thead tr th .alignment, .protfolio-table .table .main-table table tbody tr th .alignment, .main-table table .protfolio-table .table tbody tr th .alignment, .main-table table tbody .protfolio-table .table thead tr td .alignment, .protfolio-table .table .main-table table tbody tr td .alignment, .main-table table .protfolio-table .table tbody tr td .alignment {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-flex;
+    display: -ms-flexbox;
     display: flex;
+    -webkit-align-items: center;
+    -moz-align-items: center;
+    -ms-align-items: center;
     align-items: center; }
 .protfolio-table .table tbody {
   border: none; }
@@ -1541,11 +1682,14 @@ ngb-datepicker.dropdown-menu {
     border: none;
     border-radius: 5px;
     margin-bottom: 10px;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-flex;
+    display: -ms-flexbox;
     display: flex;
     padding: 0; }
-
-.recent-table {
-  width: 1110px; }
+.protfolio-table .recent-table table tr td {
+  width: 20%; }
 
 .watch-list-detaile .coin-value-detaile .coin-price .secound-value {
   font-size: 20px; }
@@ -1576,8 +1720,18 @@ ngb-datepicker.dropdown-menu {
     font-weight: 100; }
 
 .searchbar-support {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-flex;
+  display: -ms-flexbox;
   display: flex;
+  -webkit-align-items: center;
+  -moz-align-items: center;
+  -ms-align-items: center;
   align-items: center;
+  -webkit-justify-content: center;
+  -moz-justify-content: center;
+  -ms-justify-content: center;
   justify-content: center;
   margin-top: 40px; }
   .searchbar-support .support-input {
@@ -1692,6 +1846,10 @@ ngb-datepicker.dropdown-menu {
   min-width: 20px;
   border: none;
   margin: 0px;
+  -webkit-box-flex: 10;
+  -moz-box-flex: 10;
+  -webkit-flex: 10;
+  -ms-flex: 10;
   flex: 10;
   border-radius: 5px;
   font-family: 'montserrat' !important;
@@ -1714,9 +1872,19 @@ ngb-datepicker.dropdown-menu {
   font-weight: 600;
   color: #8a96a3;
   margin: 0;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-flex;
+  display: -ms-flexbox;
   display: flex;
-  justify-content: center;
-  align-items: center; }
+  -webkit-align-items: center;
+  -moz-align-items: center;
+  -ms-align-items: center;
+  align-items: center;
+  -webkit-justify-content: center;
+  -moz-justify-content: center;
+  -ms-justify-content: center;
+  justify-content: center; }
 
 .profile-contant {
   padding: 40px 0; }
@@ -1738,6 +1906,10 @@ ngb-datepicker.dropdown-menu {
   padding: 30px; }
 
 .profile-input {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-flex;
+  display: -ms-flexbox;
   display: flex;
   position: relative;
   background-color: #fff;
@@ -1748,7 +1920,7 @@ ngb-datepicker.dropdown-menu {
 input.contact-input[disabled] {
   cursor: not-allowed; }
 
-.profile-btn .btn.btn-save {
+.profile-btn .btn.btn-save, .profile-btn .btn.btn-cancel {
   min-width: auto; }
 
 .profile-footer {
@@ -1791,13 +1963,19 @@ body {
   background-color: #f8f9fb !important;
   line-height: normal !important;
   font-size: 13px !important;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-flex;
+  display: -ms-flexbox;
   display: flex;
   flex-direction: column;
   height: 100vh; }
 
 main {
-  -moz-flex: 1 0 auto;
+  -webkit-box-flex: 1 0 auto;
+  -moz-box-flex: 1 0 auto;
   -webkit-flex: 1 0 auto;
+  -ms-flex: 1 0 auto;
   flex: 1 0 auto; }
 
 footer {

@@ -128,7 +128,7 @@
                   <div class="coin-count">
                     <div class="coin-count-icon">
                       <span class="coin-symbol">
-                        <img src="assets/currency-svg/{{pl.buy_coin | lowercase}}.svg" (error)="errorHandler($event,pl.buy_coin)" width="40" height="40">
+                        <img src="assets/currency-svg/{{pl.buy_coin | lowercase}}.svg" (error)="errorHandler($event,pl.buy_coin)">
                       </span>
                     </div>
                     <div class="main-coin-title">
@@ -228,110 +228,117 @@
         </div>
       </div>
 
-      <div class="table-responsive">
-        <div class="protfolio-table recent-table" *ngIf="portfoliolist != ''">
-          <div class="protfolio-table-title">
-            <div class="row">
-              <div class="col-lg-3 col-md-3 col-sm-3 col-3">
-                <div class="alignment">
-                  <span>
-                    <a href="#" class="coin-heading"> Coin </a>
-                  </span>
-                </div>
-              </div>
-        
-              <div class="col-lg-3 col-md-3 col-sm-3 col-3">
-                <div class="alignment">
-                  <span>
-                    <a href="#" class="coin-heading"> Rate </a>
-                  </span>
-                </div>
-              </div>
-        
-              <div class="col-lg-3 col-md-3 col-sm-3 col-3">
-                <div class="alignment">
-                  <span>
-                    <a href="#" class="coin-heading"> Total Cost </a>
-                  </span>
-                </div>
-              </div>
-        
-              <div class="col-lg-3 col-md-3 col-sm-3 col-3">
-                <div class="alignment">
-                  <span>
-                    <a href="#" class="coin-heading"> Date </a>
-                  </span>
-                </div>
-              </div>
-            </div>
-          </div>
-        
-          <div class="protfolia-table-detaile" *ngFor="let portfolio of portfoliolist">
-            <div class="row">
-              <div class="col-lg-3 col-md-3 col-sm-3 col-3">
-                <div class="coin-count">
-                  <div class="coin-count-icon">
-                    <span class="coin-symbol">
-                      <img src="assets/currency-svg/{{portfolio.buy_coin | lowercase}}.svg" (error)="errorHandler($event,portfolio.buy_coin)" width="40"
-                        height="40">
+      <div class="protfolio-table table-responsive">
+        <div class="protfolio-table-responsive recent-table" *ngIf="portfoliolist != ''">
+          <table class="table table-responsive">
+            <thead class="">
+              <tr class="">
+                <th class="">
+                  <div class="alignment">
+                    <span>
+                      <a href="#" class="coin-heading"> Coin </a>
                     </span>
                   </div>
-                  <div class="main-coin-title">
-                    <span class="coin-name">{{portfolio.coin_name}}</span>
-                    <span class="coin-amount">{{portfolio.coin_amount}}
-                      <span class="coin-symbol"> {{portfolio.buy_coin}}</span>
+                </th>
+          
+                <th class="">
+                  <div class="alignment">
+                    <span>
+                      <a href="#" class="coin-heading"> Rate </a>
                     </span>
                   </div>
-                </div>
-              </div>
-        
-              <div class="col-lg-3 col-md-3 col-sm-3 col-3">
-                <div class="coin-align">
-                  <div class="rate-count">
-                    <span class="coin-name">
-                      <span class="currency-sign">{{base_sing}}</span>
-                      <span class="currency-value">{{portfolio.dc_price / portfolio.coin_amount | number : '1.2-2'}}</span>
-                    </span>
-                    <span class="coin-amount">
-                      <span class="coin-symbol"> ({{portfolio.bc_sign}}{{portfolio.bc_price / portfolio.coin_amount | number : '1.2-2'}})</span>
+                </th>
+          
+                <th class="">
+                  <div class="alignment">
+                    <span>
+                      <a href="#" class="coin-heading"> Total Cost </a>
                     </span>
                   </div>
-                </div>
-              </div>
-        
-              <div class="col-lg-3 col-md-3 col-sm-3 col-3">
-                <div class="coin-align">
-                  <div class="rate-count">
-                    <span class="coin-name">
-                      <span class="currency-sign">{{base_sing}}</span>
-                      <span class="currency-value">{{portfolio.dc_price | number : '1.2-2'}}</span>
-                    </span>
-                    <span class="coin-amount">
-                      <span class="coin-symbol"> ({{portfolio.bc_sign}}{{portfolio.bc_price | number : '1.2-2'}})</span>
+                </th>
+          
+                <th class="">
+                  <div class="alignment">
+                    <span>
+                      <a href="#" class="coin-heading"> Date </a>
                     </span>
                   </div>
-                </div>
-              </div>
-        
-              <div class="col-lg-2 col-md-2 col-sm-2 col-2">
-                <div class="coin-align">
-                  <div class="date-table">
-                    <span class=""> {{portfolio.transaction_date}} </span>
+                </th>
+                <th class="">
+                  <div class="alignment">
+                    <span>
+                      <a href="#" class="coin-heading"> Edit </a>
+                    </span>
                   </div>
-                </div>
-              </div>
-        
-              <div class="col-lg-1 col-md-1 col-sm-1 col-1">
-                <div class="coin-align">
-                  <div class="remove-btn">
-                    <a href="javascript:;" class="btn btn-remove" (click)="traderemove(portfolio.id)"> <i class="fa fa-times"></i> </a>
-                    <a href="javascript:;" class="btn btn-edit" (click)="edittrade(portfolio.id)"> <i class="fa fa-edit"></i> </a>
+                </th>
+              </tr>
+            </thead>
+          
+            <tbody class="" *ngFor="let portfolio of portfoliolist">
+              <tr class="protfolia-table-detaile">
+                <td class="">
+                  <div class="coin-count">
+                    <div class="coin-count-icon">
+                      <span class="coin-symbol">
+                        <img src="assets/currency-svg/{{portfolio.buy_coin | lowercase}}.svg" (error)="errorHandler($event,portfolio.buy_coin)" >
+                      </span>
+                    </div>
+                    <div class="main-coin-title">
+                      <span class="coin-name">{{portfolio.coin_name}}</span>
+                      <span class="coin-amount">{{portfolio.coin_amount}}
+                        <span class="coin-symbol"> {{portfolio.buy_coin}}</span>
+                      </span>
+                    </div>
                   </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        
+                </td>
+          
+                <td class="">
+                  <div class="coin-align">
+                    <div class="rate-count">
+                      <span class="coin-name">
+                        <span class="currency-sign">{{base_sing}}</span>
+                        <span class="currency-value">{{portfolio.dc_price / portfolio.coin_amount | number : '1.2-2'}}</span>
+                      </span>
+                      <span class="coin-amount">
+                        <span class="coin-symbol"> ({{portfolio.bc_sign}}{{portfolio.bc_price / portfolio.coin_amount | number : '1.2-2'}})</span>
+                      </span>
+                    </div>
+                  </div>
+                </td>
+          
+                <td class="">
+                  <div class="coin-align">
+                    <div class="rate-count">
+                      <span class="coin-name">
+                        <span class="currency-sign">{{base_sing}}</span>
+                        <span class="currency-value">{{portfolio.dc_price | number : '1.2-2'}}</span>
+                      </span>
+                      <span class="coin-amount">
+                        <span class="coin-symbol"> ({{portfolio.bc_sign}}{{portfolio.bc_price | number : '1.2-2'}})</span>
+                      </span>
+                    </div>
+                  </div>
+                </td>
+          
+                <td class="">
+                  <div class="coin-align">
+                    <div class="date-table">
+                      <span class=""> {{portfolio.transaction_date}} </span>
+                    </div>
+                  </div>
+                </td>
+          
+                <td class="">
+                  <div class="coin-align">
+                    <div class="remove-btn">
+                      <a href="javascript:;" class="btn btn-remove" (click)="traderemove(portfolio.id)"> <i class="fa fa-times"></i> </a>
+                      <a href="javascript:;" class="btn btn-edit" (click)="edittrade(portfolio.id)"> <i class="fa fa-edit"></i> </a>
+                    </div>
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
         </div>
       </div>
       <div class="col-12 col-sm-12 col-md-12 col-lg-12" *ngIf="portfoliolist == ''">

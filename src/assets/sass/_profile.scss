@@ -24,7 +24,7 @@
 }
 
 .profile-input{
-    display: flex;
+    @include flexbox;
     position: relative;
     background-color: $bg-white;
     border-radius: 5px;

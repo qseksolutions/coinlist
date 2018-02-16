@@ -45,7 +45,6 @@
     .coin-name{
         font-size: 13px;
         font-weight: 500;
-        color: $dark-blue; 
         display: block;
     }
     .coin-amount{
@@ -57,14 +56,17 @@
     .coin-symbol{
         color: $light-gray;
         font-weight: 600;
+
+        img{
+            width: 30px;
+        }
     }
     .rate-count{
         @extend .main-coin-title;
     }
     .remove-btn{
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
+        @include flexbox;
+        @include align-items (center);
         height: 100%;
     }
     .cost-count{
@@ -156,7 +158,7 @@
         }
     }
     .currancy-form-input{
-        display: flex;
+        @include flexbox;        
         position: relative;
         background-color: #fff;
         border-radius: 5px;
@@ -176,7 +178,7 @@
 
             .dropdown-item {
                 padding: 0;
-                display: flex;
+                @include flexbox;                
             }
         }
     }
@@ -190,7 +192,7 @@
         border: none;
         border-right: 1px solid #d3dae7;
         margin: 0px;
-        flex: 10;
+        @include flex (10);
         border-radius: 5px 0 0 5px;
         font-family: 'montserrat' !important;
         line-height: 16px;
@@ -212,7 +214,7 @@
     .currency-list{
         margin-bottom: 0;
         li{
-            display: flex;
+            @include flexbox;            
             position: relative;
             border-bottom: solid 1px $border-color;
             cursor: pointer;
@@ -223,7 +225,7 @@
         }
 
         .dropdown-currency-name{
-            flex: 10;
+            @include flex (10);
             padding: 15px 10px;
         }
         .dropdown-currency-icon{
@@ -235,6 +237,11 @@
     
     #addQuote{
         @extend .currency-list;
+    }
+    .button-arrow {
+        img{
+            height: 16px;
+        }
     }
 }
 
@@ -278,15 +285,15 @@ ngb-datepicker.dropdown-menu {
         }
         thead{
             tr{
-                display: flex;
+                @include flexbox;                
                 width: 100%;
                 border-radius: 5px 5px 0 0;
                 border: solid 1px $border-color;
                 border-bottom: none;
                 th{
                     .alignment{
-                        display: flex;
-                        align-items: center;
+                        @include flexbox;                        
+                        @include align-items (center);                        
                     }
                 }
             }
@@ -299,15 +306,20 @@ ngb-datepicker.dropdown-menu {
                 border: none;
                 border-radius: 5px;
                 margin-bottom: 10px;
-                display: flex;
+                @include flexbox;                
                 padding: 0;
             }
         }
+    }
+    .recent-table{
+        table {
+            tr{
+                td{
+                    width: 20%;
+                }
+            }
+        }
     } 
-}
-
-.recent-table{
-    width: 1110px;
 }
 
 .watch-list-detaile{

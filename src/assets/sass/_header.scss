@@ -98,8 +98,8 @@
     }
     
     .select_contry{
-        display: flex;
-        flex-wrap: wrap;
+        @include flexbox;
+        @include flex-wrap (wrap);
         padding: 0;
         list-style: none;
         text-align: center;
@@ -111,7 +111,7 @@
             border:solid 2px $bg-white;
             margin: 5px;
             @include transition(all ease 0.5s);
-            display: flex;
+            @include flexbox;
             align-items: center;
             justify-content: center;
             &:hover{
@@ -187,6 +187,7 @@
                 border-radius: 5px;
                 height: 35px;
                 border: solid 1px $dark-blue;
+                color: $text-white;
             }
         }
     }
@@ -196,7 +197,7 @@
     display: none;
 }
 .left-arrow-header{
-    flex: 2;
+    @include flex (2) ;
     .back-arrow{
         padding: 5px;
         display: inline-block;
@@ -244,7 +245,7 @@
     margin-right: 15px;
   }
   .dropdown-item {
-    display: flex;
+    @include flexbox;
     padding: 0 3px;
    }
   .btn-search{

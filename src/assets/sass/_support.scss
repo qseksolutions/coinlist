@@ -28,9 +28,9 @@
 }
 
 .searchbar-support{
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    @include flexbox;
+    @include align-items (center);
+    @include justify-content (center);
     margin-top: 40px;
     .support-input{
         padding: 12px 15px;
@@ -160,7 +160,7 @@
     min-width: 20px;
     border: none;
     margin: 0px;
-    flex: 10;
+    @include flex (10);
     border-radius: 5px; 
     font-family: 'montserrat' !important;
     line-height: 16px;
@@ -184,9 +184,9 @@
     font-weight: 600;
     color: $dark-gray;
     margin: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    @include flexbox;
+    @include align-items (center);
+    @include justify-content (center);
   }
 }
   
