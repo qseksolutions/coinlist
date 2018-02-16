@@ -43,6 +43,49 @@
         border-bottom: solid 2px #ebeef3;
         margin-bottom: 10px;
     }
+
+    /*home*/
+    .coin-heading{
+        font-size: 10px;
+    }
+    .coin-table-list{
+
+        .coin-coint{
+
+             .coin-count-icon{
+                 width: 50px;
+                  .count-text{
+                      width: 20px;
+                      font-size: 10px;
+                  }
+             }
+             .main-coin-title{
+                 width: 50px;
+             }
+        }
+    }
+    .main-table {
+        table{
+
+            thead{
+                tr{
+                    th{
+                        padding: 10px;
+                     } 
+                }
+            }
+            tbody{
+                @extend thead ;
+                tr{
+                    td{
+                        @extend th ;
+                    }
+                }
+            }
+        }
+    }
+                        
+                    
 }
 /*(min-width : 768px)*/
 @media #{$all-tab} {

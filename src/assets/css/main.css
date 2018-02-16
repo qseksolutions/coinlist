@@ -713,8 +713,7 @@
     text-align: left; }
   .coin-table-list .update-price {
     display: table-cell;
-    vertical-align: middle;
-    padding-left: 10px; }
+    vertical-align: middle; }
     .coin-table-list .update-price .price-updown {
       font-size: 12px;
       font-weight: 700;

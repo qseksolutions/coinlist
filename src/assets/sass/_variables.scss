@@ -18,6 +18,7 @@ $hover-dark-blue:#292157;
 $body-bg-color:#f8f9fb;
 $border-color:#ebeef3;
 $text-black:#000;
+
 @mixin transition($transition) {
   -webkit-transition: $transition;
      -moz-transition: $transition;
