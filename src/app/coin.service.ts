@@ -258,7 +258,7 @@ export class CoinService {
       .map((response: Response) => response.json());
   }
 
-  getCoinList(start, limit) {
+  getCoinList(start, limit, column, order) {
     const headers = new Headers({ 'Content-Type': 'application/x-www-form-urlencoded' });
     const options = new RequestOptions({ headers: headers });
 
@@ -268,11 +268,11 @@ export class CoinService {
     if (this.userid != null) {
       const currentuser = this.userid;
       // tslint:disable-next-line:max-line-length
-      return this.http.get(this.api_url + this.coinlistAPI + '?limit= ' + limitdata + ' &start=' + startdata + '&userid=' + currentuser + '&base=' + this.basecur, options)
+      return this.http.get(this.api_url + this.coinlistAPI + '?limit= ' + limitdata + ' &start=' + startdata + '&userid=' + currentuser + '&base=' + this.basecur + '&sorton=' + column + ' &sortby=' + order, options)
         .map((response: Response) => response.json());
     } else {
       // tslint:disable-next-line:max-line-length
-      return this.http.get(this.api_url + this.coinlistAPI + '?limit= ' + limitdata + ' &start=' + startdata + '&base=' + this.basecur, options)
+      return this.http.get(this.api_url + this.coinlistAPI + '?limit= ' + limitdata + ' &start=' + startdata + '&base=' + this.basecur + '&sorton=' + column + ' &sortby=' + order, options)
         .map((response: Response) => response.json());
     }
   }

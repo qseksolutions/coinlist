@@ -42,3 +42,13 @@ export const userstatus = localStorage.getItem('status');
 export const basecurr = localStorage.getItem('base');
 export const base_sing = localStorage.getItem('base_sing');
 export const user_base = localStorage.getItem('user_base');
+const purl = window.location.href;
+if (purl === base_url) {
+    this.srton = localStorage.getItem('sorton');
+    this.srtby = localStorage.getItem('sortby');
+} else {
+    this.srton = localStorage.setItem('sorton', null);
+    this.srtby = localStorage.setItem('sortby', null);
+}
+export const sorton = this.srton;
+export const sortby = this.srtby;

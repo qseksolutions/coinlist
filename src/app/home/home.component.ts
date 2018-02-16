@@ -8,6 +8,8 @@ import { Observable } from 'rxjs/Observable';
 import { ToasterContainerComponent, ToasterService, ToasterConfig } from 'angular2-toaster';
 import { Title, Meta } from '@angular/platform-browser';
 
+declare var $;
+
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -41,6 +43,8 @@ export class HomeComponent implements OnInit {
   public userid: any = myGlobals.userid;
   public basecurr: any = myGlobals.basecurr;
   public base_sing: any = myGlobals.base_sing;
+  sorton: any;
+  sortby: any;
   interval: any;
   selectedIndex: any;
   perioddata: any;
@@ -49,6 +53,19 @@ export class HomeComponent implements OnInit {
   // tslint:disable-next-line:max-line-length
   constructor(private coinservice: CoinService, private router: Router, private http: Http, toasterService: ToasterService, private title: Title, private meta: Meta ) {
     this.toasterService = toasterService;
+    this.sorton = localStorage.getItem('sorton');
+    this.sortby = localStorage.getItem('sortby');
+    /* alert(this.sorton);
+    alert(this.sortby); */
+
+    if (this.sorton === null || this.sorton === 'null') {
+      localStorage.setItem('sorton', 'rank');
+      this.sorton = localStorage.getItem('sorton');
+    }
+    if (this.sortby === null || this.sortby === 'null') {
+      localStorage.setItem('sortby', 'asc');
+      this.sortby = localStorage.getItem('sortby');
+    }
 
     if (this.basecurr == null) {
       localStorage.setItem('base', 'USD');
@@ -80,6 +97,28 @@ export class HomeComponent implements OnInit {
 
   }
 
+  orderingColumn(column, order) {
+    this.sorton = localStorage.getItem('sorton');
+    this.sortby = localStorage.getItem('sortby');
+    /* alert(this.sorton + ' -> ' + column);
+    alert(typeof (this.sorton) + ' -> ' + typeof(column));
+    alert(this.sortby + ' -> ' + order); */
+    if (this.sorton === column || parseInt(this.sorton, 0) === column) {
+      if (this.sortby === 'asc') {
+        localStorage.setItem('sortby', 'desc');
+        // this.sortby = localStorage.getItem('sortby');
+        // alert('if ' + this.sortby);
+      } else {
+        localStorage.setItem('sortby', 'asc');
+        // alert('else ' + this.sortby);
+      }
+    } else {
+      localStorage.setItem('sorton', column);
+      localStorage.setItem('sortby', order);
+    }
+    location.reload();
+  }
+
   toggleClass(period, index: number) {
     // event.target.classList.toggle('active');
     // tslint:disable-next-line:triple-equals
@@ -103,10 +142,10 @@ export class HomeComponent implements OnInit {
         this.meta.addTag({ name: 'title', content: ' www.coinlisting.io' });
       }
     });
-    this.realtimetabledata(this.perioddata);
+    this.realtimetabledata(this.perioddata, this.sorton, this.sortby);
   }
 
-  realtimetabledata(period) {
+  realtimetabledata(period, column, order) {
     localStorage.setItem('period', period);
     const url = window.location.href;
     if (url.indexOf('=') > 0) {
@@ -139,7 +178,7 @@ export class HomeComponent implements OnInit {
 
     this.limit = 50;
 
-    this.coinservice.getCoinList(this.start, this.limit).subscribe(resData => {
+    this.coinservice.getCoinList(this.start, this.limit, column, order).subscribe(resData => {
       if (resData.data.length > 0) {
         this.coins = resData.data;
       }
