@@ -90,7 +90,7 @@
     .coin-table-list .coin-coint .coin-count-icon .count-text {
       font-size: 9px;
       width: 20px;
-      padding: 10px 0 10px 5px; }
+      padding: 10px 0 10px; }
     .coin-table-list .coin-coint .coin-count-icon .coin-symbol img {
       width: 16px; }
   .coin-table-list .update-price .price-updown {
@@ -176,20 +176,25 @@
   .login-detail .dropdown-toggle::after {
     display: none; }
   .login-detail .dropdown-menu {
+    -webkit-transition: all ease 0.5s;
+    -moz-transition: all ease 0.5s;
+    -ms-transition: all ease 0.5s;
     transition: all ease 0.5s;
     right: 0;
-    left: 100%;
-    display: block;
+    left: 0;
+    visibility: hidden;
     position: fixed;
-    width: 0;
-    top: 42px; }
+    width: 100%;
+    top: 0; }
     .login-detail .dropdown-menu li a {
       width: 100%; }
   .login-detail .show > .dropdown-menu {
-    display: block;
-    width: 100%;
+    visibility: visible;
     opacity: 1;
-    left: 0; }
+    height: auto;
+    top: 42px;
+    left: 0;
+    right: 0; }
 
   .searchbar .btn-search.clicked .btn-extended {
     width: 250px;
@@ -248,12 +253,26 @@
   .coin-table-list .coin-coint .main-coin-title {
     width: 50px; }
 
-  .main-table table {
-    width: 700px; }
-    .main-table table thead tr th {
-      padding: 10px; }
-    .main-table table tbody tr td {
-      padding: 10px; } }
+  .main-table table thead tr th {
+    padding: 10px 5px; }
+    .main-table table thead tr th:last-child {
+      width: 10%; }
+    .main-table table thead tr th:first-child {
+      width: 40%; }
+    .main-table table thead tr th:nth-child(2) {
+      width: 25%; }
+    .main-table table thead tr th:nth-child(5) {
+      width: 25%; }
+  .main-table table tbody tr td {
+    padding: 10px 5px; }
+    .main-table table tbody tr td:last-child {
+      width: 10%; }
+    .main-table table tbody tr td:first-child {
+      width: 40%; }
+    .main-table table tbody tr td:nth-child(2) {
+      width: 25%; }
+    .main-table table tbody tr td:nth-child(5) {
+      width: 25%; } }
 /*(max-width : 449px)*/
 @media only screen and (max-width: 449px) {
   .chart-header.small-chart-header {
