@@ -573,7 +573,7 @@
   padding: 10px 20px; }
   .btn.btn-add:hover {
     background-color: #f17428; }
-.btn.btn-save, .btn.btn-cancel {
+.btn.btn-save {
   background-color: #3d3379;
   border-radius: 50px;
   font-size: 13px;
@@ -581,14 +581,10 @@
   font-weight: 600;
   min-width: 200px;
   text-transform: uppercase;
-  line-height: 13px; }
-  .btn.btn-save:hover, .btn.btn-cancel:hover {
+  line-height: 13px;
+  padding: 10px 20px; }
+  .btn.btn-save:hover {
     background-color: #292157; }
-.btn.btn-cancel {
-  background-color: transparent;
-  color: #4b4b4b; }
-  .btn.btn-cancel:hover {
-    background-color: transparent; }
 .btn.contact-btn {
   background-color: #ff8033;
   border-radius: 50px;
@@ -606,9 +602,18 @@
   color: #fff;
   line-height: normal;
   cursor: pointer;
-  margin-right: 10px; }
+  margin-right: 10px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -moz-align-items: center;
+  -ms-align-items: center;
+  align-items: center; }
 .btn.btn-edit {
-  background-color: #3cd483; }
+  background-color: #3d3379; }
 
 .table-title {
   color: #fff;
@@ -1621,7 +1626,7 @@ div.breadcrumb {
   padding: 10px 15px;
   line-height: 22px; }
 .portfolio-model .input-currency-icon {
-  width: auto;
+  width: 25px;
   height: 25px; }
 .portfolio-model .currency-list, .portfolio-model #addQuote {
   margin-bottom: 0; }
@@ -1648,8 +1653,12 @@ div.breadcrumb {
     text-align: center;
     padding: 10px;
     padding-right: 5px; }
-.portfolio-model .button-arrow img {
-  height: 16px; }
+
+.img-filter {
+  -webkit-filter: brightness(60%) invert(50%);
+  -moz-filter: brightness(60%) invert(50%);
+  -ms-filter: brightness(60%) invert(50%);
+  filter: brightness(60%) invert(50%); }
 
 ngb-datepicker.dropdown-menu {
   min-width: auto !important;
@@ -1944,7 +1953,7 @@ ngb-datepicker.dropdown-menu {
 input.contact-input[disabled] {
   cursor: not-allowed; }
 
-.profile-btn .btn.btn-save, .profile-btn .btn.btn-cancel {
+.profile-btn .btn.btn-save {
   min-width: auto; }
 
 .profile-footer {

@@ -260,16 +260,9 @@
         min-width: 200px;
         text-transform: uppercase;
         line-height: 13px;
+        padding: 10px 20px;
         &:hover{
             background-color:$hover-dark-blue;
-        }
-    }
-    &.btn-cancel{
-        @extend .btn-save ;
-        background-color: transparent;
-        color: $primary-color;
-        &:hover{
-            background-color:transparent;
         }
     }
     &.contact-btn{
@@ -292,9 +285,11 @@
         line-height: normal;
         cursor: pointer;
         margin-right: 10px;
+        @include flexbox ;
+        @include align-items (center);
     }
     &.btn-edit{
-        background-color: $color-positive;
+        background-color: $dark-blue;
         @extend .btn-remove 
     }
 }

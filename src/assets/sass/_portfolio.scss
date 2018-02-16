@@ -207,7 +207,7 @@
         line-height: 22px;
     }
     .input-currency-icon{
-        width: auto;
+        width: 25px;
         height: 25px;
     }
 
@@ -238,11 +238,10 @@
     #addQuote{
         @extend .currency-list;
     }
-    .button-arrow {
-        img{
-            height: 16px;
-        }
-    }
+}
+
+.img-filter{
+    @include filter (brightness(60%) invert(50%));
 }
 
 ngb-datepicker.dropdown-menu {
