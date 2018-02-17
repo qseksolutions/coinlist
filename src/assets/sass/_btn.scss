@@ -9,7 +9,8 @@
         color: $text-white;
     }
     &:focus{
-        box-shadow: none;
+        box-shadow: none !important;
+        -moz-box-shadow:none !important;
     }
 }
 
