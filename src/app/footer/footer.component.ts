@@ -19,11 +19,17 @@ export class FooterComponent implements OnInit {
   public totalcoin: any;
   public totalmarket: any = 0;
   public totaltrade: any = 0;
+  adds: any;
 
   constructor(private coinservice: CoinService, private router: Router, private http: Http) {
   }
 
   ngOnInit() {
+    this.coinservice.getadvertiseforpage('bottom add').subscribe(resData => {
+      if (resData.status === true) {
+        this.adds = resData.data;
+      }
+    });
     this.coinservice.getCoinCount().subscribe(responceData => {
       if (responceData.status === true) {
         this.totalmarket = responceData.data['totalmarketcap_' + this.basecurr];

@@ -37,6 +37,7 @@ export class CoinService {
   getsingleseometaAPI: any = myGlobals.getsingleseometaAPI;
   gettestseometaAPI: any = myGlobals.gettestseometaAPI;
   gettradesingledataAPI: any = myGlobals.gettradesingledataAPI;
+  getadvertiseforpageAPI: any = myGlobals.getadvertiseforpageAPI;
 
   cointrackbyuserAPI: any = myGlobals.cointrackbyuserAPI;
 
@@ -432,6 +433,17 @@ export class CoinService {
     form.append('port_id', id);
 
     return this.http.post(this.api_url + this.gettradesingledataAPI, form, options)
+      .map((response: Response) => response.json());
+  }
+
+  getadvertiseforpage(side) {
+    const headers = new Headers({ 'Content-Type': 'application/x-www-form-urlencoded' });
+    const options = new RequestOptions({ headers: headers });
+
+    const form = new URLSearchParams();
+    form.append('side', side);
+
+    return this.http.post(this.api_url + this.getadvertiseforpageAPI, form, options)
       .map((response: Response) => response.json());
   }
 

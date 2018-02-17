@@ -30,6 +30,7 @@ export const getselectcoinpriceAPI = 'getselectcoinprice';
 export const getsingleseometaAPI = 'getsingleseometa';
 export const gettestseometaAPI = 'gettestseometa';
 export const gettradesingledataAPI = 'gettradesingledata';
+export const getadvertiseforpageAPI = 'getadvertiseforpage';
 
 export const cointrackbyuserAPI = 'cointrackbyuser';
 

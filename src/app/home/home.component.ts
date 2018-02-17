@@ -49,6 +49,7 @@ export class HomeComponent implements OnInit {
   selectedIndex: any;
   perioddata: any;
   login_ses: any =  0;
+  adds: any;
 
   // tslint:disable-next-line:max-line-length
   constructor(private coinservice: CoinService, private router: Router, private http: Http, toasterService: ToasterService, private title: Title, private meta: Meta ) {
@@ -142,6 +143,11 @@ export class HomeComponent implements OnInit {
         this.meta.addTag({ name: 'title', content: ' www.coinlisting.io' });
       }
     });
+    this.coinservice.getadvertiseforpage('top add').subscribe(resData => {
+      if (resData.status === true) {
+        this.adds = resData.data;
+      }
+    });
     this.realtimetabledata(this.perioddata, this.sorton, this.sortby);
   }
 
@@ -181,7 +187,6 @@ export class HomeComponent implements OnInit {
     this.coinservice.getCoinList(this.start, this.limit, column, order).subscribe(resData => {
       if (resData.data.length > 0) {
         this.coins = resData.data;
-        console.log(this.coins);
       }
     });
     this.coinservice.getCoinCount().subscribe(responceData => {

@@ -1,4 +1,10 @@
 <section class="table-title hidden-sm-down">
+  <div class="container text-center" *ngIf="adds">
+    <div *ngIf="adds.default_ad != ''" [innerHtml]="adds.default_ad"></div>
+    <div *ngIf="adds.default_ad == ''" [innerHtml]="adds.custom_ad"></div>
+  </div>
+</section>
+<section class="table-title hidden-sm-down" style="border-top: solid 0px #ebeef3;">
   <div class="container">
     <div class="main-chart-btn">
       <ul class="list-unstyled text-right">
