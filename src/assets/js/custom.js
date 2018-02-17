@@ -76,6 +76,19 @@ $('ul.nav li.dropdown').hover(function() {
 
 
 //chart
+if(curl[4] == 'profile') {
+    $(document).on('click',"#ngb-typeahead-0 > button.dropdown-item",function(){
+        var cur_symbol = $(this).children("div").text().trim();
+        var cur_symbol = cur_symbol.toLowerCase();
+        $('.currency_icon').children().attr('src','assets/currency-symbol/'+cur_symbol+'.svg');
+    });
+    $(document).on('keyup',"#selectedcur",function(e){
+        if (e.keyCode == 13) {
+            var cur_symbol = $(this).val();
+            $('.currency_icon').children().attr('src','assets/currency-symbol/'+cur_symbol.toLowerCase()+'.svg');
+        }
+    });
+}
 if(curl[3] == 'followlist') {
 /*var canvas = document.getElementById('canvas'),
 		context = canvas.getContext('2d'),
@@ -124,49 +137,50 @@ for(stat in stats) {
 }
 
  
+if(curl[4] == 'portfolio') {
 $(function(){
 
 $(document).on('click','#dropdownMenuButton',function(){
     $('#crypto-currency-menu').slideToggle();
 });
 
-$(document).on('click',"#ngb-typeahead-0 > button.dropdown-item",function(){
-    var cur_symbol = $(this).children("div").attr('value').toLowerCase();
-    var imgurl = 'assets/currency-svg/'+cur_symbol+'.svg';
-    $.ajax(imgurl).done(function(){ 
-        $('#icon-coin').children().attr('src',imgurl);
-    }).fail(function(){ 
-        var newimgurl = 'assets/currency-50/'+cur_symbol+'.png';
-        $.ajax(newimgurl).done(function(){ 
-            $('#icon-coin').children().attr('src',newimgurl);
-        }).fail(function(){ 
-            $('#icon-coin').children().attr('src','assets/currency-50/not-found-50.png');
-        });
-    });
-    // $('#icon-coin').children().attr('src','assets/currency-svg/'+cur_symbol+'.svg');
-});
-$(document).on('keyup',"#selectedcoin",function(e){
-    if (e.keyCode == 13) {
-        var cur_symbol = $(this).val();
-        var cur_symbol = cur_symbol.split(' ');
-        var cur_symbol = cur_symbol[cur_symbol.length-1];
-        var regExp = /\(([^)]+)\)/;
-        var cur_symbol = regExp.exec(cur_symbol);
-
-        var imgurl = 'assets/currency-svg/'+cur_symbol[1].toLowerCase()+'.svg';
+    $(document).on('click',"#ngb-typeahead-0 > button.dropdown-item",function(){
+        var cur_symbol = $(this).children("div").attr('value').toLowerCase();
+        var imgurl = 'assets/currency-svg/'+cur_symbol+'.svg';
         $.ajax(imgurl).done(function(){ 
             $('#icon-coin').children().attr('src',imgurl);
         }).fail(function(){ 
-            var newimgurl = 'assets/currency-50/'+cur_symbol[1].toLowerCase()+'.png';
+            var newimgurl = 'assets/currency-50/'+cur_symbol+'.png';
             $.ajax(newimgurl).done(function(){ 
                 $('#icon-coin').children().attr('src',newimgurl);
             }).fail(function(){ 
                 $('#icon-coin').children().attr('src','assets/currency-50/not-found-50.png');
             });
         });
-        // $('#icon-coin').children().attr('src','assets/currency-svg/'+cur_symbol[1].toLowerCase()+'.svg');
-    }
-});
+        // $('#icon-coin').children().attr('src','assets/currency-svg/'+cur_symbol+'.svg');
+    });
+    $(document).on('keyup',"#selectedcoin",function(e){
+        if (e.keyCode == 13) {
+            var cur_symbol = $(this).val();
+            var cur_symbol = cur_symbol.split(' ');
+            var cur_symbol = cur_symbol[cur_symbol.length-1];
+            var regExp = /\(([^)]+)\)/;
+            var cur_symbol = regExp.exec(cur_symbol);
+
+            var imgurl = 'assets/currency-svg/'+cur_symbol[1].toLowerCase()+'.svg';
+            $.ajax(imgurl).done(function(){ 
+                $('#icon-coin').children().attr('src',imgurl);
+            }).fail(function(){ 
+                var newimgurl = 'assets/currency-50/'+cur_symbol[1].toLowerCase()+'.png';
+                $.ajax(newimgurl).done(function(){ 
+                    $('#icon-coin').children().attr('src',newimgurl);
+                }).fail(function(){ 
+                    $('#icon-coin').children().attr('src','assets/currency-50/not-found-50.png');
+                });
+            });
+            // $('#icon-coin').children().attr('src','assets/currency-svg/'+cur_symbol[1].toLowerCase()+'.svg');
+        }
+    });
 
 $(document).on('click',"#ngb-typeahead-1 > button.dropdown-item",function(){
     var cur_symbol = $(this).children("div").attr('value').toLowerCase();
@@ -189,6 +203,7 @@ $(document).on('keyup',"#selectedcur",function(e){
   });
 
 });
+}
   
 $(function(){
 $(document).on('click','#currency-dropdownMenuButton',function(){

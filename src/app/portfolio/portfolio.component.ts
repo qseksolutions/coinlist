@@ -93,7 +93,7 @@ export class PortfolioComponent implements OnInit {
         this.allcoin = resData.data;
       }
     });
-    this.coinservice.getallcurrencylist().subscribe(resData => {
+    this.coinservice.getmaincurrencylist('').subscribe(resData => {
       if (resData.status === true) {
         this.allcurrency = resData.data;
       }

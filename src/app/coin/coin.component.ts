@@ -96,6 +96,7 @@ export class CoinComponent implements OnInit {
     const durl = curl.replace('/' + ccoin[4], '');
     this.coinservice.gettestseometa(durl).subscribe(resData => {
       if (resData.status === true) {
+        console.log(resData);
         const desc = resData.data.description;
         resData.data.description = desc.replace('[COIN]', ccoin[4]);
         this.meta.addTag({ name: 'description', content: resData.data.description });
@@ -114,8 +115,7 @@ export class CoinComponent implements OnInit {
     this.perioddata = localStorage.getItem('period');
     const url = window.location.href;
     const coinid = url.split('/');
-    this.coinservice.getGraphData(period, coinid[4])
-    .subscribe(response => {
+    this.coinservice.getGraphData(period, coinid[4]).subscribe(response => {
       this.market_cap = response.market_cap;
       this.price_usd = response.price_usd;
         this.chart = new StockChart({
