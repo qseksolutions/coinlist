@@ -96,7 +96,6 @@ export class CoinComponent implements OnInit {
     const durl = curl.replace('/' + ccoin[4], '');
     this.coinservice.gettestseometa(durl).subscribe(resData => {
       if (resData.status === true) {
-        console.log(resData);
         const desc = resData.data.description;
         resData.data.description = desc.replace('[COIN]', ccoin[4]);
         this.meta.addTag({ name: 'description', content: resData.data.description });

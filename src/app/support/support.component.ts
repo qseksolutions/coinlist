@@ -131,7 +131,6 @@ export class SupportComponent implements OnInit {
       this.toasterService.pop('error', 'Required', 'Please enter message');
     } else {
       setTimeout(() => {
-        console.log(formModel);
         if (this.image !== '') {
           this.image = this.image.replace(/\+/g, '#');
         } else {
@@ -152,7 +151,6 @@ export class SupportComponent implements OnInit {
   }
 
   /* onSubmitSendQuery() {
-    console.log(this.contact);
   } */
 
 }

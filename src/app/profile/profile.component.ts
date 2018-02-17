@@ -103,7 +103,6 @@ export class ProfileComponent implements OnInit {
   }
 
   onSubmitChangePassword() {
-    console.log(this.pass);
     if (this.pass.old_pass === '') {
       this.toasterService.pop('error', 'Required', 'Please enter old password');
     } else if (this.pass.new_pass === '') {

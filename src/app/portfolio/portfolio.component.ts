@@ -69,7 +69,6 @@ export class PortfolioComponent implements OnInit {
     });
     this.coinservice.profitlosslist().subscribe(resData => {
       if (resData.status === true) {
-        console.log(resData.data);
         for (let i = 0; i < resData.data.length; i++) {
           this.totalcost += resData.data[i]['totalcost'];
           this.value += resData.data[i]['current_price'] * resData.data[i]['coin_amount'];
