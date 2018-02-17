@@ -103,7 +103,7 @@ export class HomeComponent implements OnInit {
     /* alert(this.sorton + ' -> ' + column);
     alert(typeof (this.sorton) + ' -> ' + typeof(column));
     alert(this.sortby + ' -> ' + order); */
-    if (this.sorton === column || parseInt(this.sorton, 0) === column) {
+    if (this.sorton === column) {
       if (this.sortby === 'asc') {
         localStorage.setItem('sortby', 'desc');
         // this.sortby = localStorage.getItem('sortby');
@@ -181,6 +181,7 @@ export class HomeComponent implements OnInit {
     this.coinservice.getCoinList(this.start, this.limit, column, order).subscribe(resData => {
       if (resData.data.length > 0) {
         this.coins = resData.data;
+        console.log(this.coins);
       }
     });
     this.coinservice.getCoinCount().subscribe(responceData => {
@@ -190,7 +191,7 @@ export class HomeComponent implements OnInit {
         if (this.page > this.coincount) {
           window.location.href = this.urlString + '?page=' + this.coincount;
         }
-      } 
+      }
     });
   }
 

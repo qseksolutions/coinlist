@@ -52,6 +52,9 @@ export class SupportComponent implements OnInit {
   };
 
   constructor(private coinservice: CoinService, private router: Router, toasterService: ToasterService, private fb: FormBuilder) {
+    localStorage.setItem('sorton', null);
+    localStorage.setItem('sortby', null);
+
     this.toasterService = toasterService;
     this.createForm();
     this.image = '';

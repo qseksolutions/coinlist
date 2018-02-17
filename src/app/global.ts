@@ -47,9 +47,6 @@ const burl = aurl.split('/');
 if (burl['3'] !== 'coin' || burl['3'] !== 'followlist' || burl['3'] !== 'portfolio' || burl['3'] !== 'profile') {
     this.srton = localStorage.getItem('sorton');
     this.srtby = localStorage.getItem('sortby');
-} else {
-    this.srton = localStorage.setItem('sorton', null);
-    this.srtby = localStorage.setItem('sortby', null);
 }
 export const sorton = this.srton;
 export const sortby = this.srtby;

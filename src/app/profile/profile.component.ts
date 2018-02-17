@@ -47,6 +47,8 @@ export class ProfileComponent implements OnInit {
 
   // tslint:disable-next-line:max-line-length
   constructor(private coinservice: CoinService, private router: Router, toasterService: ToasterService, private title: Title, private meta: Meta) {
+    localStorage.setItem('sorton', null);
+    localStorage.setItem('sortby', null);
     this.toasterService = toasterService;
   }
 

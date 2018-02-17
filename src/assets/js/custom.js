@@ -77,7 +77,7 @@ $('ul.nav li.dropdown').hover(function() {
 
 //chart
 if(curl[3] == 'followlist') {
-var canvas = document.getElementById('canvas'),
+/*var canvas = document.getElementById('canvas'),
 		context = canvas.getContext('2d'),
 		width = canvas.width = 800,
 		height = canvas.height = 400;
@@ -120,7 +120,7 @@ for(stat in stats) {
 	context.stroke();
 	prev_stat = the_stat;
 	left += move_left_by;
-}
+}*/
 }
 
  
@@ -132,7 +132,18 @@ $(document).on('click','#dropdownMenuButton',function(){
 
 $(document).on('click',"#ngb-typeahead-0 > button.dropdown-item",function(){
     var cur_symbol = $(this).children("div").attr('value').toLowerCase();
-    $('#icon-coin').children().attr('src','assets/currency-svg/'+cur_symbol+'.svg');
+    var imgurl = 'assets/currency-svg/'+cur_symbol+'.svg';
+    $.ajax(imgurl).done(function(){ 
+        $('#icon-coin').children().attr('src',imgurl);
+    }).fail(function(){ 
+        var newimgurl = 'assets/currency-50/'+cur_symbol+'.png';
+        $.ajax(newimgurl).done(function(){ 
+            $('#icon-coin').children().attr('src',newimgurl);
+        }).fail(function(){ 
+            $('#icon-coin').children().attr('src','assets/currency-50/not-found-50.png');
+        });
+    });
+    // $('#icon-coin').children().attr('src','assets/currency-svg/'+cur_symbol+'.svg');
 });
 $(document).on('keyup',"#selectedcoin",function(e){
     if (e.keyCode == 13) {
@@ -141,7 +152,19 @@ $(document).on('keyup',"#selectedcoin",function(e){
         var cur_symbol = cur_symbol[cur_symbol.length-1];
         var regExp = /\(([^)]+)\)/;
         var cur_symbol = regExp.exec(cur_symbol);
-        $('#icon-coin').children().attr('src','assets/currency-svg/'+cur_symbol[1].toLowerCase()+'.svg');
+
+        var imgurl = 'assets/currency-svg/'+cur_symbol[1].toLowerCase()+'.svg';
+        $.ajax(imgurl).done(function(){ 
+            $('#icon-coin').children().attr('src',imgurl);
+        }).fail(function(){ 
+            var newimgurl = 'assets/currency-50/'+cur_symbol[1].toLowerCase()+'.png';
+            $.ajax(newimgurl).done(function(){ 
+                $('#icon-coin').children().attr('src',newimgurl);
+            }).fail(function(){ 
+                $('#icon-coin').children().attr('src','assets/currency-50/not-found-50.png');
+            });
+        });
+        // $('#icon-coin').children().attr('src','assets/currency-svg/'+cur_symbol[1].toLowerCase()+'.svg');
     }
 });
 

@@ -41,6 +41,8 @@ export class CoinComponent implements OnInit {
 
   // tslint:disable-next-line:max-line-length
   constructor(private coinservice: CoinService, private router: Router, toasterService: ToasterService, private http: Http, private titleService: Title, private datePipe: DatePipe, private meta: Meta) {
+    localStorage.setItem('sorton', null);
+    localStorage.setItem('sortby', null);
     this.toasterService = toasterService;
 
     this.perioddata = localStorage.getItem('period');

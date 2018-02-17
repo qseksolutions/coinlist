@@ -1,12 +1,17 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { Http, Response, Headers, RequestOptions } from '@angular/http';
+import { NgbTypeahead } from '@ng-bootstrap/ng-bootstrap';
 import { Router } from '@angular/router';
 import { CoinService } from '../coin.service';
 import * as myGlobals from './../global';
 import { defer } from 'q';
 import { Observable } from 'rxjs/Observable';
-import 'rxjs/add/operator/debounceTime';
+import { Subject } from 'rxjs/Subject';
 import 'rxjs/add/operator/map';
+import 'rxjs/add/operator/merge';
+import 'rxjs/add/operator/filter';
+import 'rxjs/add/operator/debounceTime';
+import 'rxjs/add/operator/distinctUntilChanged';
 import { URLSearchParams } from '@angular/http';
 import { ToasterContainerComponent, ToasterService, ToasterConfig } from 'angular2-toaster';
 import { Title, Meta } from '@angular/platform-browser';
@@ -30,6 +35,10 @@ export class PortfolioComponent implements OnInit {
     timeout: 2000
   });
 
+  @ViewChild('instance') instance: NgbTypeahead;
+  focus$ = new Subject<string>();
+  click$ = new Subject<string>();
+
   public urlString: any = myGlobals.base_url;
   public loginData: any = myGlobals.login_ses;
   public base_sing: any = myGlobals.base_sing;
@@ -47,6 +56,8 @@ export class PortfolioComponent implements OnInit {
 
   // tslint:disable-next-line:max-line-length
   constructor(private coinservice: CoinService, private router: Router, toasterService: ToasterService, private title: Title, private meta: Meta) {
+    localStorage.setItem('sorton', null);
+    localStorage.setItem('sortby', null);
     this.toasterService = toasterService;
     if (this.loginData == null) {
       window.location.href = this.urlString;
@@ -100,7 +111,9 @@ export class PortfolioComponent implements OnInit {
 
   search = (text$: Observable<string>) =>
     text$
-      .debounceTime(200)
+      .debounceTime(200).distinctUntilChanged()
+      .merge(this.focus$)
+      .merge(this.click$.filter(() => !this.instance.isPopupOpen()))
       .map(term => term === '' ? []
         : this.allcoin.filter(v => v.id.toLowerCase().indexOf(term.toLowerCase()) > -1).slice(0, 10))
 

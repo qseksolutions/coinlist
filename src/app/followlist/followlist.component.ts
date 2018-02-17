@@ -36,6 +36,8 @@ export class FollowlistComponent implements OnInit {
 
   // tslint:disable-next-line:max-line-length
   constructor(private coinservice: CoinService, private router: Router, toasterService: ToasterService, private http: Http, private title: Title, private meta: Meta) {
+    localStorage.setItem('sorton', null);
+    localStorage.setItem('sortby', null);
     this.toasterService = toasterService;
 
     if (this.login_ses == null) {
