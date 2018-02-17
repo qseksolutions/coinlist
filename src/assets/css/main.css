@@ -1010,6 +1010,16 @@
       .main-table table tbody tr td:last-child {
         width: 10%; }
 
+/*add*/
+.add-box {
+  width: 728px;
+  height: 90px;
+  margin: 0 auto; }
+  .add-box img {
+    max-width: 100%;
+    width: 100%;
+    display: block; }
+
 .detaile-coin-page {
   text-align: center;
   padding: 20px 0 0 0; }
