@@ -1,7 +1,7 @@
 <section class="main-coin-information">
   <div class="container text-center" *ngIf="adds" style="margin-bottom: 3%;">
-    <div *ngIf="adds.default_ad != ''" [innerHtml]="adds.default_ad"></div>
-    <div *ngIf="adds.default_ad == ''" [innerHtml]="adds.custom_ad"></div>
+    <div class="add-box" *ngIf="adds.default_ad != ''" [innerHtml]="adds.default_ad"></div>
+    <div class="add-box" *ngIf="adds.default_ad == ''" [innerHtml]="adds.custom_ad"></div>
   </div>
   <div class="container">
     <div class="row">
