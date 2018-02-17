@@ -8,26 +8,29 @@
         background-color: $bg-green;
         color: $text-white;
     }
+    &:focus{
+        box-shadow: none !important;
+        -moz-box-shadow:none !important;
+    }
 }
 
-.exchange_button a.btn.btn-menu-exchage{
-    display: inline-block;
-    padding: 10px 30px;
-    margin: 0 20px;
-}
+
 
 .exchange_button {
     
     .btn{
         &.btn-menu-exchage{
             background-image: none !important;
+            display: inline-block;
+            padding: 10px 30px;
+            margin: 0 20px;
         }
         &.btn-green{
             background-image: url(../currency-svg/angle-arrow-down.svg);
             background-position: 86px 32px;
             background-repeat: no-repeat;
             background-size: 12px 12px;
-            padding: 33px 50px 33px 40px;
+            padding: 34px 50px 33px 40px;
             border-radius: 0;
         }
     }
@@ -72,14 +75,15 @@
         font-weight: 600;
         text-transform: uppercase;
         text-align: center;
-        padding: 12px 20px;
-        border-radius: 25px;
-        line-height: 13px;
-        color: #fff;
+        padding: 5px 10px;
+        border-radius: 4px;
+        line-height: 18px;
+        color: $text-white;
         border:0px;
         cursor: pointer; 
         @include transition(0.5s);
         border: solid 1.5px $btn-bg-color;
+        background-color: $btn-bg-color;
      
     &:hover{
         background-color: $hover-orange;
@@ -246,6 +250,7 @@
         font-weight: 600;
         text-transform: uppercase;
         line-height: 13px;
+        padding: 10px 20px;
         &:hover{
             background-color:$hover-orange;
         }
@@ -259,6 +264,7 @@
         min-width: 200px;
         text-transform: uppercase;
         line-height: 13px;
+        padding: 10px 20px;
         &:hover{
             background-color:$hover-dark-blue;
         }
@@ -274,5 +280,20 @@
         &:hover{
             background-color:$hover-orange;
         }
+    }
+    &.btn-remove{
+        padding: 6px 10px;
+        font-size: 10px;
+        background-color: $color-nagative;
+        color:$text-white;
+        line-height: normal;
+        cursor: pointer;
+        margin-right: 10px;
+        @include flexbox ;
+        @include align-items (center);
+    }
+    &.btn-edit{
+        background-color: $dark-blue;
+        @extend .btn-remove 
     }
 }

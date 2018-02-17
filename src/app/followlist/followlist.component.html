@@ -18,13 +18,18 @@
         </div>
       </div>
     </div>
-    <canvas id="canvas"></canvas>
   </section>
 
   <section>
     <div class="container">
       <div class="row">
-        <div class="col-12 col-sm-12 col-md-12 col-lg-12">
+        <div class="col-12 col-sm-12 col-md-12 col-lg-12" *ngIf="followlist == undefined">
+          <div class="watch-list text-center" style="padding: 5px;margin: 10% 0%; ">
+            <img src="../../assets/images/image_loader.gif">
+          </div>
+        </div>
+
+        <div class="col-12 col-sm-12 col-md-12 col-lg-12" *ngIf="followlist != ''">
 
           <div class="breadcrumb">
             <span class="bread-c-big-text">Followlist</span>
@@ -38,8 +43,8 @@
               <img src="assets/currency-svg/close.svg" class="img-fluid">
             </span>
 
-            <div class="row">
-              <div class="col-8 offset-2 col-sm-2 offset-sm-2 col-md-4 offset-md-2 col-lg-4 offset-lg-2">
+            <div class="row justify-content-center align-self-center">
+              <div class="col-12 col-sm-8 offset-sm-2 col-md-10 offset-md-3 col-lg-4 offset-lg-2">
                 <div class="watch-list-detaile">
                   <div class="coin-title">
                     <a href="{{urlString}}coin/{{follow.coin_id}}">
@@ -66,7 +71,7 @@
                 </div>
               </div>
 
-              <div class="col-sm-2 col-md-2  col-lg-2">
+              <div class="col-4 col-sm-4 col-md-2 col-lg-2">
                 <div class="watch-price-chart">
                   <div class="update-price">
                     <span class="title-first">1 Hours </span>
@@ -81,7 +86,7 @@
                 </div>
               </div>
 
-              <div class="col-sm-2 col-md-2 col-lg-2">
+              <div class="col-4 col-sm-4 col-md-2 col-lg-2">
                 <div class="watch-price-chart">
                   <div class="update-price">
                     <span class="title-first"> 24 Hours </span>
@@ -96,7 +101,7 @@
                 </div>
               </div>
 
-              <div class="col-sm-2 col-md-2 col-lg-2">
+              <div class="col-4 col-sm-4 col-md-2 col-lg-2">
                 <div class="watch-price-chart">
                   <div class="update-price">
                     <span class="title-first"> 1 Week </span>
@@ -107,6 +112,20 @@
                       <polyline fill="none" [attr.stroke]="follow.percent_change_7d >= 0 ? '#3cd483' : '#ff6060'" stroke-width="10" [attr.points]="graph"></polyline>
                     </svg> -->
 
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-12 col-sm-12 col-md-12 col-lg-12" *ngIf="followlist == ''">
+          <div class="watch-list" style="padding: 5px;margin: 10% 0%; ">
+            <div class="row">
+              <div class="col-12 col-sm-12 col-md-12 col-lg-12">
+                <div class="watch-list-detaile" style="border:0;">
+                  <div class="coin-title" style="text-align: center;">
+                    <h3> <span class="currency_symbol">You don’t have any coins in your follow list yet.</span> </h3>
                   </div>
                 </div>
               </div>

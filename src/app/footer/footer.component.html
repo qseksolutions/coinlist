@@ -1,3 +1,30 @@
+<section class="main-coin-information">
+  <div class="container text-center" *ngIf="adds" style="margin-bottom: 3%;">
+    <div class="add-box" *ngIf="adds.default_ad != ''" [innerHtml]="adds.default_ad"></div>
+    <div class="add-box" *ngIf="adds.default_ad == ''" [innerHtml]="adds.custom_ad"></div>
+  </div>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12 col-sm-12 col-12">
+        <div class="coin-info-item">
+          <label class="coin-lable">MARKET CAP</label>
+          <span class="price-sign-coin">{{base_sing}}</span><span class="price-number-coin">{{totalmarket | number}}</span>
+        </div>
+
+        <div class="coin-info-item2">
+          <div class="coin-item-trade">
+            <label class="coin-lable">24H TRADE VOLUME</label>
+            <span class="price-sign-coin">{{base_sing}}</span><span class="price-number-coin">{{totaltrade | number}}</span>
+          </div>
+          <div class="coin-item-number">
+            <label class="coin-lable">NUMBER OF COINS</label>
+            <span class="price-number-coin">{{totalcoin }}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 <button onclick="topFunction()" id="myBtn" title="Go to top">
   <img src="assets/currency-svg/arrow-up.svg" width="20">
 </button>
@@ -14,7 +41,7 @@
               <a href="{{urlString}}advertise">Advertise</a> 
             </li> -->
             <li>
-              <a href="#">Support</a>
+              <a href="{{urlString}}support">Support</a>
             </li>
             <li>
               <a href="#">Advertise</a> 

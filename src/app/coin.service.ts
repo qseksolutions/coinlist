@@ -13,10 +13,15 @@ export class CoinService {
   registerAPI: any = myGlobals.registerAPI;
   userbysocialAPI: any = myGlobals.userbysocialAPI;
   addtradeAPI: any = myGlobals.addtradeAPI;
+  updatetradeAPI: any = myGlobals.updatetradeAPI;
   removetradeAPI: any = myGlobals.removetradeAPI;
   forgotpasswordAPI: any = myGlobals.forgotpasswordAPI;
   profileupdateAPI: any = myGlobals.profileupdateAPI;
+  changepasswordAPI: any = myGlobals.changepasswordAPI;
+  addcontactusAPI: any = myGlobals.addcontactusAPI;
 
+  maincurrencylistAPI: any = myGlobals.maincurrencylistAPI;
+  subcurrencylistAPI: any = myGlobals.subcurrencylistAPI;
   currencylistAPI: any = myGlobals.currencylistAPI;
   coinlistAPI: any = myGlobals.coinlistAPI;
   totalcoinAPI: any = myGlobals.totalcoinAPI;
@@ -28,6 +33,11 @@ export class CoinService {
   categorylistAPI: any = myGlobals.categorylistAPI;
   supportlistAPI: any = myGlobals.supportlistAPI;
   getprofileupdatedataAPI: any = myGlobals.getprofileupdatedataAPI;
+  getselectcoinpriceAPI: any = myGlobals.getselectcoinpriceAPI;
+  getsingleseometaAPI: any = myGlobals.getsingleseometaAPI;
+  gettestseometaAPI: any = myGlobals.gettestseometaAPI;
+  gettradesingledataAPI: any = myGlobals.gettradesingledataAPI;
+  getadvertiseforpageAPI: any = myGlobals.getadvertiseforpageAPI;
 
   cointrackbyuserAPI: any = myGlobals.cointrackbyuserAPI;
 
@@ -36,6 +46,8 @@ export class CoinService {
   user_base: any = localStorage.getItem('user_base');
   base_sing: any = localStorage.getItem('base_sing');
   useremail: any = localStorage.getItem('email');
+
+  coindate: any;
 
   constructor(private http: Http) {
     if (this.basecur == null) {
@@ -117,6 +129,31 @@ export class CoinService {
       .map((response: Response) => response.json());
   }
 
+  updatetrade(trans) {
+    const headers = new Headers({ 'Content-Type': 'application/x-www-form-urlencoded' });
+    const options = new RequestOptions({ headers: headers });
+    console.log(trans);
+    const fcoin = trans.coin;
+    const tcoin = fcoin.split('(');
+    const lcoin = tcoin[1].split(')');
+    trans.coin = lcoin[0];
+
+    const form = new URLSearchParams();
+    form.append('port_id', trans.port_id);
+    form.append('userid', this.userid);
+    form.append('coin_name', tcoin[0]);
+    form.append('buycoin', lcoin[0]);
+    form.append('buyamount', trans.amount);
+    form.append('bcurrency', trans.curr);
+    form.append('bcprice', trans.rate);
+    form.append('dcurrency', this.user_base);
+    form.append('bc_sign', trans.curr_sign);
+    form.append('tdate', trans.date);
+
+    return this.http.post(this.api_url + this.updatetradeAPI, form, options)
+      .map((response: Response) => response.json());
+  }
+
   removetrade(tradeid) {
     const headers = new Headers({ 'Content-Type': 'application/x-www-form-urlencoded' });
     const options = new RequestOptions({ headers: headers });
@@ -159,6 +196,61 @@ export class CoinService {
       .map((response: Response) => response.json());
   }
 
+  passwordchange(password) {
+    const headers = new Headers({ 'Content-Type': 'application/x-www-form-urlencoded' });
+    const options = new RequestOptions({ headers: headers });
+
+    const form = new URLSearchParams();
+    form.append('id', this.userid);
+    form.append('old_pass', password.old_pass);
+    form.append('password', password.new_pass);
+
+    return this.http.post(this.api_url + this.changepasswordAPI, form, options)
+      .map((response: Response) => response.json());
+  }
+
+  addcontactus(contact, image) {
+    const headers = new Headers({ 'Content-Type': 'application/x-www-form-urlencoded' });
+    const options = new RequestOptions({ headers: headers });
+
+    const form = new URLSearchParams();
+    form.append('name', contact.cname);
+    form.append('email', contact.cemail);
+    form.append('subject', contact.subject);
+    form.append('image', image);
+    form.append('message', contact.message);
+
+    return this.http.post(this.api_url + this.addcontactusAPI, form, options)
+      .map((response: Response) => response.json());
+  }
+
+  getmaincurrencylist(curr) {
+    const headers = new Headers({ 'Content-Type': 'application/x-www-form-urlencoded' });
+    const options = new RequestOptions({ headers: headers });
+
+    if (curr !== '') {
+      return this.http.get(this.api_url + this.maincurrencylistAPI + '/?curr=' + curr, options)
+        .map((response: Response) => response.json());
+    } else {
+      return this.http.get(this.api_url + this.maincurrencylistAPI, options)
+        .map((response: Response) => response.json());
+    }
+
+  }
+
+  getsubcurrencylist(curr) {
+    const headers = new Headers({ 'Content-Type': 'application/x-www-form-urlencoded' });
+    const options = new RequestOptions({ headers: headers });
+
+    if (curr !== '') {
+      return this.http.get(this.api_url + this.subcurrencylistAPI + '/?curr=' + curr, options)
+        .map((response: Response) => response.json());
+    } else {
+      return this.http.get(this.api_url + this.subcurrencylistAPI, options)
+        .map((response: Response) => response.json());
+    }
+  }
+
   getallcurrencylist() {
     const headers = new Headers({ 'Content-Type': 'application/x-www-form-urlencoded' });
     const options = new RequestOptions({ headers: headers });
@@ -167,7 +259,7 @@ export class CoinService {
       .map((response: Response) => response.json());
   }
 
-  getCoinList(start, limit) {
+  getCoinList(start, limit, column, order) {
     const headers = new Headers({ 'Content-Type': 'application/x-www-form-urlencoded' });
     const options = new RequestOptions({ headers: headers });
 
@@ -177,11 +269,11 @@ export class CoinService {
     if (this.userid != null) {
       const currentuser = this.userid;
       // tslint:disable-next-line:max-line-length
-      return this.http.get(this.api_url + this.coinlistAPI + '?limit= ' + limitdata + ' &start=' + startdata + '&userid=' + currentuser + '&base=' + this.basecur, options)
+      return this.http.get(this.api_url + this.coinlistAPI + '?limit= ' + limitdata + ' &start=' + startdata + '&userid=' + currentuser + '&base=' + this.basecur + '&sorton=' + column + ' &sortby=' + order, options)
         .map((response: Response) => response.json());
     } else {
       // tslint:disable-next-line:max-line-length
-      return this.http.get(this.api_url + this.coinlistAPI + '?limit= ' + limitdata + ' &start=' + startdata + '&base=' + this.basecur, options)
+      return this.http.get(this.api_url + this.coinlistAPI + '?limit= ' + limitdata + ' &start=' + startdata + '&base=' + this.basecur + '&sorton=' + column + ' &sortby=' + order, options)
         .map((response: Response) => response.json());
     }
   }
@@ -309,6 +401,96 @@ export class CoinService {
 
     return this.http.post(this.api_url + this.getprofileupdatedataAPI, form, options)
       .map((response: Response) => response.json());
+  }
+
+  getsingleseometa(url) {
+    const headers = new Headers({ 'Content-Type': 'application/x-www-form-urlencoded' });
+    const options = new RequestOptions({ headers: headers });
+
+    const form = new URLSearchParams();
+    form.append('url', url);
+
+    return this.http.post(this.api_url + this.getsingleseometaAPI, form, options)
+      .map((response: Response) => response.json());
+  }
+
+  gettestseometa(url) {
+    const headers = new Headers({ 'Content-Type': 'application/x-www-form-urlencoded' });
+    const options = new RequestOptions({ headers: headers });
+
+    const form = new URLSearchParams();
+    form.append('url', url);
+
+    return this.http.post(this.api_url + this.gettestseometaAPI, form, options)
+      .map((response: Response) => response.json());
+  }
+
+  gettradesingledata(id) {
+    const headers = new Headers({ 'Content-Type': 'application/x-www-form-urlencoded' });
+    const options = new RequestOptions({ headers: headers });
+
+    const form = new URLSearchParams();
+    form.append('port_id', id);
+
+    return this.http.post(this.api_url + this.gettradesingledataAPI, form, options)
+      .map((response: Response) => response.json());
+  }
+
+  getadvertiseforpage(side) {
+    const headers = new Headers({ 'Content-Type': 'application/x-www-form-urlencoded' });
+    const options = new RequestOptions({ headers: headers });
+
+    const form = new URLSearchParams();
+    form.append('side', side);
+
+    return this.http.post(this.api_url + this.getadvertiseforpageAPI, form, options)
+      .map((response: Response) => response.json());
+  }
+
+  /* getcoinprice(trans) {
+    const headers = new Headers({ 'Content-Type': 'application/x-www-form-urlencoded' });
+    const options = new RequestOptions({ headers: headers });
+
+    const form = new URLSearchParams();
+    form.append('currency', trans.curr.currency_symbol);
+    form.append('coin', trans.coin.id);
+    form.append('totalcoin', trans.amount);
+    if (trans.date.day < 10) {
+      trans.date.day = '0' + trans.date.day;
+    }
+    if (trans.date.month < 10) {
+      trans.date.month = '0' + trans.date.month;
+    }
+    form.append('currdate', trans.date.year + '-' + trans.date.month + '-' + trans.date.day);
+    const newDate = trans.date.year + '/' + trans.date.month + '/' + trans.date.day;
+    this.coindate = new Date(newDate).getTime();
+    form.append('coindate', this.coindate);
+
+    return this.http.post(this.api_url + this.getselectcoinpriceAPI, form, options)
+      .map((response: Response) => response.json());
+  } */
+
+  getcoinprice(trans) {
+
+    if (trans.port_id === '') {
+      const newDate = trans.date.year + '/' + trans.date.month + '/' + trans.date.day;
+      this.coindate = new Date(newDate).getTime();
+      this.coindate = this.coindate / 1000;
+
+      // tslint:disable-next-line:max-line-length
+      return this.http.get('https://min-api.cryptocompare.com/data/pricehistorical?fsym=' + trans.coin.symbol + '&tsyms=' + trans.curr.currency_symbol + '&ts=' + this.coindate)
+        .map((response: Response) => response.json());
+    } else {
+      const tdate = trans.date;
+      const newDate = tdate.replace(/-/g, '/');
+      this.coindate = new Date(newDate).getTime();
+      this.coindate = this.coindate / 1000;
+
+      // tslint:disable-next-line:max-line-length
+      return this.http.get('https://min-api.cryptocompare.com/data/pricehistorical?fsym=' + trans.coin + '&tsyms=' + trans.curr + '&ts=' + this.coindate)
+        .map((response: Response) => response.json());
+    }
+
   }
 
   cointrackbyuser(followstatus, coin_id, name) {

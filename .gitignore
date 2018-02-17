@@ -40,3 +40,6 @@ testem.log
 # System Files
 .DS_Store
 Thumbs.db
+src/assets/css/dataTables.bootstrap4.css
+src/assets/js/dataTables.bootstrap4.js
+src/assets/js/jquery.dataTables.js

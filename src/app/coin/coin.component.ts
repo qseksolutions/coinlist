@@ -5,9 +5,10 @@ import { CoinService } from '../coin.service';
 import * as myGlobals from './../global';
 import { ToasterContainerComponent, ToasterService, ToasterConfig } from 'angular2-toaster';
 import { StockChart } from 'angular-highcharts';
-import { Title } from '@angular/platform-browser';
 import { defer } from 'q';
 import { DatePipe } from '@angular/common';
+import { Title, Meta } from '@angular/platform-browser';
+import * as moment from 'moment';
 
 @Component({
   selector: 'app-coin',
@@ -27,9 +28,9 @@ export class CoinComponent implements OnInit {
     });
 
   chart: StockChart;
-  coin: any;
   market_cap: any;
   price_usd: any;
+  coin: any;
   selectedIndex: any = 6;
   perioddata: any;
   public follow: any;
@@ -39,7 +40,9 @@ export class CoinComponent implements OnInit {
   public base_sing: any = myGlobals.base_sing;
 
   // tslint:disable-next-line:max-line-length
-  constructor(private coinservice: CoinService, private router: Router, toasterService: ToasterService, private http: Http, private titleService: Title, private datePipe: DatePipe) {
+  constructor(private coinservice: CoinService, private router: Router, toasterService: ToasterService, private http: Http, private titleService: Title, private datePipe: DatePipe, private meta: Meta) {
+    localStorage.setItem('sorton', null);
+    localStorage.setItem('sortby', null);
     this.toasterService = toasterService;
 
     this.perioddata = localStorage.getItem('period');
@@ -88,6 +91,21 @@ export class CoinComponent implements OnInit {
   }
 
   ngOnInit() {
+    const curl = window.location.href;
+    const ccoin = curl.split('/');
+    const durl = curl.replace('/' + ccoin[4], '');
+    this.coinservice.gettestseometa(durl).subscribe(resData => {
+      if (resData.status === true) {
+        console.log(resData);
+        const desc = resData.data.description;
+        resData.data.description = desc.replace('[COIN]', ccoin[4]);
+        this.meta.addTag({ name: 'description', content: resData.data.description });
+        this.meta.addTag({ name: 'keywords', content: resData.data.keywords });
+        this.meta.addTag({ name: 'author', content: 'coinlisting' });
+        this.meta.addTag({ name: 'robots', content: resData.data.robots });
+        this.meta.addTag({ name: 'title', content: 'www.coinlisting.io' });
+      }
+    });
     this.realTimeData();
     this.realTimeGraph(this.perioddata);
   }
@@ -97,8 +115,7 @@ export class CoinComponent implements OnInit {
     this.perioddata = localStorage.getItem('period');
     const url = window.location.href;
     const coinid = url.split('/');
-    this.coinservice.getGraphData(period, coinid[4])
-    .subscribe(response => {
+    this.coinservice.getGraphData(period, coinid[4]).subscribe(response => {
       this.market_cap = response.market_cap;
       this.price_usd = response.price_usd;
         this.chart = new StockChart({
@@ -106,7 +123,10 @@ export class CoinComponent implements OnInit {
             type: 'spline',
             zoomType: 'x',
             backgroundColor: null,
-            renderTo: 'container'
+            renderTo: 'container',
+            style: {
+                fontFamily: 'Montserrat',
+             },
           },
           rangeSelector: {
             enabled: false,
@@ -115,8 +135,9 @@ export class CoinComponent implements OnInit {
             enabled: false
           },
           tooltip: {
-            formatter: function () {
-              return this.x + '<br/><b> $ ' + this.y + '</b>';
+             formatter: function () {
+              // tslint:disable-next-line:max-line-length
+              return  '<span style="font-size:11px;font-weight:bold;color:#9ca5be;margin-bottom:10px;">' + moment.unix(this.x / 1000).format(' DD MMM, YYYY HH:mm') + '</span><br/><span style=""> $ ' + this.y + '</span>';
             },
             crosshairs: {
               color: 'rgba(61, 51, 121, 1)',
@@ -127,12 +148,14 @@ export class CoinComponent implements OnInit {
             style: {
               color: 'rgba(61, 51, 121, 1)',
               fontSize: '13px',
-              align : 'center'
+              textAlign : 'center',
+              fontWeight: 'bold',
             },
             backgroundColor: '#FFF',
             borderColor: 'rgba(61, 51, 121, 1)',
             borderRadius: 5,
-            borderWidth: 2
+            borderWidth: 2,
+             padding: 10
           },
           xAxis: {
             type: 'datetime',
@@ -211,6 +234,18 @@ export class CoinComponent implements OnInit {
             buttonOptions: {
               enabled: false
             }
+          },
+          responsive: {
+            rules: [{
+              condition: {
+                maxWidth: 500
+              },
+              chartOptions: {
+                legend: {
+                  enabled: false
+                }
+              }
+            }]
           }
         });
     });
@@ -221,7 +256,6 @@ export class CoinComponent implements OnInit {
     const coinid = url.split('/');
     this.coinservice.getSingleCoin(coinid[4])
     .subscribe(resData => {
-      console.log(resData);
       if (resData.status === true) {
         this.titleService.setTitle(resData.data.name + ' (' + resData.data.symbol + ') Price - Coinlisting');
         const imgurl = 'assets/currency-svg/' + resData.data.symbol.toLowerCase() + '.svg';

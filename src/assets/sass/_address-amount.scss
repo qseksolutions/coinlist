@@ -16,7 +16,7 @@
     .exchange-rate-detaile{
         @extend .coin-info-item;
         border-top: none;
-        display: flex;
+        @include flexbox;
         padding: 0;
         .exchange-rate{
             padding: 20px;

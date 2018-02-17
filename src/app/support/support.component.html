@@ -26,7 +26,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col-4 col-sm-4 col-md-4 col-lg-4" *ngFor="let cat of allcategory">
-                      <a href="javascript:;" data-page="poroduct" [ngClass]="selectedIndex == cat.id ? 'active' : ''" (click)="toggleClass(cat.id)">
+                      <a href="javascript:;" class="support-card" data-page="poroduct" [ngClass]="selectedIndex == cat.id ? 'active' : ''" (click)="toggleClass(cat.id)">
                         <div class="support-cate-child">
                             <span class="cate-icon"><img src="assets/images/{{cat.category_name.split(' ').join('') | lowercase}}.svg" class="img-fluid"></span>
                             <span class="cate-box-title">{{cat.category_name}}</span>
@@ -82,7 +82,7 @@
     <div class="portfolio-model">
       <div class="modal fade" id="contact-support" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
         <div class="modal-dialog" role="document">
-          <form class="h-100">
+          <form class="h-100" [formGroup]="form" (ngSubmit)="onSubmit()">
             <div class="modal-content">
               <div class="modal-header">
                 <h5 class="modal-title text-center" id="exampleModalLongTitle"> Contact Support</h5>
@@ -98,27 +98,28 @@
                       <div class="row">
                         <div class="col-md-6 col-sm-12 col-12 ">
                           <div class="currancy-form-input">
-                            <input value="" name="name" type="text" pattern=""  class="contact-input"  placeholder="Name">
+                            <input value="" name="cname" type="text" pattern=""  class="contact-input"  placeholder="Name" formControlName="cname">
                           </div>
                         </div>
 
                         <div class="col-md-6 col-sm-12 col-12 ">
                           <div class="currancy-form-input">
-                            <input value="" name="email" type="email" pattern="" class="contact-input" placeholder="Email">
+                            <input value="" name="cemail" type="email" pattern="" class="contact-input" placeholder="Email" formControlName="cemail">
                           </div>
                         </div>
 
                         <div class="col-md-6 col-sm-12 col-12 ">
                           <div class="currancy-form-input">
-                            <input  value="" name="subject" type="text" class="contact-input" placeholder="Subject">
+                            <input  value="" name="subject" type="text" class="contact-input" placeholder="Subject" formControlName="subject">
                           </div>
                         </div>
 
                         <div class="col-md-6 col-sm-12 col-12 ">
                           <div class="currancy-form-input">
                             <div class="input-file-container">  
-                              <input class="input-file contact-input" id="my-file" type="file">
-                              <label tabindex="0" for="my-file" class="btn contact-btn input-file-trigger">Select a file...</label>
+                              <input class="input-file contact-input" type="file" id="avatar" (change)="onFileChange($event)" #fileInput>
+                              <label tabindex="0" for="avatar" class="btn contact-btn input-file-trigger">Select a file...</label>
+                              <img src="../../assets/images/image_loader.gif" style="width: 30px;" *ngIf="imageShow"/>
                             </div>
                               <p class="file-return"></p>
                             </div>
@@ -126,13 +127,13 @@
 
                         <div class="col-md-12 col-sm-12 col-12 ">
                           <div class="currancy-form-input">
-                            <textarea  class="contact-input contact-textarea" placeholder="Massage"></textarea>
+                            <textarea  class="contact-input contact-textarea" placeholder="Massage" name="message" formControlName="message"></textarea>
                           </div>
                         </div>
 
                         <div class="col-md-12 col-sm-12 col-12">
                           <div class="text-center">
-                            <button href="#" class="btn btn-save" type="submit">Send</button>
+                            <button href="#" class="btn btn-save" id="contact_us_btn" type="submit">Send</button>
                           </div>
                         </div>
                       </div>

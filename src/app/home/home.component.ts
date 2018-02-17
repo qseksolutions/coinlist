@@ -6,6 +6,9 @@ import * as myGlobals from './../global';
 import { defer } from 'q';
 import { Observable } from 'rxjs/Observable';
 import { ToasterContainerComponent, ToasterService, ToasterConfig } from 'angular2-toaster';
+import { Title, Meta } from '@angular/platform-browser';
+
+declare var $;
 
 @Component({
   selector: 'app-home',
@@ -40,13 +43,30 @@ export class HomeComponent implements OnInit {
   public userid: any = myGlobals.userid;
   public basecurr: any = myGlobals.basecurr;
   public base_sing: any = myGlobals.base_sing;
+  sorton: any;
+  sortby: any;
   interval: any;
   selectedIndex: any;
   perioddata: any;
   login_ses: any =  0;
+  adds: any;
 
-  constructor(private coinservice: CoinService, private router: Router, private http: Http, toasterService: ToasterService) {
+  // tslint:disable-next-line:max-line-length
+  constructor(private coinservice: CoinService, private router: Router, private http: Http, toasterService: ToasterService, private title: Title, private meta: Meta ) {
     this.toasterService = toasterService;
+    this.sorton = localStorage.getItem('sorton');
+    this.sortby = localStorage.getItem('sortby');
+    /* alert(this.sorton);
+    alert(this.sortby); */
+
+    if (this.sorton === null || this.sorton === 'null') {
+      localStorage.setItem('sorton', 'rank');
+      this.sorton = localStorage.getItem('sorton');
+    }
+    if (this.sortby === null || this.sortby === 'null') {
+      localStorage.setItem('sortby', 'asc');
+      this.sortby = localStorage.getItem('sortby');
+    }
 
     if (this.basecurr == null) {
       localStorage.setItem('base', 'USD');
@@ -75,6 +95,29 @@ export class HomeComponent implements OnInit {
     }
     this.prepage = 0;
     this.nxtpage = 2;
+
+  }
+
+  orderingColumn(column, order) {
+    this.sorton = localStorage.getItem('sorton');
+    this.sortby = localStorage.getItem('sortby');
+    /* alert(this.sorton + ' -> ' + column);
+    alert(typeof (this.sorton) + ' -> ' + typeof(column));
+    alert(this.sortby + ' -> ' + order); */
+    if (this.sorton === column) {
+      if (this.sortby === 'asc') {
+        localStorage.setItem('sortby', 'desc');
+        // this.sortby = localStorage.getItem('sortby');
+        // alert('if ' + this.sortby);
+      } else {
+        localStorage.setItem('sortby', 'asc');
+        // alert('else ' + this.sortby);
+      }
+    } else {
+      localStorage.setItem('sorton', column);
+      localStorage.setItem('sortby', order);
+    }
+    location.reload();
   }
 
   toggleClass(period, index: number) {
@@ -89,10 +132,26 @@ export class HomeComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.realtimetabledata(this.perioddata);
+    const curl = window.location.href;
+    this.coinservice.gettestseometa(curl).subscribe(resData => {
+      if (resData.status === true) {
+        // this.title.setTitle(resData.data.title + ' | Coinlisting - Cryptocurrency prices');
+        this.meta.addTag({ name: 'description', content: resData.data.description });
+        this.meta.addTag({ name: 'keywords', content: resData.data.keywords });
+        this.meta.addTag({ name: 'author', content: 'coinlisting' });
+        this.meta.addTag({ name: 'robots', content: resData.data.robots });
+        this.meta.addTag({ name: 'title', content: ' www.coinlisting.io' });
+      }
+    });
+    this.coinservice.getadvertiseforpage('top add').subscribe(resData => {
+      if (resData.status === true) {
+        this.adds = resData.data;
+      }
+    });
+    this.realtimetabledata(this.perioddata, this.sorton, this.sortby);
   }
 
-  realtimetabledata(period) {
+  realtimetabledata(period, column, order) {
     localStorage.setItem('period', period);
     const url = window.location.href;
     if (url.indexOf('=') > 0) {
@@ -125,26 +184,18 @@ export class HomeComponent implements OnInit {
 
     this.limit = 50;
 
-    this.coinservice.getCoinList(this.start, this.limit).subscribe(resData => {
+    this.coinservice.getCoinList(this.start, this.limit, column, order).subscribe(resData => {
       if (resData.data.length > 0) {
         this.coins = resData.data;
       }
     });
     this.coinservice.getCoinCount().subscribe(responceData => {
       if (responceData.status === true) {
-        this.totalmarket = responceData.data['totalmarketcap_' + this.basecurr];
-        this.totaltrade = responceData.data['totalvolume_' + this.basecurr];
         const total = responceData.data.totalcoins / 50;
         this.coincount = Math.ceil(total);
-        this.totalcoin = responceData.data.totalcoins;
         if (this.page > this.coincount) {
           window.location.href = this.urlString + '?page=' + this.coincount;
         }
-      } else {
-        this.totalmarket = 0;
-        this.totaltrade = 0;
-        this.coincount = 0;
-        this.totalcoin = 0;
       }
     });
   }

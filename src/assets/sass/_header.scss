@@ -13,7 +13,7 @@
         .exchange-logo{
             width: 30%;
             float: left;
-            padding: 25px 15px;
+            padding: 14px 15px;
             .logo-text{
                 display: inline-block;
                 margin-top: -2px;
@@ -22,6 +22,10 @@
                 vertical-align: middle;
                 letter-spacing: 0.9px;
                 font-weight: 400;
+            }
+            .exchange-logo-img{
+                width: 200px;
+                display: block;
             }
         }
         .right-header {
@@ -57,9 +61,7 @@
         }
     }
 }
-::-webkit-scrollbar {
-display: none;
-}
+
 .sidenav{ 
     height: 100%;
     width: 0;
@@ -71,6 +73,7 @@ display: none;
     overflow-x: hidden;
     @include transition(0.5s);
     padding: 10px 0;
+    -ms-overflow-style:none;
     
     .menu-dropdown-content{
         padding: 10px;
@@ -79,6 +82,7 @@ display: none;
             right: 20px;
             top: 20px;
             cursor: pointer;
+            z-index: 3;
         }
         .dropdown_btn{
             padding-bottom: 20px;
@@ -95,8 +99,8 @@ display: none;
     }
     
     .select_contry{
-        display: flex;
-        flex-wrap: wrap;
+        @include flexbox;
+        @include flex-wrap (wrap);
         padding: 0;
         list-style: none;
         text-align: center;
@@ -108,7 +112,7 @@ display: none;
             border:solid 2px $bg-white;
             margin: 5px;
             @include transition(all ease 0.5s);
-            display: flex;
+            @include flexbox;
             align-items: center;
             justify-content: center;
             &:hover{
@@ -151,13 +155,50 @@ display: none;
             }  
         }
     }
+    .sidebar-search{
+        .side-searchbtn{
+            position: relative;
+
+            .sidesearch-btn{
+                background: no-repeat;
+                border: none;
+                outline: none;
+                cursor: pointer;
+                position: relative;
+                height: 35px;
+                z-index: 2;
+                border-radius: 5px;
+                padding: 8px;
+                
+                img{
+                    width: 20px;
+                }
+            }
+            .sidesearch-input{
+                position: absolute;
+                top: 0;
+                padding-left: 36px;
+                width: 500px;
+                background-color: transparent;
+                outline: none;
+                font-weight: 500;
+                font-size: 15px;
+                display: block;
+                z-index: 0;
+                border-radius: 5px;
+                height: 35px;
+                border: solid 1px $dark-blue;
+                color: $text-white;
+            }
+        }
+    }
 }
 /*single-page*/
 .detaile-coin-page{
     display: none;
 }
 .left-arrow-header{
-    flex: 2;
+    @include flex (2) ;
     .back-arrow{
         padding: 5px;
         display: inline-block;
@@ -169,7 +210,6 @@ display: none;
     color: $sign-color;
     letter-spacing: 0.02em;
     display: table-cell;
-    padding-right: 3px;
     line-height: 18px;
     font-weight: 500;
 
@@ -186,39 +226,67 @@ display: none;
 }
 .searchbar{
   float: right;
-  padding: 27px 0;  
+  padding: 24px 0;  
   .btn-extended{
-    width: 200px;
-    padding: 1px 30px;
+    width: 0px;
+    padding: 0;
     outline: none;
-    border: none;
     font-weight: 500;
-    font-size: 20px;
+    font-size: 15px;
     display: block;
-    @include transition(0.5s);
+    @include transition(all ease 0.5s);
+    position: absolute;
+    right: 0;
+    top: 0px;
+    z-index: 0;
+    border-radius: 5px;
+    height: 30px;
+    border:none;
+    margin-right: 15px;
   }
   .dropdown-item {
-    display: flex;
+    @include flexbox;
     padding: 0 3px;
    }
   .btn-search{
-    border-radius: 40px;
-    cursor: pointer;
-    transition: all 0.4s ease-in-out;
-    text-align: center;
-    padding: 0 9px;
-    position: relative;
-    img{
-        width: 20px;
+        text-align: center;
+        padding: 0 9px;
+        position: relative;
+    &.clicked{
+        .btn-extended {
+            display: block;
+            width: 250px;
+            right: 0px;
+            padding: 0 10px;
+            border: solid 1px $dark-blue;
+        }
+        .search-btn{
+            border-radius:  0 5px 5px 0;
+            background-color: $dark-blue;
+            img{
+                width: 15px;
+                @include filter(brightness(0%) invert(100%));                
+            }
+        }
+        
     }
-    button.search-btn {
-        background: no-repeat;
-        border: none;
-        outline: none;
-        cursor: pointer;
-        position: absolute;
-        left: 0;
-        top: 2px;
+    
+    img{
+        width: 16px;
+    }
+    button{
+        &.search-btn {
+            background: no-repeat;
+            border: none;
+            outline: none;
+            cursor: pointer;
+            position: relative;
+            height: 30px;
+            z-index: 2;
+            background-color: transparent;
+            border-radius:5px;
+            padding: 7px;
+        }
     }
   }
 }
@@ -305,6 +373,8 @@ display: none;
         border: 1px solid $border-color;
         border-radius: 0 0 5px 5px;
         border-top: 0;
+        right: 0 !important;
+        left: -100%;
     }
     .dropdown-toggle::after{
         vertical-align: unset;

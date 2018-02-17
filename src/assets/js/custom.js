@@ -4,6 +4,7 @@ $('a[href="#"]').click(function(e) {
 
 var curl = window.location.href;
 var curl = curl.split("/");
+// console.log(curl);
 
 $(function(){
   
@@ -42,9 +43,9 @@ function scrollFunction() {
 }
 
 // When the user clicks on the button, scroll to the top of the document
-setTimeout(function(){ 
+/*setTimeout(function(){ 
     $('.loading').fadeOut();
-}, 2000);
+}, 2000);*/
 
 function topFunction() {
     $('html, body').animate({scrollTop:0}, 'slow');
@@ -75,8 +76,21 @@ $('ul.nav li.dropdown').hover(function() {
 
 
 //chart
+if(curl[4] == 'profile') {
+    $(document).on('click',"#ngb-typeahead-0 > button.dropdown-item",function(){
+        var cur_symbol = $(this).children("div").text().trim();
+        var cur_symbol = cur_symbol.toLowerCase();
+        $('.currency_icon').children().attr('src','assets/currency-symbol/'+cur_symbol+'.svg');
+    });
+    $(document).on('keyup',"#selectedcur",function(e){
+        if (e.keyCode == 13) {
+            var cur_symbol = $(this).val();
+            $('.currency_icon').children().attr('src','assets/currency-symbol/'+cur_symbol.toLowerCase()+'.svg');
+        }
+    });
+}
 if(curl[3] == 'followlist') {
-var canvas = document.getElementById('canvas'),
+/*var canvas = document.getElementById('canvas'),
 		context = canvas.getContext('2d'),
 		width = canvas.width = 800,
 		height = canvas.height = 400;
@@ -119,39 +133,63 @@ for(stat in stats) {
 	context.stroke();
 	prev_stat = the_stat;
 	left += move_left_by;
-}
+}*/
 }
 
  
+if(curl[4] == 'portfolio') {
 $(function(){
 
 $(document).on('click','#dropdownMenuButton',function(){
     $('#crypto-currency-menu').slideToggle();
 });
 
-$(document).on('click',"#ngb-typeahead-0 > button.dropdown-item",function(){
-    var cur_symbol = $(this).children("div").attr('value').toLowerCase();
-    $('#icon-coin').children().attr('src','assets/currency-svg/'+cur_symbol+'.svg');
-});
-$(document).on('keyup',"#selectedcoin",function(e){
-    if (e.keyCode == 13) {
-        var cur_symbol = $(this).val();
-        var cur_symbol = cur_symbol.split(' ');
-        var cur_symbol = cur_symbol[cur_symbol.length-1];
-        var regExp = /\(([^)]+)\)/;
-        var cur_symbol = regExp.exec(cur_symbol);
-        $('#icon-coin').children().attr('src','assets/currency-svg/'+cur_symbol[1].toLowerCase()+'.svg');
-    }
-});
+    $(document).on('click',"#ngb-typeahead-0 > button.dropdown-item",function(){
+        var cur_symbol = $(this).children("div").attr('value').toLowerCase();
+        var imgurl = 'assets/currency-svg/'+cur_symbol+'.svg';
+        $.ajax(imgurl).done(function(){ 
+            $('#icon-coin').children().attr('src',imgurl);
+        }).fail(function(){ 
+            var newimgurl = 'assets/currency-50/'+cur_symbol+'.png';
+            $.ajax(newimgurl).done(function(){ 
+                $('#icon-coin').children().attr('src',newimgurl);
+            }).fail(function(){ 
+                $('#icon-coin').children().attr('src','assets/currency-50/not-found-50.png');
+            });
+        });
+        // $('#icon-coin').children().attr('src','assets/currency-svg/'+cur_symbol+'.svg');
+    });
+    $(document).on('keyup',"#selectedcoin",function(e){
+        if (e.keyCode == 13) {
+            var cur_symbol = $(this).val();
+            var cur_symbol = cur_symbol.split(' ');
+            var cur_symbol = cur_symbol[cur_symbol.length-1];
+            var regExp = /\(([^)]+)\)/;
+            var cur_symbol = regExp.exec(cur_symbol);
+
+            var imgurl = 'assets/currency-svg/'+cur_symbol[1].toLowerCase()+'.svg';
+            $.ajax(imgurl).done(function(){ 
+                $('#icon-coin').children().attr('src',imgurl);
+            }).fail(function(){ 
+                var newimgurl = 'assets/currency-50/'+cur_symbol[1].toLowerCase()+'.png';
+                $.ajax(newimgurl).done(function(){ 
+                    $('#icon-coin').children().attr('src',newimgurl);
+                }).fail(function(){ 
+                    $('#icon-coin').children().attr('src','assets/currency-50/not-found-50.png');
+                });
+            });
+            // $('#icon-coin').children().attr('src','assets/currency-svg/'+cur_symbol[1].toLowerCase()+'.svg');
+        }
+    });
 
 $(document).on('click',"#ngb-typeahead-1 > button.dropdown-item",function(){
     var cur_symbol = $(this).children("div").attr('value').toLowerCase();
-    $('#icon-curr').children().attr('src','assets/currency-svg/'+cur_symbol+'.svg');
+    $('#icon-curr').children().attr('src','assets/currency-symbol/'+cur_symbol+'.svg');
 });
 $(document).on('keyup',"#selectedcur",function(e){
     if (e.keyCode == 13) {
         var cur_symbol = $(this).val();
-        $('#icon-curr').children().attr('src','assets/currency-svg/'+cur_symbol.toLowerCase()+'.svg');
+        $('#icon-curr').children().attr('src','assets/currency-symbol/'+cur_symbol.toLowerCase()+'.svg');
     }
 });
   
@@ -165,6 +203,7 @@ $(document).on('keyup',"#selectedcur",function(e){
   });
 
 });
+}
   
 $(function(){
 $(document).on('click','#currency-dropdownMenuButton',function(){
@@ -218,3 +257,13 @@ button.addEventListener( "click", function( event ) {
 fileInput.addEventListener( "change", function( event ) {  
     the_return.innerHTML = this.value;  
 });*/  
+
+$('.search-btn').click(function(){
+  $('.btn-search').toggleClass('clicked');
+ 
+  
+  if($('.btn-search').hasClass('clicked')){
+    $('.btn-extended').focus();
+  }
+  
+});

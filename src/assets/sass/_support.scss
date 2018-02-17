@@ -1,9 +1,18 @@
 @import'variables'; 
 .support-main-bg{
-    background: url(../images/support-bg.png);
-    background-size: 100% 40%;
-    background-position: top center;
-    background-repeat: no-repeat;
+    position: relative;
+    &:before{
+        content: "";
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 1000px;
+        background-image: url(../images/support-bg.png);
+        background-size: 100% 40%;
+        background-position: top center;
+        background-repeat: no-repeat;
+    }
 }
 .support-header{
     padding: 40px 0;
@@ -19,9 +28,9 @@
 }
 
 .searchbar-support{
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    @include flexbox;
+    @include align-items (center);
+    @include justify-content (center);
     margin-top: 40px;
     .support-input{
         padding: 12px 15px;
@@ -151,7 +160,7 @@
     min-width: 20px;
     border: none;
     margin: 0px;
-    flex: 10;
+    @include flex (10);
     border-radius: 5px; 
     font-family: 'montserrat' !important;
     line-height: 16px;
@@ -175,9 +184,9 @@
     font-weight: 600;
     color: $dark-gray;
     margin: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    @include flexbox;
+    @include align-items (center);
+    @include justify-content (center);
   }
 }
   

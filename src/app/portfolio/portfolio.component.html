@@ -18,188 +18,209 @@
         </div>
       </div>
     </div>
-    <canvas id="canvas"></canvas>
   </section>
 
   <section>
     <div class="container">
-      <div class="row">
+      <div class="col-12 col-sm-12 col-md-12 col-lg-12" *ngIf="portfoliolist == undefined">
+        <div class="watch-list" style="padding: 5px;margin:10% 0%;">
+          <div class="row">
+            <div class="col-12 col-sm-12 col-md-12 col-lg-12">
+              <div class="watch-list-detaile" style="border:0;">
+                <div class="coin-title" style="text-align: center;">
+                  <img src="../../assets/images/image_loader.gif">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="container" *ngIf="portfoliolist != undefined">
+      <div class="row" *ngIf="portfoliolist != ''">
         <div class="col-12 col-sm-12 col-md-12 col-lg-12">
           <div class="breadcrumb">
             <span class="bread-c-big-text">Portfolio</span>
             <div class="add-newbtn float-right">
-              <a href="#" class="btn btn-add" data-toggle="modal" data-target="#newtransaction">New Transaction</a>
+              <a href="#" class="btn btn-add" data-toggle="modal" data-target="#newtransaction">Add Transaction</a>
             </div>
           </div>
 
 
         </div>
       </div>
+    
+      <div class="protfolio-table table-responsive">
+        <div class="protfolio-table-responsive">
+          <table class="table table-responsive" *ngIf="portfoliolist != ''">
+            <thead class="">
+              <tr class="">
+                <th class="">
+                  <div class="alignment">
+                    <span>
+                      <a href="#" class="coin-heading"> Coin </a>
+                    </span>
+                  </div>
+                </th>
 
-      <div class="protfolio-table">
-        <div class="protfolio-table-title">
-          <div class="row">
-            <div class="col-lg-2 col-md-6 col-sm-6 col-6">
-              <div class="alignment">
-                <span>
-                  <a href="#" class="coin-heading"> Coin </a>
-                </span>
-              </div>
-            </div>
+                <th class="">
+                  <div class="alignment">
+                    <span>
+                      <a href="#" class="coin-heading"> Avg. Buy Price </a>
+                    </span>
+                  </div>
+                </th>
 
-            <div class="col-lg-2 col-md-3 col-sm-3 col-3">
-              <div class="alignment">
-                <span>
-                  <a href="#" class="coin-heading"> Avg. Buy Price </a>
-                </span>
-              </div>
-            </div>
+                <th class="">
+                  <div class="alignment">
+                    <span>
+                      <a href="#" class="coin-heading"> Current Price </a>
+                    </span>
+                  </div>
+                </th>
 
-            <div class="col-lg-2 col-md-3 col-sm-3 col-3">
-              <div class="alignment">
-                <span>
-                  <a href="#" class="coin-heading"> Current Price </a>
-                </span>
-              </div>
-            </div>
+                <th class="">
+                  <div class="alignment">
+                    <span>
+                      <a href="#" class="coin-heading"> Investment </a>
+                    </span>
+                  </div>
+                </th>
 
-            <div class="col-lg-2 col-md-3 col-sm-3 col-3">
-              <div class="alignment">
-                <span>
-                  <a href="#" class="coin-heading"> Investment </a>
-                </span>
-              </div>
-            </div>
+                <th class="">
+                  <div class="alignment">
+                    <span>
+                      <a href="#" class="coin-heading"> Value </a>
+                    </span>
+                  </div>
+                </th>
 
-            <div class="col-lg-1 col-md-3 col-sm-3 col-3">
-              <div class="alignment">
-                <span>
-                  <a href="#" class="coin-heading"> Value </a>
-                </span>
-              </div>
-            </div>
+                <th class="">
+                  <div class="alignment">
+                    <span>
+                      <a href="#" class="coin-heading"> Profit </a>
+                    </span>
+                  </div>
+                </th>
 
-            <div class="col-lg-1 col-md-3 col-sm-3 col-3">
-              <div class="alignment">
-                <span>
-                  <a href="#" class="coin-heading"> Profit </a>
-                </span>
-              </div>
-            </div>
+                <th class="">
+                  <div class="alignment">
+                    <span>
+                      <a href="#" class="coin-heading"> Return </a>
+                    </span>
+                  </div>
+                </th>
 
-            <div class="col-lg-1 col-md-3 col-sm-3 col-3">
-              <div class="alignment">
-                <span>
-                  <a href="#" class="coin-heading"> Return </a>
-                </span>
-              </div>
-            </div>
+                <th class="">
+                  <div class="alignment">
+                    <span>
+                      <a href="#" class="coin-heading"> No.Trade </a>
+                    </span>
+                  </div>
+                </th>
 
-            <div class="col-lg-1 col-md-3 col-sm-3 col-3">
-              <div class="alignment">
-                <span>
-                  <a href="#" class="coin-heading"> No.Trade </a>
-                </span>
-              </div>
-            </div>
+              </tr>
+            </thead>
 
-          </div>
+            <tbody class="" *ngFor="let pl of profitlosslist">
+              <tr class="protfolia-table-detaile">
+                <td class="">
+                  <div class="coin-count">
+                    <div class="coin-count-icon">
+                      <span class="coin-symbol">
+                        <img src="assets/currency-svg/{{pl.buy_coin | lowercase}}.svg" (error)="errorHandler($event,pl.buy_coin)">
+                      </span>
+                    </div>
+                    <div class="main-coin-title">
+                      <span class="coin-name">{{pl.coin_name}}</span>
+                      <span class="coin-amount">{{pl.coin_amount}}
+                        <span class="coin-symbol"> {{pl.buy_coin}}</span>
+                      </span>
+                    </div>
+                  </div>
+                </td>
+
+                <td class="">
+                  <div class="coin-align">
+                    <div class="rate-count">
+                      <span class="coin-name">
+                        <span class="currency-sign">{{base_sing}}</span>
+                        <span class="currency-value">{{pl.totalcost / pl.coin_amount | number : '1.2-2'}}</span>
+                      </span>
+                    </div>
+                  </div>
+                </td>
+
+                <td class="">
+                  <div class="coin-align">
+                    <div class="rate-count">
+                      <span class="coin-name">
+                        <span class="currency-sign">{{base_sing}}</span>
+                        <span class="currency-value">{{pl.current_price | number : '1.2-2'}}</span>
+                      </span>
+                    </div>
+                  </div>
+                </td>
+
+                <td class="">
+                  <div class="coin-align">
+                    <div class="rate-count">
+                      <span class="coin-name">
+                        <span class="currency-sign">{{base_sing}}</span>
+                        <span class="currency-value">{{pl.totalcost | number : '1.2-2'}}</span>
+                      </span>
+                    </div>
+                  </div>
+                </td>
+
+                <td class="">
+                  <div class="coin-align">
+                    <div class="rate-count">
+                      <span class="coin-name">
+                        <span class="currency-sign">{{base_sing}}</span>
+                        <span class="currency-value">{{pl.current_price * pl.coin_amount | number : '1.2-2'}}</span>
+                      </span>
+                    </div>
+                  </div>
+                </td>
+
+                <td class="">
+                  <div class="coin-align">
+                    <div class="rate-count">
+                      <span class="coin-name" [ngClass]="pl.current_price * pl.coin_amount - pl.totalcost > 0 ? 'green' : 'red'">
+                        {{base_sing}} {{pl.current_price * pl.coin_amount - pl.totalcost | number : '1.2-2'}}
+                      </span>
+                    </div>
+                  </div>
+                </td>
+
+                <td class="">
+                  <div class="coin-align">
+                    <div class="rate-count">
+                      <span class="coin-name" [ngClass]="((pl.current_price * pl.coin_amount) - pl.totalcost) / pl.totalcost * 100 > 0 ? 'green' : 'red'">
+                        {{((pl.current_price * pl.coin_amount) - pl.totalcost) / pl.totalcost * 100 | number : '1.2-2'}}%
+                      </span>
+                    </div>
+                  </div>
+                </td>
+
+                <td class="">
+                  <div class="coin-align">
+                    <div class="rate-count">
+                      <span class="coin-name text-center">
+                        {{pl.trade}}
+                      </span>
+                    </div>
+                  </div>
+                </td>
+
+              </tr>
+            </tbody>
+          </table>
         </div>
-
-        <div class="protfolia-table-detaile" *ngFor="let pl of profitlosslist">
-          <div class="row">
-            <div class="col-lg-2 col-md-6 col-sm-6 col-6">
-              <div class="coin-count">
-                <div class="coin-count-icon">
-                  <span class="coin-symbol">
-                    <img src="assets/currency-svg/{{pl.buy_coin | lowercase}}.svg" (error)="errorHandler($event,pl.buy_coin)" width="40" height="40">
-                  </span>
-                </div>
-                <div class="main-coin-title">
-                  <span class="coin-name">{{pl.coin_name}}</span>
-                  <span class="coin-amount">{{pl.coin_amount}}
-                    <span class="coin-symbol"> {{pl.buy_coin}}</span>
-                  </span>
-                </div>
-              </div>
-            </div>
-
-            <div class="col-lg-2 col-md-3 col-sm-3 col-3">
-              <div class="coin-align">
-                <div class="rate-count">
-                  <span class="coin-name">
-                    <span class="currency-sign">{{base_sing}}</span>{{pl.totalcost / pl.coin_amount | number : '1.2-2'}}
-                  </span>
-                </div>
-              </div>
-            </div>
-
-            <div class="col-lg-2 col-md-3 col-sm-3 col-3">
-              <div class="coin-align">
-                <div class="rate-count">
-                  <span class="coin-name">
-                    <span class="currency-sign">{{base_sing}}</span>{{pl.current_price | number : '1.2-2'}}
-                  </span>
-                </div>
-              </div>
-            </div>
-
-            <div class="col-lg-2 col-md-3 col-sm-3 col-3">
-              <div class="coin-align">
-                <div class="rate-count">
-                  <span class="coin-name">
-                    <span class="currency-sign">{{base_sing}}</span>{{pl.totalcost | number : '1.2-2'}}
-                  </span>
-                </div>
-              </div>
-            </div>
-
-            <div class="col-lg-1 col-md-3 col-sm-3 col-3">
-              <div class="coin-align">
-                <div class="rate-count">
-                  <span class="coin-name">
-                    <span class="currency-sign">{{base_sing}}</span>{{pl.current_price * pl.coin_amount | number : '1.2-2'}}
-                  </span>
-                </div>
-              </div>
-            </div>
-
-            <div class="col-lg-1 col-md-3 col-sm-3 col-3">
-              <div class="coin-align">
-                <div class="rate-count">
-                  <span class="coin-name" [ngClass]="pl.current_price * pl.coin_amount - pl.totalcost > 0 ? 'green' : 'red'">
-                    {{base_sing}}{{pl.current_price * pl.coin_amount - pl.totalcost | number : '1.2-2'}}
-                  </span>
-                </div>
-              </div>
-            </div>
-
-            <div class="col-lg-1 col-md-3 col-sm-3 col-3">
-              <div class="coin-align">
-                <div class="rate-count">
-                  <span class="coin-name" [ngClass]="((pl.current_price * pl.coin_amount) - pl.totalcost) / pl.totalcost * 100 > 0 ? 'green' : 'red'">
-                    {{((pl.current_price * pl.coin_amount) - pl.totalcost) / pl.totalcost * 100 | number : '1.2-2'}}%
-                  </span>
-                </div>
-              </div>
-            </div>
-
-            <div class="col-lg-1 col-md-3 col-sm-3 col-3">
-              <div class="coin-align">
-                <div class="rate-count">
-                  <span class="coin-name">
-                    {{pl.trade}}
-                  </span>
-                </div>
-              </div>
-            </div>
-
-          </div>
-        </div>
-
       </div>
 
-      <div class="row">
+      <div class="row" *ngIf="portfoliolist != ''">
         <div class="col-12 col-sm-12 col-md-12 col-lg-12">
           <div class="breadcrumb">
             <span class="bread-c-big-text">Recent Transaction</span>
@@ -207,108 +228,143 @@
         </div>
       </div>
 
-      <div class="protfolio-table">
-        <div class="protfolio-table-title">
+      <div class="protfolio-table table-responsive">
+        <div class="protfolio-table-responsive recent-table" *ngIf="portfoliolist != ''">
+          <table class="table table-responsive">
+            <thead class="">
+              <tr class="">
+                <th class="">
+                  <div class="alignment">
+                    <span>
+                      <a href="#" class="coin-heading"> Coin </a>
+                    </span>
+                  </div>
+                </th>
+          
+                <th class="">
+                  <div class="alignment">
+                    <span>
+                      <a href="#" class="coin-heading"> Rate </a>
+                    </span>
+                  </div>
+                </th>
+          
+                <th class="">
+                  <div class="alignment">
+                    <span>
+                      <a href="#" class="coin-heading"> Total Cost </a>
+                    </span>
+                  </div>
+                </th>
+          
+                <th class="">
+                  <div class="alignment">
+                    <span>
+                      <a href="#" class="coin-heading"> Date </a>
+                    </span>
+                  </div>
+                </th>
+                <th class="">
+                  <div class="alignment">
+                    <span>
+                      <a href="#" class="coin-heading"> Edit </a>
+                    </span>
+                  </div>
+                </th>
+              </tr>
+            </thead>
+          
+            <tbody class="" *ngFor="let portfolio of portfoliolist">
+              <tr class="protfolia-table-detaile">
+                <td class="">
+                  <div class="coin-count">
+                    <div class="coin-count-icon">
+                      <span class="coin-symbol">
+                        <img src="assets/currency-svg/{{portfolio.buy_coin | lowercase}}.svg" (error)="errorHandler($event,portfolio.buy_coin)" >
+                      </span>
+                    </div>
+                    <div class="main-coin-title">
+                      <span class="coin-name">{{portfolio.coin_name}}</span>
+                      <span class="coin-amount">{{portfolio.coin_amount}}
+                        <span class="coin-symbol"> {{portfolio.buy_coin}}</span>
+                      </span>
+                    </div>
+                  </div>
+                </td>
+          
+                <td class="">
+                  <div class="coin-align">
+                    <div class="rate-count">
+                      <span class="coin-name">
+                        <span class="currency-sign">{{base_sing}}</span>
+                        <span class="currency-value">{{portfolio.dc_price / portfolio.coin_amount | number : '1.2-2'}}</span>
+                      </span>
+                      <span class="coin-amount">
+                        <span class="coin-symbol"> ({{portfolio.bc_sign}} {{portfolio.bc_price / portfolio.coin_amount | number : '1.2-2'}})</span>
+                      </span>
+                    </div>
+                  </div>
+                </td>
+          
+                <td class="">
+                  <div class="coin-align">
+                    <div class="rate-count">
+                      <span class="coin-name">
+                        <span class="currency-sign">{{base_sing}}</span>
+                        <span class="currency-value">{{portfolio.dc_price | number : '1.2-2'}}</span>
+                      </span>
+                      <span class="coin-amount">
+                        <span class="coin-symbol"> ({{portfolio.bc_sign}} {{portfolio.bc_price | number : '1.2-2'}})</span>
+                      </span>
+                    </div>
+                  </div>
+                </td>
+          
+                <td class="">
+                  <div class="coin-align">
+                    <div class="date-table">
+                      <span class=""> {{portfolio.transaction_date}} </span>
+                    </div>
+                  </div>
+                </td>
+          
+                <td class="">
+                  <div class="coin-align">
+                    <div class="remove-btn">
+                      <a href="javascript:;" class="btn btn-remove" (click)="traderemove(portfolio.id)"> <i class="fa fa-times"></i> </a>
+                      <a href="javascript:;" class="btn btn-edit" (click)="edittrade(portfolio.id)"> <i class="fa fa-edit"></i> </a>
+                    </div>
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div class="col-12 col-sm-12 col-md-12 col-lg-12" *ngIf="portfoliolist == ''">
+        <div class="watch-list" style="">
           <div class="row">
-            <div class="col-lg-3 col-md-6 col-sm-6 col-6">
-              <div class="alignment">
-                <span>
-                  <a href="#" class="coin-heading"> Coin </a>
-                </span>
-              </div>
-            </div>
-      
-            <div class="col-lg-3 col-md-2 col-sm-2 col-2">
-              <div class="alignment">
-                <span>
-                  <a href="#" class="coin-heading"> Rate </a>
-                </span>
-              </div>
-            </div>
-      
-            <div class="col-lg-3 col-md-2 col-sm-2 col-2">
-              <div class="alignment">
-                <span>
-                  <a href="#" class="coin-heading"> Total Cost </a>
-                </span>
-              </div>
-            </div>
-      
-            <div class="col-lg-3 col-md-2 col-sm-2 col-2">
-              <div class="alignment">
-                <span>
-                  <a href="#" class="coin-heading"> Date </a>
-                </span>
+            <div class="col-12 col-sm-12 col-md-12 col-lg-12">
+              <div class="watch-list-detaile" style="border:0;">
+                <div class="coin-title" style="text-align: center;">
+                  <h3>
+                    <span class="currency_symbol">You didn’t added any Transaction in your portfolio list yet.</span>
+                  </h3>
+                </div>
               </div>
             </div>
           </div>
         </div>
-      
-        <div class="protfolia-table-detaile" *ngFor="let portfolio of portfoliolist">
-          <div class="row">
-            <div class="col-lg-3 col-md-6 col-sm-6 col-6">
-              <div class="coin-count">
-                <div class="coin-count-icon">
-                  <span class="coin-symbol">
-                    <img src="assets/currency-svg/{{portfolio.buy_coin | lowercase}}.svg" (error)="errorHandler($event,portfolio.buy_coin)" width="40"
-                      height="40">
-                  </span>
-                </div>
-                <div class="main-coin-title">
-                  <span class="coin-name">{{portfolio.coin_name}}</span>
-                  <span class="coin-amount">{{portfolio.coin_amount}}
-                    <span class="coin-symbol"> {{portfolio.buy_coin}}</span>
-                  </span>
-                </div>
-              </div>
-            </div>
-      
-            <div class="col-lg-3 col-md-2 col-sm-2 col-2">
-              <div class="coin-align">
-                <div class="rate-count">
-                  <span class="coin-name">
-                    <span class="currency-sign">{{base_sing}}</span>
-                    {{portfolio.dc_price / portfolio.coin_amount | number : '1.2-2'}}
-                  </span>
-                  <span class="coin-amount">
-                    <span class="coin-symbol"> ({{portfolio.bc_sign}}{{portfolio.bc_price / portfolio.coin_amount | number : '1.2-2'}})</span>
-                  </span>
-                </div>
-              </div>
-            </div>
-      
-            <div class="col-lg-3 col-md-2 col-sm-2 col-2">
-              <div class="coin-align">
-                <div class="rate-count">
-                  <span class="coin-name">
-                    <span class="currency-sign">{{base_sing}}</span>
-                    {{portfolio.dc_price | number : '1.2-2'}}
-                  </span>
-                  <span class="coin-amount">
-                    <span class="coin-symbol"> ({{portfolio.bc_sign}}{{portfolio.bc_price | number : '1.2-2'}})</span>
-                  </span>
-                </div>
-              </div>
-            </div>
-      
-            <div class="col-lg-2 col-md-2 col-sm-2 col-2">
-              <div class="coin-align">
-                <div class="date-table">
-                  <span class=""> {{portfolio.transaction_date}} </span>
-                </div>
-              </div>
-            </div>
-      
-            <div class="col-lg-1 col-md-2 col-sm-2 col-2">
-              <div class="coin-align">
-                <div class="remove-btn">
-                  <a href="javascript:;" class="btn btn-remove" (click)="traderemove(portfolio.id)"> Remove </a>
-                </div>
-              </div>
+      </div>
+
+      <div class="row" *ngIf="portfoliolist == ''">
+        <div class="col-12 col-sm-12 col-md-12 col-lg-12">
+          <div class="">
+            <div class="add-newbtn" style="text-align: center;">
+              <a href="#" class="btn btn-add" data-toggle="modal" data-target="#newtransaction" style="margin-bottom:10%;">Add New Transaction</a>
             </div>
           </div>
         </div>
-      
       </div>
     </div>
   </section>
@@ -346,7 +402,7 @@
                   <div class="col-md-8 col-sm-12 col-12 ">
                     <div class="currancy-form-input">
                       <!-- <input class="currency-select form-control date" placeholder="Date" id='datepicker' name="date" ngModel> -->
-                      <input class="currency-select form-control date" placeholder="yyyy-mm-dd" name="date" [(ngModel)]="modeldate" ngbDatepicker #d="ngbDatepicker" (click)="d.toggle()">
+                      <input class="currency-select form-control date" placeholder="Select date of Purchase..." name="date" [(ngModel)]="modeldate" (ngModelChange)="getcoinprice(form.value);" ngbDatepicker #d="ngbDatepicker" (click)="d.toggle()" id="tdate" >
                       <div class="currency_icon date" for="datepicker">
                         <img src="assets/currency-svg/calendar.svg" class="input-currency-icon">
                       </div>
@@ -357,12 +413,12 @@
                   <div class="col-md-6 col-sm-12 col-12 ">
                     <div class="currancy-form-input">
                       <ng-template #rt let-r="result" let-t="term" id="allcoin">
-                        <div [attr.value]="r.symbol" class="dropdown-currency-name currency-select currency-name">{{r.name}} ({{r.symbol}})</div>
+                        <div [attr.value]="r.symbol" class="dropdown-currency-name currency-select currency-name" >{{r.name}} ({{r.symbol}})</div>
                         <div id="icon-currency" class="currency_icon">
                           <img src="assets/currency-svg/{{r.symbol | lowercase}}.svg" (error)="errorHandler($event,r.symbol)" class="input-currency-icon">
                         </div>
                       </ng-template>
-                      <input id="typeahead-template" type="text" class="form-control currency-select currency-name" [(ngModel)]="model" name="coin" [ngbTypeahead]="search" [resultTemplate]="rt" [inputFormatter]="formatter" placeholder="Bitcoin (BTC)" id="selectedcoin"/>
+                      <input type="text" class="form-control currency-select currency-name" [(ngModel)]="model" name="coin" [ngbTypeahead]="search" [resultTemplate]="rt" [inputFormatter]="formatter" placeholder="Select Coin..." id="selectedcoin" (change)="getcoinprice(form.value);"/>
                       <div id="icon-coin" class="currency_icon">
                         <img src="assets/currency-svg/btc.svg" class="input-currency-icon" id="coin_image">
                       </div>
@@ -372,14 +428,15 @@
                   <div class="col-md-6 col-sm-12 col-12 ">
                     <div class="currancy-form-input">
                       <ng-template #os let-o="result" let-s="termcur" id="allcurr">
-                        <div [attr.value]="o.currency_symbol" class="dropdown-currency-name currency-select currency-name">{{o.currency_symbol}}</div>
+                        <div [attr.value]="o.currency_symbol" class="dropdown-currency-name currency-select currency-name" >{{o.currency_symbol}}</div>
                         <div id="icon-currency" class="currency_icon">
-                          <img src="assets/currency-svg/{{o.currency_symbol | lowercase}}.svg" class="input-currency-icon" style="filter:brightness(60%);">
+                          <img src="assets/currency-symbol/{{o.currency_symbol | lowercase}}.svg" class="input-currency-icon img-filter">
                         </div>
                       </ng-template>
-                      <input id="typeahead-template" type="text" class="form-control currency-select currency-name" [(ngModel)]="modelcur" name="curr" [ngbTypeahead]="searchcur" [resultTemplate]="os" [inputFormatter]="formattercur" placeholder="USD" id="selectedcur" />
+                      <input type="text" class="form-control currency-select currency-name" [(ngModel)]="modelcur" name="curr" [ngbTypeahead]="searchcur" [resultTemplate]="os" [inputFormatter]="formattercur" placeholder="Select Currency.." value="USD" id="selectedcur" (change)="getcoinprice(form.value);"/>
+                      <input type="hidden" [(ngModel)]="modelcur" name="curr_sign" [ngbTypeahead]="searchcur" [resultTemplate]="os" [inputFormatter]="formattersign" id="selectedcursign"/>
                       <div id="icon-curr" class="currency_icon">
-                        <img src="assets/currency-svg/usd.svg" class="input-currency-icon" style="filter:brightness(60%);" id="curr_image">
+                        <img src="assets/currency-symbol/usd.svg" class="input-currency-icon img-filter" id="curr_image">
                       </div>
                     </div>
                   </div>
@@ -387,7 +444,7 @@
 
                   <div class="col-md-6 col-sm-12 col-12 ">
                     <div class="currancy-form-input">
-                      <input class="currency-select" placeholder="Amount" name="amount" ngModel>
+                      <input class="currency-select" placeholder="Enter Coin Amount..." id="tamount" name="amount" ngModel (keyup)="getcoinprice(form.value);"> 
                       <div class="currency_icon">
                         <img src="assets/currency-svg/hashtag.svg" class="input-currency-icon">
                       </div>
@@ -396,13 +453,13 @@
 
                   <div class="col-md-6 col-sm-12 col-12 ">
                     <div class="currancy-form-input">
-                      <input class="currency-select" placeholder="Rate" name="rate" ngModel>
+                      <input class="currency-select" placeholder="Enter Value of Coin..." name="rate" id="rate" ngModel>
                       <div class="currency_icon">
                         <img src="assets/currency-svg/rate.svg" class="input-currency-icon">
                       </div>
                     </div>
                   </div>
-
+                  <input type="hidden" id="port_id" name="port_id" ngModel/>
                   <div class="col-md-12 col-sm-12 col-12">
                     <div class="text-center">
                       <button class="btn btn-save" type="submit">Submit</button>

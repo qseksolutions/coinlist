@@ -1,0 +1,92 @@
+.profile-contant{
+    padding: 40px 0;
+}
+.Profile-head{
+    background-color: $bg-white;
+    border-radius: 10px;
+    padding: 15px;
+}
+
+.profile-title{
+    border-bottom: solid 1px $body-bg-color;
+    padding: 10px 0;
+    color: $dark-gray;
+}
+
+.profile-title {
+    h3{
+        font-size: 22px;
+    }
+}
+
+.profile-form{
+    padding: 30px;
+}
+
+.profile-input{
+    @include flexbox;
+    position: relative;
+    background-color: $bg-white;
+    border-radius: 5px;
+    border: solid 1px $border-color;
+    margin-bottom: 30px;
+}
+input{
+    &.contact-input[disabled] {
+    cursor: not-allowed;
+    }
+}
+.profile-btn{
+
+    .btn{
+        &.btn-save {
+            min-width: auto;
+        }
+    }
+}
+.profile-footer{
+    padding: 30px 0 15px;
+    border-top: solid 1px $body-bg-color;  
+}
+
+.btn-cancel{
+    border-radius: 50px;
+    font-size: 13px;
+    color: $dark-gray;
+    font-weight: 600;
+    text-transform: uppercase;
+    line-height: 13px;
+    background-color: transparent;
+    border:solid 1px $dark-gray;
+    margin-left: 10px;
+}
+
+.button-arrow{
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+.form-group{
+
+    .dropdown-toggle{
+        &::after{
+            display: none;
+        }
+    }
+}
+
+.profile-form {
+    .dropdown-menu{
+        max-height: 120px;
+        overflow: scroll;
+    }
+    .dropdown-item{
+        padding: 10px 1.5rem;
+    }
+}
+
+.input-label{
+    color: $dark-gray;
+    font-weight: 500;
+    font-size: 14px;
+}

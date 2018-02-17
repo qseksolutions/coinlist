@@ -21,19 +21,27 @@ import { window } from 'rxjs/operator/window';
 export class HeaderComponent implements OnInit {
 
   private toasterService: ToasterService;
+  public toasterconfig: ToasterConfig =
+  new ToasterConfig({
+    showCloseButton: true,
+    tapToDismiss: false,
+    timeout: 2000
+  });
 
   public urlString: any = myGlobals.base_url;
   public loginData: any = myGlobals.login_ses;
   public basecurr: any = myGlobals.basecurr;
   public base_sing: any = myGlobals.base_sing;
   public login_ses: any = 0;
-  currencylist: any;
+  maincurrencylist: any;
+  subcurrencylist: any;
   private user: SocialUser;
   private loggedIn: boolean;
   public model: any;
   public forgot: any;
   regex: any;
   allcoin: any;
+  values: any;
 
   login = {
     email: '',
@@ -67,14 +75,41 @@ export class HeaderComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.coinservice.getallcurrencylist().subscribe(resData => {
+    this.coinservice.getmaincurrencylist('').subscribe(resData => {
       if (resData.status === true) {
-        this.currencylist = resData.data;
+        this.maincurrencylist = resData.data;
+      } else {
+        this.maincurrencylist = '';
+      }
+    });
+    this.coinservice.getsubcurrencylist('').subscribe(resData => {
+      if (resData.status === true) {
+        this.subcurrencylist = resData.data;
+      } else {
+        this.subcurrencylist = '';
       }
     });
     this.coinservice.getallcoin('').subscribe(resData => {
       if (resData.status === true) {
         this.allcoin = resData.data;
+      }
+    });
+  }
+
+  getcurrency(event: any) {
+    this.values = event.target.value;
+    this.coinservice.getmaincurrencylist(this.values).subscribe(resData => {
+      if (resData.status === true) {
+        this.maincurrencylist = resData.data;
+      } else {
+        this.maincurrencylist = '';
+      }
+    });
+    this.coinservice.getsubcurrencylist(this.values).subscribe(resData => {
+      if (resData.status === true) {
+        this.subcurrencylist = resData.data;
+      } else {
+        this.subcurrencylist = '';
       }
     });
   }

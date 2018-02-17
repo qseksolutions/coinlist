@@ -43,9 +43,8 @@
     }
     
     .coin-name{
-        font-size: 16px;
+        font-size: 13px;
         font-weight: 500;
-        color: $dark-blue; 
         display: block;
     }
     .coin-amount{
@@ -57,12 +56,18 @@
     .coin-symbol{
         color: $light-gray;
         font-weight: 600;
+
+        img{
+            width: 30px;
+        }
     }
     .rate-count{
         @extend .main-coin-title;
     }
     .remove-btn{
-        @extend .main-coin-title;
+        @include flexbox;
+        @include align-items (center);
+        height: 100%;
     }
     .cost-count{
         @extend .main-coin-title;
@@ -79,20 +84,12 @@
     }
     .date-table{
         @extend .main-coin-title;
-        font-size: 15px;
+        font-size: 13px;
         font-weight: 400;
     }
     .main-coin-title{
         display: table-cell;
         vertical-align: middle;
-    }
-    .btn-remove{
-        padding: 6px 10px;
-        font-size: 10px;
-        background-color: $dark-blue;
-        color:$text-white;
-        line-height: normal;
-        cursor: pointer;
     }
 }
 
@@ -161,7 +158,7 @@
         }
     }
     .currancy-form-input{
-        display: flex;
+        @include flexbox;        
         position: relative;
         background-color: #fff;
         border-radius: 5px;
@@ -181,7 +178,7 @@
 
             .dropdown-item {
                 padding: 0;
-                display: flex;
+                @include flexbox;                
             }
         }
     }
@@ -195,10 +192,13 @@
         border: none;
         border-right: 1px solid #d3dae7;
         margin: 0px;
-        flex: 10;
+        @include flex (10);
         border-radius: 5px 0 0 5px;
         font-family: 'montserrat' !important;
-        line-height: 16px
+        line-height: 16px;
+        a{
+            color: $light-gray;
+        }
     }
     .currency_icon{
         color: $light-gray;
@@ -207,13 +207,14 @@
         line-height: 22px;
     }
     .input-currency-icon{
-        width: 22px;
+        width: 25px;
+        height: 25px;
     }
 
     .currency-list{
         margin-bottom: 0;
         li{
-            display: flex;
+            @include flexbox;            
             position: relative;
             border-bottom: solid 1px $border-color;
             cursor: pointer;
@@ -224,7 +225,7 @@
         }
 
         .dropdown-currency-name{
-            flex: 10;
+            @include flex (10);
             padding: 15px 10px;
         }
         .dropdown-currency-icon{
@@ -239,7 +240,93 @@
     }
 }
 
+.img-filter{
+    @include filter (brightness(60%) invert(50%));
+}
+
 ngb-datepicker.dropdown-menu {
     min-width: auto !important;
     max-height: none !important;
+}
+
+.green {
+    color: $color-positive ;
+}
+.red {
+    color: $color-nagative ;
+}
+
+
+/*table*/
+
+.protfolio-table{
+    .table-responsive{
+        display: inline-table;
+    }
+    .table{
+        th{
+            padding: 10px 20px;
+            vertical-align: middle;
+            background-color: $bg-footer;
+            width: 100%;
+            border: none;
+            &:first-child{
+                border-radius: 5px 0 0 0;
+            }
+            &:last-child{
+                border-radius: 0 5px 0 0; 
+            }
+        }
+        td{
+            width: 12.5%;
+            padding: 10px 20px;
+            border: none;
+        }
+        thead{
+            tr{
+                @include flexbox;                
+                width: 100%;
+                border-radius: 5px 5px 0 0;
+                border: solid 1px $border-color;
+                border-bottom: none;
+                th{
+                    .alignment{
+                        @include flexbox;                        
+                        @include align-items (center);                        
+                    }
+                }
+            }
+        }
+        tbody{
+            border: none;
+            tr{
+                margin-bottom: 10px;
+                width: 100%;
+                border: none;
+                border-radius: 5px;
+                margin-bottom: 10px;
+                @include flexbox;                
+                padding: 0;
+            }
+        }
+    }
+    .recent-table{
+        table {
+            tr{
+                td{
+                    width: 20%;
+                }
+            }
+        }
+    } 
+}
+
+.watch-list-detaile{
+    .coin-value-detaile{
+          .coin-price{
+               .secound-value{
+                    font-size: 20px;
+               }
+          }
+    }
 }
