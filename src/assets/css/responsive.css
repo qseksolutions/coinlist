@@ -171,6 +171,9 @@
           display: block !important;
           padding-right: 0 !important; }
 
+  .coin-descripation .coin-web {
+    display: block; }
+
   .login-detail.nav a {
     width: 20px;
     display: block; }
