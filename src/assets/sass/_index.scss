@@ -59,6 +59,7 @@
     height: 100%;
     width: 100%;
     text-align: left;
+    table-layout: fixed;
 }
 .coin-table-list:nth-of-type(2n+2) {
     background: $body-bg-color;
@@ -453,9 +454,11 @@
                 @include flexbox;
 
                 th{
-                    width: 16.667%;
+        
                     border:none;
                     padding: 10px 0;
+                    vertical-align: middle;
+
                     &:first-child{
                         width: 20%;
                     }
@@ -478,7 +481,6 @@
             }
         }
         tbody{
-            @extend thead ;
             &.coin-table-list{
                 border: none;
                 
@@ -486,11 +488,14 @@
             
             border-top: none;
             tr{
+                @include flexbox;
                 &:nth-of-type(2n+1) {
                     background: #f8f9fb;
                 }
                 td{
-                    @extend th ;
+                    border:none;
+                    padding: 10px 0;
+                    vertical-align: middle;
                     &:first-child{
                         width: 20%;
                     }

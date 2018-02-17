@@ -202,7 +202,6 @@
   color: #acb1bf;
   letter-spacing: 0.02em;
   display: table-cell;
-  padding-right: 3px;
   line-height: 18px;
   font-weight: 500; }
   .price-sign-coin img, .price-number-coin img {
@@ -665,7 +664,8 @@
   display: table;
   height: 100%;
   width: 100%;
-  text-align: left; }
+  text-align: left;
+  table-layout: fixed; }
 
 .coin-table-list:nth-of-type(2n+2) {
   background: #f8f9fb; }
@@ -959,46 +959,56 @@
   display: none; }
 
 /*table*/
-.main-table table thead tr, .main-table table tbody tr {
+.main-table table thead tr {
   display: -webkit-box;
   display: -webkit-flex;
   display: -moz-flex;
   display: -ms-flexbox;
   display: flex; }
-  .main-table table thead tr th, .main-table table tbody tr th, .main-table table tbody tr td {
-    width: 16.667%;
+  .main-table table thead tr th {
     border: none;
-    padding: 10px 0; }
-    .main-table table thead tr th:first-child, .main-table table tbody tr th:first-child, .main-table table tbody tr td:first-child {
+    padding: 10px 0;
+    vertical-align: middle; }
+    .main-table table thead tr th:first-child {
       width: 20%; }
-    .main-table table thead tr th:nth-child(2), .main-table table tbody tr th:nth-child(2), .main-table table tbody tr td:nth-child(2) {
+    .main-table table thead tr th:nth-child(2) {
       width: 20%; }
-    .main-table table thead tr th:nth-child(3), .main-table table tbody tr th:nth-child(3), .main-table table tbody tr td:nth-child(3) {
+    .main-table table thead tr th:nth-child(3) {
       width: 20%; }
-    .main-table table thead tr th:nth-child(4), .main-table table tbody tr th:nth-child(4), .main-table table tbody tr td:nth-child(4) {
+    .main-table table thead tr th:nth-child(4) {
       width: 20%; }
-    .main-table table thead tr th:nth-child(5), .main-table table tbody tr th:nth-child(5), .main-table table tbody tr td:nth-child(5) {
+    .main-table table thead tr th:nth-child(5) {
       width: 10%; }
-    .main-table table thead tr th:last-child, .main-table table tbody tr th:last-child, .main-table table tbody tr td:last-child {
+    .main-table table thead tr th:last-child {
       width: 10%; }
 .main-table table tbody {
   border-top: none; }
   .main-table table tbody.coin-table-list {
     border: none; }
-  .main-table table tbody tr:nth-of-type(2n+1) {
-    background: #f8f9fb; }
-  .main-table table tbody tr td:first-child {
-    width: 20%; }
-  .main-table table tbody tr td:nth-child(2) {
-    width: 20%; }
-  .main-table table tbody tr td:nth-child(3) {
-    width: 20%; }
-  .main-table table tbody tr td:nth-child(4) {
-    width: 20%; }
-  .main-table table tbody tr td:nth-child(5) {
-    width: 10%; }
-  .main-table table tbody tr td:last-child {
-    width: 10%; }
+  .main-table table tbody tr {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-flex;
+    display: -ms-flexbox;
+    display: flex; }
+    .main-table table tbody tr:nth-of-type(2n+1) {
+      background: #f8f9fb; }
+    .main-table table tbody tr td {
+      border: none;
+      padding: 10px 0;
+      vertical-align: middle; }
+      .main-table table tbody tr td:first-child {
+        width: 20%; }
+      .main-table table tbody tr td:nth-child(2) {
+        width: 20%; }
+      .main-table table tbody tr td:nth-child(3) {
+        width: 20%; }
+      .main-table table tbody tr td:nth-child(4) {
+        width: 20%; }
+      .main-table table tbody tr td:nth-child(5) {
+        width: 10%; }
+      .main-table table tbody tr td:last-child {
+        width: 10%; }
 
 .detaile-coin-page {
   text-align: center;
@@ -1675,21 +1685,21 @@ ngb-datepicker.dropdown-menu {
 /*table*/
 .protfolio-table .table-responsive {
   display: inline-table; }
-.protfolio-table .table th, .protfolio-table .table .main-table table tbody tr td, .main-table table tbody tr .protfolio-table .table td {
+.protfolio-table .table th {
   padding: 10px 20px;
   vertical-align: middle;
   background-color: #f6f7fc;
   width: 100%;
   border: none; }
-  .protfolio-table .table th:first-child, .protfolio-table .table .main-table table tbody tr td:first-child, .main-table table tbody tr .protfolio-table .table td:first-child {
+  .protfolio-table .table th:first-child {
     border-radius: 5px 0 0 0; }
-  .protfolio-table .table th:last-child, .protfolio-table .table .main-table table tbody tr td:last-child, .main-table table tbody tr .protfolio-table .table td:last-child {
+  .protfolio-table .table th:last-child {
     border-radius: 0 5px 0 0; }
 .protfolio-table .table td {
   width: 12.5%;
   padding: 10px 20px;
   border: none; }
-.protfolio-table .table thead tr, .protfolio-table .table .main-table table tbody tr, .main-table table .protfolio-table .table tbody tr {
+.protfolio-table .table thead tr {
   display: -webkit-box;
   display: -webkit-flex;
   display: -moz-flex;
@@ -1699,7 +1709,7 @@ ngb-datepicker.dropdown-menu {
   border-radius: 5px 5px 0 0;
   border: solid 1px #ebeef3;
   border-bottom: none; }
-  .protfolio-table .table thead tr th .alignment, .protfolio-table .table .main-table table tbody tr th .alignment, .main-table table .protfolio-table .table tbody tr th .alignment, .main-table table tbody .protfolio-table .table thead tr td .alignment, .protfolio-table .table .main-table table tbody tr td .alignment, .main-table table .protfolio-table .table tbody tr td .alignment {
+  .protfolio-table .table thead tr th .alignment {
     display: -webkit-box;
     display: -webkit-flex;
     display: -moz-flex;

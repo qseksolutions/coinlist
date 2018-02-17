@@ -173,6 +173,9 @@
 
   .coin-descripation .coin-web {
     display: block; }
+    .coin-descripation .coin-web .coin-web-btn {
+      text-align: center;
+      margin-top: 10px; }
 
   .login-detail.nav a {
     width: 20px;
