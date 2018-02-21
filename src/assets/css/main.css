@@ -378,7 +378,8 @@
     background-color: #3ad483;
     color: #fff; }
   .btn:focus {
-    box-shadow: none; }
+    box-shadow: none !important;
+    -moz-box-shadow: none !important; }
 
 .exchange_button .btn.btn-menu-exchage {
   background-image: none !important;
