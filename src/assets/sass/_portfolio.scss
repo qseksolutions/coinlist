@@ -265,22 +265,30 @@ ngb-datepicker.dropdown-menu {
     }
     .table{
         th{
-            padding: 10px 20px;
+            padding: 10px 15px;
             vertical-align: middle;
             background-color: $bg-footer;
-            width: 100%;
+            width: 12.5%;
             border: none;
             &:first-child{
                 border-radius: 5px 0 0 0;
+                width: 17%;
             }
             &:last-child{
                 border-radius: 0 5px 0 0; 
+                width: 8%;
             }
         }
         td{
             width: 12.5%;
-            padding: 10px 20px;
+            padding: 10px 15px;
             border: none;
+            &:first-child{
+                width: 17%;
+            }
+            &:last-child{
+                width: 8%;
+            }
         }
         thead{
             tr{
