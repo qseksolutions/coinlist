@@ -1752,6 +1752,8 @@ ngb-datepicker.dropdown-menu {
     display: -ms-flexbox;
     display: flex;
     padding: 0; }
+.protfolio-table .recent-table table tr th {
+  width: 20%; }
 .protfolio-table .recent-table table tr td {
   width: 20%; }
 
