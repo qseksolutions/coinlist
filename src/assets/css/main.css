@@ -1022,6 +1022,18 @@
     width: 100%;
     display: block; }
 
+/*table-arrow*/
+.tablearrow {
+  display: inline-grid; }
+  .tablearrow i {
+    line-height: 0; }
+
+.sidenav::-webkit-scrollbar {
+  display: none; }
+
+.sidenav::-moz-scrollbars {
+  display: none; }
+
 .detaile-coin-page {
   text-align: center;
   padding: 20px 0 0 0; }
@@ -1752,6 +1764,8 @@ ngb-datepicker.dropdown-menu {
     display: -ms-flexbox;
     display: flex;
     padding: 0; }
+.protfolio-table .recent-table table tr th {
+  width: 20%; }
 .protfolio-table .recent-table table tr td {
   width: 20%; }
 

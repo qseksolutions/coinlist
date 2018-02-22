@@ -533,3 +533,17 @@
          display: block;
      }
 }
+
+/*table-arrow*/
+.tablearrow{
+    display: inline-grid;
+    i{
+        line-height: 0;
+    }
+}
+.sidenav::-webkit-scrollbar {
+    display: none;
+}
+.sidenav::-moz-scrollbars {
+    display:none;
+}
