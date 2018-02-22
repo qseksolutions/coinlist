@@ -23,17 +23,16 @@
   <section>
     <div class="container">
       <div class="row">
+        <div class="breadcrumb">
+            <h1 class="bread-c-big-text">Followlist</h1>
+          </div>
         <div class="col-12 col-sm-12 col-md-12 col-lg-12" *ngIf="followlist == undefined">
           <div class="watch-list text-center" style="padding: 5px;margin: 10% 0%; ">
             <img src="../../assets/images/image_loader.gif">
           </div>
         </div>
 
-        <div class="col-12 col-sm-12 col-md-12 col-lg-12" *ngIf="followlist != ''">
-
-          <div class="breadcrumb">
-            <span class="bread-c-big-text">Followlist</span>
-          </div>
+        <div class="col-12 col-sm-12 col-md-12 col-lg-12" *ngIf="followlist != ''">          
           <div class="watch-list" *ngFor="let follow of followlist">
             <div class="watchlist-coin-img">
               <img src="assets/currency-svg/{{follow.symbol | lowercase}}.svg" (error)="errorHandler($event,follow.symbol)" class="img-fluid">
