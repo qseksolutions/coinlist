@@ -421,10 +421,10 @@ export class CoinService {
     const form = new URLSearchParams();
     form.append('url', url);
 
-    return this.http.post(this.api_url + this.gettestseometaAPI, form, options)
-      .map((response: Response) => response.json());
-    /* return this.http.post(this.api_url + this.getsingleseometaAPI, form, options)
-      .map((response: Response) => response.json()); */
+    /*return this.http.post(this.api_url + this.gettestseometaAPI, form, options)
+      .map((response: Response) => response.json());*/
+     return this.http.post(this.api_url + this.getsingleseometaAPI, form, options)
+      .map((response: Response) => response.json()); 
   }
 
   gettradesingledata(id) {
@@ -448,29 +448,6 @@ export class CoinService {
     return this.http.post(this.api_url + this.getadvertiseforpageAPI, form, options)
       .map((response: Response) => response.json());
   }
-
-  /* getcoinprice(trans) {
-    const headers = new Headers({ 'Content-Type': 'application/x-www-form-urlencoded' });
-    const options = new RequestOptions({ headers: headers });
-
-    const form = new URLSearchParams();
-    form.append('currency', trans.curr.currency_symbol);
-    form.append('coin', trans.coin.id);
-    form.append('totalcoin', trans.amount);
-    if (trans.date.day < 10) {
-      trans.date.day = '0' + trans.date.day;
-    }
-    if (trans.date.month < 10) {
-      trans.date.month = '0' + trans.date.month;
-    }
-    form.append('currdate', trans.date.year + '-' + trans.date.month + '-' + trans.date.day);
-    const newDate = trans.date.year + '/' + trans.date.month + '/' + trans.date.day;
-    this.coindate = new Date(newDate).getTime();
-    form.append('coindate', this.coindate);
-
-    return this.http.post(this.api_url + this.getselectcoinpriceAPI, form, options)
-      .map((response: Response) => response.json());
-  } */
 
   getcoinprice(trans) {
 

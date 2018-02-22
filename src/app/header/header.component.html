@@ -280,26 +280,6 @@
         </div>
       </div>
       <!--model-end-->
-<<<<<<< HEAD
-      
-      <div class="searchbar portfolio-model hidden-md-up">
-        <form (keydown)="keyDownFunction($event)">
-          <div class="btn-search">
-            <button class="search-btn">
-              <img src="assets/currency-svg/search.svg">
-            </button>
-            <ng-template #sc let-s="result" let-c="term" id="allcoinsearch">
-              <div [attr.value]="s.symbol" class="dropdown-currency-name currency-select currency-name">{{s.name}} ({{s.symbol}})</div>
-              <div id="icon-currency" class="currency_icon">
-                <img src="assets/currency-svg/{{s.symbol | lowercase}}.svg" (error)="errorHandler($event,s.symbol)" class="input-currency-icon">
-              </div>
-            </ng-template>
-            <input id="typeahead-template-new2" type="text" class="btn-extended" [(ngModel)]="model" name="search" [ngbTypeahead]="search" [resultTemplate]="sc" [inputFormatter]="formattersearch" placeholder="Search Coin.."/>
-          </div>
-        </form>
-      </div>
-=======
->>>>>>> develop
       <div class="clearfix"></div>
     </div>
 
