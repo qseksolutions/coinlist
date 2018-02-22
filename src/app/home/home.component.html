@@ -73,9 +73,9 @@
                   <span>
                     <a class="coin-heading" href="javascript:;" (click)="orderingColumn('ch.name','asc')" style="display: inline-block;"> 
                       COIN 
-                      <span class="tablearrow" style="display: inline-grid;" *ngIf="sorton == 'ch.name'">
-                        <i class="fa fa-sort-asc" aria-hidden="true" style="line-height:0;" *ngIf="sortby == 'asc'"></i>
-                        <i class="fa fa-sort-desc" aria-hidden="true" style="line-height:0;" *ngIf="sortby == 'desc'"></i>
+                      <span class="tablearrow" *ngIf="sorton == 'ch.name'">
+                        <i class="fa fa-sort-asc" aria-hidden="true" *ngIf="sortby == 'asc'"></i>
+                        <i class="fa fa-sort-desc" aria-hidden="true" *ngIf="sortby == 'desc'"></i>
                       </span>
                     </a>
                   </span>
