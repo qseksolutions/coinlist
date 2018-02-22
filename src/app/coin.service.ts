@@ -421,10 +421,10 @@ export class CoinService {
     const form = new URLSearchParams();
     form.append('url', url);
 
-    /* return this.http.post(this.api_url + this.gettestseometaAPI, form, options)
-      .map((response: Response) => response.json()); */
-    return this.http.post(this.api_url + this.getsingleseometaAPI, form, options)
+    return this.http.post(this.api_url + this.gettestseometaAPI, form, options)
       .map((response: Response) => response.json());
+    /* return this.http.post(this.api_url + this.getsingleseometaAPI, form, options)
+      .map((response: Response) => response.json()); */
   }
 
   gettradesingledata(id) {
