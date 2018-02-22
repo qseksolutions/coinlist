@@ -1,10 +1,6 @@
 export const header = '';
-<<<<<<< HEAD
+//export const base_url = 'http://localhost:4200/';
 export const base_url = 'http://coinlisting.io/';
-=======
-export const base_url = 'http://localhost:4200/';
-// export const base_url = 'http://coinlisting.io/';
->>>>>>> develop
 export const api_url = 'http://api.coinlisting.io:3000/v1/';
 
 export const loginAPI = 'login';
