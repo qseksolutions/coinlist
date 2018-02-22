@@ -114,6 +114,13 @@
                 }
             }
         }
+        .sidebar-search { 
+            .side-searchbtn{ 
+                .sidesearch-input{
+                    width: auto;
+                }
+            }
+        }
     }
     .coin-heading {
         font-size: 10px;
@@ -571,6 +578,16 @@
                     right: 0;
                     padding: 0 10px;
                 }
+            }
+        }
+    }
+
+    .coin-page__header {
+        .contant_coin-page {
+
+            .exchange-logo {
+                padding: 7px 10px;
+                width: 30%;
             }
         }
     }

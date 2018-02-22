@@ -256,7 +256,7 @@ export class CoinComponent implements OnInit {
     this.coinservice.getSingleCoin(coinid[4])
     .subscribe(resData => {
       if (resData.status === true) {
-        this.titleService.setTitle(resData.data.name + ' (' + resData.data.symbol + ') Price - Coinlisting');
+        this.titleService.setTitle(resData.data.name + ' (' + resData.data.symbol + ') | Cryptocurrency Prices, Charts and Information');
         const imgurl = 'assets/currency-svg/' + resData.data.symbol.toLowerCase() + '.svg';
           this.isImage(imgurl).then(function (test) {
             // tslint:disable-next-line:triple-equals

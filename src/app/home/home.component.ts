@@ -135,7 +135,7 @@ export class HomeComponent implements OnInit {
     const curl = window.location.href;
     this.coinservice.gettestseometa(curl).subscribe(resData => {
       if (resData.status === true) {
-        // this.title.setTitle(resData.data.title + ' | Coinlisting - Cryptocurrency prices');
+        this.title.setTitle(resData.data.title);
         this.meta.addTag({ name: 'description', content: resData.data.description });
         this.meta.addTag({ name: 'keywords', content: resData.data.keywords });
         this.meta.addTag({ name: 'author', content: 'coinlisting' });

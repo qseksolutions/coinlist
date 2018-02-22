@@ -12,7 +12,7 @@
     .coin-page__header .contant_coin-page .exchange-logo {
       width: 30%;
       float: left;
-      padding: 14px 15px; }
+      padding: 19px 15px; }
       .coin-page__header .contant_coin-page .exchange-logo .logo-text {
         display: inline-block;
         margin-top: -2px;
@@ -378,7 +378,8 @@
     background-color: #3ad483;
     color: #fff; }
   .btn:focus {
-    box-shadow: none; }
+    box-shadow: none !important;
+    -moz-box-shadow: none !important; }
 
 .exchange_button .btn.btn-menu-exchage {
   background-image: none !important;
@@ -806,7 +807,8 @@
   padding: 30px 0; }
   .main-coin-information .price-sign-coin, .main-coin-information .price-number-coin {
     color: #acb1bf;
-    display: inline-block; }
+    display: inline-block;
+    padding-right: 3px; }
   .main-coin-information .price-number-coin {
     color: #fff;
     display: inline-block; }
@@ -1464,7 +1466,8 @@ div.breadcrumb {
         display: table-cell;
         vertical-align: middle;
         color: #acb1bf;
-        padding-right: 3px; }
+        padding-right: 3px;
+        font-size: 20px; }
 
 .protfolio-table {
   margin-bottom: 50px; }
@@ -1696,19 +1699,25 @@ ngb-datepicker.dropdown-menu {
 .protfolio-table .table-responsive {
   display: inline-table; }
 .protfolio-table .table th {
-  padding: 10px 20px;
+  padding: 10px 15px;
   vertical-align: middle;
   background-color: #f6f7fc;
-  width: 100%;
+  width: 12.5%;
   border: none; }
   .protfolio-table .table th:first-child {
-    border-radius: 5px 0 0 0; }
+    border-radius: 5px 0 0 0;
+    width: 17%; }
   .protfolio-table .table th:last-child {
-    border-radius: 0 5px 0 0; }
+    border-radius: 0 5px 0 0;
+    width: 8%; }
 .protfolio-table .table td {
   width: 12.5%;
-  padding: 10px 20px;
+  padding: 10px 15px;
   border: none; }
+  .protfolio-table .table td:first-child {
+    width: 17%; }
+  .protfolio-table .table td:last-child {
+    width: 8%; }
 .protfolio-table .table thead tr {
   display: -webkit-box;
   display: -webkit-flex;
@@ -1808,7 +1817,7 @@ ngb-datepicker.dropdown-menu {
     outline: none;
     cursor: pointer; }
     .searchbar-support .support-search-btn img {
-      width: 21px; }
+      width: 20px; }
 
 .active .support-cate-child .cate-icon img {
   -webkit-filter: brightness(1);
