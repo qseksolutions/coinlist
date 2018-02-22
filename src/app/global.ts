@@ -1,8 +1,7 @@
 export const header = '';
-//export const base_url = 'http://localhost:4200/';
-export const base_url = 'https://coinlisting.io/';
+export const base_url = 'http://localhost:4200/';
+//export const base_url = 'http://coinlisting.io/';
 export const api_url = 'https://api.coinlisting.io/v1/';
-
 export const loginAPI = 'login';
 export const registerAPI = 'register';
 export const userbysocialAPI = 'userbysocial';
