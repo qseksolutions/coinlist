@@ -128,11 +128,17 @@
                   <div class="coin-count">
                     <div class="coin-count-icon">
                       <span class="coin-symbol">
-                        <img src="assets/currency-svg/{{pl.buy_coin | lowercase}}.svg" (error)="errorHandler($event,pl.buy_coin)">
+                        <a href="{{urlString}}coin/{{pl.coin_id}}">
+                          <img src="assets/currency-svg/{{pl.buy_coin | lowercase}}.svg" (error)="errorHandler($event,pl.buy_coin)">
+                        </a>
                       </span>
                     </div>
                     <div class="main-coin-title">
-                      <span class="coin-name">{{pl.coin_name}}</span>
+                      <span class="coin-name">
+                        <a href="{{urlString}}coin/{{pl.coin_id}}">
+                          {{pl.coin_name}}
+                        </a>
+                      </span>
                       <span class="coin-amount">{{pl.coin_amount}}
                         <span class="coin-symbol"> {{pl.buy_coin}}</span>
                       </span>
@@ -154,7 +160,7 @@
                 <td class="">
                   <div class="coin-align">
                     <div class="rate-count">
-                      <span class="coin-name" *ngIf="pl.current_price > 1">
+                      <span class="coin-name" *ngIf="pl.current_price >= 1">
                         <span class="currency-sign">{{base_sing}}</span>
                         <span class="currency-value">{{pl.current_price | number : '1.2-2'}}</span>
                       </span>
@@ -284,11 +290,17 @@
                   <div class="coin-count">
                     <div class="coin-count-icon">
                       <span class="coin-symbol">
-                        <img src="assets/currency-svg/{{portfolio.buy_coin | lowercase}}.svg" (error)="errorHandler($event,portfolio.buy_coin)" >
+                        <a href="{{urlString}}coin/{{portfolio.coin_id}}">
+                          <img src="assets/currency-svg/{{portfolio.buy_coin | lowercase}}.svg" (error)="errorHandler($event,portfolio.buy_coin)" >
+                        </a>
                       </span>
                     </div>
                     <div class="main-coin-title">
-                      <span class="coin-name">{{portfolio.coin_name}}</span>
+                      <span class="coin-name">
+                        <a href="{{urlString}}coin/{{portfolio.coin_id}}">
+                          {{portfolio.coin_name}}
+                        </a>
+                      </span>
                       <span class="coin-amount">{{portfolio.coin_amount}}
                         <span class="coin-symbol"> {{portfolio.buy_coin}}</span>
                       </span>

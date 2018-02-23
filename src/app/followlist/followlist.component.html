@@ -35,7 +35,9 @@
         <div class="col-12 col-sm-12 col-md-12 col-lg-12" *ngIf="followlist != ''">          
           <div class="watch-list" *ngFor="let follow of followlist">
             <div class="watchlist-coin-img">
-              <img src="assets/currency-svg/{{follow.symbol | lowercase}}.svg" (error)="errorHandler($event,follow.symbol)" class="img-fluid">
+              <a href="{{urlString}}coin/{{follow.coin_id}}">
+                <img src="assets/currency-svg/{{follow.symbol | lowercase}}.svg" (error)="errorHandler($event,follow.symbol)" class="img-fluid">
+              </a>
             </div>
 
             <span class="close-btn" (click)="followcoin(follow);">
@@ -58,7 +60,7 @@
                       <span class="title-first">Last Price </span>
                       <span class="secound-value">
                         <span class="currency-sign"> {{base_sing}}</span>
-                        <span class="currency-value" *ngIf="follow['price_'+basecurr] > 1 ">
+                        <span class="currency-value" *ngIf="follow['price_'+basecurr] >= 1 ">
                         {{follow['price_'+basecurr] | number : '1.2-2'}}
                         </span>
                         <span class="currency-value" *ngIf="follow['price_'+basecurr] < 1 ">

@@ -89,9 +89,11 @@ export class HomeComponent implements OnInit {
       this.selectedIndex = 4;
     } else if (this.perioddata === 'year') {
       this.selectedIndex = 5;
-    } else {
+    } else if (this.perioddata === 'all') {
       this.selectedIndex = 6;
-      this.perioddata = '';
+    } else {
+      this.selectedIndex = 1;
+      this.perioddata = 'hour';
     }
     this.prepage = 0;
     this.nxtpage = 2;
@@ -135,7 +137,7 @@ export class HomeComponent implements OnInit {
     const curl = window.location.href;
     this.coinservice.gettestseometa(curl).subscribe(resData => {
       if (resData.status === true) {
-        // this.title.setTitle(resData.data.title);
+        this.title.setTitle(resData.data.title);
         // console.log(resData.data);
         this.meta.addTag({ name: 'description', content: resData.data.description });
         this.meta.addTag({ name: 'keywords', content: resData.data.keywords });
