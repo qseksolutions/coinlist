@@ -24,7 +24,7 @@
           <a href="javascript:void(0)" (click)="toggleClass('year',5)" class="btn btn-chart">1 Year </a>
         </li>
         <li [ngClass]="selectedIndex == 6 ? 'active':''" [style.pointer-events]="selectedIndex == 6 ? 'none':'initial'">
-          <a href="javascript:void(0)" (click)="toggleClass('',6)" class="btn btn-chart">All time </a>
+          <a href="javascript:void(0)" (click)="toggleClass('all',6)" class="btn btn-chart">All time </a>
         </li> 
       </ul>
     </div>
@@ -221,7 +221,7 @@
                     <!-- <span class="count-text">{{i+1+start}}&ensp;&ensp;&ensp;</span> -->
                     <span class="count-text">{{coin.rank}}&ensp;&ensp;&ensp;</span>
                     <span class="coin-symbol">
-                      <a href="{{urlString}}coin/{{coin.id}}">
+                      <a href="{{urlString}}coin/{{coin.coin_id}}">
                         <img src="assets/currency-svg/{{coin.symbol | lowercase}}.svg" (error)="errorHandler($event,coin.symbol)">
                       </a>
                     </span>
@@ -236,7 +236,7 @@
 
               <td>
                 <div class="main-coin-price">
-                  <div class="coin-align" *ngIf="coin['price_'+basecurr] > 1">
+                  <div class="coin-align" *ngIf="coin['price_'+basecurr] >= 1">
                     <span class="currency-sign"> {{base_sing}} </span>
                     <span class="currency-value">{{coin['price_'+basecurr] | number : '1.2-2'}}</span>
                   </div>

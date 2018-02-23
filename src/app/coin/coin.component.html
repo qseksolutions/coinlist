@@ -16,12 +16,12 @@
                   </div>
                 </div>
               </div>
-              <div class="coin-price" *ngIf="coin['price_'+basecurr] > 1">
-                <span class="price-sign-coin"> {{base_sing}} </span>
-                <span class="price-number-coin">{{coin['price_'+basecurr] | number : '1.2-2'}}</span>
+              <div class="coin-price" *ngIf="coin['price_'+basecurr] >= 1">
+                <span class="price-sign-coin"> {{base_sing}}&nbsp;</span>
+                <span class="price-number-coin"> {{coin['price_'+basecurr] | number : '1.2-2'}}</span>
               </div>
               <div class="coin-align" *ngIf="coin['price_'+basecurr] < 1">
-                <span class="price-sign-coin"> {{base_sing}} </span>
+                <span class="price-sign-coin"> {{base_sing}}&nbsp;</span> 
                 <span class="price-number-coin">{{coin['price_'+basecurr]}}</span>
               </div>
             </div>
@@ -69,14 +69,14 @@
         <div class="col-12 col-sm-6 col-md-6 col-lg-3">
           <div class="best-coin-value" >
             <label class="coin-lable">MARKET CAP</label>
-            <span class="price-sign-coin"> {{base_sing}} </span>
+            <span class="price-sign-coin"> {{base_sing}}&nbsp;</span>
             <span class="price-number-coin">{{coin['market_cap_'+basecurr] | number : '1.2-2'}}</span>
           </div>          
         </div>
         <div class="col-12 col-sm-6 col-md-6 col-lg-3">
           <div class="best-coin-value" >
             <label class="coin-lable">24H VOLUME</label>
-            <span class="price-sign-coin"> {{base_sing}} </span>
+            <span class="price-sign-coin"> {{base_sing}}&nbsp;</span>
             <span class="price-number-coin">{{coin['24h_volume_'+basecurr] | number}}</span>
           </div>         
         </div>
@@ -84,14 +84,14 @@
           <div class="best-coin-value" >
             <label class="coin-lable">CIRCULATING SUPPLY</label>
             <span class="price-number-coin">{{coin.available_supply | number}}</span>
-            <span class="currency_symbol">{{coin.symbol}}</span>
+            <span class="currency_symbol">&nbsp;{{coin.symbol}}</span>
           </div>          
         </div>
         <div class="col-12 col-sm-6 col-md-6 col-lg-3">
           <div class="best-coin-value" >
             <label class="coin-lable">TOTAL SUPPLY</label>
             <span class="price-number-coin">{{coin.total_supply | number}}</span>
-            <span class="currency_symbol">{{coin.symbol}}</span>
+            <span class="currency_symbol">&nbsp;{{coin.symbol}}</span>
           </div>
           
         </div>
@@ -127,7 +127,7 @@
                 <a href="#" (click)="toggleClass('year',5)" class="btn btn-chart" [ngClass]="selectedIndex == 5 ? 'active':''">1 Years</a>
               </li>
               <li [ngClass]="selectedIndex == 6 ? 'active':''" [style.pointer-events]="selectedIndex == 6 ? 'none':'initial'">
-                <a href="#" (click)="toggleClass('',6)" class="btn btn-chart" [ngClass]="selectedIndex == 6 ? 'active':''">All time</a>
+                <a href="#" (click)="toggleClass('all',6)" class="btn btn-chart" [ngClass]="selectedIndex == 6 ? 'active':''">All time</a>
               </li>
             </ul>
           </div>

@@ -22,11 +22,11 @@ export class HeaderComponent implements OnInit {
 
   private toasterService: ToasterService;
   public toasterconfig: ToasterConfig =
-  new ToasterConfig({
-    showCloseButton: true,
-    tapToDismiss: false,
-    timeout: 2000
-  });
+    new ToasterConfig({
+      showCloseButton: true,
+      tapToDismiss: false,
+      timeout: 2000
+    });
 
   public urlString: any = myGlobals.base_url;
   public loginData: any = myGlobals.login_ses;
@@ -42,6 +42,7 @@ export class HeaderComponent implements OnInit {
   regex: any;
   allcoin: any;
   values: any;
+  sociallogin: any = 0;
 
   login = {
     email: '',
@@ -136,6 +137,7 @@ export class HeaderComponent implements OnInit {
       if (this.user != null) {
         this.coinservice.sociallogin(this.user).subscribe(resData => {
           if (resData.status === true) {
+            this.sociallogin = 1;
             this.toasterService.pop('success', 'Success', resData.message);
             localStorage.setItem('login_ses', resData.status);
             localStorage.setItem('id', resData.data.id);
@@ -161,9 +163,10 @@ export class HeaderComponent implements OnInit {
     this.authService.authState.subscribe((user) => {
       this.user = user;
       this.loggedIn = (user != null);
-      if (this.user != null) {
+      if (this.sociallogin === 0) {
         this.coinservice.sociallogin(this.user).subscribe(resData => {
           if (resData.status === true) {
+            this.sociallogin = 1;
             this.toasterService.pop('success', 'Success', resData.message);
             localStorage.setItem('login_ses', resData.status);
             localStorage.setItem('id', resData.data.id);

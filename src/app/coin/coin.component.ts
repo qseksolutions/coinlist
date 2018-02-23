@@ -56,9 +56,11 @@ export class CoinComponent implements OnInit {
       this.selectedIndex = 4;
     } else if (this.perioddata === 'year') {
       this.selectedIndex = 5;
-    } else {
+    } else if (this.perioddata === 'all') {
       this.selectedIndex = 6;
-      this.perioddata = '';
+    } else {
+      this.selectedIndex = 1;
+      this.perioddata = 'hour';
     }
   }
 
@@ -234,18 +236,6 @@ export class CoinComponent implements OnInit {
               enabled: false
             }
           },
-          responsive: {
-            rules: [{
-              condition: {
-                maxWidth: 500
-              },
-              chartOptions: {
-                legend: {
-                  enabled: false
-                }
-              }
-            }]
-          }
         });
     });
   }

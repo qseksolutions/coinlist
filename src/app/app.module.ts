@@ -11,7 +11,7 @@ import { ToasterModule } from 'angular2-toaster';
 import { SocialLoginModule, AuthServiceConfig } from 'angular4-social-login';
 import { GoogleLoginProvider, FacebookLoginProvider } from 'angular4-social-login';
 
-/* const config = new AuthServiceConfig([
+const config = new AuthServiceConfig([
   {
     id: GoogleLoginProvider.PROVIDER_ID,
     provider: new GoogleLoginProvider('657460625068-68ekbm870e00v3lio74ueumc718dgir6.apps.googleusercontent.com')
@@ -20,9 +20,9 @@ import { GoogleLoginProvider, FacebookLoginProvider } from 'angular4-social-logi
     id: FacebookLoginProvider.PROVIDER_ID,
     provider: new FacebookLoginProvider('1592228807481172')
   }
-]); */
+]);
 
-const config = new AuthServiceConfig([
+/* const config = new AuthServiceConfig([
   {
     id: GoogleLoginProvider.PROVIDER_ID,
     provider: new GoogleLoginProvider('1068130394280-ckrf4l3ib0sgi868h416qlh08n5p0739.apps.googleusercontent.com')
@@ -31,7 +31,7 @@ const config = new AuthServiceConfig([
     id: FacebookLoginProvider.PROVIDER_ID,
     provider: new FacebookLoginProvider('805993129602780')
   }
-]);
+]); */
 
 export function provideConfig() {
   return config;
