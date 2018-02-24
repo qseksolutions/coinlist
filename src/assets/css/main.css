@@ -1096,6 +1096,10 @@
     padding: 30px 20px;
     border-radius: 5px; }
 
+.coin-align {
+  display: table-cell;
+  vertical-align: middle; }
+
 .currency_symbol {
   color: #ff8033;
   display: table-cell;
@@ -1481,7 +1485,11 @@ div.breadcrumb {
         padding-right: 3px;
         font-size: 20px; }
 
-.protfolio-table {
+.list-not-found {
+  margin: 0 0 50px;
+  padding: 5px; }
+
+.recent-table {
   margin-bottom: 50px; }
 
 .protfolio-table-title {
@@ -1516,6 +1524,8 @@ div.breadcrumb {
     font-size: 13px;
     font-weight: 500;
     display: block; }
+    .protfolia-table-detaile .coin-name a {
+      color: #4b4b4b; }
   .protfolia-table-detaile .coin-amount {
     font-weight: 500;
     font-size: 12px;
@@ -1714,22 +1724,45 @@ ngb-datepicker.dropdown-menu {
   padding: 10px 15px;
   vertical-align: middle;
   background-color: #f6f7fc;
-  width: 12.5%;
   border: none; }
   .protfolio-table .table th:first-child {
     border-radius: 5px 0 0 0;
+    width: 20%; }
+  .protfolio-table .table th:nth-child(2) {
+    width: 11%; }
+  .protfolio-table .table th:nth-child(3) {
     width: 17%; }
+  .protfolio-table .table th:nth-child(4) {
+    width: 10%; }
+  .protfolio-table .table th:nth-child(5) {
+    width: 10%; }
+  .protfolio-table .table th:nth-child(6) {
+    width: 12%; }
+  .protfolio-table .table th:nth-child(7) {
+    width: 10%; }
   .protfolio-table .table th:last-child {
     border-radius: 0 5px 0 0;
-    width: 8%; }
+    width: 10%; }
 .protfolio-table .table td {
   width: 12.5%;
   padding: 10px 15px;
   border: none; }
   .protfolio-table .table td:first-child {
+    width: 20%; }
+  .protfolio-table .table td:nth-child(2) {
+    width: 11%; }
+  .protfolio-table .table td:nth-child(3) {
     width: 17%; }
+  .protfolio-table .table td:nth-child(4) {
+    width: 10%; }
+  .protfolio-table .table td:nth-child(5) {
+    width: 10%; }
+  .protfolio-table .table td:nth-child(6) {
+    width: 12%; }
+  .protfolio-table .table td:nth-child(7) {
+    width: 10%; }
   .protfolio-table .table td:last-child {
-    width: 8%; }
+    width: 10%; }
 .protfolio-table .table thead tr {
   display: -webkit-box;
   display: -webkit-flex;
@@ -1764,10 +1797,26 @@ ngb-datepicker.dropdown-menu {
     display: -ms-flexbox;
     display: flex;
     padding: 0; }
-.protfolio-table .recent-table table tr th {
+.protfolio-table .recent-table table tr th:first-child {
+  width: 30%; }
+.protfolio-table .recent-table table tr th:nth-child(2) {
   width: 20%; }
-.protfolio-table .recent-table table tr td {
+.protfolio-table .recent-table table tr th:nth-child(3) {
   width: 20%; }
+.protfolio-table .recent-table table tr th:nth-child(4) {
+  width: 15%; }
+.protfolio-table .recent-table table tr th:last-child {
+  width: 15%; }
+.protfolio-table .recent-table table tr td:first-child {
+  width: 30%; }
+.protfolio-table .recent-table table tr td:nth-child(2) {
+  width: 20%; }
+.protfolio-table .recent-table table tr td:nth-child(3) {
+  width: 20%; }
+.protfolio-table .recent-table table tr td:nth-child(4) {
+  width: 15%; }
+.protfolio-table .recent-table table tr td:last-child {
+  width: 15%; }
 
 .watch-list-detaile .coin-value-detaile .coin-price .secound-value {
   font-size: 20px; }

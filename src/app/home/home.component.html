@@ -236,13 +236,13 @@
 
               <td>
                 <div class="main-coin-price">
-                  <div class="coin-align" *ngIf="coin['price_'+basecurr] >= 1">
+                  <div class="coin-align" *ngIf="coin['price_'+basecurr] > 1">
                     <span class="currency-sign"> {{base_sing}} </span>
-                    <span class="currency-value">{{coin['price_'+basecurr] | number : '1.2-2'}}</span>
+                    <span class="currency-value">{{coin['price_'+basecurr] | number : '1.0-2'}}</span>
                   </div>
-                  <div class="coin-align" *ngIf="coin['price_'+basecurr] < 1">
+                  <div class="coin-align" *ngIf="coin['price_'+basecurr] <= 1">
                     <span class="currency-sign"> {{base_sing}} </span>
-                    <span class="currency-value">{{coin['price_'+basecurr]}}</span>
+                    <span class="currency-value">{{coin['price_'+basecurr] | number : '1.0-12'}}</span>
                   </div>
                 </div>
               </td>

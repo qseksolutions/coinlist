@@ -77,6 +77,11 @@
         }
     }
 }
+
+.coin-align{
+    display: table-cell;
+    vertical-align: middle;
+}
 .currency_symbol{
     color: $btn-bg-color;
     display: table-cell;

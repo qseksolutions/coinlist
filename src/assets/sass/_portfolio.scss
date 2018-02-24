@@ -1,5 +1,5 @@
 @import'variables';
-.protfolio-table{
+.recent-table{
     margin-bottom: 50px;
 }
 .protfolio-table-title{
@@ -46,6 +46,10 @@
         font-size: 13px;
         font-weight: 500;
         display: block;
+
+        a{
+            color: $primary-color;
+        }
     }
     .coin-amount{
         font-weight: 500;
@@ -268,15 +272,32 @@ ngb-datepicker.dropdown-menu {
             padding: 10px 15px;
             vertical-align: middle;
             background-color: $bg-footer;
-            width: 12.5%;
             border: none;
             &:first-child{
                 border-radius: 5px 0 0 0;
-                width: 17%;
+                width: 20%;
+            }
+            &:nth-child(2){
+                width: 11%
+            }
+            &:nth-child(3){
+                width: 17%
+            }
+            &:nth-child(4){
+                width: 10%
+            }
+            &:nth-child(5){
+                width: 10%
+            }
+            &:nth-child(6){
+                width: 12%
+            }
+            &:nth-child(7){
+                width: 10%
             }
             &:last-child{
                 border-radius: 0 5px 0 0; 
-                width: 8%;
+                width: 10%;
             }
         }
         td{
@@ -284,10 +305,28 @@ ngb-datepicker.dropdown-menu {
             padding: 10px 15px;
             border: none;
             &:first-child{
-                width: 17%;
+                width: 20%;
+            }
+            &:nth-child(2){
+                width: 11%
+            }
+            &:nth-child(3){
+                width: 17%
+            }
+            &:nth-child(4){
+                width: 10%
+            }
+            &:nth-child(5){
+                width: 10%
+            }
+            &:nth-child(6){
+                width: 12%
+            }
+            &:nth-child(7){
+                width: 10%
             }
             &:last-child{
-                width: 8%;
+                width: 10%;
             }
         }
         thead{
@@ -322,10 +361,39 @@ ngb-datepicker.dropdown-menu {
         table {
             tr{
                 th{
-                    width: 20%;
+                    &:first-child{
+                        width: 30%;
+                    }
+                    &:nth-child(2){
+                        width: 20%
+                    }
+                    &:nth-child(3){
+                        width: 20%
+                    }
+                    &:nth-child(4){
+                        width: 15%
+                    }
+                    &:last-child{
+                        width: 15%;
+                    }
                 }
+                
                 td{
-                    width: 20%;
+                    &:first-child{
+                        width: 30%;
+                    }
+                    &:nth-child(2){
+                        width: 20%
+                    }
+                    &:nth-child(3){
+                        width: 20%
+                    }
+                    &:nth-child(4){
+                        width: 15%
+                    }
+                    &:last-child{
+                        width: 15%;
+                    }
                 }
             }
         }

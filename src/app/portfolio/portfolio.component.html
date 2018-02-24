@@ -160,13 +160,13 @@
                 <td class="">
                   <div class="coin-align">
                     <div class="rate-count">
-                      <span class="coin-name" *ngIf="pl.current_price >= 1">
+                      <span class="coin-name" *ngIf="pl.current_price > 1">
                         <span class="currency-sign">{{base_sing}}</span>
-                        <span class="currency-value">{{pl.current_price | number : '1.2-2'}}</span>
+                        <span class="currency-value">{{pl.current_price | number : '1.0-2'}}</span>
                       </span>
-                      <span class="coin-name" *ngIf="pl.current_price < 1">
+                      <span class="coin-name" *ngIf="pl.current_price <= 1">
                         <span class="currency-sign">{{base_sing}}</span>
-                        <span class="currency-value">{{pl.current_price}}</span>
+                        <span class="currency-value">{{pl.current_price | number : '1.0-12'}}</span>
                       </span>
                     </div>
                   </div>
