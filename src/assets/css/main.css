@@ -1485,7 +1485,11 @@ div.breadcrumb {
         padding-right: 3px;
         font-size: 20px; }
 
-.protfolio-table {
+.list-not-found {
+  margin: 0 0 50px;
+  padding: 5px; }
+
+.recent-table {
   margin-bottom: 50px; }
 
 .protfolio-table-title {
