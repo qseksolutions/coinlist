@@ -60,11 +60,11 @@
                       <span class="title-first">Last Price </span>
                       <span class="secound-value">
                         <span class="currency-sign"> {{base_sing}}</span>
-                        <span class="currency-value" *ngIf="follow['price_'+basecurr] >= 1 ">
-                        {{follow['price_'+basecurr] | number : '1.2-2'}}
+                        <span class="currency-value" *ngIf="follow['price_'+basecurr] > 1 ">
+                          {{follow['price_'+basecurr] | number : '1.0-2'}}
                         </span>
-                        <span class="currency-value" *ngIf="follow['price_'+basecurr] < 1 ">
-                          {{follow['price_'+basecurr]}}
+                        <span class="currency-value" *ngIf="follow['price_'+basecurr] <= 1 ">
+                           {{follow['price_'+basecurr] | number : '1.0-12'}}
                         </span>
                         <span class="small-text"> ({{follow.price_btc}}
                           <span class="currency_symbol">BTC</span>)
