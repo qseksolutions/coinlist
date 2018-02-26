@@ -3,6 +3,7 @@ import { Http, Response, Headers, RequestOptions } from '@angular/http';
 import * as myGlobals from './global';
 import 'rxjs/add/operator/map';
 import { URLSearchParams } from '@angular/http';
+import { token } from './global';
 
 @Injectable()
 export class CoinService {
@@ -46,6 +47,7 @@ export class CoinService {
   user_base: any = localStorage.getItem('user_base');
   base_sing: any = localStorage.getItem('base_sing');
   useremail: any = localStorage.getItem('email');
+  token: any = localStorage.getItem('token');
 
   coindate: any;
 
@@ -56,6 +58,9 @@ export class CoinService {
       localStorage.setItem('base_sing', '$');
       this.basecur = 'USD';
       this.user_base = 'USD';
+    }
+    if (this.token == null) {
+      this.token = '';
     }
   }
 
@@ -124,6 +129,7 @@ export class CoinService {
       trans.date.month = '0' + trans.date.month;
     }
     form.append('tdate', trans.date.year + '-' + trans.date.month + '-' + trans.date.day);
+    form.append('token', this.token);
 
     return this.http.post(this.api_url + this.addtradeAPI, form, options)
       .map((response: Response) => response.json());
@@ -149,6 +155,7 @@ export class CoinService {
     form.append('dcurrency', this.user_base);
     form.append('bc_sign', trans.curr_sign);
     form.append('tdate', trans.date);
+    form.append('token', this.token);
 
     return this.http.post(this.api_url + this.updatetradeAPI, form, options)
       .map((response: Response) => response.json());
@@ -331,6 +338,7 @@ export class CoinService {
     const form = new URLSearchParams();
     form.append('userid', this.userid);
     form.append('base', this.basecur);
+    form.append('token', this.token);
 
     return this.http.post(this.api_url + this.followlistAPI, form, options)
       .map((response: Response) => response.json());
@@ -358,6 +366,7 @@ export class CoinService {
     form.append('userid', this.userid);
     form.append('bcurrency', this.basecur);
     form.append('dcurrency', this.user_base);
+    form.append('token', this.token);
 
     return this.http.post(this.api_url + this.portfoliolistAPI, form, options)
       .map((response: Response) => response.json());
@@ -371,6 +380,7 @@ export class CoinService {
     form.append('userid', this.userid);
     form.append('bcurrency', this.basecur);
     form.append('dcurrency', this.user_base);
+    form.append('token', this.token);
 
     return this.http.post(this.api_url + this.profitlosslistAPI, form, options)
       .map((response: Response) => response.json());
@@ -398,6 +408,7 @@ export class CoinService {
 
     const form = new URLSearchParams();
     form.append('email', this.useremail);
+    form.append('token', this.token);
 
     return this.http.post(this.api_url + this.getprofileupdatedataAPI, form, options)
       .map((response: Response) => response.json());
@@ -421,10 +432,10 @@ export class CoinService {
     const form = new URLSearchParams();
     form.append('url', url);
 
-    //return this.http.post(this.api_url + this.gettestseometaAPI, form, options)
-    //  .map((response: Response) => response.json());
-    return this.http.post(this.api_url + this.getsingleseometaAPI, form, options)
-      .map((response: Response) => response.json()); 
+    return this.http.post(this.api_url + this.gettestseometaAPI, form, options)
+     .map((response: Response) => response.json());
+    /* return this.http.post(this.api_url + this.getsingleseometaAPI, form, options)
+      .map((response: Response) => response.json()); */
   }
 
   gettradesingledata(id) {
@@ -508,6 +519,7 @@ export class CoinService {
     } else {
       form.append('status', '1');
     }
+    form.append('token', this.token);
 
     return this.http.post(this.api_url + this.cointrackbyuserAPI, form, options)
       .map((response: Response) => response.json());
