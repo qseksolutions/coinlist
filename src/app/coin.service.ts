@@ -198,6 +198,7 @@ export class CoinService {
     } else {
       form.append('d_currency', '');
     }
+    form.append('token', this.token);
 
     return this.http.post(this.api_url + this.profileupdateAPI, form, options)
       .map((response: Response) => response.json());
@@ -211,6 +212,7 @@ export class CoinService {
     form.append('id', this.userid);
     form.append('old_pass', password.old_pass);
     form.append('password', password.new_pass);
+    form.append('token', this.token);
 
     return this.http.post(this.api_url + this.changepasswordAPI, form, options)
       .map((response: Response) => response.json());
