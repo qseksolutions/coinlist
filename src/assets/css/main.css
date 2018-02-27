@@ -262,7 +262,8 @@
         -ms-filter: brightness(0%) invert(100%);
         filter: brightness(0%) invert(100%); }
     .searchbar .btn-search img, .searchbar-small-device .btn-search img {
-      width: 16px; }
+      width: 16px;
+      height: auto; }
     .searchbar .btn-search button.search-btn, .searchbar-small-device .btn-search button.search-btn {
       background: no-repeat;
       border: none;
@@ -339,6 +340,12 @@
   border-top: 5px solid;
   border-right: 5px solid transparent;
   border-left: 5px solid transparent; }
+
+.dropdown-item.active, .dropdown-item:active {
+  color: #fff;
+  text-decoration: none;
+  background-color: transparent;
+  background: linear-gradient(135deg, #170b32 0%, #3d3379 100%); }
 
 @font-face {
   font-family: 'montserrat';
@@ -627,7 +634,7 @@
     .table-title .main-chart-btn ul li {
       display: inline-block;
       padding: 0 5px; }
-      .table-title .main-chart-btn ul li.active a {
+      .table-title .main-chart-btn ul li.active a, .table-title .main-chart-btn ul li.dropdown-item:active a {
         background-color: #3d3379; }
 
 .coin-heading {
@@ -1120,7 +1127,7 @@
     .chart-header .chart-btn ul li {
       padding: 0 5px;
       display: inline-block; }
-      .chart-header .chart-btn ul li.active a {
+      .chart-header .chart-btn ul li.active a, .chart-header .chart-btn ul li.dropdown-item:active a {
         background: #3d3379; }
   .chart-header .chart-value .green {
     color: #3cd483;
@@ -1821,6 +1828,14 @@ ngb-datepicker.dropdown-menu {
 .watch-list-detaile .coin-value-detaile .coin-price .secound-value {
   font-size: 20px; }
 
+.no-trans-note {
+  padding: 80px 0; }
+
+.note-text span {
+  font-size: 13px;
+  color: #9ca5be;
+  font-weight: 500; }
+
 .support-main-bg {
   position: relative; }
   .support-main-bg:before {
@@ -1882,12 +1897,12 @@ ngb-datepicker.dropdown-menu {
     .searchbar-support .support-search-btn img {
       width: 20px; }
 
-.active .support-cate-child .cate-icon img {
+.active .support-cate-child .cate-icon img, .dropdown-item:active .support-cate-child .cate-icon img {
   -webkit-filter: brightness(1);
   -moz-filter: brightness(1);
   -ms-filter: brightness(1);
   filter: brightness(1); }
-.active .support-cate-child span.cate-box-title {
+.active .support-cate-child span.cate-box-title, .dropdown-item:active .support-cate-child span.cate-box-title {
   color: #3d3379;
   /**/ }
 

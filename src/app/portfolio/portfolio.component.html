@@ -357,29 +357,18 @@
           </table>
         </div>
       </div>
+
       <div class="col-12 col-sm-12 col-md-12 col-lg-12" *ngIf="portfoliolist == ''">
-        <div class="watch-list" style="">
-          <div class="row">
-            <div class="col-12 col-sm-12 col-md-12 col-lg-12">
-              <div class="watch-list-detaile" style="border:0;">
-                <div class="coin-title" style="text-align: center;">
-                  <h3>
-                    <span class="currency_symbol">You didn’t added any Transaction in your portfolio list yet.</span>
-                  </h3>
-                </div>
+        <div class="no-trans-note">
+            <div class="watch-list">
+              <div class="note-text text-center">
+                  <span class="">You didn’t added any Transaction in your portfolio list yet.</span>
               </div>
             </div>
-          </div>
-        </div>
-      </div>
 
-      <div class="row" *ngIf="portfoliolist == ''">
-        <div class="col-12 col-sm-12 col-md-12 col-lg-12">
-          <div class="">
             <div class="add-newbtn" style="text-align: center;">
-              <a href="#" class="btn btn-add" data-toggle="modal" data-target="#newtransaction" style="margin-bottom:10%;">Add New Transaction</a>
+              <a href="#" class="btn btn-add" data-toggle="modal" data-target="#newtransaction">Add New Transaction</a>
             </div>
-          </div>
         </div>
       </div>
     </div>
