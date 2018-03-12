@@ -409,3 +409,15 @@ ngb-datepicker.dropdown-menu {
           }
     }
 }
+
+.no-trans-note{
+    padding: 80px 0;
+}
+
+.note-text{
+    span{
+        font-size: 13px;
+        color: $light-gray;
+        font-weight: 500;
+    }
+}

@@ -29,12 +29,12 @@
                     <ng-template #os let-o="result" let-s="termcur" id="allcurr">
                       <div class="dropdown-currency-name currency-select currency-name">{{o.currency_symbol}}</div>
                       <div id="icon-currency" class="currency_icon">
-                        <img src="assets/currency-svg/{{o.currency_symbol | lowercase}}.svg" class="input-currency-icon img-filter">
+                        <img src="assets/currency-symbol/{{o.currency_symbol | lowercase}}.svg" class="input-currency-icon img-filter">
                       </div>
                     </ng-template>
                     <input id="typeahead-template" type="text" class="form-control currency-select currency-name" [(ngModel)]="prof.b_curr" name="b_curr" [ngbTypeahead]="searchcur" [resultTemplate]="os" [inputFormatter]="formattercur" placeholder="Change your currency here" id="selectedcur" value="{{profile.d_currency}}"/>
                     <button class="button-arrow currency_icon" id="icon-coin">
-                      <img class="input-currency-icon img-filter" id="coin_image" src="assets/currency-svg/{{profile.d_currency | lowercase}}.svg">
+                      <img class="input-currency-icon img-filter" id="coin_image" src="assets/currency-symbol/{{profile.d_currency | lowercase}}.svg">
                     </button>
                     <!-- <input aria-multiline="false" autocapitalize="off" autocomplete="off" autocorrect="off" class="form-control currency-select currency-name ng-pristine ng-valid ng-touched" id="selectedcoin" name="coin" placeholder="Bitcoin (BTC)" role="combobox" type="text" ng-reflect-input-formatter="function (x) { return x.name +" ng-reflect-ngb-typeahead="function (text$) { " ng-reflect-result-template="[object Object]" ng-reflect-name="coin" aria-autocomplete="list" aria-expanded="false"> -->
                   </div>

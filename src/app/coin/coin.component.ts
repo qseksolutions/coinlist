@@ -92,23 +92,58 @@ export class CoinComponent implements OnInit {
     });
   }
 
+  realTimeData() {
+    const url = window.location.href;
+    const coinid = url.split('/');
+    this.coinservice.getSingleCoin(coinid[4]).subscribe(resData => {
+      if (resData.status === true) {
+        const imgurl = 'assets/currency-svg/' + resData.data.symbol.toLowerCase() + '.svg';
+        this.isImage(imgurl).then(function (test) {
+          // tslint:disable-next-line:triple-equals
+          if (test == true) {
+            resData.data.imgpath = imgurl;
+          } else {
+            resData.data.imgpath = 'assets/currency-50/' + resData.data.symbol.toLowerCase() + '.png';
+          }
+        });
+        setTimeout(() => {
+          this.follow = resData.data.followstatus;
+          this.coin = resData.data;
+        }, 100);
+      }
+    });
+  }
+
   ngOnInit() {
+    this.realTimeData();
+    this.realTimeGraph(this.perioddata);
     const curl = window.location.href;
     const ccoin = curl.split('/');
     const durl = curl.replace('/' + ccoin[4], '');
-    this.coinservice.gettestseometa(durl).subscribe(resData => {
-      if (resData.status === true) {
-        const desc = resData.data.description;
-        resData.data.description = desc.replace('[COIN]', ccoin[4]);
-        this.meta.addTag({ name: 'description', content: resData.data.description });
-        this.meta.addTag({ name: 'keywords', content: resData.data.keywords });
-        this.meta.addTag({ name: 'author', content: 'coinlisting' });
-        this.meta.addTag({ name: 'robots', content: resData.data.robots });
-        this.meta.addTag({ name: 'title', content: 'www.coinlisting.io' });
+    this.coinservice.getSingleCoin(ccoin[4]).subscribe(responce => {
+      if (responce.status === true) {
+        this.coin = responce.data;
+        this.coinservice.gettestseometa(durl).subscribe(resData => {
+          if (resData.status === true) {
+            const temptitle = resData.data.title;
+            const title = temptitle.replace('[COIN]', this.coin.name);
+            resData.data.title = title.replace('[COIN_SYMBOL]', this.coin.symbol);
+            this.titleService.setTitle(resData.data.title);
+            const tempdesc = resData.data.description;
+            const desc = tempdesc.replace('[COIN]', this.coin.name);
+            resData.data.description = desc.replace('[COIN_SYMBOL]', this.coin.symbol);
+            this.meta.addTag({ name: 'description', content: resData.data.description });
+            const tempkeyw = resData.data.description;
+            const keyw = tempkeyw.replace('[COIN]', this.coin.name);
+            resData.data.keywords = keyw.replace('[COIN_SYMBOL]', this.coin.symbol);
+            this.meta.addTag({ name: 'keywords', content: resData.data.keywords });
+            this.meta.addTag({ name: 'author', content: 'coinlisting' });
+            this.meta.addTag({ name: 'robots', content: resData.data.robots });
+            this.meta.addTag({ name: 'title', content: 'www.coinlisting.io' });
+          }
+        });
       }
     });
-    this.realTimeData();
-    this.realTimeGraph(this.perioddata);
   }
 
   realTimeGraph(period) {
@@ -238,30 +273,6 @@ export class CoinComponent implements OnInit {
           },
         });
     });
-  }
-
-  realTimeData() {
-    const url = window.location.href;
-    const coinid = url.split('/');
-    this.coinservice.getSingleCoin(coinid[4])
-    .subscribe(resData => {
-      if (resData.status === true) {
-        this.titleService.setTitle(resData.data.name + ' (' + resData.data.symbol + ') | Cryptocurrency Prices, Charts and Information');
-        const imgurl = 'assets/currency-svg/' + resData.data.symbol.toLowerCase() + '.svg';
-          this.isImage(imgurl).then(function (test) {
-            // tslint:disable-next-line:triple-equals
-            if (test == true) {
-              resData.data.imgpath = imgurl;
-            } else {
-              resData.data.imgpath = 'assets/currency-50/' + resData.data.symbol.toLowerCase() + '.png';
-            }
-          });
-          setTimeout(() => {
-            this.follow = resData.data.followstatus;
-            this.coin = resData.data;
-          }, 100);
-        }
-      });
   }
 
   isImage(src) {
